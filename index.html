@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ironbark Education Advisory — Independent Australian Education Advisory, UAE</title>
+<meta name="description" content="Independent Australian university admissions and pathway advisory for UAE based families. No university commissions, full cost and ROI clarity, and a decade of lived Australian experience. Based in Dubai.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.ironbarkadvisory.ae/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ironbark Education Advisory — Independent Australian Education Advisory, UAE">
+<meta property="og:description" content="Independent, no-commission advisory helping UAE based families choose the right Australian university pathway, with full cost and return-on-investment clarity.">
+<meta property="og:locale" content="en_AE">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "Ironbark Education Advisory",
+  "description": "Independent Australian university admissions and pathway advisory for UAE based families, with no university commissions and full cost and ROI clarity.",
+  "areaServed": {
+    "@type": "Country",
+    "name": "United Arab Emirates"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Dubai",
+    "addressCountry": "AE"
+  },
+  "priceRange": "$$",
+  "knowsAbout": ["Australian university admissions", "Student visas", "Education pathway advisory", "Study abroad cost planning"]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --charcoal:#211C1A;
+    --paper:#EDE3CC;
+    --navy:#2B4A5C;
+    --eucalyptus:#5C6E4F;
+    --rust:#2B4A5C;
+    --paper-dim:#E1D5B8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--charcoal);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    line-height:1.15;
+    letter-spacing:-0.01em;
+  }
+  .mono{ font-family:'IBM Plex Mono',monospace; }
+  a{ color:inherit; text-decoration:none; }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
+  :focus-visible{ outline:2px solid var(--rust); outline-offset:3px; }
+
+  /* HEADER */
+  header{
+    background:var(--charcoal);
+    color:var(--paper);
+    position:sticky; top:0; z-index:50;
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 32px; max-width:1180px; margin:0 auto;
+  }
+  .logo{
+    font-family:'Fraunces',serif; font-weight:600; font-size:1.35rem;
+    letter-spacing:-0.01em;
+  }
+  .logo span{ color:var(--rust); }
+  .nav-links{ display:flex; gap:36px; font-size:0.92rem; }
+  .nav-links a{ opacity:0.85; transition:opacity .2s; }
+  .nav-links a:hover{ opacity:1; }
+  .nav-cta{
+    background:var(--rust); color:var(--paper); padding:10px 20px;
+    border-radius:2px; font-size:0.88rem; font-weight:600;
+    transition:background .2s;
+  }
+  .nav-cta:hover{ background:#7d3d24; }
+  .nav-toggle{ display:none; }
+
+  /* HERO */
+  .hero{
+    position:relative;
+    min-height:88vh;
+    display:flex; align-items:flex-end;
+    color:var(--paper);
+    overflow:hidden;
+  }
+  .hero-photo-placeholder{
+    position:absolute; inset:0;
+    background:
+      repeating-linear-gradient(135deg, rgba(242,241,237,0.04) 0 2px, transparent 2px 26px),
+      linear-gradient(180deg, rgba(33,28,26,0.15) 0%, rgba(33,28,26,0.85) 100%),
+      linear-gradient(135deg, #2c3f52 0%, #1F3049 45%, #211C1A 100%);
+    display:flex; align-items:center; justify-content:center;
+    border-bottom:1px solid rgba(242,241,237,0.15);
+  }
+  .placeholder-label{
+    position:absolute; top:24px; right:24px;
+    font-family:'IBM Plex Mono',monospace; font-size:0.72rem;
+    color:rgba(242,241,237,0.55);
+    border:1px dashed rgba(242,241,237,0.35);
+    padding:6px 10px; border-radius:2px;
+    letter-spacing:0.03em;
+  }
+  .hero-inner{
+    position:relative; z-index:2;
+    max-width:1180px; margin:0 auto;
+    padding:0 32px 80px;
+    width:100%;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.8rem; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--rust); margin-bottom:18px; display:block;
+  }
+  .hero h1{
+    font-size:clamp(2.3rem, 5vw, 3.6rem);
+    max-width:760px; color:#fff;
+    margin-bottom:22px;
+  }
+  .hero p{
+    font-size:1.15rem; max-width:560px; color:rgba(242,241,237,0.88);
+    margin-bottom:34px;
+  }
+  .btn-row{ display:flex; gap:16px; flex-wrap:wrap; }
+  .btn-primary{
+    background:var(--rust); color:var(--paper);
+    padding:15px 28px; border-radius:2px; font-weight:600; font-size:0.95rem;
+    transition:background .2s;
+  }
+  .btn-primary:hover{ background:#7d3d24; }
+  .btn-secondary{
+    border:1px solid rgba(242,241,237,0.5); color:#fff;
+    padding:15px 28px; border-radius:2px; font-weight:600; font-size:0.95rem;
+    transition:border-color .2s, background .2s;
+  }
+  .btn-secondary:hover{ border-color:#fff; background:rgba(255,255,255,0.06); }
+
+  /* SECTION generic */
+  section{ padding:96px 0; }
+  .section-label{
+    font-family:'IBM Plex Mono',monospace; font-size:0.78rem;
+    letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--rust); margin-bottom:14px; display:block;
+  }
+  .section-heading{
+    font-size:clamp(1.7rem, 3vw, 2.3rem);
+    max-width:640px; margin-bottom:20px;
+  }
+  .section-sub{
+    max-width:600px; color:var(--eucalyptus); font-size:1.05rem;
+  }
+
+  /* CREDIBILITY / RINGS */
+  .credibility{ background:var(--paper); color:var(--charcoal); }
+  .credibility .section-sub{ color:var(--eucalyptus); }
+  .cred-grid{
+    display:grid; grid-template-columns:340px 1fr; gap:64px;
+    margin-top:56px; align-items:start;
+  }
+  .rings{ display:flex; align-items:center; justify-content:center; }
+  .rings svg circle{ fill:none; stroke-width:1; }
+  .cred-list{ display:grid; gap:28px; }
+  .cred-item{
+    display:grid; grid-template-columns:52px 1fr; gap:18px;
+    padding-bottom:28px; border-bottom:1px solid var(--paper-dim);
+  }
+  .cred-item:last-child{ border-bottom:none; }
+  .cred-num{
+    font-family:'IBM Plex Mono',monospace; font-size:0.85rem;
+    color:var(--navy); padding-top:3px;
+  }
+  .cred-item h3{
+    font-size:1.15rem; margin-bottom:8px; color:var(--charcoal); font-weight:600;
+  }
+  .cred-item p{ color:var(--eucalyptus); font-size:0.98rem; max-width:520px; }
+
+  /* WEDGE / POSITIONING STRIP */
+  .wedge{ background:var(--paper-dim); }
+  .wedge-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:40px; margin-top:48px;
+  }
+  .wedge-card{ padding:0; }
+  .wedge-card .mono{ font-size:0.78rem; color:var(--navy); letter-spacing:0.06em; }
+  .wedge-card h3{ font-size:1.2rem; margin:12px 0 10px; font-weight:600; }
+  .wedge-card p{ color:var(--eucalyptus); font-size:0.96rem; }
+
+  /* PACKAGES */
+  .packages-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:56px;
+  }
+  .pkg{
+    background:#fff; border:1px solid var(--paper-dim);
+    padding:36px 30px; border-radius:2px;
+    display:flex; flex-direction:column;
+  }
+  .pkg.featured{
+    border-color:var(--rust); position:relative;
+  }
+  .pkg-tag{
+    font-family:'IBM Plex Mono',monospace; font-size:0.7rem;
+    background:var(--rust); color:#fff; padding:4px 10px; border-radius:2px;
+    position:absolute; top:-12px; left:30px; letter-spacing:0.05em;
+  }
+  .pkg h3{ font-size:1.25rem; margin-bottom:10px; }
+  .pkg .price{
+    font-family:'IBM Plex Mono',monospace; font-size:1.6rem;
+    color:var(--navy); margin-bottom:18px;
+  }
+  .pkg ul{ list-style:none; margin-bottom:28px; flex-grow:1; }
+  .pkg li{
+    font-size:0.92rem; color:var(--charcoal); padding:9px 0 9px 22px;
+    position:relative; border-top:1px solid var(--paper-dim);
+  }
+  .pkg li:first-child{ border-top:none; }
+  .pkg li::before{
+    content:"—"; position:absolute; left:0; color:var(--rust);
+  }
+  .pkg-cta{
+    text-align:center; padding:13px; border:1px solid var(--charcoal);
+    border-radius:2px; font-weight:600; font-size:0.9rem;
+    transition:background .2s, color .2s;
+  }
+  .pkg-cta:hover{ background:var(--charcoal); color:#fff; }
+  .pkg.featured .pkg-cta{ background:var(--rust); border-color:var(--rust); color:#fff; }
+  .pkg.featured .pkg-cta:hover{ background:#7d3d24; }
+
+  /* FOUNDING BANNER */
+  .founding{
+    background:var(--navy); color:#fff;
+    padding:64px 0; text-align:center;
+  }
+  .founding h2{ font-size:1.7rem; margin-bottom:14px; }
+  .founding p{ color:rgba(242,241,237,0.8); max-width:560px; margin:0 auto 30px; }
+
+  /* FOOTER */
+  footer{ background:var(--charcoal); color:rgba(242,241,237,0.6); padding:56px 0 32px; }
+  .footer-grid{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:32px;
+    padding-bottom:36px; border-bottom:1px solid rgba(242,241,237,0.12);
+  }
+  .footer-logo{ font-family:'Fraunces',serif; color:#fff; font-size:1.15rem; }
+  .footer-tag{ font-size:0.85rem; margin-top:8px; max-width:280px; }
+  .footer-links{ display:flex; gap:48px; flex-wrap:wrap; }
+  .footer-links h4{
+    font-family:'IBM Plex Mono',monospace; font-size:0.72rem;
+    letter-spacing:0.06em; text-transform:uppercase; color:rgba(242,241,237,0.4);
+    margin-bottom:12px;
+  }
+  .footer-links a{ display:block; font-size:0.9rem; padding:5px 0; }
+  .footer-bottom{
+    padding-top:24px; font-size:0.78rem; display:flex;
+    justify-content:space-between; flex-wrap:wrap; gap:10px;
+  }
+
+  @media(max-width:860px){
+    .nav-links{ display:none; }
+    .cred-grid{ grid-template-columns:1fr; gap:36px; }
+    .rings{ order:2; }
+    .wedge-grid, .packages-grid{ grid-template-columns:1fr; }
+    .hero{ min-height:80vh; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="#" class="logo">Ironbark <span>Education</span> Advisory</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#packages">Packages</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#contact" class="nav-cta">Book a Discovery Call</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-photo-placeholder">
+    <span class="placeholder-label">PLACEHOLDER — replace with real Australia photo (e.g. Sydney Harbour, campus quad)</span>
+  </div>
+  <div class="hero-inner">
+    <span class="eyebrow">Independent Education Advisory · Based in the UAE</span>
+    <h1>Studying in Australia is a big decision. You deserve a straight answer, not a sales pitch.</h1>
+    <p>No university commissions, ever. Just clear, honest guidance on the right Australian pathway, and the real cost of getting there, from someone who has lived it.</p>
+    <div class="btn-row">
+      <a href="#contact" class="btn-primary">Book a Discovery Call</a>
+      <a href="#about" class="btn-secondary">Why Ironbark</a>
+    </div>
+  </div>
+</section>
+
+<section class="credibility" id="about">
+  <div class="wrap">
+    <span class="section-label">Why Ironbark</span>
+    <h2 class="section-heading" style="color:#fff;">This isn't a career I read about. It's one I lived, on both sides.</h2>
+    <p class="section-sub">Most agents in this market are selling a country they have never lived in, to families making the biggest financial decision of their child's life. Here is what a decade inside the Australian system actually looks like.</p>
+
+    <div class="cred-grid">
+      <div class="rings">
+        <svg width="300" height="300" viewBox="0 0 300 300" aria-hidden="true">
+          <circle cx="150" cy="150" r="30" stroke="#2B4A5C" opacity="0.95"/>
+          <circle cx="150" cy="150" r="55" stroke="#5C6E4F" opacity="0.55"/>
+          <circle cx="150" cy="150" r="80" stroke="#5C6E4F" opacity="0.4"/>
+          <circle cx="150" cy="150" r="105" stroke="#5C6E4F" opacity="0.28"/>
+          <circle cx="150" cy="150" r="130" stroke="#5C6E4F" opacity="0.16"/>
+          <text x="150" y="155" text-anchor="middle" fill="#211C1A" font-family="IBM Plex Mono" font-size="13" letter-spacing="1">10+ YEARS</text>
+        </svg>
+      </div>
+
+      <div class="cred-list">
+        <div class="cred-item">
+          <span class="cred-num">01</span>
+          <div>
+            <h3>Arrived as an international student myself</h3>
+            <p>Before advising anyone else's decision, I made the same one, and lived every part of it a brochure never shows: the visa process, the budget shock, the culture adjustment, the payoff.</p>
+          </div>
+        </div>
+        <div class="cred-item">
+          <span class="cred-num">02</span>
+          <div>
+            <h3>Worked inside Australian higher education, at Macquarie University and the Australian National University</h3>
+            <p>Institutional experience most agents simply do not have. I understand how these universities actually evaluate applicants, not just what their marketing brochures say.</p>
+          </div>
+        </div>
+        <div class="cred-item">
+          <span class="cred-num">03</span>
+          <div>
+            <h3>Led teams in professional Australian settings</h3>
+            <p>Direct experience of the Australian workplace and career pathway a graduate is actually working toward, not secondhand advice about a job market I have never operated in.</p>
+          </div>
+        </div>
+        <div class="cred-item">
+          <span class="cred-num">04</span>
+          <div>
+            <h3>Served in government, at ministerial and diplomatic level</h3>
+            <p>Public sector experience across Australian government relations, engaging foreign markets on education policy directly, not reading about it after the fact.</p>
+          </div>
+        </div>
+        <div class="cred-item">
+          <span class="cred-num">05</span>
+          <div>
+            <h3>Now based in the UAE, building the bridge families actually need</h3>
+            <p>Every conversation combines lived Australian experience with real understanding of what a Gulf based family is weighing, cost, distance, career outcome, in one advisor, not a call centre.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wedge">
+  <div class="wrap">
+    <span class="section-label">The Ironbark difference</span>
+    <h2 class="section-heading">Every other agent in this market is paid by the university. We are paid by you.</h2>
+    <div class="wedge-grid">
+      <div class="wedge-card">
+        <span class="mono">01 — INDEPENDENT</span>
+        <h3>No commissions, ever</h3>
+        <p>We are never paid by a university for steering you toward them. Every recommendation is made for your family, not for a payout.</p>
+      </div>
+      <div class="wedge-card">
+        <span class="mono">02 — CLEAR</span>
+        <h3>Full cost and return clarity</h3>
+        <p>A complete Total Cost & ROI Worksheet for every shortlisted program, tuition, living costs, visas, and what it's actually likely to return.</p>
+      </div>
+      <div class="wedge-card">
+        <span class="mono">03 — LIVED</span>
+        <h3>Decade of direct experience</h3>
+        <p>Guidance built on having actually studied, worked, and led teams in Australia, not on a script.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="packages">
+  <div class="wrap">
+    <span class="section-label">Packages</span>
+    <h2 class="section-heading">Choose the level of support your family needs.</h2>
+    <p class="section-sub">Founding clients receive a significantly discounted rate in exchange for a testimonial and case permission. Limited spots for this cohort.</p>
+
+    <div class="packages-grid">
+      <div class="pkg">
+        <h3>Foundational</h3>
+        <div class="price">Founding rate</div>
+        <ul>
+          <li>University shortlisting</li>
+          <li>Application strategy</li>
+          <li>Total Cost & ROI Worksheet</li>
+          <li>One essay / personal statement review</li>
+        </ul>
+        <a href="#contact" class="pkg-cta">Enquire</a>
+      </div>
+      <div class="pkg featured">
+        <span class="pkg-tag">Most families choose this</span>
+        <h3>Full Pathway</h3>
+        <div class="price">Founding rate</div>
+        <ul>
+          <li>Everything in Foundational</li>
+          <li>Visa guidance</li>
+          <li>Scholarship positioning</li>
+          <li>Offer negotiation support</li>
+          <li>Ongoing check-ins through decision day</li>
+        </ul>
+        <a href="#contact" class="pkg-cta">Enquire</a>
+      </div>
+      <div class="pkg">
+        <h3>Family Retainer</h3>
+        <div class="price">Annual, flat fee</div>
+        <ul>
+          <li>For households with multiple children</li>
+          <li>Full pathway support per child</li>
+          <li>Priority access across admission cycles</li>
+          <li>One flat annual fee, not per child</li>
+        </ul>
+        <a href="#contact" class="pkg-cta">Enquire</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="founding">
+  <div class="wrap">
+    <h2>A small number of founding client spots are open now.</h2>
+    <p>Work directly with an advisor who has lived every stage of this decision, at a rate that reflects an early relationship, not a discount on quality.</p>
+    <a href="#contact" class="btn-primary">Book a Discovery Call</a>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Ironbark Education Advisory</div>
+        <p class="footer-tag">Independent education advisory, based in the UAE. No commissions, ever.</p>
+      </div>
+      <div class="footer-links">
+        <div>
+          <h4>Site</h4>
+          <a href="#about">About</a>
+          <a href="#packages">Packages</a>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <a href="mailto:hello@ironbarkadvisory.ae">hello@ironbarkadvisory.ae</a>
+          <a href="#">Book a Discovery Call</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Ironbark Education Advisory. Dubai, UAE.</span>
+      <span>Independent · No university commissions</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
