@@ -85,7 +85,7 @@
     border-radius:2px; font-size:0.88rem; font-weight:600;
     transition:background .2s;
   }
-  .nav-cta:hover{ background:#47543D; }
+  .nav-cta:hover{ background:var(--paper); color:var(--charcoal); }
   .nav-toggle{ display:none; }
 
   /* HERO */
@@ -123,7 +123,7 @@
   .eyebrow{
     font-family:'IBM Plex Mono',monospace;
     font-size:0.8rem; letter-spacing:0.08em; text-transform:uppercase;
-    color:var(--rust); margin-bottom:18px; display:block;
+    color:var(--paper); margin-bottom:18px; display:block;
   }
   .hero h1{
     font-size:clamp(2.3rem, 5vw, 3.6rem);
@@ -140,7 +140,7 @@
     padding:15px 28px; border-radius:2px; font-weight:600; font-size:0.95rem;
     transition:background .2s;
   }
-  .btn-primary:hover{ background:#47543D; }
+  .btn-primary:hover{ background:var(--paper); color:var(--charcoal); }
   .btn-secondary{
     border:1px solid rgba(242,241,237,0.5); color:#fff;
     padding:15px 28px; border-radius:2px; font-weight:600; font-size:0.95rem;
@@ -170,8 +170,9 @@
     display:grid; grid-template-columns:340px 1fr; gap:64px;
     margin-top:56px; align-items:start;
   }
-  .rings{ display:flex; align-items:center; justify-content:center; }
-  .rings svg circle{ fill:none; stroke-width:1; }
+  .rings{ display:flex; flex-direction:column; align-items:center; justify-content:center; }
+  .big-num{ font-family:'Fraunces',serif; font-weight:700; font-size:6rem; color:var(--navy); line-height:1; text-align:center; }
+  .big-num-sub{ font-size:0.95rem; color:var(--eucalyptus); max-width:240px; margin:12px auto 0; text-align:center; }
   .cred-list{ display:grid; gap:28px; }
   .cred-item{
     display:grid; grid-template-columns:52px 1fr; gap:18px;
@@ -233,9 +234,9 @@
     border-radius:2px; font-weight:600; font-size:0.9rem;
     transition:background .2s, color .2s;
   }
-  .pkg-cta:hover{ background:var(--charcoal); color:#fff; }
+  .pkg-cta:hover{ background:var(--navy); color:#fff; }
   .pkg.featured .pkg-cta{ background:var(--rust); border-color:var(--rust); color:#fff; }
-  .pkg.featured .pkg-cta:hover{ background:#47543D; }
+  .pkg.featured .pkg-cta:hover{ background:var(--navy); color:#fff; }
 
   /* FOUNDING BANNER */
   .founding{
@@ -308,19 +309,13 @@
 <section class="credibility" id="about">
   <div class="wrap">
     <span class="section-label">Why Ironbark</span>
-    <h2 class="section-heading" style="color:#fff;">This isn't a career I read about. It's one I lived, on both sides.</h2>
-    <p class="section-sub">Most agents in this market are selling a country they have never lived in, to families making the biggest financial decision of their child's life. Here is what a decade inside the Australian system actually looks like.</p>
+    <h2 class="section-heading" style="color:#211C1A;">This isn't a career I read about. It's one I lived, on both sides.</h2>
+    <p class="section-sub">Most agents in this market are selling a country they have never lived in, to families making the biggest financial decision of their child's life. Here is what 12 years inside the Australian system actually looks like.</p>
 
     <div class="cred-grid">
       <div class="rings">
-        <svg width="300" height="300" viewBox="0 0 300 300" aria-hidden="true">
-          <circle cx="150" cy="150" r="30" stroke="#3C6478" opacity="0.95"/>
-          <circle cx="150" cy="150" r="55" stroke="#5C6E4F" opacity="0.55"/>
-          <circle cx="150" cy="150" r="80" stroke="#5C6E4F" opacity="0.4"/>
-          <circle cx="150" cy="150" r="105" stroke="#5C6E4F" opacity="0.28"/>
-          <circle cx="150" cy="150" r="130" stroke="#5C6E4F" opacity="0.16"/>
-          <text x="150" y="155" text-anchor="middle" fill="#211C1A" font-family="IBM Plex Mono" font-size="13" letter-spacing="1">10+ YEARS</text>
-        </svg>
+        <div class="big-num">12</div>
+        <div class="big-num-sub">Years across international education, government, and industry</div>
       </div>
 
       <div class="cred-list">
