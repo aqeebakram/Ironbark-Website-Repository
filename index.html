@@ -163,17 +163,33 @@
     max-width:600px; color:var(--eucalyptus); font-size:1.05rem;
   }
 
-  /* CREDIBILITY / RINGS */
+  /* CREDIBILITY */
   .credibility{ background:var(--paper); color:var(--charcoal); }
   .credibility .section-sub{ color:var(--eucalyptus); }
-  .cred-grid{
-    display:grid; grid-template-columns:340px 1fr; gap:64px;
-    margin-top:56px; align-items:start;
+  .cred-layout{
+    display:grid; grid-template-columns:1fr 1fr; gap:56px;
+    margin-top:24px; align-items:center;
   }
-  .rings{ display:flex; flex-direction:column; align-items:center; justify-content:center; }
-  .big-num{ font-family:'Fraunces',serif; font-weight:700; font-size:6rem; color:var(--navy); line-height:1; text-align:center; }
-  .big-num-sub{ font-size:0.95rem; color:var(--eucalyptus); max-width:240px; margin:12px auto 0; text-align:center; }
-  .cred-list{ display:grid; gap:28px; }
+  .cred-image{
+    position:relative; aspect-ratio:4/3; border-radius:2px; overflow:hidden;
+    background:url('images/credibility-australia.jpg');
+    background-size:cover;
+    background-position:center 30%;
+  }
+  .cred-image-label{
+    position:absolute; top:16px; left:16px; font-family:'IBM Plex Mono',monospace;
+    font-size:0.68rem; color:var(--charcoal); background:rgba(255,255,255,0.75);
+    padding:6px 10px; border-radius:2px; letter-spacing:0.03em; border:1px dashed rgba(33,28,26,0.35);
+  }
+  .cred-stat{
+    position:absolute; left:0; right:0; bottom:0;
+    background:linear-gradient(180deg, rgba(33,28,26,0) 0%, rgba(33,28,26,0.85) 65%);
+    padding:40px 22px 20px;
+  }
+  .cred-stat .big-num{ font-family:'Fraunces',serif; font-weight:700; font-size:2.6rem; color:#fff; line-height:1; }
+  .cred-stat .big-num-sub{ font-size:0.8rem; color:rgba(255,255,255,0.82); max-width:260px; margin-top:5px; }
+  .cred-content{ display:flex; flex-direction:column; }
+  .cred-list{ display:grid; gap:28px; margin-top:32px; }
   .cred-item{
     display:grid; grid-template-columns:52px 1fr; gap:18px;
     padding-bottom:28px; border-bottom:1px solid var(--paper-dim);
@@ -268,8 +284,7 @@
 
   @media(max-width:860px){
     .nav-links{ display:none; }
-    .cred-grid{ grid-template-columns:1fr; gap:36px; }
-    .rings{ order:2; }
+    .cred-layout{ grid-template-columns:1fr; gap:28px; }
     .wedge-grid, .packages-grid{ grid-template-columns:1fr; }
     .hero{ min-height:80vh; }
   }
@@ -308,17 +323,20 @@
 
 <section class="credibility" id="about">
   <div class="wrap">
-    <span class="section-label">Why Ironbark</span>
-    <h2 class="section-heading" style="color:#211C1A;">This isn't a career I read about. It's one I lived, on both sides.</h2>
-    <p class="section-sub">Most agents in this market are selling a country they have never lived in, to families making the biggest financial decision of their child's life. Here is what 12 years inside the Australian system actually looks like.</p>
-
-    <div class="cred-grid">
-      <div class="rings">
-        <div class="big-num">12</div>
-        <div class="big-num-sub">Years across international education, government, and industry</div>
+    <div class="cred-layout">
+      <div class="cred-image">
+        <div class="cred-stat">
+          <div class="big-num">12</div>
+          <div class="big-num-sub">Years across international education, government, and industry</div>
+        </div>
       </div>
 
-      <div class="cred-list">
+      <div class="cred-content">
+        <span class="section-label">Why Ironbark</span>
+        <h2 class="section-heading" style="color:#211C1A;">This isn't a career I read about. It's one I lived, on both sides.</h2>
+        <p class="section-sub">Most agents in this market are selling a country they have never lived in, to families making the biggest financial decision of their child's life. Here is what 12 years inside the Australian system actually looks like.</p>
+
+        <div class="cred-list">
         <div class="cred-item">
           <span class="cred-num">01</span>
           <div>
@@ -353,6 +371,7 @@
             <h3>Now based in the UAE, building the bridge families actually need</h3>
             <p>Every conversation combines lived Australian experience with real understanding of what a Gulf based family is weighing, cost, distance, career outcome, in one advisor, not a call centre.</p>
           </div>
+        </div>
         </div>
       </div>
     </div>
