@@ -99,9 +99,10 @@
   .hero-photo-placeholder{
     position:absolute; inset:0;
     background:
-      repeating-linear-gradient(135deg, rgba(242,241,237,0.04) 0 2px, transparent 2px 26px),
-      linear-gradient(180deg, rgba(33,28,26,0.15) 0%, rgba(33,28,26,0.85) 100%),
-      linear-gradient(135deg, #2c3f52 0%, #1F3049 45%, #211C1A 100%);
+      linear-gradient(180deg, rgba(33,28,26,0.20) 0%, rgba(33,28,26,0.82) 100%),
+      url('hero-sydney.jpg');
+    background-size:cover;
+    background-position:center;
     display:flex; align-items:center; justify-content:center;
     border-bottom:1px solid rgba(242,241,237,0.15);
   }
@@ -291,9 +292,7 @@
 </header>
 
 <section class="hero">
-  <div class="hero-photo-placeholder">
-    <span class="placeholder-label">PLACEHOLDER — replace with real Australia photo (e.g. Sydney Harbour, campus quad)</span>
-  </div>
+  <div class="hero-photo-placeholder"></div>
   <div class="hero-inner">
     <span class="eyebrow">Independent Education Advisory · Based in the UAE</span>
     <h1>Studying in Australia is a big decision. You deserve a straight answer, not a sales pitch.</h1>
