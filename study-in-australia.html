@@ -3,15 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Study in Australia — Ironbark Education Advisory</title>
+<title>Students &amp; Families — Ironbark Education Advisory</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --charcoal:#211C1A; --paper:#DCE6E4; --navy:#3C6478;
-    --eucalyptus:#5C6E4F; --rust:#C7A76C; --paper-dim:#CBD9D6;
-  }
+  :root{ --charcoal:#211C1A; --paper:#DCE6E4; --navy:#3C6478; --eucalyptus:#5C6E4F; --rust:#C7A76C; --paper-dim:#CBD9D6; }
   *{box-sizing:border-box;margin:0;padding:0;}
   body{ background:var(--paper); color:var(--charcoal); font-family:'Inter',sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; }
   h1,h2,.display{ font-family:'Fraunces',serif; font-weight:600; line-height:1.15; letter-spacing:-0.01em; }
@@ -21,18 +18,45 @@
   .nav{ display:flex; align-items:center; justify-content:space-between; padding:20px 32px; max-width:1180px; margin:0 auto; }
   .logo{ font-family:'Fraunces',serif; font-weight:600; font-size:1.35rem; }
   .logo span{ color:var(--rust); }
-  .nav-links{ display:flex; gap:36px; font-size:0.92rem; }
+  .nav-links{ display:flex; gap:32px; font-size:0.92rem; }
   .nav-links a{ opacity:0.85; transition:opacity .2s; }
   .nav-links a:hover{ opacity:1; }
-  .nav-cta{ background:var(--rust); color:var(--charcoal); padding:10px 20px; border-radius:2px; font-size:0.88rem; font-weight:600; }
+  .nav-cta{ background:var(--rust); color:var(--charcoal); padding:10px 20px; border-radius:2px; font-size:0.88rem; font-weight:600; transition:background .2s, color .2s; }
+  .nav-cta:hover{ background:var(--paper); color:var(--charcoal); }
   .page-hero{ background:var(--charcoal); color:#fff; padding:80px 0 60px; }
-  .eyebrow{ font-family:'IBM Plex Mono',monospace; font-size:0.8rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--rust); margin-bottom:14px; display:block; }
-  .page-hero h1{ font-size:clamp(2rem, 4vw, 2.8rem); max-width:700px; }
-  .placeholder-body{ padding:100px 0; text-align:center; }
-  .placeholder-body p{ color:var(--eucalyptus); font-size:1.05rem; max-width:480px; margin:0 auto; }
-  .placeholder-tag{ display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:0.75rem; letter-spacing:0.05em; text-transform:uppercase; background:var(--paper-dim); padding:8px 16px; border-radius:2px; margin-bottom:20px; }
+  .eyebrow{ font-family:'IBM Plex Mono',monospace; font-size:0.8rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--paper); margin-bottom:14px; display:block; }
+  .page-hero h1{ font-size:clamp(2rem, 4vw, 2.8rem); max-width:760px; }
+  .page-hero p{ max-width:600px; color:rgba(220,230,228,0.85); margin-top:16px; font-size:1.05rem; }
+  section{ padding:80px 0; }
+  .section-label{ font-family:'IBM Plex Mono',monospace; font-size:0.78rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--rust); margin-bottom:14px; display:block; }
+  .section-heading{ font-size:clamp(1.6rem, 3vw, 2.1rem); max-width:680px; margin-bottom:16px; }
+  .section-sub{ max-width:600px; color:var(--eucalyptus); font-size:1.02rem; }
+  .wedge{ background:var(--paper-dim); }
+  .wedge-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:36px; margin-top:44px; }
+  .wedge-card .mono{ font-family:'IBM Plex Mono',monospace; font-size:0.75rem; color:var(--navy); letter-spacing:0.06em; }
+  .wedge-card h3{ font-size:1.15rem; margin:10px 0 8px; font-weight:600; }
+  .wedge-card p{ color:var(--eucalyptus); font-size:0.94rem; }
+  .packages-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:26px; margin-top:48px; }
+  .pkg{ background:#fff; border:1px solid var(--paper-dim); padding:34px 28px; border-radius:2px; display:flex; flex-direction:column; position:relative; }
+  .pkg.featured{ border-color:var(--rust); }
+  .pkg-tag{ font-family:'IBM Plex Mono',monospace; font-size:0.68rem; background:var(--rust); color:var(--charcoal); padding:4px 10px; border-radius:2px; position:absolute; top:-12px; left:28px; letter-spacing:0.05em; }
+  .pkg h3{ font-size:1.2rem; margin-bottom:8px; }
+  .pkg .price{ font-family:'IBM Plex Mono',monospace; font-size:1.4rem; color:var(--navy); margin-bottom:16px; }
+  .pkg ul{ list-style:none; margin-bottom:24px; flex-grow:1; }
+  .pkg li{ font-size:0.9rem; padding:8px 0 8px 20px; position:relative; border-top:1px solid var(--paper-dim); }
+  .pkg li:first-child{ border-top:none; }
+  .pkg li::before{ content:"—"; position:absolute; left:0; color:var(--rust); }
+  .pkg-cta{ text-align:center; padding:12px; border:1px solid var(--charcoal); border-radius:2px; font-weight:600; font-size:0.88rem; transition:background .2s, color .2s; }
+  .pkg-cta:hover{ background:var(--navy); color:#fff; border-color:var(--navy); }
+  .pkg.featured .pkg-cta{ background:var(--rust); border-color:var(--rust); color:var(--charcoal); }
+  .pkg.featured .pkg-cta:hover{ background:var(--navy); color:#fff; }
+  .founding{ background:var(--navy); color:#fff; padding:60px 0; text-align:center; }
+  .founding h2{ font-size:1.6rem; margin-bottom:12px; }
+  .founding p{ color:rgba(220,230,228,0.85); max-width:540px; margin:0 auto 26px; }
+  .btn-primary{ display:inline-block; background:var(--rust); color:var(--charcoal); padding:14px 26px; border-radius:2px; font-weight:600; font-size:0.92rem; transition:background .2s, color .2s; }
+  .btn-primary:hover{ background:var(--paper); color:var(--charcoal); }
   footer{ background:var(--charcoal); color:rgba(220,230,228,0.6); padding:40px 0; text-align:center; font-size:0.85rem; }
-  @media(max-width:860px){ .nav-links{ display:none; } }
+  @media(max-width:860px){ .nav-links{ display:none; } .wedge-grid,.packages-grid{ grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
@@ -41,8 +65,9 @@
     <a href="index.html" class="logo">Ironbark <span>Education</span> Advisory</a>
     <div class="nav-links">
       <a href="about.html">About Me</a>
-      <a href="study-in-australia.html" style="opacity:1;font-weight:600;">Study in Australia</a>
-      <a href="insights.html">Insights & News</a>
+      <a href="study-in-australia.html" style="opacity:1;font-weight:600;">Students &amp; Families</a>
+      <a href="institutions.html">Institutions</a>
+      <a href="insights.html">Insights &amp; News</a>
       <a href="contact.html">Contact</a>
     </div>
     <a href="contact.html" class="nav-cta">Book a Discovery Call</a>
@@ -51,15 +76,86 @@
 
 <section class="page-hero">
   <div class="wrap">
-    <span class="eyebrow">Study in Australia</span>
-    <h1>Everything a family needs to know, and everything most agents leave out.</h1>
+    <span class="eyebrow">For Students &amp; Families</span>
+    <h1>Studying in Australia is a big decision. You deserve a straight answer, not a sales pitch.</h1>
+    <p>No university commissions, ever. Just clear, honest guidance on the right Australian pathway, and the real cost of getting there, from someone who has lived it.</p>
   </div>
 </section>
 
-<section class="placeholder-body">
+<section class="wedge">
   <div class="wrap">
-    <span class="placeholder-tag">Content in progress</span>
-    <p>This page is part of the confirmed sitemap and is ready to be built out. We'll fill this in as we go, section by section.</p>
+    <span class="section-label">The Ironbark Difference</span>
+    <h2 class="section-heading">Every other agent in this market is paid by the university. I am paid by you.</h2>
+    <div class="wedge-grid">
+      <div class="wedge-card">
+        <span class="mono">01 — INDEPENDENT</span>
+        <h3>No commissions, ever</h3>
+        <p>Never paid by a university for steering you toward them. Every recommendation is made for your family, not for a payout.</p>
+      </div>
+      <div class="wedge-card">
+        <span class="mono">02 — CLEAR</span>
+        <h3>Full cost and return clarity</h3>
+        <p>A complete Total Cost &amp; ROI Worksheet for every shortlisted program, tuition, living costs, visas, and what it's actually likely to return.</p>
+      </div>
+      <div class="wedge-card">
+        <span class="mono">03 — LIVED</span>
+        <h3>12 years of direct experience</h3>
+        <p>Guidance built on having actually studied, worked, and led teams in Australia, not on a script.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="packages">
+  <div class="wrap">
+    <span class="section-label">Packages</span>
+    <h2 class="section-heading">Choose the level of support your family needs.</h2>
+    <p class="section-sub">Founding clients receive a significantly discounted rate in exchange for a testimonial and case permission. Limited spots for this cohort.</p>
+    <div class="packages-grid">
+      <div class="pkg">
+        <h3>Foundational</h3>
+        <div class="price">Founding rate</div>
+        <ul>
+          <li>University shortlisting</li>
+          <li>Application strategy</li>
+          <li>Total Cost &amp; ROI Worksheet</li>
+          <li>One essay / personal statement review</li>
+        </ul>
+        <a href="contact.html" class="pkg-cta">Enquire</a>
+      </div>
+      <div class="pkg featured">
+        <span class="pkg-tag">Most families choose this</span>
+        <h3>Full Pathway</h3>
+        <div class="price">Founding rate</div>
+        <ul>
+          <li>Everything in Foundational</li>
+          <li>Visa guidance</li>
+          <li>Scholarship positioning</li>
+          <li>Offer negotiation support</li>
+          <li>Ongoing check-ins through decision day</li>
+        </ul>
+        <a href="contact.html" class="pkg-cta">Enquire</a>
+      </div>
+      <div class="pkg">
+        <h3>Family Retainer</h3>
+        <div class="price">Annual, flat fee</div>
+        <ul>
+          <li>For households with multiple children</li>
+          <li>Full pathway support per child</li>
+          <li>Priority access across admission cycles</li>
+          <li>One flat annual fee, not per child</li>
+        </ul>
+        <a href="contact.html" class="pkg-cta">Enquire</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="founding">
+  <div class="wrap">
+    <h2>A small number of founding client spots are open now.</h2>
+    <p>Work directly with an advisor who has lived every stage of this decision, at a rate that reflects an early relationship, not a discount on quality.</p>
+    <a href="contact.html" class="btn-primary">Book a Discovery Call</a>
   </div>
 </section>
 

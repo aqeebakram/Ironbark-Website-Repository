@@ -206,13 +206,18 @@
 
   /* WEDGE / POSITIONING STRIP */
   .wedge{ background:var(--paper-dim); }
-  .wedge-grid{
-    display:grid; grid-template-columns:repeat(3,1fr); gap:40px; margin-top:48px;
+  .path-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:48px;
   }
-  .wedge-card{ padding:0; }
-  .wedge-card .mono{ font-size:0.78rem; color:var(--navy); letter-spacing:0.06em; }
-  .wedge-card h3{ font-size:1.2rem; margin:12px 0 10px; font-weight:600; }
-  .wedge-card p{ color:var(--eucalyptus); font-size:0.96rem; }
+  .path-card{
+    display:block; background:#fff; border:1px solid var(--paper-dim);
+    padding:40px 34px; border-radius:2px; transition:border-color .2s, transform .2s;
+  }
+  .path-card:hover{ border-color:var(--navy); transform:translateY(-2px); }
+  .path-card .mono{ font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--eucalyptus); letter-spacing:0.08em; }
+  .path-card h3{ font-family:'Fraunces',serif; font-size:1.5rem; margin:10px 0 14px; color:var(--charcoal); }
+  .path-card p{ color:var(--eucalyptus); font-size:0.98rem; margin-bottom:22px; }
+  .path-cta{ font-family:'IBM Plex Mono',monospace; font-size:0.85rem; color:var(--navy); font-weight:600; }
 
   /* PACKAGES */
   .packages-grid{
@@ -300,7 +305,7 @@
   @media(max-width:860px){
     .nav-links{ display:none; }
     .cred-layout{ grid-template-columns:1fr; gap:28px; }
-    .wedge-grid, .packages-grid{ grid-template-columns:1fr; }
+    .path-grid{ grid-template-columns:1fr; }
     .hero{ min-height:80vh; }
   }
   @media(max-width:600px){
@@ -319,7 +324,8 @@
     <a href="#" class="logo">Ironbark <span>Education</span> Advisory</a>
     <div class="nav-links">
       <a href="about.html">About Me</a>
-      <a href="study-in-australia.html">Study in Australia</a>
+      <a href="study-in-australia.html">Students &amp; Families</a>
+      <a href="institutions.html">Institutions</a>
       <a href="insights.html">Insights &amp; News</a>
       <a href="contact.html">Contact</a>
     </div>
@@ -331,11 +337,11 @@
   <div class="hero-photo-placeholder"></div>
   <div class="hero-inner">
     <span class="eyebrow">Independent Education Advisory · Based in the UAE</span>
-    <h1>Studying in Australia is a big decision. You deserve a straight answer, not a sales pitch.</h1>
-    <p>No university commissions, ever. Just clear, honest guidance on the right Australian pathway, and the real cost of getting there, from someone who has lived it.</p>
+    <h1>12 years inside Australian education, government, and industry, now working for you.</h1>
+    <p>I help students and families find the right Australian pathway, and I help institutions build the right presence in the UAE. One advisor, no commissions, straight answers either way.</p>
     <div class="btn-row">
-      <a href="contact.html" class="btn-primary">Book a Discovery Call</a>
-      <a href="about.html" class="btn-secondary">Why Ironbark</a>
+      <a href="study-in-australia.html" class="btn-primary">Students &amp; Families</a>
+      <a href="institutions.html" class="btn-secondary">Institutions</a>
     </div>
   </div>
 </section>
@@ -353,7 +359,7 @@
       <div class="cred-content">
         <span class="section-label">Why Ironbark</span>
         <h2 class="section-heading" style="color:#211C1A;">This isn't a career I read about. It's one I lived, on both sides.</h2>
-        <p class="section-sub">Most agents in this market are selling a country they have never lived in, to families making the biggest financial decision of their child's life. Here is what 12 years inside the Australian system actually looks like.</p>
+        <p class="section-sub">Most agents and consultants in this market are selling something they have never actually lived. Here is what 12 years inside the Australian system actually looks like, and why it matters whether you're a family or an institution.</p>
 
         <div class="cred-list">
         <div class="cred-item">
@@ -399,79 +405,22 @@
 
 <section class="wedge">
   <div class="wrap">
-    <span class="section-label">The Ironbark difference</span>
-    <h2 class="section-heading">Every other agent in this market is paid by the university. We are paid by you.</h2>
-    <div class="wedge-grid">
-      <div class="wedge-card">
-        <span class="mono">01 — INDEPENDENT</span>
-        <h3>No commissions, ever</h3>
-        <p>We are never paid by a university for steering you toward them. Every recommendation is made for your family, not for a payout.</p>
-      </div>
-      <div class="wedge-card">
-        <span class="mono">02 — CLEAR</span>
-        <h3>Full cost and return clarity</h3>
-        <p>A complete Total Cost & ROI Worksheet for every shortlisted program, tuition, living costs, visas, and what it's actually likely to return.</p>
-      </div>
-      <div class="wedge-card">
-        <span class="mono">03 — LIVED</span>
-        <h3>Decade of direct experience</h3>
-        <p>Guidance built on having actually studied, worked, and led teams in Australia, not on a script.</p>
-      </div>
+    <span class="section-label">How I Can Help</span>
+    <h2 class="section-heading">Two very different audiences. The same standard of independence and honesty for both.</h2>
+    <div class="path-grid">
+      <a href="study-in-australia.html" class="path-card">
+        <span class="mono">FOR</span>
+        <h3>Students &amp; Families</h3>
+        <p>Independent guidance on the right Australian pathway, full cost and return clarity, and no university commissions, ever.</p>
+        <span class="path-cta">Explore Student &amp; Family Advisory →</span>
+      </a>
+      <a href="institutions.html" class="path-card">
+        <span class="mono">FOR</span>
+        <h3>Institutions</h3>
+        <p>Market entry, transnational education partnerships, and UAE growth advisory for institutions expanding into or within the Gulf.</p>
+        <span class="path-cta">Explore Institutional Advisory →</span>
+      </a>
     </div>
-  </div>
-</section>
-
-<section id="packages">
-  <div class="wrap">
-    <span class="section-label">Packages</span>
-    <h2 class="section-heading">Choose the level of support your family needs.</h2>
-    <p class="section-sub">Founding clients receive a significantly discounted rate in exchange for a testimonial and case permission. Limited spots for this cohort.</p>
-
-    <div class="packages-grid">
-      <div class="pkg">
-        <h3>Foundational</h3>
-        <div class="price">Founding rate</div>
-        <ul>
-          <li>University shortlisting</li>
-          <li>Application strategy</li>
-          <li>Total Cost & ROI Worksheet</li>
-          <li>One essay / personal statement review</li>
-        </ul>
-        <a href="contact.html" class="pkg-cta">Enquire</a>
-      </div>
-      <div class="pkg featured">
-        <span class="pkg-tag">Most families choose this</span>
-        <h3>Full Pathway</h3>
-        <div class="price">Founding rate</div>
-        <ul>
-          <li>Everything in Foundational</li>
-          <li>Visa guidance</li>
-          <li>Scholarship positioning</li>
-          <li>Offer negotiation support</li>
-          <li>Ongoing check-ins through decision day</li>
-        </ul>
-        <a href="contact.html" class="pkg-cta">Enquire</a>
-      </div>
-      <div class="pkg">
-        <h3>Family Retainer</h3>
-        <div class="price">Annual, flat fee</div>
-        <ul>
-          <li>For households with multiple children</li>
-          <li>Full pathway support per child</li>
-          <li>Priority access across admission cycles</li>
-          <li>One flat annual fee, not per child</li>
-        </ul>
-        <a href="contact.html" class="pkg-cta">Enquire</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="founding">
-  <div class="wrap">
-    <h2>A small number of founding client spots are open now.</h2>
-    <p>Work directly with an advisor who has lived every stage of this decision, at a rate that reflects an early relationship, not a discount on quality.</p>
-    <a href="contact.html" class="btn-primary">Book a Discovery Call</a>
   </div>
 </section>
 
@@ -486,7 +435,8 @@
         <div>
           <h4>Site</h4>
           <a href="about.html">About Me</a>
-          <a href="study-in-australia.html">Study in Australia</a>
+          <a href="study-in-australia.html">Students &amp; Families</a>
+          <a href="institutions.html">Institutions</a>
         </div>
         <div>
           <h4>Contact</h4>
