@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root{ --charcoal:#211C1A; --paper:#DCE6E4; --navy:#3C6478; --eucalyptus:#5C6E4F; --rust:#C7A76C; --paper-dim:#CBD9D6; }
+  :root{ --charcoal:#051650; --paper:#F7F6F2; --navy:#051650; --eucalyptus:#9C1530; --rust:#051650; --paper-dim:#ECE9E1; }
   *{box-sizing:border-box;margin:0;padding:0;}
   body{ background:var(--paper); color:var(--charcoal); font-family:'Inter',sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; }
   h1,h2{ font-family:'Fraunces',serif; font-weight:600; line-height:1.15; letter-spacing:-0.01em; }
@@ -17,11 +17,11 @@
   header{ background:var(--charcoal); color:var(--paper); position:sticky; top:0; z-index:50; }
   .nav{ display:flex; align-items:center; justify-content:space-between; padding:20px 32px; max-width:1180px; margin:0 auto; }
   .logo{ font-family:'Fraunces',serif; font-weight:600; font-size:1.35rem; }
-  .logo span{ color:var(--rust); }
+  .logo span{ color:#fff; }
   .nav-links{ display:flex; gap:32px; font-size:0.92rem; }
   .nav-links a{ opacity:0.85; transition:opacity .2s; }
   .nav-links a:hover{ opacity:1; }
-  .nav-cta{ background:var(--rust); color:var(--charcoal); padding:10px 20px; border-radius:2px; font-size:0.88rem; font-weight:600; transition:background .2s, color .2s; }
+  .nav-cta{ background:var(--rust); color:#fff; padding:10px 20px; border-radius:2px; font-size:0.88rem; font-weight:600; transition:background .2s, color .2s; }
   .nav-cta:hover{ background:var(--paper); color:var(--charcoal); }
   .page-hero{ background:var(--charcoal); color:#fff; padding:70px 0 50px; }
   .eyebrow{ font-family:'IBM Plex Mono',monospace; font-size:0.8rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--paper); margin-bottom:14px; display:block; }
@@ -34,7 +34,7 @@
   .map-wrap{ border-radius:2px; overflow:hidden; border:1px solid var(--paper-dim); }
   .map-wrap iframe{ width:100%; height:380px; border:0; display:block; filter:grayscale(0.15); }
   .map-caption{ font-family:'IBM Plex Mono',monospace; font-size:0.75rem; color:var(--eucalyptus); margin-top:10px; }
-  footer{ background:var(--charcoal); color:rgba(220,230,228,0.6); padding:40px 0; text-align:center; font-size:0.85rem; }
+  footer{ background:var(--charcoal); color:rgba(247,246,242,0.6); padding:40px 0; text-align:center; font-size:0.85rem; }
   @media(max-width:860px){ .nav-links{ display:none; } .contact-grid{ grid-template-columns:1fr; gap:36px; } }
 </style>
 </head>

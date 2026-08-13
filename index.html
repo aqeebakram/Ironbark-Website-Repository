@@ -34,14 +34,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --charcoal:#211C1A;
-    --paper:#DCE6E4;
-    --navy:#3C6478;
-    --eucalyptus:#5C6E4F;
-    --rust:#C7A76C;
-    --paper-dim:#CBD9D6;
-  }
+  :root{ --charcoal:#051650; --paper:#F7F6F2; --navy:#051650; --eucalyptus:#9C1530; --rust:#051650; --paper-dim:#ECE9E1; }
   *{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
   body{
@@ -76,7 +69,7 @@
     font-family:'Fraunces',serif; font-weight:600; font-size:1.35rem;
     letter-spacing:-0.01em;
   }
-  .logo span{ color:var(--rust); }
+  .logo span{ color:#fff; }
   .nav-links{ display:flex; gap:36px; font-size:0.92rem; }
   .nav-links a{ opacity:0.85; transition:opacity .2s; }
   .nav-links a:hover{ opacity:1; }
@@ -99,7 +92,7 @@
   .hero-photo-placeholder{
     position:absolute; inset:0;
     background:
-      linear-gradient(180deg, rgba(33,28,26,0.20) 0%, rgba(33,28,26,0.82) 100%),
+      linear-gradient(180deg, rgba(5,22,80,0.20) 0%, rgba(5,22,80,0.82) 100%),
       url('images/hero-sydney.jpg');
     background-size:cover;
     background-position:center;
@@ -179,11 +172,11 @@
   .cred-image-label{
     position:absolute; top:16px; left:16px; font-family:'IBM Plex Mono',monospace;
     font-size:0.68rem; color:var(--charcoal); background:rgba(255,255,255,0.75);
-    padding:6px 10px; border-radius:2px; letter-spacing:0.03em; border:1px dashed rgba(33,28,26,0.35);
+    padding:6px 10px; border-radius:2px; letter-spacing:0.03em; border:1px dashed rgba(5,22,80,0.35);
   }
   .cred-stat{
     position:absolute; left:0; right:0; bottom:0;
-    background:linear-gradient(180deg, rgba(33,28,26,0) 0%, rgba(33,28,26,0.85) 65%);
+    background:linear-gradient(180deg, rgba(5,22,80,0) 0%, rgba(5,22,80,0.85) 65%);
     padding:40px 22px 20px;
   }
   .cred-stat .big-num{ font-family:'Fraunces',serif; font-weight:700; font-size:2.6rem; color:#fff; line-height:1; }
@@ -358,7 +351,7 @@
 
       <div class="cred-content">
         <span class="section-label">Why Ironbark</span>
-        <h2 class="section-heading" style="color:#211C1A;">This isn't a career I read about. It's one I lived, on both sides.</h2>
+        <h2 class="section-heading" style="color:#051650;">This isn't a career I read about. It's one I lived, on both sides.</h2>
         <p class="section-sub">Most agents and consultants in this market are selling something they have never actually lived. Here is what 12 years inside the Australian system actually looks like, and why it matters whether you're a family or an institution.</p>
 
         <div class="cred-list">
