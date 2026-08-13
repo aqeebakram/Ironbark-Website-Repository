@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Students &amp; Families — Ironbark Education Advisory</title>
+<title>Students &amp; Families — Ironbark Advisory</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -21,8 +21,8 @@
   .nav-links{ display:flex; gap:32px; font-size:0.92rem; }
   .nav-links a{ opacity:0.85; transition:opacity .2s; }
   .nav-links a:hover{ opacity:1; }
-  .nav-cta{ background:var(--rust); color:#fff; padding:10px 20px; border-radius:2px; font-size:0.88rem; font-weight:600; transition:background .2s, color .2s; }
-  .nav-cta:hover{ background:var(--paper); color:var(--charcoal); }
+  .nav-cta{ background:var(--rust); color:#fff; padding:10px 22px; border-radius:50px; font-size:0.88rem; font-weight:600; transition:transform .18s ease, box-shadow .18s ease, background .18s ease; }
+  .nav-cta:hover{ background:var(--paper); color:var(--charcoal); transform:translateY(-2px); box-shadow:0 6px 16px rgba(5,22,80,0.25); }
   .page-hero{ background:var(--charcoal); color:#fff; padding:80px 0 60px; }
   .eyebrow{ font-family:'IBM Plex Mono',monospace; font-size:0.8rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--paper); margin-bottom:14px; display:block; }
   .page-hero h1{ font-size:clamp(2rem, 4vw, 2.8rem); max-width:760px; }
@@ -46,14 +46,15 @@
   .pkg li{ font-size:0.9rem; padding:8px 0 8px 20px; position:relative; border-top:1px solid var(--paper-dim); }
   .pkg li:first-child{ border-top:none; }
   .pkg li::before{ content:"—"; position:absolute; left:0; color:var(--rust); }
-  .pkg-cta{ text-align:center; padding:12px; border:1px solid var(--charcoal); border-radius:2px; font-weight:600; font-size:0.88rem; transition:background .2s, color .2s; }
-  .pkg-cta:hover{ background:var(--navy); color:#fff; border-color:var(--navy); }
-  .pkg.featured .pkg-cta{ background:var(--rust); border-color:var(--rust); color:var(--charcoal); }
-  .pkg.featured .pkg-cta:hover{ background:var(--navy); color:#fff; }
+  .pkg-cta{ text-align:center; padding:13px; border:1px solid var(--charcoal); border-radius:50px; font-weight:600; font-size:0.88rem; transition:transform .18s ease, box-shadow .18s ease, background .2s, color .2s; }
+  .pkg-cta:hover{ background:var(--navy); color:#fff; border-color:var(--navy); transform:translateY(-2px); box-shadow:0 8px 18px rgba(5,22,80,0.22); }
+  .pkg.featured .pkg-cta{ background:var(--rust); border-color:var(--rust); color:#fff; }
+  .pkg.featured .pkg-cta:hover{ background:var(--navy); color:#fff; transform:translateY(-2px); box-shadow:0 8px 18px rgba(5,22,80,0.22); }
   .founding{ background:var(--navy); color:#fff; padding:60px 0; text-align:center; }
   .founding h2{ font-size:1.6rem; margin-bottom:12px; }
   .founding p{ color:rgba(247,246,242,0.85); max-width:540px; margin:0 auto 26px; }
-  .btn-primary{ display:inline-block; background:var(--rust); color:var(--charcoal); padding:14px 26px; border-radius:2px; font-weight:600; font-size:0.92rem; transition:background .2s, color .2s; }
+  .btn-primary{ display:inline-block; background:var(--rust); color:#fff; padding:14px 30px; border-radius:50px; font-weight:600; font-size:0.92rem; transition:transform .18s ease, box-shadow .18s ease, background .18s ease; }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 8px 20px rgba(5,22,80,0.3); }
   .btn-primary:hover{ background:var(--paper); color:var(--charcoal); }
   footer{ background:var(--charcoal); color:rgba(247,246,242,0.6); padding:40px 0; text-align:center; font-size:0.85rem; }
   @media(max-width:860px){ .nav-links{ display:none; } .wedge-grid,.packages-grid{ grid-template-columns:1fr; } }
@@ -62,7 +63,7 @@
 <body>
 <header>
   <nav class="nav">
-    <a href="index.html" class="logo">Ironbark <span>Education</span> Advisory</a>
+    <a href="index.html" class="logo">Ironbark <span>Advisory</span></a>
     <div class="nav-links">
       <a href="about.html">About Me</a>
       <a href="study-in-australia.html" style="opacity:1;font-weight:600;">Students &amp; Families</a>
@@ -78,29 +79,29 @@
   <div class="wrap">
     <span class="eyebrow">For Students &amp; Families</span>
     <h1>Studying in Australia is a big decision. You deserve a straight answer, not a sales pitch.</h1>
-    <p>No university commissions, ever. Just clear, honest guidance on the right Australian pathway, and the real cost of getting there, from someone who has lived it.</p>
+    <p>I don't take a cut from any university, so nothing I tell you is shaped by what pays best. Just an honest read on the right pathway and what it's actually going to cost you.</p>
   </div>
 </section>
 
 <section class="wedge">
   <div class="wrap">
     <span class="section-label">The Ironbark Difference</span>
-    <h2 class="section-heading">Every other agent in this market is paid by the university. I am paid by you.</h2>
+    <h2 class="section-heading">Most agents in this market are paid by the university you end up choosing. I'm not.</h2>
     <div class="wedge-grid">
       <div class="wedge-card">
         <span class="mono">01 — INDEPENDENT</span>
         <h3>No commissions, ever</h3>
-        <p>Never paid by a university for steering you toward them. Every recommendation is made for your family, not for a payout.</p>
+        <p>I don't get paid for steering you toward any particular university, so I have no reason to. Whatever I recommend is because it's actually right for your kid.</p>
       </div>
       <div class="wedge-card">
         <span class="mono">02 — CLEAR</span>
         <h3>Full cost and return clarity</h3>
-        <p>A complete Total Cost &amp; ROI Worksheet for every shortlisted program, tuition, living costs, visas, and what it's actually likely to return.</p>
+        <p>You get a real worksheet, tuition, rent, visas, the lot, for every program you're considering, so there are no surprises six months in.</p>
       </div>
       <div class="wedge-card">
         <span class="mono">03 — LIVED</span>
         <h3>12 years of direct experience</h3>
-        <p>Guidance built on having actually studied, worked, and led teams in Australia, not on a script.</p>
+        <p>I studied there, worked there, led a team there. This isn't advice I picked up from a brochure.</p>
       </div>
     </div>
   </div>
@@ -154,13 +155,13 @@
 <section class="founding">
   <div class="wrap">
     <h2>A small number of founding client spots are open now.</h2>
-    <p>Work directly with an advisor who has lived every stage of this decision, at a rate that reflects an early relationship, not a discount on quality.</p>
+    <p>You'd be working with me directly, not a junior handling your file. The lower rate reflects that this is early days for the business, not that you're getting less attention.</p>
     <a href="contact.html" class="btn-primary">Book a Discovery Call</a>
   </div>
 </section>
 
 <footer>
-  <div class="wrap">© 2026 Ironbark Education Advisory. Dubai, UAE. Independent · No university commissions</div>
+  <div class="wrap">© 2026 Ironbark Advisory. Dubai, UAE. Independent · No university commissions</div>
 </footer>
 </body>
 </html>
