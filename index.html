@@ -130,11 +130,11 @@
   }
   .btn-row{ display:flex; gap:16px; flex-wrap:wrap; }
   .btn-primary{
-    background:var(--rust); color:var(--paper);
+    background:transparent; border:1.5px solid rgba(255,255,255,0.6); color:#fff;
     padding:15px 30px; border-radius:50px; font-weight:600; font-size:0.95rem;
-    transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
   }
-  .btn-primary:hover{ background:var(--paper); color:var(--charcoal); transform:translateY(-2px); box-shadow:0 8px 20px rgba(5,22,80,0.3); }
+  .btn-primary:hover{ background:#1A56DB; border-color:#1A56DB; color:#fff; transform:translateY(-2px); box-shadow:0 8px 20px rgba(26,86,219,0.4); }
   .btn-secondary{
     border:1px solid rgba(242,241,237,0.5); color:#fff;
     padding:15px 30px; border-radius:50px; font-weight:600; font-size:0.95rem;
