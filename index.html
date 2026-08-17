@@ -211,7 +211,15 @@
   .path-card .mono{ font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--eucalyptus); letter-spacing:0.08em; }
   .path-card h3{ font-family:'Fraunces',serif; font-size:1.5rem; margin:10px 0 14px; color:var(--charcoal); }
   .path-card p{ color:var(--eucalyptus); font-size:0.98rem; margin-bottom:22px; }
-  .path-cta{ font-family:'IBM Plex Mono',monospace; font-size:0.85rem; color:var(--navy); font-weight:600; }
+  .path-cta{
+    display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:0.82rem; font-weight:600;
+    color:var(--navy); border:1.5px solid var(--navy); padding:11px 22px; border-radius:50px; margin-top:6px;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease, border-color .18s ease;
+  }
+  .path-card:hover .path-cta{
+    background:#1A56DB; border-color:#1A56DB; color:#fff;
+    transform:translateY(-2px); box-shadow:0 8px 18px rgba(26,86,219,0.35);
+  }
 
   /* PACKAGES */
   .packages-grid{
