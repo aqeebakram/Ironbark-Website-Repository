@@ -162,13 +162,13 @@
   .credibility .section-sub{ color:var(--eucalyptus); }
   .cred-layout{
     display:grid; grid-template-columns:1fr 1fr; gap:56px;
-    margin-top:24px; align-items:center;
+    margin-top:24px; align-items:stretch;
   }
   .cred-image{
-    position:relative; aspect-ratio:4/3; border-radius:2px; overflow:hidden;
+    position:relative; border-radius:2px; overflow:hidden; min-height:480px; height:100%;
     background:url('images/credibility-australia.jpg');
     background-size:cover;
-    background-position:center 30%;
+    background-position:center 20%;
   }
   .cred-image-label{
     position:absolute; top:16px; left:16px; font-family:'IBM Plex Mono',monospace;
