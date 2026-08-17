@@ -4,47 +4,273 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About Me — Ironbark Advisory</title>
+<meta name="description" content="A decade of lived Australian higher education experience. From international student to institutional recruitment lead and NSW Government trade manager, now based in Dubai.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{ --charcoal:#051650; --paper:#F7F6F2; --navy:#051650; --eucalyptus:#9C1530; --rust:#051650; --paper-dim:#ECE9E1; }
   *{box-sizing:border-box;margin:0;padding:0;}
-  body{ background:var(--paper); color:var(--charcoal); font-family:'Inter',sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; }
-  h1,h2,.display{ font-family:'Fraunces',serif; font-weight:600; line-height:1.15; letter-spacing:-0.01em; }
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--charcoal);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    line-height:1.15;
+    letter-spacing:-0.01em;
+  }
+  .mono{ font-family:'IBM Plex Mono',monospace; }
   a{ color:inherit; text-decoration:none; }
   .wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
-  header{ background:var(--charcoal); color:var(--paper); position:sticky; top:0; z-index:50; }
-  .nav{ display:flex; align-items:center; justify-content:space-between; padding:20px 32px; max-width:1180px; margin:0 auto; }
-  .logo{ font-family:'Fraunces',serif; font-weight:600; font-size:1.35rem; }
+  :focus-visible{ outline:2px solid var(--rust); outline-offset:3px; }
+
+  /* HEADER */
+  header{
+    background:var(--charcoal);
+    color:var(--paper);
+    position:sticky; top:0; z-index:50;
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 32px; max-width:1180px; margin:0 auto;
+    position:relative;
+  }
+  .logo{
+    font-family:'Fraunces',serif; font-weight:600; font-size:1.35rem;
+    letter-spacing:-0.01em;
+  }
   .logo span{ color:#fff; }
+  
+  .nav-group{
+    display:flex; align-items:center; gap:36px;
+  }
   .nav-links{ display:flex; gap:36px; font-size:0.92rem; }
   .nav-links a{ opacity:0.85; transition:opacity .2s; }
   .nav-links a:hover{ opacity:1; }
-  .nav-cta{ background:transparent; border:1.5px solid rgba(255,255,255,0.6); color:#fff; padding:10px 22px; border-radius:50px; font-size:0.88rem; font-weight:600; transition:transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease; }
+  .nav-cta{
+    background:transparent; border:1.5px solid rgba(255,255,255,0.6); color:#fff; padding:10px 22px;
+    border-radius:50px; font-size:0.88rem; font-weight:600;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+  }
   .nav-cta:hover{ background:#1A56DB; border-color:#1A56DB; color:#fff; transform:translateY(-2px); box-shadow:0 6px 16px rgba(26,86,219,0.4); }
-  .page-hero{ background:var(--charcoal); color:#fff; padding:80px 0 60px; }
-  .eyebrow{ font-family:'IBM Plex Mono',monospace; font-size:0.8rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--paper); margin-bottom:14px; display:block; }
-  .page-hero h1{ font-size:clamp(2rem, 4vw, 2.8rem); max-width:700px; }
-  .placeholder-body{ padding:100px 0; text-align:center; }
-  .placeholder-body p{ color:var(--eucalyptus); font-size:1.05rem; max-width:480px; margin:0 auto; }
-  .placeholder-tag{ display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:0.75rem; letter-spacing:0.05em; text-transform:uppercase; background:var(--paper-dim); padding:8px 16px; border-radius:2px; margin-bottom:20px; }
-  footer{ background:var(--charcoal); color:rgba(247,246,242,0.6); padding:40px 0; text-align:center; font-size:0.85rem; }
-  @media(max-width:860px){ .nav-links{ display:none; } }
+
+  .nav-toggle{
+    display:none;
+    flex-direction:column;
+    justify-content:space-between;
+    width:26px;
+    height:18px;
+    background:transparent;
+    border:none;
+    cursor:pointer;
+    padding:0;
+    z-index:60;
+  }
+  .nav-toggle .bar{
+    display:block;
+    width:100%;
+    height:2px;
+    background-color:#ffffff;
+    border-radius:2px;
+    transition:transform .3s ease, opacity .2s ease;
+  }
+
+  /* PAGE HERO */
+  .page-hero{
+    background:var(--charcoal);
+    color:#fff;
+    padding:80px 0 60px;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.8rem; letter-spacing:0.08em; text-transform:uppercase;
+    color:#fff; background:#9C1530; padding:5px 12px; border-radius:4px;
+    margin-bottom:18px; display:inline-block;
+  }
+  .page-hero h1{
+    font-size:clamp(2rem, 4vw, 2.8rem);
+    max-width:760px;
+  }
+
+  /* STORY / CREDIBILITY */
+  .credibility{
+    background:var(--paper);
+    color:var(--charcoal);
+    padding:96px 0;
+  }
+  .section-label{
+    font-family:'IBM Plex Mono',monospace; font-size:0.78rem;
+    letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--rust); margin-bottom:14px; display:block;
+  }
+  .section-heading{
+    font-size:clamp(1.7rem, 3vw, 2.3rem);
+    max-width:640px; margin-bottom:20px;
+  }
+  .cred-layout{
+    display:grid; grid-template-columns:1fr 1fr; gap:56px;
+    margin-top:24px; align-items:start;
+  }
+  .cred-image{
+    position:sticky; top:100px; border-radius:2px; overflow:hidden; aspect-ratio:530/735;
+    background:url('images/credibility-australia.jpg');
+    background-size:cover;
+    background-position:center 100%;
+  }
+  .cred-image-label{
+    position:absolute; top:16px; left:16px; font-family:'IBM Plex Mono',monospace;
+    font-size:0.68rem; color:var(--charcoal); background:rgba(255,255,255,0.85);
+    padding:6px 10px; border-radius:2px; letter-spacing:0.03em; border:1px solid rgba(5,22,80,0.2);
+  }
+  .cred-stat{
+    position:absolute; left:0; right:0; bottom:0;
+    background:linear-gradient(180deg, rgba(5,22,80,0) 0%, rgba(5,22,80,0.85) 65%);
+    padding:40px 22px 20px;
+  }
+  .cred-stat .big-num{ font-family:'Fraunces',serif; font-weight:700; font-size:2.6rem; color:#fff; line-height:1; }
+  .cred-stat .big-num-sub{ font-size:0.8rem; color:rgba(255,255,255,0.82); max-width:260px; margin-top:5px; }
+  .cred-content{ display:flex; flex-direction:column; }
+  .cred-list{ display:grid; gap:28px; margin-top:32px; }
+  .cred-item{
+    display:grid; grid-template-columns:52px 1fr; gap:18px;
+    padding-bottom:28px; border-bottom:1px solid var(--paper-dim);
+  }
+  .cred-item:last-child{ border-bottom:none; }
+  .cred-num{
+    font-family:'IBM Plex Mono',monospace; font-size:0.85rem;
+    color:var(--navy); padding-top:3px;
+  }
+  .cred-item h3{
+    font-size:1.15rem; margin-bottom:8px; color:var(--charcoal); font-weight:600;
+  }
+  .cred-item p{ color:var(--eucalyptus); font-size:0.98rem; max-width:520px; }
+
+  /* FOOTER */
+  footer{ background:var(--charcoal); color:rgba(242,241,237,0.6); padding:56px 0 32px; }
+  .footer-grid{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:32px;
+    padding-bottom:36px; border-bottom:1px solid rgba(242,241,237,0.12);
+  }
+  .footer-logo{ font-family:'Fraunces',serif; color:#fff; font-size:1.15rem; }
+  .footer-tag{ font-size:0.85rem; margin-top:8px; max-width:280px; }
+  .footer-links{ display:flex; gap:48px; flex-wrap:wrap; }
+  .footer-links h4{
+    font-family:'IBM Plex Mono',monospace; font-size:0.72rem;
+    letter-spacing:0.06em; text-transform:uppercase; color:rgba(242,241,237,0.4);
+    margin-bottom:12px;
+  }
+  .footer-links a{ display:block; font-size:0.9rem; padding:5px 0; }
+  .footer-bottom{
+    padding-top:24px; font-size:0.78rem; display:flex;
+    justify-content:space-between; flex-wrap:wrap; gap:10px;
+  }
+
+  .whatsapp-float{
+    position:fixed; bottom:26px; right:26px; z-index:999;
+    width:58px; height:58px; border-radius:50%;
+    background:#25D366;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 3px 12px rgba(0,0,0,0.25);
+    opacity:0.72;
+    transition:opacity .25s ease, transform .25s ease, box-shadow .25s ease;
+  }
+  .whatsapp-float:hover{
+    opacity:1;
+    transform:scale(1.06);
+    box-shadow:0 5px 18px rgba(0,0,0,0.35);
+  }
+  .whatsapp-float svg{ width:30px; height:30px; }
+
+  /* RESPONSIVE STYLES */
+  @media(max-width:860px){
+    .nav-toggle{ display:flex; }
+    .nav-group{
+      position:absolute;
+      top:100%; left:0; width:100%;
+      background:var(--charcoal);
+      flex-direction:column;
+      align-items:flex-start;
+      padding:0 32px;
+      gap:20px;
+      border-top:1px solid rgba(242,241,237,0.12);
+      box-shadow:0 14px 28px rgba(0,0,0,0.35);
+      max-height:0;
+      opacity:0;
+      overflow:hidden;
+      pointer-events:none;
+      transition:max-height .35s ease, opacity .25s ease, padding .35s ease;
+    }
+    .nav-group.active{
+      max-height:480px;
+      opacity:1;
+      pointer-events:auto;
+      padding:24px 32px 32px;
+    }
+    .nav-links{
+      flex-direction:column;
+      width:100%;
+      gap:0;
+    }
+    .nav-links a{
+      display:block;
+      padding:12px 0;
+      font-size:1.05rem;
+      border-bottom:1px solid rgba(242,241,237,0.08);
+    }
+    .nav-cta{
+      width:100%;
+      text-align:center;
+      margin-top:6px;
+    }
+
+    .nav-toggle.active .bar:nth-child(1){ transform:translateY(8px) rotate(45deg); }
+    .nav-toggle.active .bar:nth-child(2){ opacity:0; }
+    .nav-toggle.active .bar:nth-child(3){ transform:translateY(-8px) rotate(-45deg); }
+
+    .cred-layout{ grid-template-columns:1fr; gap:28px; }
+    .cred-image{ position:relative; top:0; }
+  }
+
+  @media(max-width:600px){
+    .nav{ padding:16px 20px; }
+    .wrap{ padding:0 20px; }
+    .whatsapp-float{ width:52px; height:52px; bottom:18px; right:18px; }
+    .whatsapp-float svg{ width:26px; height:26px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+  }
 </style>
 </head>
 <body>
+
 <header>
   <nav class="nav">
     <a href="index.html" class="logo">Ironbark <span>Advisory</span></a>
-    <div class="nav-links">
-      <a href="about.html" style="opacity:1;font-weight:600;">About Me</a>
-      <a href="why-australia.html">Why Australia</a>
-      <a href="students-families.html">Students &amp; Families</a>
-      <a href="institutions.html">Institutions</a>
-      <a href="insights.html">News &amp; Insights</a>
+    
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <div class="nav-group" id="nav-group">
+      <div class="nav-links">
+        <a href="about.html" style="opacity:1;font-weight:600;">About Me</a>
+        <a href="why-australia.html">Why Australia</a>
+        <a href="students-families.html">Students &amp; Families</a>
+        <a href="institutions.html">Institutions</a>
+        <a href="insights.html">News &amp; Insights</a>
+      </div>
+      <a href="contact.html" class="nav-cta">Book a Discovery Call</a>
     </div>
-    <a href="contact.html" class="nav-cta">Book a Discovery Call</a>
   </nav>
 </header>
 
@@ -55,15 +281,116 @@
   </div>
 </section>
 
-<section class="placeholder-body">
+<section class="credibility" id="story">
   <div class="wrap">
-    <span class="placeholder-tag">Content in progress</span>
-    <p>This page is part of the confirmed sitemap and is ready to be built out. We'll fill this in as we go, section by section.</p>
+    <div class="cred-layout">
+      <div class="cred-image">
+        <div class="cred-image-label">Australian Embassy in Jakarta, Indonesia</div>
+        <div class="cred-stat">
+          <div class="big-num">12</div>
+          <div class="big-num-sub">Years across international education, government, and industry</div>
+        </div>
+      </div>
+
+      <div class="cred-content">
+        <span class="section-label">My Full Story</span>
+        <h2 class="section-heading" style="color:#051650;">Twelve years in the higher education sector with experience working in government, universities, education agencies and as an international student myself.</h2>
+
+        <div class="cred-list">
+          <div class="cred-item">
+            <span class="cred-num">01</span>
+            <div>
+              <h3>Arrived in Sydney as an international student</h3>
+              <p>Landed in Sydney, Australia in 2016 as an international student working with Australian clients from a distance.</p>
+            </div>
+          </div>
+          <div class="cred-item">
+            <span class="cred-num">02</span>
+            <div>
+              <h3>Worked inside the Australian Higher Education sector</h3>
+              <p>At Macquarie University, I ran compliance checks on new applicants and helped new students settle in. At the Australian National University, I wore multiple hats, working with faculties, marketing and recruitment teams, and in my last role, ran the international student recruitment function.</p>
+            </div>
+          </div>
+          <div class="cred-item">
+            <span class="cred-num">03</span>
+            <div>
+              <h3>Led teams in professional Australian settings</h3>
+              <p>Running a recruitment function meant working with students and institutions from all over the world. The one thing that stuck: there's no single right answer, and no two situations are the same.</p>
+            </div>
+          </div>
+          <div class="cred-item">
+            <span class="cred-num">04</span>
+            <div>
+              <h3>Public service in the New South Wales Government</h3>
+              <p>I managed the international engagement and partnerships for the NSW Government's trade and investment arm, connecting universities and schools with new commercial opportunities, internationally. I also ran the programs supporting international students in the state.</p>
+            </div>
+          </div>
+          <div class="cred-item">
+            <span class="cred-num">05</span>
+            <div>
+              <h3>Now based in UAE supporting families and institutions</h3>
+              <p>After a decade in Australia, I wanted a new challenge, and Australian citizenship meant I could go looking for one. I've sat in boardrooms with state ministers and vice-chancellors, and advised newly appointed ambassadors and consul-generals on the state's education priorities. At the same time, I've sat with a nervous student figuring out their first move.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<footer>
-  <div class="wrap">© 2026 Ironbark Advisory. Dubai, UAE. Independent · No university commissions</div>
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Ironbark Advisory</div>
+        <p class="footer-tag">Independent education advisory, based in the UAE. No commissions, ever.</p>
+      </div>
+      <div class="footer-links">
+        <div>
+          <h4>Site</h4>
+          <a href="about.html">About Me</a>
+          <a href="students-families.html">Students &amp; Families</a>
+          <a href="institutions.html">Institutions</a>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <a href="mailto:hello@ironbarkadvisory.ae">hello@ironbarkadvisory.ae</a>
+          <a href="contact.html">Book a Discovery Call</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Ironbark Advisory. Dubai, UAE.</span>
+      <span>Independent · No university commissions</span>
+    </div>
+  </div>
 </footer>
+
+<a href="https://wa.me/971500000000" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16.02 4C9.4 4 4 9.37 4 16c0 2.1.55 4.16 1.6 5.97L4 28l6.2-1.58A11.9 11.9 0 0 0 16.02 28C22.63 28 28 22.63 28 16S22.63 4 16.02 4Z" fill="white"/>
+    <path d="M22.1 19.15c-.32-.16-1.9-.94-2.2-1.05-.29-.1-.5-.16-.72.16-.21.32-.82 1.05-1 1.26-.19.21-.37.24-.69.08-.32-.16-1.34-.5-2.55-1.58-.94-.84-1.58-1.87-1.76-2.19-.19-.32-.02-.5.14-.66.14-.14.32-.37.48-.55.16-.19.21-.32.32-.53.1-.21.05-.4-.02-.56-.08-.16-.72-1.74-.99-2.38-.26-.63-.53-.54-.72-.55-.19-.01-.4-.01-.61-.01-.21 0-.56.08-.85.4-.29.32-1.12 1.1-1.12 2.67s1.15 3.1 1.31 3.31c.16.21 2.26 3.45 5.47 4.84.76.33 1.36.53 1.82.67.77.24 1.46.21 2.02.13.62-.09 1.9-.78 2.16-1.53.27-.75.27-1.4.19-1.53-.08-.13-.29-.21-.61-.37Z" fill="#25D366"/>
+  </svg>
+</a>
+
+<script>
+  const navToggle = document.getElementById('nav-toggle');
+  const navGroup = document.getElementById('nav-group');
+
+  navToggle.addEventListener('click', () => {
+    const isActive = navGroup.classList.toggle('active');
+    navToggle.classList.toggle('active');
+    navToggle.setAttribute('aria-expanded', isActive);
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!navToggle.contains(e.target) && !navGroup.contains(e.target)) {
+      navGroup.classList.remove('active');
+      navToggle.classList.remove('active');
+      navToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>
+
 </body>
 </html>
