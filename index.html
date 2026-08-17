@@ -257,20 +257,31 @@
   }
   .footer-logo{ font-family:'Fraunces',serif; color:#fff; font-size:1.15rem; }
   .footer-tag{ font-size:0.85rem; margin-top:8px; max-width:280px; }
-  .footer-links{ display:flex; gap:48px; flex-wrap:wrap; }
-  .footer-links h4{
+  
+  .footer-links{
+    display:flex;
+    gap:56px;
+    flex-wrap:wrap;
+  }
+  .footer-col{
+    display:flex;
+    flex-direction:column;
+  }
+  .footer-col h4{
     font-family:'IBM Plex Mono',monospace; font-size:0.72rem;
     letter-spacing:0.06em; text-transform:uppercase; color:rgba(242,241,237,0.4);
-    margin-bottom:12px;
+    margin-bottom:14px;
   }
   
-  /* Link hover animation with horizontal slide and color shift */
-  .footer-links a{
-    display:inline-flex; align-items:center; font-size:0.9rem; padding:5px 0;
+  .footer-col a{
+    display:flex;
+    align-items:center;
+    font-size:0.9rem;
+    padding:5px 0;
     color:rgba(242,241,237,0.7);
     transition:transform 0.22s ease, color 0.22s ease;
   }
-  .footer-links a:hover{
+  .footer-col a:hover{
     color:#ffffff;
     transform:translateX(5px);
   }
@@ -364,6 +375,7 @@
     .hero{ min-height:80vh; }
     .hero-inner{ padding:0 24px 60px; }
     .hero h1{ font-size:2.2rem; }
+    .footer-links{ gap:36px; }
   }
 
   @media(max-width:600px){
@@ -474,7 +486,7 @@
         <p class="footer-tag">Independent education advisory, based in UAE.</p>
       </div>
       <div class="footer-links">
-        <div>
+        <div class="footer-col">
           <h4>Site</h4>
           <a href="about.html">About Me</a>
           <a href="why-australia.html">Why Australia</a>
@@ -482,7 +494,7 @@
           <a href="institutions.html">Institutions</a>
           <a href="insights.html">News</a>
         </div>
-        <div>
+        <div class="footer-col">
           <h4>Contact</h4>
           <a href="mailto:hello@ironbarkadvisory.ae">hello@ironbarkadvisory.ae</a>
           <a href="contact.html">Book a Discovery Call</a>
