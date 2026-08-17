@@ -64,12 +64,18 @@
   .nav{
     display:flex; align-items:center; justify-content:space-between;
     padding:20px 32px; max-width:1180px; margin:0 auto;
+    position:relative;
   }
   .logo{
     font-family:'Fraunces',serif; font-weight:600; font-size:1.35rem;
     letter-spacing:-0.01em;
   }
   .logo span{ color:#fff; }
+  
+  /* Desktop Navigation Group */
+  .nav-group{
+    display:flex; align-items:center; gap:36px;
+  }
   .nav-links{ display:flex; gap:36px; font-size:0.92rem; }
   .nav-links a{ opacity:0.85; transition:opacity .2s; }
   .nav-links a:hover{ opacity:1; }
@@ -79,7 +85,28 @@
     transition:transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
   }
   .nav-cta:hover{ background:#1A56DB; border-color:#1A56DB; color:#fff; transform:translateY(-2px); box-shadow:0 6px 16px rgba(26,86,219,0.4); }
-  .nav-toggle{ display:none; }
+
+  /* Hamburger Toggle Button */
+  .nav-toggle{
+    display:none;
+    flex-direction:column;
+    justify-content:space-between;
+    width:26px;
+    height:18px;
+    background:transparent;
+    border:none;
+    cursor:pointer;
+    padding:0;
+    z-index:60;
+  }
+  .nav-toggle .bar{
+    display:block;
+    width:100%;
+    height:2px;
+    background-color:#ffffff;
+    border-radius:2px;
+    transition:transform .3s ease, opacity .2s ease;
+  }
 
   /* HERO */
   .hero{
@@ -197,6 +224,11 @@
     font-size:1.15rem; margin-bottom:8px; color:var(--charcoal); font-weight:600;
   }
   .cred-item p{ color:var(--eucalyptus); font-size:0.98rem; max-width:520px; }
+  .btn-about{
+    display:inline-block; font-weight:600; color:var(--navy);
+    margin-top:28px; font-size:0.95rem; transition:transform .2s;
+  }
+  .btn-about:hover{ transform:translateX(4px); }
 
   /* WEDGE / POSITIONING STRIP */
   .wedge{ background:var(--paper-dim); }
@@ -269,17 +301,70 @@
     box-shadow:0 5px 18px rgba(0,0,0,0.35);
   }
   .whatsapp-float svg{ width:30px; height:30px; }
+
+  /* RESPONSIVE STYLES */
   @media(max-width:860px){
-    .nav-links{ display:none; }
+    .nav-toggle{ display:flex; }
+    .nav-group{
+      position:absolute;
+      top:100%; left:0; width:100%;
+      background:var(--charcoal);
+      flex-direction:column;
+      align-items:flex-start;
+      padding:0 32px;
+      gap:20px;
+      border-top:1px solid rgba(242,241,237,0.12);
+      box-shadow:0 14px 28px rgba(0,0,0,0.35);
+      max-height:0;
+      opacity:0;
+      overflow:hidden;
+      pointer-events:none;
+      transition:max-height .35s ease, opacity .25s ease, padding .35s ease;
+    }
+    .nav-group.active{
+      max-height:480px;
+      opacity:1;
+      pointer-events:auto;
+      padding:24px 32px 32px;
+    }
+    .nav-links{
+      flex-direction:column;
+      width:100%;
+      gap:0;
+    }
+    .nav-links a{
+      display:block;
+      padding:12px 0;
+      font-size:1.05rem;
+      border-bottom:1px solid rgba(242,241,237,0.08);
+    }
+    .nav-cta{
+      width:100%;
+      text-align:center;
+      margin-top:6px;
+    }
+
+    /* Hamburger transformation */
+    .nav-toggle.active .bar:nth-child(1){ transform:translateY(8px) rotate(45deg); }
+    .nav-toggle.active .bar:nth-child(2){ opacity:0; }
+    .nav-toggle.active .bar:nth-child(3){ transform:translateY(-8px) rotate(-45deg); }
+
     .cred-layout{ grid-template-columns:1fr; gap:28px; }
     .cred-image{ position:relative; top:0; }
     .path-grid{ grid-template-columns:1fr; }
     .hero{ min-height:80vh; }
+    .hero-inner{ padding:0 24px 60px; }
+    .hero h1{ font-size:2.2rem; }
   }
+
   @media(max-width:600px){
+    .nav{ padding:16px 20px; }
+    .hero-inner{ padding:0 20px 48px; }
+    .wrap{ padding:0 20px; }
     .whatsapp-float{ width:52px; height:52px; bottom:18px; right:18px; }
     .whatsapp-float svg{ width:26px; height:26px; }
   }
+
   @media (prefers-reduced-motion: reduce){
     html{ scroll-behavior:auto; }
   }
@@ -290,14 +375,23 @@
 <header>
   <nav class="nav">
     <a href="#" class="logo">Ironbark <span>Advisory</span></a>
-    <div class="nav-links">
-      <a href="about.html">About Me</a>
-      <a href="why-australia.html">Why Australia</a>
-      <a href="students-families.html">Students &amp; Families</a>
-      <a href="institutions.html">Institutions</a>
-      <a href="insights.html">News &amp; Insights</a>
+    
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <div class="nav-group" id="nav-group">
+      <div class="nav-links">
+        <a href="about.html">About Me</a>
+        <a href="why-australia.html">Why Australia</a>
+        <a href="students-families.html">Students &amp; Families</a>
+        <a href="institutions.html">Institutions</a>
+        <a href="insights.html">News &amp; Insights</a>
+      </div>
+      <a href="contact.html" class="nav-cta">Book a Discovery Call</a>
     </div>
-    <a href="contact.html" class="nav-cta">Book a Discovery Call</a>
   </nav>
 </header>
 
@@ -426,5 +520,26 @@
     <path d="M22.1 19.15c-.32-.16-1.9-.94-2.2-1.05-.29-.1-.5-.16-.72.16-.21.32-.82 1.05-1 1.26-.19.21-.37.24-.69.08-.32-.16-1.34-.5-2.55-1.58-.94-.84-1.58-1.87-1.76-2.19-.19-.32-.02-.5.14-.66.14-.14.32-.37.48-.55.16-.19.21-.32.32-.53.1-.21.05-.4-.02-.56-.08-.16-.72-1.74-.99-2.38-.26-.63-.53-.54-.72-.55-.19-.01-.4-.01-.61-.01-.21 0-.56.08-.85.4-.29.32-1.12 1.1-1.12 2.67s1.15 3.1 1.31 3.31c.16.21 2.26 3.45 5.47 4.84.76.33 1.36.53 1.82.67.77.24 1.46.21 2.02.13.62-.09 1.9-.78 2.16-1.53.27-.75.27-1.4.19-1.53-.08-.13-.29-.21-.61-.37Z" fill="#25D366"/>
   </svg>
 </a>
+
+<script>
+  const navToggle = document.getElementById('nav-toggle');
+  const navGroup = document.getElementById('nav-group');
+
+  navToggle.addEventListener('click', () => {
+    const isActive = navGroup.classList.toggle('active');
+    navToggle.classList.toggle('active');
+    navToggle.setAttribute('aria-expanded', isActive);
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!navToggle.contains(e.target) && !navGroup.contains(e.target)) {
+      navGroup.classList.remove('active');
+      navToggle.classList.remove('active');
+      navToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>
+
 </body>
 </html>
