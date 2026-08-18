@@ -23,28 +23,140 @@
   .nav-links a:hover{ opacity:1; }
   .nav-cta{ background:transparent; border:1.5px solid rgba(255,255,255,0.6); color:#fff; padding:10px 22px; border-radius:50px; font-size:0.88rem; font-weight:600; transition:transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease; }
   .nav-cta:hover{ background:#1A56DB; border-color:#1A56DB; color:#fff; transform:translateY(-2px); box-shadow:0 6px 16px rgba(26,86,219,0.4); }
+
+  .nav-toggle{
+    display:none;
+    flex-direction:column;
+    justify-content:space-between;
+    width:26px;
+    height:18px;
+    background:transparent;
+    border:none;
+    cursor:pointer;
+    padding:0;
+    z-index:60;
+  }
+  .nav-toggle .bar{
+    display:block;
+    width:100%;
+    height:2px;
+    background-color:#ffffff;
+    border-radius:2px;
+    transition:transform .3s ease, opacity .2s ease;
+  }
   .page-hero{ background:var(--charcoal); color:#fff; padding:80px 0 60px; }
   .eyebrow{ font-family:'IBM Plex Mono',monospace; font-size:0.8rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--paper); margin-bottom:14px; display:block; }
   .page-hero h1{ font-size:clamp(2rem, 4vw, 2.8rem); max-width:700px; }
   .placeholder-body{ padding:100px 0; text-align:center; }
   .placeholder-body p{ color:var(--eucalyptus); font-size:1.05rem; max-width:480px; margin:0 auto; }
   .placeholder-tag{ display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:0.75rem; letter-spacing:0.05em; text-transform:uppercase; background:var(--paper-dim); padding:8px 16px; border-radius:2px; margin-bottom:20px; }
-  footer{ background:var(--charcoal); color:rgba(247,246,242,0.6); padding:40px 0; text-align:center; font-size:0.85rem; }
-  @media(max-width:860px){ .nav-links{ display:none; } }
+  footer{ background:var(--charcoal); color:rgba(242,241,237,0.6); padding:56px 0 32px; }
+  .footer-grid{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:32px;
+    padding-bottom:36px; border-bottom:1px solid rgba(242,241,237,0.12);
+  }
+  .footer-logo{ font-family:'Fraunces',serif; color:#fff; font-size:1.15rem; }
+  .footer-tag{ font-size:0.85rem; margin-top:8px; max-width:280px; }
+
+  .footer-links{
+    display:flex;
+    gap:56px;
+    flex-wrap:wrap;
+  }
+  .footer-col{
+    display:flex;
+    flex-direction:column;
+  }
+  .footer-col h4{
+    font-family:'IBM Plex Mono',monospace; font-size:0.72rem;
+    letter-spacing:0.06em; text-transform:uppercase; color:rgba(242,241,237,0.4);
+    margin-bottom:14px;
+  }
+
+  .footer-col a{
+    display:flex;
+    align-items:center;
+    font-size:0.9rem;
+    padding:5px 0;
+    color:rgba(242,241,237,0.7);
+    transition:transform 0.22s ease, color 0.22s ease;
+  }
+  .footer-col a:hover{
+    color:#ffffff;
+    transform:translateX(5px);
+  }
+
+  .footer-bottom{
+    padding-top:24px; font-size:0.78rem; display:flex;
+    justify-content:space-between; flex-wrap:wrap; gap:10px;
+  }
+  @media(max-width:860px){
+    .nav-toggle{ display:flex; }
+    .nav-group{
+      position:absolute;
+      top:100%; left:0; width:100%;
+      background:var(--charcoal);
+      flex-direction:column;
+      align-items:flex-start;
+      padding:0 32px;
+      gap:20px;
+      border-top:1px solid rgba(242,241,237,0.12);
+      box-shadow:0 14px 28px rgba(0,0,0,0.35);
+      max-height:0;
+      opacity:0;
+      overflow:hidden;
+      pointer-events:none;
+      transition:max-height .35s ease, opacity .25s ease, padding .35s ease;
+    }
+    .nav-group.active{
+      max-height:480px;
+      opacity:1;
+      pointer-events:auto;
+      padding:24px 32px 32px;
+    }
+    .nav-links{
+      flex-direction:column;
+      width:100%;
+      gap:0;
+    }
+    .nav-links a{
+      display:block;
+      padding:12px 0;
+      font-size:1.05rem;
+      border-bottom:1px solid rgba(242,241,237,0.08);
+    }
+    .nav-cta{
+      width:100%;
+      text-align:center;
+      margin-top:6px;
+    }
+    .nav-toggle.active .bar:nth-child(1){ transform:translateY(8px) rotate(45deg); }
+    .nav-toggle.active .bar:nth-child(2){ opacity:0; }
+    .nav-toggle.active .bar:nth-child(3){ transform:translateY(-8px) rotate(-45deg); }
+    .footer-links{ gap:36px; }
+  }
 </style>
 </head>
 <body>
 <header>
   <nav class="nav">
     <a href="index.html" class="logo">Ironbark <span>Advisory</span></a>
-    <div class="nav-links">
-      <a href="about.html">About Me</a>
-      <a href="why-australia.html">Why Australia</a>
-      <a href="students-families.html">Students &amp; Families</a>
-      <a href="institutions.html">Institutions</a>
-      <a href="insights.html" style="opacity:1;font-weight:600;">News &amp; Insights</a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <div class="nav-group" id="nav-group">
+      <div class="nav-links">
+        <a href="about.html">About Me</a>
+        <a href="why-australia.html">Why Australia</a>
+        <a href="students-families.html">Students &amp; Families</a>
+        <a href="institutions.html">Institutions</a>
+        <a href="insights.html" style="opacity:1;font-weight:600;">News</a>
+      </div>
+      <a href="contact.html" class="nav-cta">Book a Discovery Call</a>
     </div>
-    <a href="contact.html" class="nav-cta">Book a Discovery Call</a>
   </nav>
 </header>
 
@@ -62,8 +174,52 @@
   </div>
 </section>
 
-<footer>
-  <div class="wrap">© 2026 Ironbark Advisory. Dubai, UAE. Independent · No university commissions</div>
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Ironbark Advisory</div>
+        <p class="footer-tag">Independent education advisory, based in UAE.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Site</h4>
+          <a href="about.html">About Me</a>
+          <a href="why-australia.html">Why Australia</a>
+          <a href="students-families.html">Students &amp; Families</a>
+          <a href="institutions.html">Institutions</a>
+          <a href="insights.html">News</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="mailto:hello@ironbarkadvisory.ae">hello@ironbarkadvisory.ae</a>
+          <a href="contact.html">Book a Discovery Call</a>
+          <a href="https://www.linkedin.com/in/aqeebakram" target="_blank" rel="noopener">Connect on LinkedIn</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Ironbark Advisory. Dubai, UAE.</span>
+    </div>
+  </div>
 </footer>
+<script>
+  const navToggle = document.getElementById('nav-toggle');
+  const navGroup = document.getElementById('nav-group');
+
+  navToggle.addEventListener('click', () => {
+    const isActive = navGroup.classList.toggle('active');
+    navToggle.classList.toggle('active');
+    navToggle.setAttribute('aria-expanded', isActive);
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!navToggle.contains(e.target) && !navGroup.contains(e.target)) {
+      navGroup.classList.remove('active');
+      navToggle.classList.remove('active');
+      navToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>
 </body>
 </html>

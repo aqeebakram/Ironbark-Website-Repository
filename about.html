@@ -159,13 +159,35 @@
   }
   .footer-logo{ font-family:'Fraunces',serif; color:#fff; font-size:1.15rem; }
   .footer-tag{ font-size:0.85rem; margin-top:8px; max-width:280px; }
-  .footer-links{ display:flex; gap:48px; flex-wrap:wrap; }
-  .footer-links h4{
+
+  .footer-links{
+    display:flex;
+    gap:56px;
+    flex-wrap:wrap;
+  }
+  .footer-col{
+    display:flex;
+    flex-direction:column;
+  }
+  .footer-col h4{
     font-family:'IBM Plex Mono',monospace; font-size:0.72rem;
     letter-spacing:0.06em; text-transform:uppercase; color:rgba(242,241,237,0.4);
-    margin-bottom:12px;
+    margin-bottom:14px;
   }
-  .footer-links a{ display:block; font-size:0.9rem; padding:5px 0; }
+
+  .footer-col a{
+    display:flex;
+    align-items:center;
+    font-size:0.9rem;
+    padding:5px 0;
+    color:rgba(242,241,237,0.7);
+    transition:transform 0.22s ease, color 0.22s ease;
+  }
+  .footer-col a:hover{
+    color:#ffffff;
+    transform:translateX(5px);
+  }
+
   .footer-bottom{
     padding-top:24px; font-size:0.78rem; display:flex;
     justify-content:space-between; flex-wrap:wrap; gap:10px;
@@ -235,6 +257,7 @@
 
     .cred-layout{ grid-template-columns:1fr; gap:28px; }
     .cred-image{ position:relative; top:0; }
+    .footer-links{ gap:36px; }
   }
 
   @media(max-width:600px){
@@ -267,7 +290,7 @@
         <a href="why-australia.html">Why Australia</a>
         <a href="students-families.html">Students &amp; Families</a>
         <a href="institutions.html">Institutions</a>
-        <a href="insights.html">News &amp; Insights</a>
+        <a href="insights.html">News</a>
       </div>
       <a href="contact.html" class="nav-cta">Book a Discovery Call</a>
     </div>
@@ -343,25 +366,27 @@
     <div class="footer-grid">
       <div>
         <div class="footer-logo">Ironbark Advisory</div>
-        <p class="footer-tag">Independent education advisory, based in the UAE. No commissions, ever.</p>
+        <p class="footer-tag">Independent education advisory, based in UAE.</p>
       </div>
       <div class="footer-links">
-        <div>
+        <div class="footer-col">
           <h4>Site</h4>
           <a href="about.html">About Me</a>
+          <a href="why-australia.html">Why Australia</a>
           <a href="students-families.html">Students &amp; Families</a>
           <a href="institutions.html">Institutions</a>
+          <a href="insights.html">News</a>
         </div>
-        <div>
+        <div class="footer-col">
           <h4>Contact</h4>
           <a href="mailto:hello@ironbarkadvisory.ae">hello@ironbarkadvisory.ae</a>
           <a href="contact.html">Book a Discovery Call</a>
+          <a href="https://www.linkedin.com/in/aqeebakram" target="_blank" rel="noopener">Connect on LinkedIn</a>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 Ironbark Advisory. Dubai, UAE.</span>
-      <span>Independent · No university commissions</span>
     </div>
   </div>
 </footer>
