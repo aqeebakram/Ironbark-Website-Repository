@@ -18,11 +18,28 @@
   .nav{ display:flex; align-items:center; justify-content:space-between; padding:20px 32px; max-width:1180px; margin:0 auto; }
   .logo{ font-family:'Fraunces',serif; font-weight:600; font-size:1.35rem; }
   .logo span{ color:#fff; }
+  .nav-group{ display:flex; align-items:center; gap:28px; }
   .nav-links{ display:flex; gap:32px; font-size:0.92rem; }
   .nav-links a{ opacity:0.85; transition:opacity .2s; }
   .nav-links a:hover{ opacity:1; }
-  .nav-cta{ background:transparent; border:1.5px solid rgba(255,255,255,0.6); color:#fff; padding:10px 22px; border-radius:50px; font-size:0.88rem; font-weight:600; transition:transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease; }
+  .nav-cta{ background:transparent; border:1.5px solid rgba(255,255,255,0.6); color:#fff; padding:10px 20px; border-radius:50px; font-size:0.88rem; font-weight:600; transition:transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease; }
   .nav-cta:hover{ background:#1A56DB; border-color:#1A56DB; color:#fff; transform:translateY(-2px); box-shadow:0 6px 16px rgba(26,86,219,0.4); }
+
+  .nav-actions{
+    display:flex; align-items:center; gap:12px;
+  }
+
+  .nav-linkedin{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:38px; height:38px; border-radius:50%;
+    background:transparent; border:1.5px solid rgba(255,255,255,0.6);
+    color:#fff; transition:all .18s ease;
+  }
+  .nav-linkedin svg{ width:16px; height:16px; fill:currentColor; }
+  .nav-linkedin:hover{
+    background:#0A66C2; border-color:#0A66C2; color:#fff;
+    transform:translateY(-2px); box-shadow:0 6px 16px rgba(10,102,194,0.4);
+  }
 
   .nav-toggle{
     display:none;
@@ -130,10 +147,26 @@
       font-size:1.05rem;
       border-bottom:1px solid rgba(242,241,237,0.08);
     }
+    .nav-actions{
+      flex-direction:column;
+      width:100%;
+      gap:12px;
+      margin-top:6px;
+    }
     .nav-cta{
       width:100%;
       text-align:center;
-      margin-top:6px;
+    }
+    .nav-linkedin{
+      width:100%;
+      border-radius:50px;
+      height:42px;
+      gap:8px;
+    }
+    .nav-linkedin::after{
+      content:"LinkedIn Profile";
+      font-size:0.88rem;
+      font-weight:600;
     }
     .nav-toggle.active .bar:nth-child(1){ transform:translateY(8px) rotate(45deg); }
     .nav-toggle.active .bar:nth-child(2){ opacity:0; }
@@ -160,7 +193,12 @@
         <a href="institutions.html">Institutions</a>
         <a href="insights.html">News</a>
       </div>
-      <a href="contact.html" class="nav-cta">Book a Discovery Call</a>
+      <div class="nav-actions">
+        <a href="contact.html" class="nav-cta">Book a Discovery Call</a>
+        <a href="https://www.linkedin.com/in/aqeebakram" target="_blank" rel="noopener" class="nav-linkedin" aria-label="LinkedIn Profile">
+          <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+        </a>
+      </div>
     </div>
   </nav>
 </header>
