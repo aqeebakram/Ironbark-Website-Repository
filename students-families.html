@@ -88,6 +88,16 @@
   .pkg-cta:hover{ background:var(--navy); color:#fff; border-color:var(--navy); transform:translateY(-2px); box-shadow:0 8px 18px rgba(5,22,80,0.22); }
   .pkg.featured .pkg-cta{ background:var(--rust); border-color:var(--rust); color:#fff; }
   .pkg.featured .pkg-cta:hover{ background:var(--navy); color:#fff; transform:translateY(-2px); box-shadow:0 8px 18px rgba(5,22,80,0.22); }
+  .process-list{ display:grid; gap:0; margin-top:40px; border-top:1px solid #ccc; }
+  .process-step{
+    display:grid; grid-template-columns:60px 220px 1fr; gap:20px; padding:22px 0;
+    border-bottom:1px solid #ccc; align-items:baseline;
+  }
+  .process-step .cred-num{ font-family:'IBM Plex Mono',monospace; font-size:0.85rem; color:var(--navy); padding-top:3px; }
+  .process-step h3{ font-size:1rem; font-weight:600; }
+  .process-step .step-tag{ font-family:'IBM Plex Mono',monospace; font-size:0.7rem; color:var(--navy); font-weight:600; }
+  .process-step p{ font-size:0.92rem; color:var(--eucalyptus); }
+
   .founding{ background:var(--paper-dim); color:var(--charcoal); padding:60px 0; text-align:center; }
   .founding h2{ font-size:1.6rem; margin-bottom:12px; color:var(--charcoal); }
   .founding p{ color:var(--eucalyptus); max-width:540px; margin:0 auto 26px; }
@@ -192,7 +202,9 @@
     .nav-toggle.active .bar:nth-child(1){ transform:translateY(8px) rotate(45deg); }
     .nav-toggle.active .bar:nth-child(2){ opacity:0; }
     .nav-toggle.active .bar:nth-child(3){ transform:translateY(-8px) rotate(-45deg); }
-    .wedge-grid,.packages-grid{ grid-template-columns:1fr; } .footer-links{ gap:36px; }
+    .wedge-grid,.packages-grid{ grid-template-columns:1fr; }
+    .process-step{ grid-template-columns:1fr; gap:6px; align-items:start; }
+    .footer-links{ gap:36px; }
   }
 </style>
 </head>
@@ -260,26 +272,26 @@
   <div class="wrap">
     <span class="section-label">The Process</span>
     <h2 class="section-heading">Five stages. The first one costs nothing, and there's no pressure to continue past it.</h2>
-    <div style="display:grid; gap:0; margin-top:40px; border-top:1px solid #ccc;">
-      <div style="display:grid; grid-template-columns:60px 220px 1fr; gap:20px; padding:22px 0; border-bottom:1px solid #ccc; align-items:baseline;">
-        <span class="cred-num">01</span><h3 style="font-size:1rem; font-weight:600;">Discovery Call <span style="font-family:'IBM Plex Mono',monospace; font-size:0.7rem; color:var(--navy); font-weight:600;">— FREE</span></h3>
-        <p style="font-size:0.92rem; color:var(--eucalyptus);">A free, 45 minute conversation to understand your aspirations and goals. This is where we get to know each other. No obligations.</p>
+    <div class="process-list">
+      <div class="process-step">
+        <span class="cred-num">01</span><h3>Discovery Call <span class="step-tag">— FREE</span></h3>
+        <p>A free, 45 minute conversation to understand your aspirations and goals. This is where we get to know each other. No obligations.</p>
       </div>
-      <div style="display:grid; grid-template-columns:60px 220px 1fr; gap:20px; padding:22px 0; border-bottom:1px solid #ccc; align-items:baseline;">
-        <span class="cred-num">02</span><h3 style="font-size:1rem; font-weight:600;">Situation Mapping</h3>
-        <p style="font-size:0.92rem; color:var(--eucalyptus);">A structured assessment through a series of questionnaires, mapping constraints, budget ceiling, academic profile, and career goals, before any recommendation gets made.</p>
+      <div class="process-step">
+        <span class="cred-num">02</span><h3>Situation Mapping</h3>
+        <p>A structured assessment through a series of questionnaires, mapping constraints, budget ceiling, academic profile, and career goals, before any recommendation gets made.</p>
       </div>
-      <div style="display:grid; grid-template-columns:60px 220px 1fr; gap:20px; padding:22px 0; border-bottom:1px solid #ccc; align-items:baseline;">
-        <span class="cred-num">03</span><h3 style="font-size:1rem; font-weight:600;">Pathway Recommendation</h3>
-        <p style="font-size:0.92rem; color:var(--eucalyptus);">A specific, justified recommendation, personalised and tied directly to your own situation, not a list of options to sort through yourself.</p>
+      <div class="process-step">
+        <span class="cred-num">03</span><h3>Pathway Recommendation</h3>
+        <p>A specific, justified recommendation, personalised and tied directly to your own situation, not a list of options to sort through yourself.</p>
       </div>
-      <div style="display:grid; grid-template-columns:60px 220px 1fr; gap:20px; padding:22px 0; border-bottom:1px solid #ccc; align-items:baseline;">
-        <span class="cred-num">04</span><h3 style="font-size:1rem; font-weight:600;">Total Cost &amp; Return Modelling</h3>
-        <p style="font-size:0.92rem; color:var(--eucalyptus);">The worksheet, populated with real numbers for your shortlisted programs, tuition, living costs, visas, and what it's actually likely to return.</p>
+      <div class="process-step">
+        <span class="cred-num">04</span><h3>Total Cost &amp; Return Modelling</h3>
+        <p>The worksheet, populated with real numbers for your shortlisted programs, tuition, living costs, visas, and what it's actually likely to return.</p>
       </div>
-      <div style="display:grid; grid-template-columns:60px 220px 1fr; gap:20px; padding:22px 0; border-bottom:1px solid #ccc; align-items:baseline;">
-        <span class="cred-num">05</span><h3 style="font-size:1rem; font-weight:600;">Execution Support</h3>
-        <p style="font-size:0.92rem; color:var(--eucalyptus);">Applications, scholarships, offer negotiation, visa guidance, accommodation, and real guidance on navigating the first few months in a new country.</p>
+      <div class="process-step">
+        <span class="cred-num">05</span><h3>Execution Support</h3>
+        <p>Applications, scholarships, offer negotiation, visa guidance, accommodation, and real guidance on navigating the first few months in a new country.</p>
       </div>
     </div>
   </div>
