@@ -677,7 +677,15 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
     RAILS.forEach(r=>{
       if(!pinned()){ r.sec.style.height="auto"; r.rail.style.transform=""; r.cards.forEach(c=>c.classList.remove("near")); return; }
       r.rail.style.transform="translate3d(0,0,0)";
-      r.over=Math.max(0, r.rail.scrollWidth - window.innerWidth + 24);
+      // scrollWidth omits a flex container's TRAILING padding, so the rail was
+      // short by one gutter and the last card came to rest 24px from the edge
+      // while the first one starts a full gutter in. Add the padding back and
+      // drop the old +24 fudge, and both ends sit on the same gutter.
+      const padR=parseFloat(getComputedStyle(r.rail).paddingRight)||0;
+      r.over=Math.max(0, r.rail.scrollWidth + padR - window.innerWidth);
+      // the fill is translated by (n-1)x its own width, so it has to BE 1/n wide.
+      // Without a width it is zero, and the progress bar never moves at all.
+      if(r.bar) r.bar.style.width=(100/Math.max(1,r.cards.length))+"%";
       r.sec.style.height=(window.innerHeight + Math.max(r.over,320)*1.45)+"px";
     });
   }
@@ -705,7 +713,12 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
     });
     if(!pinned()) return;
     RAILS.forEach(r=>{
-      const p=clamp((sy-r.top)/r.span);
+      // scrollY, NOT the damped sy. Damping is right for the masthead and the
+      // parallax, where a little lag reads as weight, and wrong here: a pinned
+      // rail is the user dragging the cards sideways with their scroll, so any
+      // lag reads as the cards sliding around behind the input. Measured, the
+      // rail was still 73px short of its travel at the moment the pin released.
+      const p=clamp((scrollY-r.top)/r.span);
       r.rail.style.transform=`translate3d(${-r.over*p}px,0,0)`;
       const n=r.cards.length;
       if(r.bar) r.bar.style.transform=`translateX(${p*(n-1)*100}%)`;
