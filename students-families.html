@@ -607,7 +607,13 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   padding-bottom:clamp(1rem,2.5vh,1.7rem)}
 .bleed .inner .lead{margin-top:1.1rem;max-width:46ch}
 /* the pinned stage centres its cards; pushing its foot down lifts them toward the heading */
-.proc .rail-stage{padding-bottom:clamp(6rem,20vh,11rem)}
+.proc .rail-stage{padding-bottom:clamp(2rem,6vh,4rem)}
+/* the head reads as a title block on the left and a standfirst on the right,
+   the same shape as the destinations rail on the home page */
+.proc .rail-head{align-items:flex-end}
+.proc .rail-head h2{max-width:20ch}
+.proc .rail-head .lead{margin:0;max-width:36ch}
+@media (max-width:900px){.proc .rail-head .lead{display:none}}
 .bleed-bg{position:absolute;top:0;left:0;right:0;bottom:auto;aspect-ratio:2/1;overflow:hidden}
 .bleed-bg img{object-position:50% 0%}
 .bleed::after{display:none}
@@ -767,15 +773,18 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 
 <section class="bleed" id="break-lake">
   <div class="bleed-bg"><img data-par="0.2" src="img/pinklake.webp" alt="A pink salt lake beside a desert highway in Western Australia, seen from above."></div>
-  <div class="wrap inner">
-    <p class="label">03 &mdash; The process</p>
-    <p class="big h-head fade">Five stages, reviewed as we go.</p>
-    <p class="lead fade" style="--d:110ms">Early consultation gives you a head start to identify the best pathway forward.</p>
-  </div>
+  <!-- the copy that used to sit here now heads the rail itself, so the heading
+       and the cards pin as one frame the way they do on the home page -->
+  <div class="wrap inner" aria-hidden="true"></div>
 </section>
 
 <section class="rail-sec proc" id="process">
   <div class="rail-stage">
+    <div class="rail-head">
+      <div><p class="label">03 &mdash; The process</p>
+        <h2 class="h-head sec">Five stages, reviewed as we go.</h2></div>
+      <p class="lead">Early consultation gives you a head start to identify the best pathway forward.</p>
+    </div>
     <div class="rail-vp" data-vp="proc"><div class="rail" data-rail="proc">
       <article class="stage">
         <p class="n">01</p>
