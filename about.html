@@ -744,6 +744,22 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
     if(e.isIntersecting){ e.target.classList.add("in"); o.unobserve(e.target); }}),
     {rootMargin:"0px 0px -8% 0px",threshold:.1});
   watched.forEach(el=>io.observe(el));
+  // Anything that sizes itself in JS moves everything below it AFTER measure()
+  // has already cached the rails' positions. The Students arc sets #arc to
+  // innerHeight*3.2 late, which pushed the process rail down by ~1980px: on
+  // reaching it, p computed as 1.25, clamped to 1, and the rail opened on the
+  // LAST card instead of the first. Re-measure whenever the page's height
+  // actually changes. Only measure() is called here, never layout(), because
+  // layout() writes heights and would feed itself.
+  if("ResizeObserver" in window){
+    let queued=false;
+    new ResizeObserver(()=>{
+      if(queued) return; queued=true;
+      requestAnimationFrame(()=>{ queued=false; measure(); });
+    }).observe(document.body);
+  }
+  addEventListener("load",()=>{ layout(); measure(); });
+
   requestAnimationFrame(()=>document.getElementById("hero").classList.add("in"));
   function sweep(){ watched.forEach(el=>{ if(el.classList.contains("in")) return;
     const b=el.getBoundingClientRect();
