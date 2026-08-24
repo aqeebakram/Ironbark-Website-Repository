@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Students &amp; families &mdash; Ironbark Advisory</title>
+<title>Not found - Ironbark Advisory</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300..700&display=swap">
@@ -424,223 +424,34 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
  .rail{transform:none!important}.rail-vp{overflow-x:auto}.rail-foot{display:none}
  .dxb{height:auto}.dxb-plate{position:relative;height:62svh}.path{margin-top:0}</style></noscript>
 <style>
-/* ---------- hero: the dark plate ----------
-   Every other page opens on paper. This one inverts, so it announces itself
-   instead of echoing the home hero. The masthead flips with it through the
-   existing data-dark path. */
-.phero{position:relative;overflow:hidden;isolation:isolate;display:flex;align-items:center;
-  background:var(--deep);color:var(--on-deep);
-  min-height:clamp(29rem,74svh,45rem);
-  padding-block:clamp(8.5rem,20vh,12rem) clamp(9rem,23vh,14rem)}
-.phero-bg{position:absolute;inset:0;z-index:-2;overflow:hidden}
-.phero-bg img{width:100%;height:100%;object-fit:cover;object-position:62% center;opacity:.80}
-.phero-bg::after{content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(to right,
-    rgba(14,32,41,.96) 0%, rgba(14,32,41,.945) 14%, rgba(14,32,41,.915) 26%,
-    rgba(14,32,41,.855) 36%, rgba(14,32,41,.765) 45%, rgba(14,32,41,.655) 54%,
-    rgba(14,32,41,.530) 63%, rgba(14,32,41,.400) 72%, rgba(14,32,41,.280) 81%,
-    rgba(14,32,41,.175) 89%, rgba(14,32,41,.095) 96%, rgba(14,32,41,.08) 100%)}
-/* The plate dissolves into the page colour at its foot. Three or four stops
-   produce visible Mach bands where the slope changes, so this follows a smooth
-   S-curve with enough stops that no single step is perceptible. */
-.phero::after{content:"";position:absolute;inset:auto 0 0 0;z-index:-1;pointer-events:none;
-  height:clamp(110px,20svh,220px);
-  background:linear-gradient(to top,
-    rgb(246,241,233) 0%,
-    rgba(246,241,233,0.995) 4%,
-    rgba(246,241,233,0.982) 8%,
-    rgba(246,241,233,0.960) 12%,
-    rgba(246,241,233,0.931) 16%,
-    rgba(246,241,233,0.896) 20%,
-    rgba(246,241,233,0.855) 24%,
-    rgba(246,241,233,0.809) 28%,
-    rgba(246,241,233,0.758) 32%,
-    rgba(246,241,233,0.705) 36%,
-    rgba(246,241,233,0.648) 40%,
-    rgba(246,241,233,0.590) 44%,
-    rgba(246,241,233,0.530) 48%,
-    rgba(246,241,233,0.470) 52%,
-    rgba(246,241,233,0.410) 56%,
-    rgba(246,241,233,0.352) 60%,
-    rgba(246,241,233,0.295) 64%,
-    rgba(246,241,233,0.242) 68%,
-    rgba(246,241,233,0.191) 72%,
-    rgba(246,241,233,0.145) 76%,
-    rgba(246,241,233,0.104) 80%,
-    rgba(246,241,233,0.069) 84%,
-    rgba(246,241,233,0.040) 88%,
-    rgba(246,241,233,0.018) 92%,
-    rgba(246,241,233,0.005) 96%,
-    rgba(246,241,233,0) 100%)}
-/* a whisper of grain over the plate: 8-bit gradients band on large dark areas,
-   and noise this fine is invisible as texture but breaks the banding up */
-.phero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
-  opacity:.055;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");background-size:160px 160px}
-.phero .wrap{position:relative;width:100%}
-.phero-copy{max-width:min(62%,52rem)}
-.phero .label{color:var(--gold)}
-.phero h1{font-size:clamp(2.2rem,5.6vw,4.4rem);margin:1.1rem 0 0;max-width:14ch;color:var(--on-deep)}
-.phero .lead{margin-top:1.35rem;max-width:42ch;color:var(--on-deep-2)}
-@media (max-width:880px){
-  .phero{min-height:0;padding-top:clamp(7rem,17vh,9rem)}
-  .phero-copy{max-width:none}
-  .phero-bg img{object-position:70% center}
-  .phero-bg::after{background:linear-gradient(to bottom,
-    rgba(14,32,41,.94) 0%,rgba(14,32,41,.86) 46%,rgba(14,32,41,.42) 100%)}
+.nf{display:flex;align-items:center;
+  min-height:clamp(30rem,74svh,44rem);
+  padding-block:clamp(8rem,18vh,11rem) clamp(4rem,10vh,6rem)}
+.nf .wrap{width:100%}
+.nf h1{font-size:clamp(1.9rem,4.2vw,3.3rem);margin:1.05rem 0 0;max-width:15ch}
+.nf .lead{margin-top:1.15rem;max-width:46ch}
+.nf-list{margin:clamp(2.4rem,6vh,3.6rem) 0 0;padding:0;list-style:none;
+  max-width:34rem;border-top:1px solid var(--rule-2)}
+.nf-list li{border-bottom:1px solid var(--rule-2)}
+.nf-list a{display:flex;align-items:baseline;justify-content:space-between;gap:1.2rem;
+  padding:1rem .2rem;text-decoration:none;color:var(--ink);
+  font-family:var(--f-display);font-variation-settings:var(--vs-sub);font-weight:600;
+  font-size:clamp(1.02rem,1.6vw,1.2rem);
+  transition:color 160ms ease}
+/* the label slides, not the row's padding: animating padding-left would trigger
+   layout on every hover. transform stays on the compositor. Only the label
+   moves, so the hint on the right holds its place. */
+.nf-list a b{font-weight:inherit;display:inline-block;
+  transition:transform 200ms cubic-bezier(.23,1,.32,1)}
+.nf-list span{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);white-space:nowrap}
+@media (hover:hover) and (pointer:fine){
+  .nf-list a:hover{color:var(--ocean)}
+  .nf-list a:hover b{transform:translateX(9px)}
 }
-
-
-/* ---------- 01 premise: claims carry roman numerals, as on the home page ---------- */
-.premise-head{max-width:34ch}
-.premise .lead{margin-top:1.15rem}
-
-/* ---------- 02 the arc: a scrubbed plot ---------- */
-.arc-track{position:relative}
-.arc-stage{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
-.arc-top{display:flex;align-items:baseline;justify-content:space-between;gap:1.2rem;flex-wrap:wrap;
-  margin-bottom:clamp(1rem,3vh,2rem)}
-.arc-body{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);
-  gap:clamp(1.5rem,4vw,4rem);align-items:center}
-.plot{position:relative}
-.plot svg{display:block;width:100%;height:auto;overflow:visible}
-.axis{stroke:var(--rule-2);stroke-width:1}
-.gridline line{stroke:var(--rule-2);stroke-width:1;stroke-dasharray:3 8}
-.trace-ghost{fill:none;stroke:var(--rule-2);stroke-width:1.5;stroke-dasharray:4 7}
-.trace{fill:none;stroke:var(--ocean);stroke-width:3;stroke-linecap:round}
-.head-dot{fill:var(--ocean)}
-.node{opacity:0;transform:scale(.4);transform-origin:center;transform-box:fill-box;
-  transition:opacity .5s ease,transform .7s var(--ease)}
-.node.on{opacity:1;transform:scale(1)}
-.node circle{fill:var(--paper);stroke:var(--ocean);stroke-width:2.5}
-.node.on circle.hit{fill:var(--ocean)}
-.yearlab{font-family:var(--f-mono);font-size:13px;letter-spacing:.12em;fill:var(--muted);
-  opacity:.45;transition:opacity .5s ease,fill .5s ease}
-.yearlab.on{opacity:1;fill:var(--ink)}
-.axis-cap{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;fill:var(--muted);text-transform:uppercase}
-.readout{position:absolute;left:0;top:0;font-family:var(--f-mono);font-size:.62rem;letter-spacing:.13em;
-  text-transform:uppercase;color:var(--paper);background:var(--ink);padding:.32rem .6rem;border-radius:999px;
-  white-space:nowrap;opacity:0;transition:opacity .35s ease;pointer-events:none}
-.readout.on{opacity:1}
-.ms-wrap{position:relative;min-height:19rem}
-.ms{position:absolute;inset:0;opacity:0;transform:translateY(14px);pointer-events:none;
-  transition:opacity .55s ease,transform .7s var(--ease)}
-.ms.on{opacity:1;transform:none;pointer-events:auto}
-.ms h3{font-size:clamp(1.25rem,2vw,1.6rem);margin:.55rem 0 .7rem}
-.ms p{color:var(--ink-2);font-weight:400;margin:0 0 1rem;max-width:38ch}
-.ms ul{list-style:none;margin:0;padding:.85rem 0 0;display:grid;gap:.42rem;border-top:1px solid var(--rule-2)}
-.ms li{font-family:var(--f-mono);font-size:.64rem;letter-spacing:.07em;text-transform:uppercase;
-  color:var(--ink-2);display:flex;gap:.6rem}
-.ms li::before{content:"";flex:0 0 auto;width:5px;height:5px;margin-top:.42rem;border-radius:50%;background:var(--gold)}
-@media (max-width:900px){
-  .arc-track{height:auto!important}
-  .arc-stage{position:relative;height:auto;padding-block:var(--stack)}
-  .arc-body{grid-template-columns:1fr}
-  .ms-wrap{min-height:0;display:grid;gap:2rem}
-  .ms{position:relative;opacity:1;transform:none;pointer-events:auto}
-  .readout{display:none}
-}
-
-/* ---------- 03 the process: the shared rail, plus packages as its coda ---------- */
-.proc{background:var(--paper)}
-.packs-sec{padding-block:var(--stack);background:var(--paper)}
-.packs-head{margin-bottom:clamp(1.8rem,5vh,3rem)}
-.packs{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
-  gap:clamp(1rem,2vw,1.7rem);align-items:start}
-.pack{position:relative;background:var(--card);border:1px solid var(--rule-2);border-radius:16px;
-  padding:clamp(1.5rem,2.6vw,2.1rem);display:flex;flex-direction:column;gap:1.1rem}
-.pack--lead{border-color:var(--ocean);box-shadow:0 22px 48px -34px rgba(14,94,124,.7)}
-.pack-flag{position:absolute;top:-.72rem;left:clamp(1.5rem,2.6vw,2.1rem);
-  font-family:var(--f-mono);font-size:.6rem;letter-spacing:.13em;text-transform:uppercase;
-  background:var(--ocean);color:var(--paper);padding:.3rem .72rem;border-radius:999px}
-.pack h3{font-size:clamp(1.3rem,2vw,1.65rem);margin:0}
-.pack ul{list-style:none;margin:0;padding:0;display:grid;gap:.6rem;flex:1}
-.pack li{display:flex;gap:.65rem;color:var(--ink-2);font-weight:400}
-.pack li::before{content:"";flex:0 0 auto;width:6px;height:6px;margin-top:.62rem;border-radius:50%;background:var(--gold)}
-.pack .cta{justify-content:center}
-.packs-note{margin-top:clamp(1.3rem,3vh,2rem);font-family:var(--f-mono);font-size:.66rem;
-  letter-spacing:.1em;color:var(--muted)}
-
-/* ---------- 04 the advisory ---------- */
-.advisory{padding-block:var(--stack)}
-.adv-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
-  gap:clamp(1.8rem,5vw,5rem);align-items:start}
-.adv-grid h2{max-width:12ch}
-/* sits under the heading, so it takes the same step as every other standfirst */
-.adv-lead{margin-top:1.15rem;font-size:clamp(1.14rem,1.3vw,1.28rem);color:var(--ink-2);max-width:32ch}
-/* the first rule would sit above the first item; the list starts flush with
-   the label opposite it instead */
-.adv-list{list-style:none;margin:0;padding:0;display:grid;gap:0}
-.adv-list li:first-child{border-top:0;padding-top:0}
-.adv-list li{display:grid;grid-template-columns:2.6rem minmax(0,1fr);gap:1rem;
-  padding-block:1rem;border-top:1px solid var(--rule-2);color:var(--ink-2);font-weight:400}
-.adv-list b{font-family:var(--f-mono);font-size:.66rem;font-weight:500;letter-spacing:.13em;
-  text-transform:uppercase;color:var(--ocean);padding-top:.28rem}
-@media (max-width:860px){.adv-grid{grid-template-columns:1fr;gap:2rem}}
-
-/* ---------- 05 case note ---------- */
-.casenote{padding-block:var(--stack);background:var(--paper-2)}
-.casenote blockquote{margin:1.4rem 0 0;font-family:var(--f-display);
-  font-variation-settings:var(--vs-head);font-weight:700;
-  font-size:clamp(1.5rem,3.2vw,2.6rem);line-height:1.08;letter-spacing:-.02em;
-  max-width:22ch;text-wrap:balance;color:var(--ink)}
-.casenote blockquote span{color:var(--ocean)}
-.case-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
-  gap:clamp(1.75rem,5vw,5rem);align-items:start;margin-top:clamp(1.6rem,4vh,2.6rem)}
-.case-meta{display:grid;gap:1.1rem;margin:0}
-.case-row{display:grid;grid-template-columns:9rem minmax(0,1fr);gap:1rem;
-  border-top:1px solid var(--rule-2);padding-top:.7rem}
-.case-row dt{font-family:var(--f-mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--muted);margin:0}
-.case-row dd{margin:0;color:var(--ink-2)}
-@media (max-width:860px){.case-grid{grid-template-columns:1fr}.case-row{grid-template-columns:1fr;gap:.15rem}}
-
-/* ---------- 06 enquire ---------- */
-.enquire-foot{display:flex;justify-content:flex-start;
-  margin-top:clamp(2rem,6vh,3.6rem)}
-
-/* ---------- the break, restored ----------
-   Every other break lays type over the picture. Here the car and the highway
-   live at the foot of the frame, so the band is cropped from the top (the lake
-   is what you see), and the copy starts just under the car and runs on past the
-   foot of the picture onto the paper. */
-.bleed{position:relative;height:auto;display:block;overflow:visible;isolation:auto;
-  padding-bottom:clamp(1rem,2.5vh,1.7rem)}
-.bleed .inner .lead{margin-top:1.1rem;max-width:46ch}
-/* the pinned stage centres its cards; pushing its foot down lifts them toward the heading */
-.proc .rail-stage{padding-bottom:clamp(6rem,20vh,11rem)}
-.bleed-bg{position:absolute;top:0;left:0;right:0;bottom:auto;aspect-ratio:2/1;overflow:hidden}
-.bleed-bg img{object-position:50% 0%}
-.bleed::after{display:none}
-.bleed-bg::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
-  background:
-    linear-gradient(to top right,rgba(246,241,233,.95) 0%,rgba(246,241,233,.70) 26%,
-      rgba(246,241,233,.20) 55%,rgba(246,241,233,0) 78%) bottom/100% 44% no-repeat,
-    linear-gradient(to top,rgba(246,241,233,.92) 0%,rgba(246,241,233,.45) 45%,
-      rgba(246,241,233,0) 100%) bottom/100% 8% no-repeat,
-    linear-gradient(to bottom,var(--paper) 0%,rgba(246,241,233,.5) 35%,
-      rgba(246,241,233,0) 100%) top/100% 16% no-repeat}
-/* The car's foot sits at 86.6% of the 2:1 band. 46.5% of the section width is
-   93% of the band, clearing it by a visible margin rather than a hairline. */
-.bleed .inner{position:relative;z-index:2;padding-top:46.5%;padding-bottom:0}
-.bleed p.big{max-width:22ch;margin-top:.55rem}
-@media (max-width:700px){.bleed .inner{padding-top:54%}}
-
-/* the free-call badge on stage one */
-.free{display:inline-block;margin-left:.65rem;font-family:var(--f-mono);font-size:.6rem;
-  letter-spacing:.13em;text-transform:uppercase;color:#20160A;background:var(--gold);
-  padding:.22rem .55rem;border-radius:999px;vertical-align:.18em;white-space:nowrap}
-
-/* ---------- 04: the heading rides down with its section ---------- */
-/* every section steps label -> heading by the same amount */
-.casenote blockquote{margin-top:.55rem}
-#enquire h2{margin-top:.55rem}
-.adv-grid{position:relative}
-.adv-col{position:relative}
-.adv-head{position:sticky;top:clamp(6rem,15vh,9.5rem)}
-.adv-list li{padding-block:clamp(2.4rem,7vh,4rem);align-items:start}
-.adv-list li span{display:block;max-width:44ch;font-size:clamp(1.05rem,1.2vw,1.16rem);line-height:1.6}
-.adv-list li b{font-size:.7rem}
-@media (max-width:860px){.adv-head{position:static}.adv-col{height:auto!important}}
+.nf-list a:focus-visible{color:var(--ocean)}
+.nf-list a:focus-visible b{transform:translateX(9px)}
+.nf-list a:active b{transform:translateX(9px) scale(.99)}
 </style>
 
 <header class="masthead" id="masthead">
@@ -655,11 +466,11 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   </button>
   <div class="mast-nav" id="mast-nav">
     <nav class="nav" aria-label="Primary">
-      <a href="about.html">About</a>
-      <a href="why-australia.html">Why Australia</a>
-      <a href="students-families.html" aria-current="page">Students &amp; families</a>
-      <a href="institutions.html">Institutions</a>
-      <a href="insights.html">News</a>
+      <a href="/about.html">About</a>
+      <a href="/why-australia.html">Why Australia</a>
+      <a href="/students-families.html">Students &amp; families</a>
+      <a href="/institutions.html">Institutions</a>
+      <a href="/insights.html">News</a>
     </nav>
     <div class="mast-act">
       <a class="ln" href="https://www.linkedin.com/in/aqeebakram" target="_blank" rel="noopener" aria-label="LinkedIn">
@@ -674,321 +485,27 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 </header>
 
 <main id="top">
-
-<section class="phero" data-dark>
-  <div class="phero-bg"><img src="img/sf_hero.webp" alt="The Brisbane skyline and the Story Bridge at sunset, seen across the river."></div>
+<section class="nf" id="notfound">
   <div class="wrap">
-    <div class="phero-copy">
-      <p class="label">For students &amp; families</p>
-      <h1 class="h-head">Studying in Australia is a big decision.</h1>
-      <p class="lead">Get support from someone who has lived and worked inside the system, not just read about it.</p>
-    </div>
+    <p class="label">404</p>
+    <h1 class="h-head"><span class="rev"><span>That page is not</span></span><span class="rev"><span style="--d:60ms">here yet.</span></span></h1>
+    <p class="lead fade" style="--d:140ms">Some of the site is still being built. Here is everything that is up.</p>
+    <ul class="nf-list fade" style="--d:200ms">
+      <li><a href="/index.html"><b>Home</b><span>Start here</span></a></li>
+      <li><a href="/about.html"><b>About</b><span>The full story</span></a></li>
+      <li><a href="/students-families.html"><b>Students &amp; families</b><span>Choosing Australia</span></a></li>
+      <li><a href="/institutions.html"><b>Institutions</b><span>Entering the UAE</span></a></li>
+      <li><a href="/contact.html"><b>Contact</b><span>Reach out</span></a></li>
+    </ul>
   </div>
 </section>
-
-
-<section class="premise wrap" id="premise">
-  <div class="premise-head">
-    <p class="label">01 &mdash; Premise</p>
-    <h2 class="h-head sec"><span class="rev"><span>Most families</span></span><span class="rev"><span style="--d:110ms">arrive late.</span></span></h2>
-    <p class="lead">By the time most families start looking seriously, several doors have already closed quietly. Nothing went wrong. Nobody told them the decisions had already been made.</p>
-  </div>
-  <div class="claims">
-    <article class="claim fade"><p class="label label--m">i</p><h3 class="h-sub">The choices that matter come years before the application</h3>
-      <p>Subject selection in Year 10 and 11 decides which Australian degrees stay reachable. That closure happens silently, and it is rarely explained at the time.</p></article>
-    <article class="claim fade" style="--d:110ms"><p class="label label--m">ii</p><h3 class="h-sub">Fit is a research problem, not a ranking exercise</h3>
-      <p>The right course, city and university for one student is rarely the highest-ranked. It depends on the child, the budget, and what happens after graduation.</p></article>
-    <article class="claim fade" style="--d:220ms"><p class="label label--m">iii</p><h3 class="h-sub">Cost is settled long before the deposit</h3>
-      <p>Total cost to graduation can be modelled years out. Most families see the real number only once they are committed and it is too late to change course.</p></article>
-  </div>
-</section>
-
-<section class="arc-track" id="arc">
-  <div class="arc-stage">
-    <div class="wrap">
-      <div class="arc-top">
-        <div>
-          <p class="label">02 &mdash; The arc</p>
-          <h2 class="h-head sec">Four years, plotted</h2>
-        </div>
-        <p class="label label--m">Depth of the record &middot; Year 10 &rarr; offer</p>
-      </div>
-      <div class="arc-body">
-        <div class="plot" id="plot">
-          <svg viewBox="0 0 1000 430" role="img" aria-label="A curve showing the depth of a student's record rising from Year 10 to Year 13, with four milestones marked.">
-            <line class="axis" x1="90" y1="400" x2="960" y2="400"></line>
-            <line class="axis" x1="90" y1="400" x2="90" y2="30"></line>
-            <g class="gridline"><line x1="420" y1="400" x2="420" y2="40"></line><line x1="700" y1="400" x2="700" y2="40"></line><line x1="920" y1="400" x2="920" y2="40"></line></g>
-            <path class="trace-ghost" d="M 140 350 C 240 338 320 316 420 286 C 540 250 600 222 700 176 C 800 130 870 96 920 64"></path>
-            <path class="trace" id="trace" d="M 140 350 C 240 338 320 316 420 286 C 540 250 600 222 700 176 C 800 130 870 96 920 64"></path>
-            <circle class="head-dot" id="headDot" cx="140" cy="350" r="6" opacity="0"></circle>
-            <g class="node" data-node="0"><circle cx="140" cy="350" r="8"></circle></g>
-            <g class="node" data-node="1"><circle cx="420" cy="286" r="8"></circle></g>
-            <g class="node" data-node="2"><circle cx="700" cy="176" r="8"></circle></g>
-            <g class="node" data-node="3"><circle class="hit" cx="920" cy="64" r="8"></circle></g>
-            <text class="yearlab" data-year="0" x="140" y="425" text-anchor="middle">Y10</text>
-            <text class="yearlab" data-year="1" x="420" y="425" text-anchor="middle">Y11</text>
-            <text class="yearlab" data-year="2" x="700" y="425" text-anchor="middle">Y12</text>
-            <text class="yearlab" data-year="3" x="920" y="425" text-anchor="middle">Y13</text>
-            <text class="axis-cap" x="90" y="20" text-anchor="start">Depth</text>
-          </svg>
-          <span class="readout" id="readout">Year 10 &middot; Subjects</span>
-        </div>
-        <div class="ms-wrap">
-        <article class="ms on" data-ms="0">
-          <p class="label label--m">Year 10 &middot; Foundations</p>
-          <h3 class="h-sub">Choose subjects with the doors still open</h3>
-          <p>Subject selection quietly decides which Australian degrees remain reachable three years later. Nobody flags it at the time, and it is the cheapest decision to get right.</p>
-          <ul><li>Subject-combination mapping</li><li>Degree prerequisites</li><li>Early risk review</li></ul>
-        </article>
-        <article class="ms" data-ms="1">
-          <p class="label label--m">Year 11 &middot; The floor</p>
-          <h3 class="h-sub">The record starts counting</h3>
-          <p>Results now set the floor for everything that follows. This is where a realistic band of universities and courses becomes visible, and where it is still cheap to change direction.</p>
-          <ul><li>Realistic course band</li><li>City and campus fit</li><li>Direction check</li></ul>
-        </article>
-        <article class="ms" data-ms="2">
-          <p class="label label--m">Year 12 &middot; Direction</p>
-          <h3 class="h-sub">Shortlist, costs, scholarships</h3>
-          <p>A shortlist built from the student in front of me rather than a ranking table, modelled against total cost to graduation and what the degree is worth afterwards.</p>
-          <ul><li>Shortlist with reasons</li><li>Total cost modelling</li><li>Scholarship search</li></ul>
-        </article>
-        <article class="ms" data-ms="3">
-          <p class="label label--m">Year 13 &middot; Application</p>
-          <h3 class="h-sub">Offers, visa, arrival</h3>
-          <p>Applications, offer negotiation, the visa, accommodation, and the part almost nobody prepares for: the first few months on the ground in a new country.</p>
-          <ul><li>Offer negotiation</li><li>Visa guidance</li><li>First-months support</li></ul>
-        </article>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="bleed" id="break-lake">
-  <div class="bleed-bg"><img data-par="0.2" src="img/pinklake.webp" alt="A pink salt lake beside a desert highway in Western Australia, seen from above."></div>
-  <div class="wrap inner">
-    <p class="label">03 &mdash; The process</p>
-    <p class="big h-head fade">Five stages, reviewed as we go.</p>
-    <p class="lead fade" style="--d:110ms">Early consultation gives you a head start to identify the best pathway forward.</p>
-  </div>
-</section>
-
-<section class="rail-sec proc" id="process">
-  <div class="rail-stage">
-    <div class="rail-vp" data-vp="proc"><div class="rail" data-rail="proc">
-      <article class="stage">
-        <p class="n">01</p>
-        <p class="when">Stage 01</p>
-        <h3 class="h-sub">Discovery call <span class="free">Free &middot; 30 min</span></h3>
-        <p>A free, 30-minute conversation to understand your aspirations and goals. This is where we get to know each other, with no obligation.</p>
-        <ul><li>No obligation</li><li>Straight answers</li></ul>
-      </article>
-      <article class="stage">
-        <p class="n">02</p>
-        <p class="when">Stage 02</p>
-        <h3 class="h-sub">Situation mapping</h3>
-        <p>A structured assessment mapping constraints, education policy, migration policy, budget ceiling, academic profile and career goals, before any recommendation is made.</p>
-        <ul><li>Budget ceiling</li><li>Academic profile</li><li>Policy constraints</li></ul>
-      </article>
-      <article class="stage">
-        <p class="n">03</p>
-        <p class="when">Stage 03</p>
-        <h3 class="h-sub">Pathway recommendation</h3>
-        <p>A specific, justified recommendation tied directly to your own situation, not a list of options to sort through yourself.</p>
-        <ul><li>One recommendation</li><li>Reasons given</li></ul>
-      </article>
-      <article class="stage">
-        <p class="n">04</p>
-        <p class="when">Stage 04</p>
-        <h3 class="h-sub">Total cost and return</h3>
-        <p>A worksheet giving clarity on the investment over the study period and beyond, built so there are no surprises later.</p>
-        <ul><li>Cost to graduation</li><li>Post-study outcomes</li></ul>
-      </article>
-      <article class="stage">
-        <p class="n">05</p>
-        <p class="when">Stage 05</p>
-        <h3 class="h-sub">Execution support</h3>
-        <p>Applications, scholarships, offer negotiation, visa guidance, accommodation, and real guidance on the first few months in a new country.</p>
-        <ul><li>Applications</li><li>Scholarships</li><li>Visa &amp; arrival</li></ul>
-      </article>
-    </div></div>
-    <div class="rail-foot">
-      <div class="rail-bar"><i data-bar="proc"></i></div>
-      <p class="label label--m">Scroll</p>
-    </div>
-  </div>
-</section>
-
-
-<section class="advisory wrap" id="advisory">
-  <div class="adv-grid">
-    <div class="adv-col"><div class="adv-head">
-      <p class="label">04 &mdash; The advisory</p>
-      <h2 class="h-head sec">Founder led</h2>
-      <p class="adv-lead">A solo, founder-led advisory that aims to provide high quality, data-driven advice.</p>
-    </div></div>
-    <div class="fade">
-      <ul class="adv-list">
-        <li><b>One</b><span>You work with me directly. There is no junior handling your file, and no account manager between you and the advice.</span></li>
-        <li><b>Two</b><span>No provider commissions. Nothing I recommend is shaped by which university pays the most, because none of them pay me at all.</span></li>
-        <li><b>Three</b><span>Twelve years inside the sector &mdash; agencies, Macquarie University, the Australian National University, and the New South Wales Government.</span></li>
-        <li><b>Four</b><span>Deliberately small. A limited number of families each cycle, so the work stays close.</span></li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section class="casenote" id="case">
-  <div class="wrap">
-    <p class="label">05 &mdash; Case note &middot; composite, illustrative</p>
-    <blockquote class="fade">She had the grades for the ranking. <span>She did not have the prerequisites for the course.</span></blockquote>
-    <div class="case-grid">
-      <div class="fade">
-        <p class="lead">A Dubai family came to me in Year 12 with a shortlist of highly-ranked universities and a daughter set on veterinary science. The subject combination chosen two years earlier had quietly closed the prerequisite. Nobody had raised it.</p>
-        <p class="lead" style="margin-top:1rem">We remapped to a related pathway with an articulated entry route, modelled total cost to graduation against the original plan, and found a campus with a stronger placement record and a lower fee base. She started the following February.</p>
-      </div>
-      <dl class="case-meta fade" style="--d:110ms">
-        <div class="case-row"><dt>Arrived</dt><dd>Year 12, mid-cycle</dd></div>
-        <div class="case-row"><dt>Constraint</dt><dd>Prerequisite closed in Year 10</dd></div>
-        <div class="case-row"><dt>Work</dt><dd>Remap, cost model, articulated entry</dd></div>
-        <div class="case-row"><dt>Outcome</dt><dd>Offer held, lower fee base</dd></div>
-        <div class="case-row"><dt>Note</dt><dd>A composite drawn from several families, not one client.</dd></div>
-      </dl>
-    </div>
-  </div>
-</section>
-
-<section class="packs-sec" id="packages">
-  <div class="wrap">
-    <div class="packs-head">
-      <p class="label">06 &mdash; Packages</p>
-      <h2 class="h-head sec">Choose the level of support your family needs.</h2>
-    </div>
-    <div class="packs">
-      <article class="pack fade">
-        <h3 class="h-sub">Foundational</h3>
-        <ul>
-          <li>Stage 1 &mdash; free discovery call</li>
-          <li>Stage 2 &mdash; situation mapping</li>
-          <li>Stage 3 &mdash; pathway recommendation</li>
-        </ul>
-        <a class="cta" href="https://calendar.app.google/Wr325oNEYvxfeW6F9" target="_blank" rel="noopener">Enquire</a>
-      </article>
-      <article class="pack pack--lead fade" style="--d:110ms">
-        <span class="pack-flag">Most families choose this</span>
-        <h3 class="h-sub">Full pathway</h3>
-        <ul>
-          <li>Everything in Foundational</li>
-          <li>Stage 4 &mdash; total cost and return worksheet</li>
-          <li>Stage 5 &mdash; applications, scholarships and offer negotiation, then visa, accommodation and your first few months on the ground</li>
-        </ul>
-        <a class="cta" href="https://calendar.app.google/Wr325oNEYvxfeW6F9" target="_blank" rel="noopener">Enquire</a>
-      </article>
-    </div>
-    <p class="packs-note">Exact pricing for both packages is shared during the free discovery call.</p>
-  </div>
-</section>
-
-<section class="close" id="enquire" data-dark>
-  <img src="img/close.webp" alt="">
-  <div class="wrap">
-    <p class="label">07 &mdash; Enquire</p>
-    <h2 class="h-head">The first conversation is free, and it is thirty minutes.</h2>
-    <p class="lead">Bring the year group, the subjects already chosen, and a rough budget. You will leave knowing whether Australia is the right call, whether the current plan holds, and what the next decision actually is.</p>
-    <div class="enquire-foot">
-      <a class="cta" href="https://calendar.app.google/Wr325oNEYvxfeW6F9" target="_blank" rel="noopener">Book the free discovery call</a>
-    </div>
-  </div>
-</section>
-
 </main>
-
-<script>
-(() => {
-  "use strict";
-  /* The arc scrubs its own progress. The shared engine drives the rails and the
-     reveals, but knows nothing about this plot. */
-  const track=document.getElementById("arc"), trace=document.getElementById("trace");
-  if(!track||!trace) return;
-  const dot=document.getElementById("headDot"), readout=document.getElementById("readout");
-  const nodes=[...document.querySelectorAll(".node")], years=[...document.querySelectorAll(".yearlab")];
-  const stages=[...document.querySelectorAll(".ms")];
-  const GATES=[0,0.30,0.64,0.93];
-  const LABELS=["Year 10 · Subjects","Year 11 · Evidence","Year 12 · Shortlist","Year 13 · Offers"];
-  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const wide=matchMedia("(min-width: 901px)");
-  const scrub=()=>wide.matches&&!reduce;
-  let len=0;
-
-  function init(){
-    len=trace.getTotalLength();
-    trace.style.strokeDasharray=len;
-    if(scrub()){
-      track.style.height=(innerHeight*3.2)+"px";
-      trace.style.strokeDashoffset=len;
-      nodes.forEach(n=>n.classList.remove("on")); years.forEach(y=>y.classList.remove("on"));
-      stages.forEach((s,i)=>s.classList.toggle("on",i===0));
-    }else{
-      track.style.height="auto";
-      trace.style.strokeDashoffset=0;
-      dot.setAttribute("opacity","0"); readout.classList.remove("on");
-      nodes.forEach(n=>n.classList.add("on")); years.forEach(y=>y.classList.add("on"));
-      stages.forEach(s=>s.classList.add("on"));
-    }
-  }
-  function paint(){
-    if(!scrub()) return;
-    const b=track.getBoundingClientRect();
-    const span=Math.max(1,b.height-innerHeight);
-    const p=Math.max(0,Math.min(1,-b.top/span));
-    trace.style.strokeDashoffset=len*(1-p);
-    if(p>0.001&&p<0.999){
-      const pt=trace.getPointAtLength(len*p);
-      dot.setAttribute("cx",pt.x); dot.setAttribute("cy",pt.y); dot.setAttribute("opacity","1");
-      const k=trace.ownerSVGElement.getBoundingClientRect().width/1000;
-      readout.style.transform="translate("+(pt.x*k)+"px,"+(pt.y*k)+"px) translate(-50%,-190%)";
-      readout.classList.add("on");
-    }else{ dot.setAttribute("opacity","0"); readout.classList.remove("on"); }
-    let active=0;
-    GATES.forEach((g,i)=>{ const on=p>=g-0.001; if(on) active=i;
-      nodes[i].classList.toggle("on",on); years[i].classList.toggle("on",on); });
-    readout.textContent=LABELS[active];
-    stages.forEach((s,i)=>s.classList.toggle("on",i===active));
-  }
-  /* 04: hold the heading only until it is level with the last principle */
-  const advCol=document.querySelector(".adv-col");
-  function fitAdv(){
-    if(!advCol) return;
-    const head=advCol.firstElementChild;
-    const last=document.querySelector(".adv-list li:last-child");
-    if(!head||!last) return;
-    if(innerWidth<=860){ advCol.style.height=""; return; }
-    const h2=head.querySelector("h2");
-    const grid=advCol.parentElement;
-    const topIn=el=>{ let y=0; for(let n=el;n&&n!==grid;n=n.offsetParent) y+=n.offsetTop; return y; };
-    advCol.style.height="";
-    const lastTextTop=topIn(last)+parseFloat(getComputedStyle(last).paddingTop||0);
-    const h2Inset=h2?h2.offsetTop:0;
-    advCol.style.height=Math.max(head.offsetHeight,
-      lastTextTop-topIn(advCol)+head.offsetHeight-h2Inset)+"px";
-  }
-
-  let ticking=false;
-  addEventListener("scroll",()=>{ if(ticking) return; ticking=true;
-    requestAnimationFrame(()=>{ paint(); ticking=false; }); },{passive:true});
-  let rt; addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(()=>{init();fitAdv();paint();},150);});
-  const start=()=>{ init(); fitAdv(); paint(); };
-  if(document.readyState==="complete") setTimeout(start,60);
-  else addEventListener("load",()=>setTimeout(start,60));
-})();
-</script>
 
 <footer data-dark>
   <div class="wrap">
     <div class="foot">
       <div class="foot-brand">
-        <a class="brand" href="index.html">
+        <a class="brand" href="/index.html">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <circle cx="12" cy="9" r="4.4" stroke="#E8A317" stroke-width="1.6"/>
             <path d="M2 15.6h20M5 19.2h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".85"/>
@@ -998,12 +515,12 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
       </div>
       <div class="foot-cols">
         <div><h5>Site</h5><ul>
-          <li><a href="about.html">About</a></li>
-          <li><a href="why-australia.html">Why Australia</a></li>
-          <li><a href="students-families.html" aria-current="page">Students &amp; families</a></li>
-          <li><a href="institutions.html">Institutions</a></li>
-          <li><a href="insights.html">News</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/why-australia.html">Why Australia</a></li>
+          <li><a href="/students-families.html">Students &amp; families</a></li>
+          <li><a href="/institutions.html">Institutions</a></li>
+          <li><a href="/insights.html">News</a></li>
+          <li><a href="/contact.html">Contact</a></li>
         </ul></div>
         <div><h5>Contact</h5><ul>
           <li><a href="mailto:hello@ironbarkadvisory.ae">hello@ironbarkadvisory.ae</a></li>
