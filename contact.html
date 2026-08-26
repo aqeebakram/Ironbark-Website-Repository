@@ -589,29 +589,6 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
   const clamp=(v,a=0,b=1)=>v<a?a:v>b?b:v, lerp=(a,b,t)=>a+(b-a)*t;
   const mast=document.getElementById("masthead");
-  // ---- hero frames: crossfade every 4s, paused off-screen and in background tabs ----
-  const slides=[...document.querySelectorAll(".hero .slide")];
-  if(slides.length>1){
-    let hi=0, timer=null, onScreen=true;
-    const hero=document.querySelector(".hero");
-    const mark=repaint=>{ hero.dataset.top=slides[hi].dataset.top||"light"; if(repaint) paint(); };
-    const step=()=>{
-      const prev=slides[hi];
-      // the outgoing frame keeps drifting until it is fully faded out, or it snaps
-      prev.classList.remove("on"); prev.classList.add("out");
-      setTimeout(()=>prev.classList.remove("out"),1400);
-      hi=(hi+1)%slides.length; slides[hi].classList.add("on"); mark(true);
-    };
-    mark(false);
-    const run=()=>{ if(!timer && onScreen && !reduce && document.visibilityState==="visible") timer=setInterval(step,4000); };
-    const halt=()=>{ clearInterval(timer); timer=null; };
-    run();
-    addEventListener("visibilitychange",()=>document.visibilityState==="visible"?run():halt());
-    if("IntersectionObserver" in window){
-      new IntersectionObserver(es=>{ onScreen=es[0].isIntersecting; onScreen?run():halt(); },{threshold:0})
-        .observe(document.querySelector(".hero"));
-    }
-  }
 
   // ---- primary navigation drawer ----
   const burger=document.getElementById("burger");
