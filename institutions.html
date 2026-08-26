@@ -215,19 +215,6 @@ h2.sec{font-size:clamp(1.55rem,3.1vw,2.6rem);margin-top:.55rem}
 .hero-bg{position:absolute;inset:0;z-index:-2;overflow:hidden}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 
-/* Four frames, crossfading. Each carries its own paper wash, so the wash follows
-   the picture instead of being one compromise stretched across all four. */
-.slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease}
-.slide.on{opacity:1}
-.slide img{width:100%;height:100%;object-fit:cover;transform:scale(1.045);will-change:transform}
-.slide.on img,.slide.out img{transform:scale(1.11) translate3d(-1.2%,0,0);transition:transform 11s linear}
-.slide::after{content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(to right,
-    rgba(246,241,233,var(--a1)) 0%,rgba(246,241,233,var(--a2)) 34%,
-    rgba(246,241,233,var(--a3)) 55%,rgba(246,241,233,0) 78%)}
-.slide[data-wash="thin"]{--a1:.98;--a2:.90;--a3:.44}
-.slide[data-wash="medium"]{--a1:1;--a2:.96;--a3:.58}
-.slide[data-wash="deep"]{--a1:1;--a2:.99;--a3:.72}
 /* the photograph dissolves into the page rather than butting against it */
 .hero::after{content:"";position:absolute;inset:auto 0 0 0;height:clamp(80px,12svh,150px);
   z-index:-1;pointer-events:none;
@@ -249,11 +236,6 @@ h2.sec{font-size:clamp(1.55rem,3.1vw,2.6rem);margin-top:.55rem}
 @media (max-width:860px){
   .hero{align-items:flex-start;padding-top:clamp(6rem,17vh,9rem)}
   .hero-inner{max-width:none;margin-inline:auto}
-  /* keep the icon side of the frame in shot once the crop narrows */
-  .slide img{object-position:70% center}
-  .slide::after{background:linear-gradient(to bottom,
-    rgba(246,241,233,var(--a1)) 0%,rgba(246,241,233,var(--a2)) 30%,
-    rgba(246,241,233,var(--a3)) 50%,rgba(246,241,233,0) 82%)}
 }
 @media (max-width:700px){.cue{display:none}}
 
@@ -452,7 +434,6 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   .rail-stage{position:relative;height:auto;padding-block:var(--stack)}
   .rail{transform:none!important}.rail-vp{overflow-x:auto}.rail-foot{display:none}
   .hero-bg,.bleed-bg{inset:0}
-  .slide.on img,.slide.out img{transform:none;transition:none}
   .dxb{height:auto}.dxb-plate{position:relative;height:62svh}.path{margin-top:0}
 }
 </style>
