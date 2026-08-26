@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Ironbark Advisory">
+  <title>Ironbark Advisory</title>
+  <rect width="48" height="48" fill="#0E2029"/>
+  <g stroke="#F0EAE0" stroke-width="3.42" stroke-linecap="round" fill="none" transform="translate(24 24) scale(0.9) translate(-24 -24)">
+    <path d="M10 17.9V38"/><path d="M17 12.9V38"/><path d="M31 14.4V38"/><path d="M38 19.3V38"/>
+  </g>
+  <path d="M24 10V38" stroke="#E8A317" stroke-width="3.42" stroke-linecap="round" fill="none" transform="translate(24 24) scale(0.9) translate(-24 -24)"/>
+</svg>
