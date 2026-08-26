@@ -178,13 +178,17 @@ h2.sec{font-size:clamp(1.55rem,3.1vw,2.6rem);margin-top:.55rem}
   .mast-nav{position:fixed;top:0;left:0;right:0;z-index:1;margin:0;display:block;
     padding:clamp(5rem,13vh,6.2rem) var(--gut) clamp(2rem,6vh,3rem);
     max-height:100svh;overflow-y:auto;overscroll-behavior:contain;
-    background:rgba(246,241,233,.94);border-bottom:1px solid var(--rule-2);
-    -webkit-backdrop-filter:blur(22px) saturate(135%);backdrop-filter:blur(22px) saturate(135%);
+    /* Opaque, not glass. A backdrop-filter nested inside another one does
+       not filter the page behind it - the masthead already has one, so the
+       drawer's blur never landed and the page read straight through it on
+       iOS Safari. Verified in the simulator: standalone it was clean,
+       nested it bled. */
+    background:var(--paper);border-bottom:1px solid var(--rule-2);
     clip-path:inset(0 0 100% 0);opacity:0;visibility:hidden;
     transition:clip-path .62s var(--ease),opacity .3s ease,visibility 0s linear .62s}
   .masthead.nav-open .mast-nav{clip-path:inset(0 0 0 0);opacity:1;visibility:visible;
     transition:clip-path .62s var(--ease),opacity .3s ease,visibility 0s}
-  .masthead.on-dark .mast-nav{background:rgba(12,28,36,.94);border-bottom-color:rgba(240,234,224,.14)}
+  .masthead.on-dark .mast-nav{background:#0C1C24;border-bottom-color:rgba(240,234,224,.14)}
   .nav{display:block}
   /* in the drawer they read as headings, not as labels */
   .nav a{display:block;font-family:var(--f-display);font-variation-settings:var(--vs-sub);font-weight:600;

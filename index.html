@@ -178,13 +178,17 @@ h2.sec{font-size:clamp(1.55rem,3.1vw,2.6rem);margin-top:.55rem}
   .mast-nav{position:fixed;top:0;left:0;right:0;z-index:1;margin:0;display:block;
     padding:clamp(5rem,13vh,6.2rem) var(--gut) clamp(2rem,6vh,3rem);
     max-height:100svh;overflow-y:auto;overscroll-behavior:contain;
-    background:rgba(246,241,233,.94);border-bottom:1px solid var(--rule-2);
-    -webkit-backdrop-filter:blur(22px) saturate(135%);backdrop-filter:blur(22px) saturate(135%);
+    /* Opaque, not glass. A backdrop-filter nested inside another one does
+       not filter the page behind it - the masthead already has one, so the
+       drawer's blur never landed and the page read straight through it on
+       iOS Safari. Verified in the simulator: standalone it was clean,
+       nested it bled. */
+    background:var(--paper);border-bottom:1px solid var(--rule-2);
     clip-path:inset(0 0 100% 0);opacity:0;visibility:hidden;
     transition:clip-path .62s var(--ease),opacity .3s ease,visibility 0s linear .62s}
   .masthead.nav-open .mast-nav{clip-path:inset(0 0 0 0);opacity:1;visibility:visible;
     transition:clip-path .62s var(--ease),opacity .3s ease,visibility 0s}
-  .masthead.on-dark .mast-nav{background:rgba(12,28,36,.94);border-bottom-color:rgba(240,234,224,.14)}
+  .masthead.on-dark .mast-nav{background:#0C1C24;border-bottom-color:rgba(240,234,224,.14)}
   .nav{display:block}
   /* in the drawer they read as headings, not as labels */
   .nav a{display:block;font-family:var(--f-display);font-variation-settings:var(--vs-sub);font-weight:600;
@@ -263,6 +267,14 @@ h2.sec{font-size:clamp(1.55rem,3.1vw,2.6rem);margin-top:.55rem}
    measured 2.25:1 against the uluru frame. This holds it at 5.07:1. */
   .slide::after{background:linear-gradient(to bottom,rgba(246,241,233,var(--wash)) 0.0%,rgba(246,241,233,var(--wash)) 3.5%,rgba(246,241,233,var(--wash)) 6.9%,rgba(246,241,233,var(--wash)) 10.4%,rgba(246,241,233,var(--wash)) 13.8%,rgba(246,241,233,var(--wash)) 17.3%,rgba(246,241,233,var(--wash)) 20.7%,rgba(246,241,233,var(--wash)) 24.2%,rgba(246,241,233,var(--wash)) 27.6%,rgba(246,241,233,var(--wash)) 31.1%,rgba(246,241,233,var(--wash)) 34.5%,rgba(246,241,233,var(--wash)) 38.0%,rgba(246,241,233,var(--wash)) 41.5%,rgba(246,241,233,var(--wash)) 44.9%,rgba(246,241,233,var(--wash)) 48.4%,rgba(246,241,233,var(--wash)) 51.8%,rgba(246,241,233,var(--wash)) 55.3%,rgba(246,241,233,calc(var(--wash)*0.9952)) 58.7%,rgba(246,241,233,calc(var(--wash)*0.8632)) 62.2%,rgba(246,241,233,calc(var(--wash)*0.6128)) 65.6%,rgba(246,241,233,calc(var(--wash)*0.3289)) 69.1%,rgba(246,241,233,calc(var(--wash)*0.0964)) 72.5%,rgba(246,241,233,0) 76.0%,rgba(246,241,233,0) 100%)}
 }
+/* The Dubai plate is a panorama: skyline across the middle third, sky above,
+   reflection below. In a wide box, cover crops top and bottom and lands on the
+   skyline. In a narrow one it scales by height instead, so the whole frame -
+   all of that empty sky - is shown and the towers end up a sliver. Zoom in on
+   the skyline band and let cover crop the sides, which is what it does well. */
+@media (max-width:860px){
+  .dxb-plate img{transform:scale(1.45);transform-origin:50% 55%}
+}
 @media (max-width:700px){.cue{display:none}}
 
 /* ---------- full-bleed photographic break ---------- */
@@ -313,7 +325,15 @@ h2.sec{font-size:clamp(1.55rem,3.1vw,2.6rem);margin-top:.55rem}
   padding:.32rem .62rem;border-radius:999px;backdrop-filter:blur(6px)}
 .card .btn{display:block;width:100%;text-align:center;font-size:.80rem;letter-spacing:.14em;padding:.92rem 1rem}
 @media (max-width:1000px){.cards{grid-template-columns:1fr 1fr}}
-@media (max-width:700px){.cards{grid-template-columns:1fr}.card{min-height:23rem}}
+@media (max-width:700px){.cards{grid-template-columns:1fr}/* 23rem left 368px for 296px of copy - the card stopped being a photograph
+     with words on it and became a panel, and the scrim (which fades out by 78%
+     of the height) no longer reached the top of the text. Taller card, and a
+     scrim that covers the whole text block rather than just its foot. */
+  .card{min-height:30rem}
+  .card::after{background:linear-gradient(to top,
+    rgba(6,18,24,.94) 0%,rgba(6,18,24,.90) 26%,rgba(6,18,24,.84) 48%,
+    rgba(6,18,24,.78) 66%,rgba(6,18,24,.58) 80%,rgba(6,18,24,.28) 91%,
+    rgba(6,18,24,0) 100%)}}
 
 /* ---------- horizontal rails (destinations + pathway) ---------- */
 .rail-sec{position:relative}
