@@ -79,7 +79,15 @@ h2.sec{font-size:clamp(1.55rem,3.1vw,2.6rem);margin-top:.55rem}
   .masthead{background:rgba(246,241,233,.86)}
   .masthead.on-dark{background:rgba(12,28,36,.86)}
 }
-.brand{display:flex;align-items:center;gap:.62em;text-decoration:none;color:var(--ink);white-space:nowrap;font-size:1.18rem;transition:color .45s ease}
+/* align-items:baseline, not center. The mark spans ascender to baseline, so
+   its bottom edge belongs ON the text baseline - centring the boxes instead
+   floats "Advisory" off the line "Ironbark" sits on. */
+.brand{display:flex;align-items:baseline;gap:.62em;text-decoration:none;color:var(--ink);white-space:nowrap;font-size:1.18rem;transition:color .45s ease}
+/* Side bearings belong to the glyph, not to the gap. A capital I carries a
+   .097em left bearing (a lone stem needs the air); A carries .035em. Left
+   uncorrected the flex gap puts each word further right than it looks. */
+.brand b{margin-left:-.097em}
+.brand i{margin-left:-.069em}
 .brand i{transition:color .45s ease}
 /* The mark's viewBox is cropped to its ink, so height set is height drawn.
    .724em is Archivo's ascender: the mark spans the top of the b and k down
