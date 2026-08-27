@@ -1,5 +1,85 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Consent, EEA and UK. Must run before gtag.js so defaults are set first. -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Region-scoped default first, then the global fallback, per Google's order.
+  // Google resolves the visitor's region itself, server side, so analytics is
+  // held in denied mode across the EEA and the UK whatever the banner does or
+  // does not manage to show.
+  gtag('consent','default',{
+    'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied',
+    'analytics_storage':'denied','wait_for_update':500,
+    'region':['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB']
+  });
+  gtag('consent','default',{
+    'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied',
+    'analytics_storage':'granted'
+  });
+  (function(){
+    var KEY='ib-analytics-consent';
+    function get(){try{return localStorage.getItem(KEY);}catch(e){return null;}}
+    function set(v){try{localStorage.setItem(KEY,v);}catch(e){}}
+    var saved=get();
+    if(saved==='granted'){gtag('consent','update',{'analytics_storage':'granted'});}
+    function asks(){
+      // Timezone, not an IP lookup: no third party, no request, nothing stored.
+      // Over-asking is harmless; under-asking is covered by the region rule above.
+      try{
+        var tz=(Intl.DateTimeFormat().resolvedOptions().timeZone)||'';
+        return /^Europe\//.test(tz)||/^Atlantic\/(Reykjavik|Canary|Madeira|Azores|Faroe)/.test(tz);
+      }catch(e){return true;}
+    }
+    if(saved||!asks())return;
+    function build(){
+      var css=document.createElement('style');
+      css.textContent=
+      '.ibc{position:fixed;left:0;right:0;bottom:0;z-index:70;background:var(--paper,#F6F1E9);'+
+      'border-top:1px solid var(--rule,rgba(22,48,61,.16));box-shadow:0 -12px 32px -24px rgba(22,48,61,.55);'+
+      'transform:translateY(100%);transition:transform 260ms cubic-bezier(.23,1,.32,1)}'+
+      '.ibc.ibc-in{transform:none}'+
+      '.ibc-w{max-width:1500px;margin-inline:auto;padding:clamp(.95rem,2.4vh,1.25rem) clamp(1.35rem,4.6vw,5rem);'+
+      'display:flex;align-items:center;justify-content:space-between;gap:clamp(.9rem,2.5vw,2.2rem);flex-wrap:wrap}'+
+      '.ibc p{margin:0;color:var(--ink-2,#3B5666);font-size:1rem;line-height:1.55;max-width:64ch}'+
+      '.ibc-b{display:flex;align-items:center;gap:1.15rem;flex-shrink:0}'+
+      '.ibc button{font-family:var(--f-mono,ui-monospace,Menlo,monospace);text-transform:uppercase;'+
+      'font-size:.74rem;letter-spacing:.14em;cursor:pointer;white-space:nowrap;'+
+      'transition:transform 200ms cubic-bezier(.23,1,.32,1),box-shadow 200ms ease,color 160ms ease}'+
+      '.ibc-y{background:var(--gold,#E8A317);color:#20160A;border:0;border-radius:999px;padding:.72rem 1.3rem;'+/* the gold pill sits on paper, where its own edge measures 1.93:1, under the 3:1 a control boundary needs. A hairline in the gold's dark shade takes it to 6.0:1 against the paper and 3.1:1 against the fill. */'box-shadow:0 0 0 1.5px rgba(35,26,8,.7)}'+
+      '.ibc-n{background:none;border:0;color:var(--ink,#16303D);padding:.72rem .1rem;'+
+      'border-bottom:1px solid var(--rule,rgba(22,48,61,.16))}'+
+      '@media (hover:hover) and (pointer:fine){'+
+      '.ibc-y:hover{transform:translateY(-1px);box-shadow:0 12px 26px -16px rgba(35,26,8,.6)}'+
+      '.ibc-n:hover{color:var(--ocean,#0E5E7C)}}'+
+      '.ibc button:active{transform:scale(.97)}'+
+      '.ibc button:focus-visible{outline:2px solid var(--ocean,#0E5E7C);outline-offset:3px;border-radius:3px}'+
+      '@media (max-width:700px){.ibc-w{align-items:flex-start;flex-direction:column;gap:.9rem}'+
+      '.ibc p{font-size:.95rem}}'+
+      '@media (prefers-reduced-motion:reduce){.ibc{transition:none}}';
+      document.head.appendChild(css);
+      var bar=document.createElement('div');
+      bar.className='ibc';bar.setAttribute('role','region');
+      bar.setAttribute('aria-label','Analytics consent');
+      bar.innerHTML='<div class="ibc-w"><p>This site uses Google Analytics to see which pages people '+
+        'find useful. Nothing else, and nothing that identifies you.</p>'+
+        '<div class="ibc-b"><button class="ibc-y" type="button">Accept</button>'+
+        '<button class="ibc-n" type="button">Decline</button></div></div>';
+      document.body.appendChild(bar);
+      requestAnimationFrame(function(){requestAnimationFrame(function(){bar.classList.add('ibc-in');});});
+      function close(choice){
+        set(choice);
+        if(choice==='granted'){gtag('consent','update',{'analytics_storage':'granted'});}
+        bar.classList.remove('ibc-in');
+        setTimeout(function(){bar.remove();},280);
+      }
+      bar.querySelector('.ibc-y').addEventListener('click',function(){close('granted');});
+      bar.querySelector('.ibc-n').addEventListener('click',function(){close('denied');});
+    }
+    if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',build);
+    else build();
+  })();
+</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-K8VQ31CZMP"></script>
 <script>
