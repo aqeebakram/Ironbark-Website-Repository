@@ -656,7 +656,19 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 .atlas-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(1.5rem,4vw,3.5rem);
   align-items:center;margin-top:clamp(1.4rem,4vh,2.4rem)}
 @media (max-width:940px){.atlas-grid{grid-template-columns:1fr}}
+.map-col{display:grid;gap:clamp(.7rem,2vh,1.1rem);justify-items:start}
 .map{width:100%;height:auto;overflow:visible}
+/* the prompt sits on the map, not in the section head, and carries a pin of
+   its own so the eye connects the instruction to the thing it is about */
+.map-cue{display:inline-flex;align-items:center;gap:.7rem;
+  font-family:var(--f-mono);font-size:.8rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ink);
+  background:rgba(232,163,23,.16);border:1px solid rgba(232,163,23,.55);border-radius:999px;
+  padding:.6rem 1.1rem .6rem .95rem}
+.map-cue i{flex:0 0 auto;width:9px;height:9px;border-radius:50%;background:var(--ocean);
+  box-shadow:0 0 0 0 rgba(14,94,124,.5);animation:ping 2.4s var(--ease) infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(14,94,124,.45)}
+  70%{box-shadow:0 0 0 10px rgba(14,94,124,0)}100%{box-shadow:0 0 0 0 rgba(14,94,124,0)}}
+@media (max-width:520px){.map-cue{font-size:.74rem;letter-spacing:.1em;padding:.55rem .9rem}}
 .map .land{fill:#E3DACA;stroke:var(--rule);stroke-width:2;transition:fill .5s ease}
 .map .border{fill:none;stroke:var(--rule);stroke-width:2;stroke-dasharray:7 7;opacity:.85}
 .map .leader{fill:none;stroke:var(--rule);stroke-width:2}
@@ -799,7 +811,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 .bark-rule::after{content:"";position:absolute;inset:0;
   background:linear-gradient(to bottom,var(--paper),rgba(246,241,233,.25) 45%,var(--paper-2))}
 
-@media (prefers-reduced-motion:reduce){.marquee ul{animation:none}.swap{animation:none}}
+@media (prefers-reduced-motion:reduce){.marquee ul{animation:none}.swap{animation:none}.map-cue i{animation:none}}
 </style>
 
 
@@ -886,16 +898,18 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   <div class="wrap">
     <div class="bento-head">
       <div><p class="label">Six states, two territories</p><h2 class="h-head sec">Every one of them has a capital, and every capital has a university.</h2></div>
-      <p class="label label--m">Choose a city on the map to learn more</p>
     </div>
     <div class="atlas-grid">
-      <svg class="map" viewBox="-30 -20 1155 975" role="group" aria-label="Map of Australia with the eight capital cities">
+      <div class="map-col">
+        <p class="map-cue"><i aria-hidden="true"></i>Choose a city on the map to learn more</p>
+        <svg class="map" viewBox="-30 -20 1155 975" role="group" aria-label="Map of Australia with the eight capital cities">
         <path class="land" d="M717.6,44.5C711.4,41.0 707.1,78.1 703.5,96.9C700.0,115.6 700.4,136.6 696.5,157.1C692.5,177.6 688.6,209.4 680.0,219.9C671.4,230.4 656.5,224.3 644.7,219.9C632.9,215.5 619.2,216.4 609.4,193.7C599.6,171.0 595.7,102.1 585.9,83.8C576.1,65.4 562.4,87.3 550.6,83.8C538.8,80.3 526.3,67.2 515.3,62.8C504.3,58.5 494.9,52.8 484.7,57.6C474.5,62.4 464.3,86.4 454.1,91.6C443.9,96.9 431.8,78.5 423.5,89.0C415.3,99.5 414.9,147.5 404.7,154.5C394.5,161.4 376.1,133.1 362.4,130.9C348.6,128.7 335.7,131.8 322.4,141.4C309.0,151.0 296.1,172.8 282.4,188.5C268.6,204.2 251.8,220.8 240.0,235.6C228.2,250.4 225.9,267.5 211.8,277.5C197.6,287.5 174.9,291.5 155.3,295.8C135.7,300.2 111.4,297.1 94.1,303.7C76.9,310.2 62.0,320.3 51.8,335.1C41.6,349.9 34.9,373.9 32.9,392.7C31.0,411.4 34.1,424.1 40.0,447.7C45.9,471.2 60.4,508.7 68.2,534.0C76.1,559.4 86.3,577.7 87.1,599.5C87.8,621.3 64.3,651.0 72.9,664.9C81.6,678.9 119.6,685.5 138.8,683.3C158.0,681.1 165.9,657.1 188.2,651.9C210.6,646.6 249.4,658.8 272.9,651.9C296.5,644.9 308.6,619.6 329.4,610.0C350.2,600.4 376.1,597.8 397.6,594.3C419.2,590.8 440.0,587.3 458.8,589.0C477.6,590.8 498.4,597.3 510.6,604.7C522.7,612.1 522.7,621.3 531.8,633.5C540.8,645.7 553.3,670.2 564.7,678.0C576.1,685.9 589.8,677.6 600.0,680.7C610.2,683.7 616.9,685.5 625.9,696.4C634.9,707.3 642.4,733.9 654.1,746.1C665.9,758.3 682.0,763.6 696.5,769.7C711.0,775.8 729.0,782.7 741.2,782.7C753.3,782.7 758.0,768.8 769.4,769.7C780.8,770.5 795.7,790.6 809.4,788.0C823.1,785.4 838.0,760.9 851.8,754.0C865.5,747.0 881.2,758.3 891.8,746.1C902.4,733.9 909.8,696.8 915.3,680.7C920.8,664.5 918.4,660.6 924.7,649.2C931.0,637.9 943.9,635.3 952.9,612.6C962.0,589.9 975.3,544.1 978.8,513.1C982.4,482.1 981.2,446.3 974.1,426.7C967.1,407.1 946.7,403.6 936.5,395.3C926.3,387.0 923.1,390.1 912.9,377.0C902.7,363.9 890.2,334.7 875.3,316.8C860.4,298.9 836.9,288.0 823.5,269.6C810.2,251.3 802.0,226.0 795.3,206.8C788.6,187.6 792.5,169.3 783.5,154.5C774.5,139.6 752.2,136.1 741.2,117.8C730.2,99.5 723.9,48.0 717.6,44.5Z"/>
         <path class="land" d="M769.4,829.9C774.9,826.8 785.9,829.0 800.0,829.9C814.1,830.7 845.1,826.8 854.1,835.1C863.1,843.4 855.7,867.8 854.1,879.6C852.5,891.4 850.6,901.4 844.7,905.8C838.8,910.2 828.2,910.6 818.8,905.8C809.4,901.0 796.9,886.6 788.2,877.0C779.6,867.4 770.2,856.0 767.1,848.2C763.9,840.3 763.9,832.9 769.4,829.9Z"/>
         <g class="borders" aria-hidden="true"><path class="border" d="M400.0,153.1 L400.0,593.7"/><path class="border" d="M400.0,445.0 L682.4,445.0"/><path class="border" d="M611.8,445.0 L611.8,197.7"/><path class="border" d="M682.4,445.0 L682.4,760.8"/><path class="border" d="M682.4,523.6 L869.4,523.6 L903.5,514.4 L927.1,522.3 L952.9,502.6 L977.6,501.8"/><path class="border" d="M682.4,655.8 L715.3,658.4 L738.8,680.7 L764.7,700.3 L795.3,705.5 L828.2,708.1 L849.4,729.1 L893.4,746.1"/><path class="border" d="M864.9,683.8 L880.0,683.8 L880.0,704.7 L868.2,704.7 L864.9,683.8"/><path class="leader" d="M880,691 L955,704"/></g>
         <g class="states" aria-hidden="true"><text class="st-nm" x="224" y="432">WA</text><text class="st-nm" x="499" y="275">NT</text><text class="st-nm" x="536" y="537">SA</text><text class="st-nm" x="776" y="340">QLD</text><text class="st-nm" x="814" y="602">NSW</text><text class="st-nm" x="744" y="723">VIC</text><text class="st-nm" x="798" y="853">TAS</text><text class="st-nm" x="965" y="711" text-anchor="start">ACT</text></g>
         <g id="pins"></g>
-      </svg>
+        </svg>
+      </div>
       <article class="place" id="place" aria-live="polite">
         <div class="ph"><img id="pl-img" src="img/wa/c_sydney.webp" alt="Sydney Harbour, the Opera House and the city."></div>
         <div class="bd">
