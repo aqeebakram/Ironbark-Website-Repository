@@ -535,36 +535,64 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
  .rail{transform:none!important}.rail-vp{overflow-x:auto}.rail-foot{display:none}
  .dxb{height:auto}.dxb-plate{position:relative;height:62svh}.path{margin-top:0}</style></noscript>
 <style>
-/* ---------- page hero, used by the inner pages ---------- */
-.phero{position:relative;padding-block:clamp(7.5rem,18vh,11rem) clamp(2.5rem,7vh,4.5rem)}
-/* A type-led opening. The portrait sits further down, beside the present-day
-   chapter, where it can keep its own proportions instead of being cropped to
-   match a column. */
-.phero h1{font-size:clamp(2.05rem,5vw,4rem);margin:1.05rem 0 0;max-width:17ch;color:var(--ink)}
-.phero .lead{margin-top:1.3rem;max-width:44ch}
-.stat{display:flex;align-items:baseline;gap:1.1rem;margin-top:clamp(1.7rem,4vh,2.5rem);
-  padding-top:1.2rem;border-top:1px solid var(--rule)}
-.stat b{font-family:var(--f-display);font-variation-settings:"wdth" 88,"wght" 700;
-  font-size:clamp(2.9rem,5.6vw,4.4rem);line-height:.8;letter-spacing:-.03em;color:var(--ocean)}
-.stat span{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--muted);max-width:24ch;line-height:1.5}
-.now-mark{font-family:var(--f-mono);font-size:.66rem;font-weight:500;letter-spacing:.15em;
-  text-transform:uppercase;color:var(--ocean);margin:0 0 1.1rem}
-.now-copy{color:var(--ink-2);font-weight:400;max-width:52ch}
-.now-copy + .now-copy{margin-top:.9rem}
-@media (max-width:880px){.phero{padding-top:clamp(6.5rem,16vh,8rem)}}
+/* ---------- page hero: type on the left, the person on the right ---------- */
+.phero{position:relative;padding-block:clamp(7rem,16vh,10rem) 0}
+.phero-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);
+  gap:clamp(1.6rem,4.5vw,4rem);align-items:end}
+@media (max-width:900px){.phero-grid{grid-template-columns:1fr;gap:2rem}}
+.phero h1{font-size:clamp(2.05rem,5vw,4rem);margin:1.05rem 0 0;max-width:15ch;color:var(--ink)}
+.phero .lead{margin-top:1.2rem;max-width:42ch}
+.ab-plate{position:relative;margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--rule-2);
+  align-self:stretch;min-height:clamp(20rem,44vw,32rem)}
+.ab-plate img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ab-plate figcaption{position:absolute;left:0;right:0;bottom:0;padding:2.2rem 1.1rem .9rem;
+  background:linear-gradient(to top,rgba(6,18,24,.82),rgba(6,18,24,0));
+  font-family:var(--f-mono);font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;color:#E4EFF3}
+@media (max-width:900px){.ab-plate{min-height:clamp(17rem,72vw,26rem)}}
 
-/* ---------- the story: employers are the real sequence, so they mark the chapters ---------- */
-.story{padding-block:var(--stack)}
-.story-eyebrow{margin-bottom:clamp(1.3rem,3.2vh,2rem)}
-.chapters{display:grid;gap:clamp(1.5rem,3.5vh,2.4rem);max-width:78ch}
-.chapter{display:grid;grid-template-columns:12.5rem minmax(0,1fr);gap:clamp(1rem,2.2vw,2.2rem);
-  padding-top:1.25rem;border-top:1px solid var(--rule-2)}
-.chapter h3{font-family:var(--f-mono);font-size:.66rem;font-weight:500;letter-spacing:.15em;
-  text-transform:uppercase;color:var(--ocean);margin:0;padding-top:.28rem}
-.chapter p{color:var(--ink-2);font-weight:400}
-.chapter p + p{margin-top:.85rem}
-@media (max-width:820px){.chapter{grid-template-columns:1fr;gap:.55rem}.chapter h3{padding-top:0}}
+/* the four facts that answer "who is this", read in one pass */
+.creds-rail{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:clamp(1rem,2.4vw,2rem);margin-top:clamp(2rem,5.5vh,3.2rem);
+  padding-top:clamp(1.2rem,3vh,1.8rem);border-top:1px solid var(--rule)}
+.cred-i dt{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ocean);margin:0 0 .35rem}
+.cred-i dd{margin:0;color:var(--ink-2);font-size:1.06rem;line-height:1.5}
+
+/* ---------- the route: one leg, one photograph, in order ---------- */
+.route{padding-block:var(--stack)}
+.route-head{display:flex;align-items:baseline;justify-content:space-between;gap:1.4rem;flex-wrap:wrap;
+  margin-bottom:clamp(1.8rem,5vh,3rem)}
+.legs{display:grid;gap:clamp(2.4rem,7vh,5rem)}
+.leg{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.4rem,4vw,3.4rem);
+  align-items:center}
+.leg:nth-child(even) .leg-shot{order:2}
+@media (max-width:820px){.leg{grid-template-columns:1fr;gap:1.2rem}.leg:nth-child(even) .leg-shot{order:0}}
+.leg-shot{position:relative;margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--rule-2);
+  aspect-ratio:3/2;background:#dcd6c9}
+.leg-shot img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.leg:hover .leg-shot img{transform:scale(1.035)}
+.leg-shot figcaption{position:absolute;left:0;right:0;bottom:0;padding:2rem .95rem .75rem;
+  background:linear-gradient(to top,rgba(6,18,24,.8),rgba(6,18,24,0));
+  font-family:var(--f-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:#E4EFF3}
+.leg-when{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--f-mono);font-size:.76rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--sun);margin:0 0 .5rem}
+.leg-when i{display:block;width:1.9rem;height:1px;background:var(--gold)}
+.leg h3{font-size:clamp(1.35rem,2.4vw,1.95rem);margin:0 0 .7rem}
+.leg p{color:var(--ink-2);font-weight:400}
+.leg p + p{margin-top:.85rem}
+
+/* ---------- the statement: why independent, on the deep ground ---------- */
+.stand{position:relative;isolation:isolate;overflow:hidden;background:var(--deep);color:var(--on-deep);
+  padding-block:var(--stack)}
+.stand .label{color:var(--gold)}
+.stand h2{color:var(--on-deep);max-width:20ch;margin-top:.6rem}
+.stand p.lead{color:var(--on-deep-2);margin-top:1.1rem;max-width:52ch}
+.stand-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:clamp(1.2rem,3vw,2.6rem);
+  margin-top:clamp(2rem,5.5vh,3.2rem);padding-top:clamp(1.4rem,3.5vh,2.2rem);
+  border-top:1px solid rgba(240,234,224,.16)}
+.stand-grid h3{font-family:var(--f-mono);font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold);margin:0 0 .5rem;font-weight:400}
+.stand-grid p{color:var(--on-deep-2);font-size:1.06rem}
 </style>
 
 <header class="masthead" id="masthead">
@@ -597,70 +625,94 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 <!-- ══ PAGE HERO ══ -->
 <section class="phero">
   <div class="wrap">
-    <p class="label">About me</p>
-    <h1 class="h-head">Twelve years on every side of international education.</h1>
-    <p class="lead">Now bringing that experience to families and institutions across the UAE.</p>
+    <div class="phero-grid">
+      <div>
+        <p class="label rev"><span>About me</span></p>
+        <h1 class="h-head">Twelve years on every side of international education.</h1>
+        <p class="lead fade" style="--d:160ms">Agency desk, university admissions, faculty marketing, state government &mdash; and now independent advice from Dubai.</p>
+      </div>
+      <figure class="ab-plate fade" style="--d:260ms">
+        <img src="img/ab/portrait.webp" alt="Aqeeb Akram, founder of Ironbark Advisory.">
+        <figcaption>Aqeeb Akram &mdash; founder &amp; CEO, Ironbark Advisory</figcaption>
+      </figure>
+    </div>
+    <dl class="creds-rail">
+      <div class="cred-i fade"><dt>Universities</dt><dd>Macquarie University and the Australian National University</dd></div>
+      <div class="cred-i fade" style="--d:70ms"><dt>Government</dt><dd>Study NSW, in the NSW Premier&rsquo;s Department</dd></div>
+      <div class="cred-i fade" style="--d:140ms"><dt>Australia</dt><dd>Arrived as an international student in 2016</dd></div>
+      <div class="cred-i fade" style="--d:210ms"><dt>Based</dt><dd>Dubai, United Arab Emirates</dd></div>
+    </dl>
   </div>
 </section>
 
-<!-- ══ THE STORY ══ -->
-<section class="story wrap" id="story">
-  <p class="label story-eyebrow">My full story</p>
+<!-- ══ THE ROUTE ══ -->
+<section class="route wrap" id="story">
+  <div class="route-head">
+    <div><p class="label">The route here</p><h2 class="h-head sec">Five stops, in the order they happened.</h2></div>
+    <p class="label label--m">2014 &mdash; today</p>
+  </div>
 
-  <div class="chapters">
-    <article class="chapter fade">
-      <h3>Two agencies</h3>
-      <div>
+  <div class="legs">
+    <article class="leg fade">
+      <figure class="leg-shot"><img src="img/ab/c1_gcc.webp" alt="The Dubai skyline."><figcaption>The Gulf &mdash; where it started</figcaption></figure>
+      <div class="leg-copy">
+        <p class="leg-when"><i></i>2014 &middot; Before Australia</p>
+        <h3 class="h-sub">Two agencies</h3>
         <p>I graduated in 2014 with a Bachelor in Aerospace Engineering. I always dreamed of studying abroad, but I missed the admissions timeline, so I decided to make good use of the time and get into employment before studying abroad.</p>
         <p>I worked with two education agencies before I ever set foot in Australia. I was the one sitting across the table from the student. That early work put me inside the commission driven consultancy model that most GCC families still deal with today, and it taught me early where that model does, and does not, serve the best interests of a family.</p>
       </div>
     </article>
 
-    <article class="chapter fade">
-      <h3>Macquarie University</h3>
-      <div>
+    <article class="leg fade">
+      <figure class="leg-shot"><img src="img/ab/c2_sydney.webp" alt="Sydney Harbour, the Opera House and the Harbour Bridge, with jacaranda in flower."><figcaption>Sydney</figcaption></figure>
+      <div class="leg-copy">
+        <p class="leg-when"><i></i>2016 &middot; Sydney</p>
+        <h3 class="h-sub">Macquarie University</h3>
         <p>In 2016, I moved to Sydney to study a postgraduate program in Management, and went to work for the institutions I had once been placing students into. At Macquarie University, I advised international students through the full admissions cycle, from first enquiry to enrolment.</p>
       </div>
     </article>
 
-    <article class="chapter fade">
-      <h3>Australian National University</h3>
-      <div>
+    <article class="leg fade">
+      <figure class="leg-shot"><img src="img/ab/c3_anu.webp" alt="The Australian National University sign on campus in Canberra."><figcaption>Canberra</figcaption></figure>
+      <div class="leg-copy">
+        <p class="leg-when"><i></i>Canberra</p>
+        <h3 class="h-sub">Australian National University</h3>
         <p>At the Australian National University, I built the international marketing function for the faculty from the ground up, then led an offshore expansion that put the first ANU office on the ground in India.</p>
         <p>As part of that same role, I also managed a geographically dispersed team of regional managers across South Asia, the Middle East, Southeast Asia, Africa and Latin America, working directly with people who understood their markets far better than any head office ever could.</p>
       </div>
     </article>
 
-    <article class="chapter fade">
-      <h3>Study NSW &middot; Government</h3>
-      <div>
+    <article class="leg fade">
+      <figure class="leg-shot"><img src="img/ab/c4_gov.webp" alt="Aqeeb Akram speaking from a lectern bearing the Australian Embassy crest."><figcaption>Speaking at the Australian Embassy</figcaption></figure>
+      <div class="leg-copy">
+        <p class="leg-when"><i></i>2021 &middot; NSW Government</p>
+        <h3 class="h-sub">Study NSW</h3>
         <p>From 2021, I moved into the New South Wales Government, working across Study NSW, a trade and investment arm that was part of the Premier&rsquo;s Department. This is where the picture became complete.</p>
         <p>I led international education engagement and partnerships work for the state, building government to government frameworks across India, China, Indonesia, the UAE, Saudi Arabia and Africa. I chaired the Marketing Consultation Committee, convening university, TAFE and peak body leaders around shared state wide strategy. I briefed DFAT and Austrade officials, including newly appointed Consul-Generals and Trade Commissioners, on education priorities for the state.</p>
+      </div>
+    </article>
+
+    <article class="leg fade">
+      <figure class="leg-shot"><img src="img/ab/c5_dubai.webp" alt="The Dubai skyline at sunrise, mirrored in still water."><figcaption>Dubai, today</figcaption></figure>
+      <div class="leg-copy">
+        <p class="leg-when"><i></i>Today &middot; Dubai</p>
+        <h3 class="h-sub">Ironbark Advisory</h3>
+        <p>After a decade inside Australian institutions and government, I moved to Dubai with my family to build something of my own. I bring the same relationships and government frameworks I built over that decade, except now they work directly for the people who would like to work with me: the families choosing where to send their children, and the institutions trying to get it right in this market.</p>
       </div>
     </article>
   </div>
 </section>
 
-<!-- ══ BREAK · DUBAI ══ -->
-<section class="bleed" id="break-dxb">
-  <div class="bleed-bg"><img data-par="0.2" src="img/dubai.webp" alt="The Dubai skyline at sunrise, mirrored in still water."></div>
-  <div class="wrap inner">
-    <p class="label">Where that led</p>
-    <p class="big h-head fade">Then I moved to Dubai, and built something of my own.</p>
-  </div>
-</section>
-
-<!-- ══ INDEPENDENCE ══ -->
-<section class="founder wrap" id="independent">
-  <div class="founder-grid">
-    <figure class="portrait fade">
-      <img src="img/portrait.webp" alt="Aqeeb Akram, founder of Ironbark Advisory, in a navy suit before an office window with a city skyline behind.">
-      <figcaption>Aqeeb Akram &mdash; founder, Ironbark Advisory</figcaption>
-    </figure>
-    <div class="fade">
-      <p class="now-mark">Ironbark Advisory</p>
-      <p class="now-copy">After a decade inside Australian institutions and government, I moved to Dubai with my family to build something of my own. Ironbark Advisory is independent. There are no commissions from universities shaping what I recommend, and no agent network deciding which options I put in front of a family.</p>
-      <p class="now-copy">I bring the same relationships and government frameworks I built over a decade in Australia, except now they work directly for the people who would like to work with me: the families choosing where to send their children, and the institutions trying to get it right in this market.</p>
+<!-- ══ WHERE I STAND ══ -->
+<section class="stand" id="independent" data-dark>
+  <div class="wrap">
+    <p class="label">Where I stand</p>
+    <h2 class="h-head sec">Ironbark Advisory is independent.</h2>
+    <p class="lead">There are no commissions from universities shaping what I recommend, and no agent network deciding which options I put in front of a family. I have worked inside that model, which is exactly why I do not run one.</p>
+    <div class="stand-grid">
+      <div class="fade"><h3>No commissions</h3><p>No provider pays me to place your child anywhere. You pay me, which means the advice answers to you and to nobody else.</p></div>
+      <div class="fade" style="--d:90ms"><h3>Both sides of the table</h3><p>Agency desk, admissions office, faculty marketing and state government &mdash; I have sat in all four, and none of them is the villain of the story. They just have their own interests.</p></div>
+      <div class="fade" style="--d:180ms"><h3>The first call is free</h3><p>Thirty minutes to work out whether Australia is the right answer, and whether I am the right person to help. It is as likely to end with a no as a yes.</p></div>
     </div>
   </div>
 </section>
