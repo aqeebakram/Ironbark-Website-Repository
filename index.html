@@ -380,14 +380,6 @@ h2.sec{font-size:clamp(1.55rem,3.1vw,2.6rem);margin-top:.55rem}
 .bleed .inner{position:relative;width:100%;padding-bottom:clamp(1.8rem,5vh,3.2rem)}
 .bleed p.big{font-size:clamp(1.32rem,2.7vw,2.25rem);margin:.7rem 0 0;max-width:18ch}
 
-/* ---------- premise ---------- */
-.premise{padding-block:var(--stack)}
-.premise-head{max-width:34ch;margin-bottom:clamp(2rem,5vh,3.2rem)}
-.claims{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:clamp(1.2rem,3vw,2.6rem)}
-.claim{padding-top:1.1rem;border-top:1px solid var(--rule)}
-.claim h3{font-size:1.3rem;margin:.5rem 0 .55rem}
-.claim p{color:var(--ink-2);font-weight:400;font-size:1.16rem}
-
 /* ---------- "How can I help?" — three image cards ---------- */
 .help{padding-block:var(--stack);background:var(--paper-2)}
 .help-head{margin-bottom:clamp(1.8rem,5vh,3rem)}
@@ -429,26 +421,37 @@ h2.sec{font-size:clamp(1.55rem,3.1vw,2.6rem);margin-top:.55rem}
 .rail-stage{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;padding-top:clamp(6.1rem,11vh,7.5rem)}
 .rail-head{display:flex;align-items:baseline;justify-content:space-between;gap:1.4rem;flex-wrap:wrap;
   padding-inline:var(--gut);margin-bottom:clamp(1.1rem,3vh,2rem)}
-.rail-vp{overflow:hidden}
-.rail{display:flex;gap:clamp(.9rem,1.8vw,1.6rem);padding-inline:var(--gut);will-change:transform}
+/* The stage is one viewport tall and clips: a card taller than the space
+   left after the heading lost its last line. The viewport now hands the rail
+   a definite height, the cards stretch to it, and the photograph is the part
+   that gives - so the copy is always whole. */
+.rail-vp{overflow:hidden;flex:1 1 auto;min-height:0;display:flex}
+.rail{display:flex;align-items:stretch;gap:clamp(.9rem,1.8vw,1.6rem);padding-inline:var(--gut);will-change:transform}
 .rail-foot{padding-inline:var(--gut);margin-top:clamp(.9rem,2.5vh,1.6rem);display:flex;align-items:center;gap:1rem}
 .rail-bar{flex:1;height:2px;background:var(--rule-2);position:relative;max-width:16rem;border-radius:2px;overflow:hidden}
 .rail-bar i{position:absolute;inset:0 auto 0 0;background:var(--ocean);border-radius:2px}
 
 /* destinations */
 .dest{background:var(--paper)}
-.city{flex:0 0 auto;width:clamp(255px,26vw,370px);background:var(--card);border:1px solid var(--rule-2);
-  border-radius:12px;overflow:hidden;display:flex;flex-direction:column;
-  transition:border-color .45s ease,box-shadow .55s var(--ease)}
+.city{flex:0 0 auto;width:clamp(255px,26vw,370px);max-height:100%;background:var(--card);
+  border:1px solid var(--rule-2);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;
+  text-decoration:none;color:inherit;
+  transition:border-color .45s ease,box-shadow .55s var(--ease),transform .55s var(--ease)}
+@media (hover:hover) and (pointer:fine){
+  .city:hover{border-color:var(--ocean);transform:translateY(-4px);
+    box-shadow:0 20px 44px -30px rgba(14,94,124,.8)}
+  .city:hover h3{color:var(--ocean)}}
+.city:focus-visible{outline:2px solid var(--ocean);outline-offset:3px}
+.city h3{transition:color .35s ease}
 .city.near{border-color:var(--ocean);box-shadow:0 16px 40px -30px rgba(14,94,124,.75)}
-.city-img{aspect-ratio:3/2;overflow:hidden;background:#dcd6c9}
+.city-img{aspect-ratio:3/2;flex:0 1 auto;min-height:4.5rem;overflow:hidden;background:#dcd6c9}
 .city-img.is-placeholder{display:flex;align-items:center;justify-content:center;
   background:repeating-linear-gradient(135deg,var(--paper-2) 0 10px,#E5DCCB 10px 20px);
   border-bottom:1px solid var(--rule-2)}
 .city-img.is-placeholder span{font-family:var(--f-mono);font-size:.76rem;letter-spacing:.16em;
   text-transform:uppercase;color:var(--muted);background:var(--paper);padding:.4rem .7rem;border-radius:999px}
 .city-img img{width:100%;height:100%;object-fit:cover}
-.city-body{padding:clamp(1rem,1.7vw,1.35rem);display:grid;gap:.5rem;flex:1;align-content:start}
+.city-body{padding:clamp(1rem,1.7vw,1.35rem);display:grid;gap:.5rem;flex:0 0 auto;align-content:start}
 .city-top{display:flex;align-items:baseline;justify-content:space-between;gap:.8rem}
 .city .state{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ocean)}
 .city .code{font-family:var(--f-mono);font-size:.79rem;letter-spacing:.12em;color:var(--muted)}
@@ -496,6 +499,23 @@ h2.sec{font-size:clamp(1.55rem,3.1vw,2.6rem);margin-top:.55rem}
   .city,.stage{min-height:0}
   .stage{padding:clamp(1rem,1.8vw,1.5rem)}
   .city-img{aspect-ratio:16/10}
+  .city-body{gap:.42rem;padding:clamp(.85rem,1.4vw,1.1rem)}
+  .city h3{font-size:1.32rem}
+  .city p{font-size:1.04rem;line-height:1.55}
+  .unis{padding-top:.55rem}
+}
+/* Below about 660px of viewport there is no honest way to fit a photograph,
+   a paragraph and the universities into a pinned stage, so the rail stops
+   pinning and simply scrolls sideways, exactly as it does on a phone. The
+   script is held to the same breakpoint, or it would keep sizing the section
+   for a pin that is no longer happening. */
+@media (min-width:901px) and (max-height:660px){
+  .rail-stage{position:relative;height:auto;padding-block:clamp(3rem,9vh,5rem)}
+  .rail-vp{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+  .rail{transform:none!important;padding-bottom:1rem}
+  .city,.stage{scroll-snap-align:center;max-height:none}
+  .city-img{aspect-ratio:3/2}
+  .rail-foot{display:none}
 }
 @media (max-width:900px){
   .rail-stage{position:relative;height:auto;padding-block:var(--stack)}
@@ -626,31 +646,6 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   </div>
 </section>
 
-<!-- ══ PREMISE ══ -->
-<section class="premise wrap" id="why">
-  <div class="premise-head">
-    <p class="label">Why independent</p>
-    <h2 class="h-head sec"><span class="rev"><span>Most agents are paid by the</span></span><span class="rev"><span style="--d:110ms">university you end up at.</span></span></h2>
-  </div>
-  <div class="claims">
-    <article class="claim fade"><p class="label label--m">i</p><h3 class="h-sub">No commissions, ever</h3>
-      <p>No provider pays me to place your child anywhere. You pay me, which means the advice answers to you and to nobody else.</p></article>
-    <article class="claim fade" style="--d:110ms"><p class="label label--m">ii</p><h3 class="h-sub">Full cost and return clarity</h3>
-      <p>Total cost to graduation modelled against realistic post-study outcomes &mdash; before a deposit is paid, not after.</p></article>
-    <article class="claim fade" style="--d:220ms"><p class="label label--m">iii</p><h3 class="h-sub">Lived experience</h3>
-      <p>I have worked in international education since 2014, arrived in Australia as a student in 2016, and have stayed inside the sector ever since &mdash; universities, government, and now here.</p></article>
-  </div>
-</section>
-
-<!-- ══ BREAK · AUSTRALIA ══ -->
-<section class="bleed" id="break-au">
-  <div class="bleed-bg"><img data-par="0.2" src="img/australia.webp" alt="The Twelve Apostles on the Great Ocean Road at dawn."></div>
-  <div class="wrap inner">
-    <p class="label">The destination</p>
-    <p class="big h-head fade">Eleven thousand kilometres from the campus gates.</p>
-  </div>
-</section>
-
 <!-- ══ GET STARTED · three cards ══ -->
 <section class="help" id="help">
   <div class="wrap">
@@ -692,49 +687,54 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 <section class="rail-sec dest" id="destinations">
   <div class="rail-stage">
     <div class="rail-head">
-      <div><p class="label">Study destinations</p><h2 class="h-head sec">Seven cities with a strong focus on education and graduate outcomes.</h2></div>
-      <p class="label label--m">West to east &mdash; Perth is the closest Australian capital to the UAE</p>
+      <div><p class="label">Study destinations</p><h2 class="h-head sec">Eight cities with strong focus on education and graduate outcomes.</h2></div>
+      <p class="label label--m">Every state and territory capital, in alphabetical order</p>
     </div>
     <div class="rail-vp" data-vp="dest"><div class="rail" data-rail="dest">
-      <article class="city"><div class="city-img"><img src="img/perth.webp" alt="Perth at dusk from Kings Park."></div><div class="city-body">
-        <div class="city-top"><span class="state">Western Australia</span><span class="code">WA</span></div><h3 class="h-sub">Perth</h3>
-        <p>The closest capital to home, on the Indian Ocean and only a few hours off Gulf time. Beaches on the doorstep and a smaller student population.</p>
-        <p class="fit">Engineering, mining and energy &mdash; and the shortest flight</p>
-        <div class="unis"><span class="uni">UWA</span><span class="uni">Curtin</span><span class="uni">Murdoch</span><span class="uni">ECU</span></div></div></article>
-      <article class="city"><div class="city-img"><img src="img/adelaide.webp" alt="Adelaide across the Torrens."></div><div class="city-body">
+      <a class="city" href="why-australia-adelaide.html"><div class="city-img"><img src="img/adelaide.webp" alt="Adelaide across the Torrens."></div><div class="city-body">
         <div class="city-top"><span class="state">South Australia</span><span class="code">SA</span></div><h3 class="h-sub">Adelaide</h3>
         <p>Compact, walkable and noticeably cheaper to live in than Sydney or Melbourne. Wine country half an hour out, serious health and defence research in town.</p>
         <p class="fit">Tighter budgets, health sciences, defence engineering</p>
-        <div class="unis"><span class="uni">Adelaide</span><span class="uni">UniSA</span><span class="uni">Flinders</span></div></div></article>
-      <article class="city"><div class="city-img"><img src="img/melbourne.webp" alt="Flinders Street Station, Melbourne."></div><div class="city-body">
-        <div class="city-top"><span class="state">Victoria</span><span class="code">VIC</span></div><h3 class="h-sub">Melbourne</h3>
-        <p>The country&rsquo;s cultural engine &mdash; design, food, sport, and the densest concentration of research universities. Cold grey winters some students love and others really do not.</p>
-        <p class="fit">Research depth, design, arts and business</p>
-        <div class="unis"><span class="uni">Melbourne</span><span class="uni">Monash</span><span class="uni">RMIT</span><span class="uni">Deakin</span></div></div></article>
-      <article class="city"><div class="city-img"><img src="img/hobart.webp" alt="Snow on kunanyi / Mount Wellington above yachts moored on the Derwent, Hobart."></div><div class="city-body">
-        <div class="city-top"><span class="state">Tasmania</span><span class="code">TAS</span></div><h3 class="h-sub">Hobart</h3>
-        <p>The smallest and coolest of the capitals, on a deep-water harbour under a mountain. Cheapest of the seven to live in, and the base for Australia&rsquo;s Antarctic and marine science.</p>
-        <p class="fit">Marine and Antarctic science, and the lowest cost base</p>
-        <div class="unis"><span class="uni">UTAS</span></div></div></article>
-      <article class="city"><div class="city-img"><img src="img/canberra.webp" alt="Parliament House, Canberra, at dusk."></div><div class="city-body">
-        <div class="city-top"><span class="state">Aust. Capital Territory</span><span class="code">ACT</span></div><h3 class="h-sub">Canberra</h3>
-        <p>Small, quiet and built on purpose around government. If the plan involves policy or diplomacy, the people who do that work live in the same suburbs.</p>
-        <p class="fit">Policy, international relations, public administration</p>
-        <div class="unis"><span class="uni">ANU</span><span class="uni">Canberra</span></div></div></article>
-      <article class="city"><div class="city-img"><img src="img/sydney.webp" alt="Sydney Harbour from the air."></div><div class="city-body">
-        <div class="city-top"><span class="state">New South Wales</span><span class="code">NSW</span></div><h3 class="h-sub">Sydney</h3>
-        <p>The biggest city and the biggest graduate job market, wrapped around a harbour and thirty-odd beaches. Also the most expensive place in the country to rent.</p>
-        <p class="fit">Finance, law, and the largest job market</p>
-        <div class="unis"><span class="uni">UNSW</span><span class="uni">Sydney</span><span class="uni">UTS</span><span class="uni">Macquarie</span></div></div></article>
-      <article class="city"><div class="city-img"><img src="img/brisbane.webp" alt="Brisbane at dusk from above."></div><div class="city-body">
+        <div class="unis"><span class="uni">Adelaide</span><span class="uni">UniSA</span><span class="uni">Flinders</span></div></div></a>
+      <a class="city" href="why-australia-brisbane.html"><div class="city-img"><img src="img/brisbane.webp" alt="Brisbane at dusk from above."></div><div class="city-body">
         <div class="city-top"><span class="state">Queensland</span><span class="code">QLD</span></div><h3 class="h-sub">Brisbane</h3>
         <p>Subtropical and warm almost year round, cheaper than the southern capitals, and building fast ahead of the 2032 Games. The Gold Coast is an hour south.</p>
         <p class="fit">Warm climate, sport science, a lower cost base</p>
-        <div class="unis"><span class="uni">UQ</span><span class="uni">QUT</span><span class="uni">Griffith</span></div></div></article>
+        <div class="unis"><span class="uni">UQ</span><span class="uni">QUT</span><span class="uni">Griffith</span></div></div></a>
+      <a class="city" href="why-australia-canberra.html"><div class="city-img"><img src="img/canberra.webp" alt="Parliament House, Canberra, at dusk."></div><div class="city-body">
+        <div class="city-top"><span class="state">Aust. Capital Territory</span><span class="code">ACT</span></div><h3 class="h-sub">Canberra</h3>
+        <p>Small, quiet and built on purpose around government. If the plan involves policy or diplomacy, the people who do that work live in the same suburbs.</p>
+        <p class="fit">Policy, international relations, public administration</p>
+        <div class="unis"><span class="uni">ANU</span><span class="uni">Canberra</span></div></div></a>
+      <a class="city" href="why-australia-darwin.html"><div class="city-img"><img src="img/darwin.webp" alt="Uluru rising above the desert in the Northern Territory."></div><div class="city-body">
+        <div class="city-top"><span class="state">Northern Territory</span><span class="code">NT</span></div><h3 class="h-sub">Darwin</h3>
+        <p>The tropical north, closer to Jakarta than to Sydney, and the smallest of the eight. Two seasons rather than four, and low living costs.</p>
+        <p class="fit">Tropical health, Indigenous studies, a low cost base</p>
+        <div class="unis"><span class="uni">CDU</span></div></div></a>
+      <a class="city" href="why-australia-hobart.html"><div class="city-img"><img src="img/hobart.webp" alt="Snow on kunanyi / Mount Wellington above yachts moored on the Derwent, Hobart."></div><div class="city-body">
+        <div class="city-top"><span class="state">Tasmania</span><span class="code">TAS</span></div><h3 class="h-sub">Hobart</h3>
+        <p>The smallest and coolest of the capitals, on a deep-water harbour under a mountain. The base for Australia&rsquo;s Antarctic and marine science.</p>
+        <p class="fit">Marine and Antarctic science, and a low cost base</p>
+        <div class="unis"><span class="uni">UTAS</span></div></div></a>
+      <a class="city" href="why-australia-melbourne.html"><div class="city-img"><img src="img/melbourne.webp" alt="Flinders Street Station, Melbourne."></div><div class="city-body">
+        <div class="city-top"><span class="state">Victoria</span><span class="code">VIC</span></div><h3 class="h-sub">Melbourne</h3>
+        <p>The country&rsquo;s cultural engine &mdash; design, food, sport, and the densest concentration of research universities. Cold grey winters some students love and others really do not.</p>
+        <p class="fit">Research depth, design, arts and business</p>
+        <div class="unis"><span class="uni">Melbourne</span><span class="uni">Monash</span><span class="uni">RMIT</span><span class="uni">Deakin</span></div></div></a>
+      <a class="city" href="why-australia-perth.html"><div class="city-img"><img src="img/perth.webp" alt="Perth at dusk from Kings Park."></div><div class="city-body">
+        <div class="city-top"><span class="state">Western Australia</span><span class="code">WA</span></div><h3 class="h-sub">Perth</h3>
+        <p>The closest capital to home, on the Indian Ocean and only a few hours off Gulf time. Beaches on the doorstep and a smaller student population.</p>
+        <p class="fit">Engineering, mining and energy &mdash; and the shortest flight</p>
+        <div class="unis"><span class="uni">UWA</span><span class="uni">Curtin</span><span class="uni">Murdoch</span><span class="uni">ECU</span></div></div></a>
+      <a class="city" href="why-australia-sydney.html"><div class="city-img"><img src="img/sydney.webp" alt="Sydney Harbour from the air."></div><div class="city-body">
+        <div class="city-top"><span class="state">New South Wales</span><span class="code">NSW</span></div><h3 class="h-sub">Sydney</h3>
+        <p>The biggest city and the biggest graduate job market, wrapped around a harbour and thirty-odd beaches. Also the most expensive place in the country to rent.</p>
+        <p class="fit">Finance, law, and the largest job market</p>
+        <div class="unis"><span class="uni">UNSW</span><span class="uni">Sydney</span><span class="uni">UTS</span><span class="uni">Macquarie</span></div></div></a>
     </div></div>
     <div class="rail-foot"><p class="label label--m" style="margin:0">Scroll</p>
-      <span class="rail-bar"><i data-bar="dest" style="width:14.28%"></i></span>
-      <p class="label label--m" data-name="dest" style="margin:0">Perth</p></div>
+      <span class="rail-bar"><i data-bar="dest" style="width:12.5%"></i></span>
+      <p class="label label--m" data-name="dest" style="margin:0">Adelaide</p></div>
   </div>
 </section>
 
@@ -799,7 +799,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
       <p class="label fade">Who you are speaking to</p>
       <p class="who-name fade" style="--d:60ms">Aqeeb Akram</p>
       <p class="who-role fade" style="--d:110ms">Founder &amp; CEO, Ironbark Advisory</p>
-      <h3 class="h-sub fade" style="--d:160ms">In the sector since 2014, with experience working in government, universities, and education agencies.</h3>
+      <h3 class="h-sub fade" style="--d:160ms">12 years in the international education sector, with experience working in government, universities, and education agencies.</h3>
       <dl class="creds">
         <div class="cred fade" style="--d:220ms"><dt>Universities</dt><dd>Macquarie University and the Australian National University</dd></div>
         <div class="cred fade" style="--d:280ms"><dt>Government</dt><dd>Senior roles in NSW Government, Premier&rsquo;s Department</dd></div>
@@ -902,7 +902,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 
   const par=[...document.querySelectorAll("[data-par]")];
   const darkZones=[...document.querySelectorAll("[data-dark]")];
-  const railMQ=matchMedia("(min-width: 901px)");
+  const railMQ=matchMedia("(min-width: 901px) and (min-height: 661px)");
   const pinned=()=>railMQ.matches && !reduce;
 
   // both rails share one implementation
