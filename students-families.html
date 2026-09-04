@@ -419,6 +419,31 @@ h2.sec{font-size:clamp(1.55rem,3.1vw,2.6rem);margin-top:.55rem}
 .uni{font-family:var(--f-mono);font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);
   border:1px solid var(--rule-2);border-radius:999px;padding:.2rem .48rem}
 
+/* ---------- eight cities, each one a page ---------- */
+.dests{padding-block:clamp(3rem,9vh,6rem);background:var(--paper)}
+.dest-head{display:flex;align-items:baseline;justify-content:space-between;gap:1.4rem;flex-wrap:wrap;
+  margin-bottom:clamp(1.4rem,3.4vh,2.2rem)}
+.dest-head .lead{max-width:46ch;margin:0}
+.dgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(.85rem,1.5vw,1.35rem)}
+.dcard{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--rule-2);
+  border-radius:14px;overflow:hidden;color:inherit;text-decoration:none;
+  transition:transform .5s var(--ease),border-color .4s ease,box-shadow .5s var(--ease)}
+.dcard:hover,.dcard:focus-visible{transform:translateY(-4px);border-color:var(--ocean);
+  box-shadow:0 22px 48px -30px rgba(9,26,34,.6)}
+.dcard-img{aspect-ratio:3/2;overflow:hidden;background:#dcd6c9}
+.dcard-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.dcard:hover .dcard-img img{transform:scale(1.05)}
+.dcard-bd{padding:clamp(.9rem,1.4vw,1.15rem);display:grid;gap:.35rem;align-content:start;flex:1}
+.dcard .st{font-family:var(--f-mono);font-size:.73rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ocean)}
+.dcard h3{font-size:1.3rem;margin:0}
+.dcard p{font-size:1rem;line-height:1.5;color:var(--ink-2);margin:0;font-weight:400}
+.dcard .go{margin-top:auto;padding-top:.75rem;font-family:var(--f-mono);font-size:.74rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--muted);transition:color .35s ease}
+.dcard:hover .go,.dcard:focus-visible .go{color:var(--gold)}
+@media (max-width:1000px){.dgrid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.dgrid{grid-template-columns:1fr}}
+@media (hover:none){.dcard:hover{transform:none;box-shadow:none}}
+
 /* ---------- the Dubai plate, overtaken by what follows ---------- */
 :root{--dxb-h:235svh;--dxb-lift:100svh}
 .dxb{position:relative;height:var(--dxb-h)}
@@ -895,6 +920,91 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   </div>
 </section>
 
+<!-- ══ 03 — THE EIGHT CITIES ══ -->
+<section class="dests" id="destinations">
+  <div class="wrap">
+    <div class="dest-head">
+      <div><p class="label">03 &mdash; Destinations</p>
+        <h2 class="h-head sec">Eight capitals, and they are not interchangeable.</h2></div>
+      <p class="lead">Every one of them has a university. What separates them is rent, climate, the size of the graduate job market and how far your child ends up from home.</p>
+    </div>
+    <div class="dgrid">
+      <a class="dcard fade" href="why-australia-adelaide.html">
+        <div class="dcard-img"><img loading="lazy" src="img/cities/adelaide.webp" alt="Adelaide, South Australia."></div>
+        <div class="dcard-bd">
+          <p class="st">SA &middot; 3 universities</p>
+          <h3 class="h-sub">Adelaide</h3>
+          <p>Compact, walkable and noticeably cheaper to live in than the eastern capitals.</p>
+          <span class="go">Read the Adelaide page &rarr;</span>
+        </div>
+      </a>
+      <a class="dcard fade" style="--d:60ms" href="why-australia-brisbane.html">
+        <div class="dcard-img"><img loading="lazy" src="img/cities/brisbane.webp" alt="Brisbane, Queensland."></div>
+        <div class="dcard-bd">
+          <p class="st">QLD &middot; 3 universities</p>
+          <h3 class="h-sub">Brisbane</h3>
+          <p>Subtropical and warm almost year round, and building fast ahead of the 2032 Games.</p>
+          <span class="go">Read the Brisbane page &rarr;</span>
+        </div>
+      </a>
+      <a class="dcard fade" style="--d:120ms" href="why-australia-canberra.html">
+        <div class="dcard-img"><img loading="lazy" src="img/cities/canberra.webp" alt="Canberra, Aust. Capital Territory."></div>
+        <div class="dcard-bd">
+          <p class="st">ACT &middot; 2 universities</p>
+          <h3 class="h-sub">Canberra</h3>
+          <p>Small and quiet, built on purpose around government and the national institutions.</p>
+          <span class="go">Read the Canberra page &rarr;</span>
+        </div>
+      </a>
+      <a class="dcard fade" style="--d:180ms" href="why-australia-darwin.html">
+        <div class="dcard-img"><img loading="lazy" src="img/cities/darwin.webp" alt="Darwin, Northern Territory."></div>
+        <div class="dcard-bd">
+          <p class="st">NT &middot; 1 university</p>
+          <h3 class="h-sub">Darwin</h3>
+          <p>The tropical north, closer to Jakarta than to Sydney, and the smallest of the eight.</p>
+          <span class="go">Read the Darwin page &rarr;</span>
+        </div>
+      </a>
+      <a class="dcard fade" style="--d:240ms" href="why-australia-hobart.html">
+        <div class="dcard-img"><img loading="lazy" src="img/cities/hobart.webp" alt="Hobart, Tasmania."></div>
+        <div class="dcard-bd">
+          <p class="st">TAS &middot; 1 university</p>
+          <h3 class="h-sub">Hobart</h3>
+          <p>A deep-water harbour under a mountain, and the cheapest of the eight to live in.</p>
+          <span class="go">Read the Hobart page &rarr;</span>
+        </div>
+      </a>
+      <a class="dcard fade" style="--d:300ms" href="why-australia-melbourne.html">
+        <div class="dcard-img"><img loading="lazy" src="img/cities/melbourne.webp" alt="Melbourne, Victoria."></div>
+        <div class="dcard-bd">
+          <p class="st">VIC &middot; 8 universities</p>
+          <h3 class="h-sub">Melbourne</h3>
+          <p>The densest concentration of research universities in the country, and cold in July.</p>
+          <span class="go">Read the Melbourne page &rarr;</span>
+        </div>
+      </a>
+      <a class="dcard fade" style="--d:360ms" href="why-australia-perth.html">
+        <div class="dcard-img"><img loading="lazy" src="img/cities/perth.webp" alt="Perth, Western Australia."></div>
+        <div class="dcard-bd">
+          <p class="st">WA &middot; 5 universities</p>
+          <h3 class="h-sub">Perth</h3>
+          <p>The closest Australian capital to the Gulf, and only a few hours off Dubai time.</p>
+          <span class="go">Read the Perth page &rarr;</span>
+        </div>
+      </a>
+      <a class="dcard fade" style="--d:420ms" href="why-australia-sydney.html">
+        <div class="dcard-img"><img loading="lazy" src="img/cities/sydney.webp" alt="Sydney, New South Wales."></div>
+        <div class="dcard-bd">
+          <p class="st">NSW &middot; 6 universities</p>
+          <h3 class="h-sub">Sydney</h3>
+          <p>The biggest graduate job market, and the most expensive place in the country to rent.</p>
+          <span class="go">Read the Sydney page &rarr;</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
 <section class="bleed" id="break-lake">
   <div class="bleed-bg"><img data-par="0.2" src="img/pinklake.webp" alt="A pink salt lake beside a desert highway in Western Australia, seen from above."></div>
   <!-- the copy that used to sit here now heads the rail itself, so the heading
@@ -905,7 +1015,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 <section class="rail-sec proc" id="process">
   <div class="rail-stage">
     <div class="rail-head">
-      <div><p class="label">03 &mdash; The process</p>
+      <div><p class="label">04 &mdash; The process</p>
         <h2 class="h-head sec">Five stages, reviewed as we go.</h2></div>
       <p class="lead">The earlier we start, the more of the pathway is still open.</p>
     </div>
@@ -952,7 +1062,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 <section class="advisory wrap" id="advisory">
   <div class="adv-grid">
     <div class="adv-col"><div class="adv-head">
-      <p class="label">04 &mdash; The advisory</p>
+      <p class="label">05 &mdash; The advisory</p>
       <h2 class="h-head sec">A practice of one</h2>
       <p class="adv-lead">Deliberately small, with the numbers behind every recommendation.</p>
     </div></div>
@@ -969,7 +1079,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 
 <section class="casenote" id="case">
   <div class="wrap">
-    <p class="label">05 &mdash; Case note &middot; composite, illustrative</p>
+    <p class="label">06 &mdash; Case note &middot; composite, illustrative</p>
     <blockquote class="fade">She had the grades for the ranking. <span>She did not have the prerequisites for the course.</span></blockquote>
     <div class="case-grid">
       <div class="fade">
@@ -990,7 +1100,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 <section class="packs-sec" id="packages">
   <div class="wrap">
     <div class="packs-head">
-      <p class="label">06 &mdash; Packages</p>
+      <p class="label">07 &mdash; Packages</p>
       <h2 class="h-head sec">Choose the level of support your family needs.</h2>
     </div>
     <div class="packs">
@@ -1021,7 +1131,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 <section class="close" id="enquire" data-dark>
   <img src="img/close.webp" alt="">
   <div class="wrap">
-    <p class="label">07 &mdash; Enquire</p>
+    <p class="label">08 &mdash; Enquire</p>
     <h2 class="h-head">The first conversation is free and takes thirty minutes.</h2>
     <p class="lead">Bring your child&rsquo;s year group, the subjects already chosen, and a rough budget. You will leave knowing whether Australia is the right call, whether the plan you have still holds, and what to decide next.</p>
     <div class="enquire-foot">
