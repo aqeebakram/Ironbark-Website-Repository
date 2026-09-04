@@ -340,8 +340,6 @@ h2.sec{font-size:clamp(1.55rem,3.1vw,2.6rem);margin-top:.55rem}
 .hero .lead{color:var(--ink-2);margin-top:clamp(.9rem,2.2vh,1.5rem);max-width:38ch}
 .hero-foot{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
   margin-top:clamp(1.3rem,3.5vh,2.2rem);padding-top:1.05rem;border-top:1px solid var(--rule)}
-.places{display:flex;align-items:center;gap:.7rem;font-family:var(--f-mono);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--kick)}
-.places i{display:block;width:clamp(28px,7vw,96px);height:1px;background:linear-gradient(90deg,var(--ocean),var(--gold))}
 .cue{display:flex;align-items:center;gap:.55rem;font-family:var(--f-mono);font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:var(--kick)}
 .cue i{display:block;width:1px;height:30px;background:linear-gradient(var(--kick),transparent);animation:cue 2.4s var(--ease) infinite}
 @keyframes cue{0%{transform:scaleY(0);transform-origin:50% 0}45%{transform:scaleY(1);transform-origin:50% 0}
@@ -365,7 +363,7 @@ h2.sec{font-size:clamp(1.55rem,3.1vw,2.6rem);margin-top:.55rem}
 @media (max-width:860px){
   .dxb-plate img{transform:scale(1.45);transform-origin:50% 55%}
 }
-@media (max-width:700px){.cue{display:none}}
+@media (max-width:700px){.hero-foot{display:none}}
 
 /* ---------- "How can I help?" — three image cards ---------- */
 .help{padding-block:var(--stack);background:var(--paper-2)}
@@ -535,7 +533,6 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
     <h1 class="h-head">Education advice from someone who has sat on every side of the table.</h1>
     <p class="lead">I help families find the right Australian pathway for their child, and I provide strategic advice to education providers and stakeholders across K12 and higher education.</p>
     <div class="hero-foot">
-      <p class="places">Australia<i></i>Dubai</p>
       <p class="cue"><i></i>Scroll</p>
     </div>
   </div>
