@@ -332,159 +332,6 @@ h2.sec{font-size:clamp(1.55rem,3.1vw,2.6rem);margin-top:.55rem}
 }
 @media (max-width:700px){.cue{display:none}}
 
-/* ---------- full-bleed photographic break ---------- */
-.bleed{position:relative;height:min(86svh,760px);overflow:hidden;isolation:isolate;display:flex;align-items:flex-end}
-.bleed-bg{position:absolute;inset:-10% 0 -10% 0;z-index:-2;overflow:hidden}
-.bleed-bg img{width:100%;height:100%;object-fit:cover;will-change:transform}
-.bleed::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:
-    /* head: the paper carries down into the picture */
-    linear-gradient(to bottom,var(--paper) 0%,rgba(246,241,233,.78) 20%,
-      rgba(246,241,233,.36) 48%,rgba(246,241,233,0) 100%) top/100% 26% no-repeat,
-    /* foot: unchanged, the copy sits on it */
-    linear-gradient(to top,rgba(246,241,233,.92) 0%,rgba(246,241,233,.62) 34%,rgba(246,241,233,0) 68%)}
-.bleed .inner{position:relative;width:100%;padding-bottom:clamp(1.8rem,5vh,3.2rem)}
-.bleed p.big{font-size:clamp(1.32rem,2.7vw,2.25rem);margin:.7rem 0 0;max-width:18ch}
-
-/* ---------- premise ---------- */
-.premise{padding-block:var(--stack)}
-.premise-head{max-width:34ch;margin-bottom:clamp(2rem,5vh,3.2rem)}
-.claims{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:clamp(1.2rem,3vw,2.6rem)}
-.claim{padding-top:1.1rem;border-top:1px solid var(--rule)}
-.claim h3{font-size:1.3rem;margin:.5rem 0 .55rem}
-.claim p{color:var(--ink-2);font-weight:400;font-size:1.16rem}
-
-/* ---------- "How can I help?" — three image cards ---------- */
-.help{padding-block:var(--stack);background:var(--paper-2)}
-.help-head{margin-bottom:clamp(1.8rem,5vh,3rem)}
-.help-head .lead{margin-top:1rem;max-width:46ch}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,1.8vw,1.5rem)}
-.card{position:relative;isolation:isolate;overflow:hidden;border-radius:20px;background:#101c22;
-  min-height:clamp(27rem,58vh,34rem);display:flex;flex-direction:column;justify-content:flex-end;
-  padding:clamp(1.1rem,1.7vw,1.5rem);text-decoration:none;color:#F4F7F8;
-  transition:transform .55s var(--ease),box-shadow .55s var(--ease)}
-.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;
-  transition:transform 1s var(--ease)}
-/* the copy sits in a darkened well at the foot of the picture */
-.card::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:linear-gradient(to top,rgba(6,18,24,.94) 0%,rgba(6,18,24,.88) 24%,
-    rgba(6,18,24,.70) 46%,rgba(6,18,24,.50) 62%,rgba(6,18,24,.14) 78%,rgba(6,18,24,0) 92%)}
-.card:hover{transform:translateY(-4px);box-shadow:0 26px 54px -32px rgba(9,26,34,.7)}
-.card:hover img{transform:scale(1.05)}
-.card .eyebrow{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.17em;text-transform:uppercase;color:#EEF6F9}
-.card h3{font-size:clamp(1.35rem,2.1vw,1.75rem);margin:.55rem 0 .5rem;color:#FBFDFD}
-.card p{font-size:1.1rem;line-height:1.54;color:#C6D6DD;margin:0 0 .95rem;max-width:32ch}
-.chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem}
-.chip{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.09em;text-transform:uppercase;
-  background:rgba(238,247,250,.16);border:1px solid rgba(238,247,250,.2);color:#E4EFF3;
-  padding:.32rem .62rem;border-radius:999px;backdrop-filter:blur(6px)}
-.card .btn{display:block;width:100%;text-align:center;font-size:.80rem;letter-spacing:.14em;padding:.92rem 1rem}
-@media (max-width:1000px){.cards{grid-template-columns:1fr 1fr}}
-@media (max-width:700px){.cards{grid-template-columns:1fr}.card{min-height:23rem}}
-
-/* ---------- horizontal rails (destinations + pathway) ---------- */
-.rail-sec{position:relative}
-.rail-stage{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;padding-top:clamp(6.1rem,11vh,7.5rem)}
-.rail-head{display:flex;align-items:baseline;justify-content:space-between;gap:1.4rem;flex-wrap:wrap;
-  padding-inline:var(--gut);margin-bottom:clamp(1.1rem,3vh,2rem)}
-.rail-vp{overflow:hidden}
-.rail{display:flex;gap:clamp(.9rem,1.8vw,1.6rem);padding-inline:var(--gut);will-change:transform}
-.rail-foot{padding-inline:var(--gut);margin-top:clamp(.9rem,2.5vh,1.6rem);display:flex;align-items:center;gap:1rem}
-.rail-bar{flex:1;height:2px;background:var(--rule-2);position:relative;max-width:16rem;border-radius:2px;overflow:hidden}
-.rail-bar i{position:absolute;inset:0 auto 0 0;background:var(--ocean);border-radius:2px}
-
-/* destinations */
-.dest{background:var(--paper)}
-.city{flex:0 0 auto;width:clamp(255px,26vw,370px);background:var(--card);border:1px solid var(--rule-2);
-  border-radius:12px;overflow:hidden;display:flex;flex-direction:column;
-  transition:border-color .45s ease,box-shadow .55s var(--ease)}
-.city.near{border-color:var(--ocean);box-shadow:0 16px 40px -30px rgba(14,94,124,.75)}
-.city-img{aspect-ratio:3/2;overflow:hidden;background:#dcd6c9}
-.city-img.is-placeholder{display:flex;align-items:center;justify-content:center;
-  background:repeating-linear-gradient(135deg,var(--paper-2) 0 10px,#E5DCCB 10px 20px);
-  border-bottom:1px solid var(--rule-2)}
-.city-img.is-placeholder span{font-family:var(--f-mono);font-size:.76rem;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--muted);background:var(--paper);padding:.4rem .7rem;border-radius:999px}
-.city-img img{width:100%;height:100%;object-fit:cover}
-.city-body{padding:clamp(1rem,1.7vw,1.35rem);display:grid;gap:.5rem;flex:1;align-content:start}
-.city-top{display:flex;align-items:baseline;justify-content:space-between;gap:.8rem}
-.city .state{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ocean)}
-.city .code{font-family:var(--f-mono);font-size:.79rem;letter-spacing:.12em;color:var(--muted)}
-.city h3{font-size:1.5rem}
-.city p{font-size:1.11rem;color:var(--ink-2);font-weight:400}
-.city .fit{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--sun);
-  display:flex;gap:.5rem;align-items:flex-start;margin-top:.15rem}
-.city .fit::before{content:"";flex:0 0 auto;width:5px;height:5px;margin-top:.4rem;background:var(--gold);border-radius:50%}
-.unis{display:flex;flex-wrap:wrap;gap:.3rem;padding-top:.7rem;margin-top:.15rem;border-top:1px solid var(--rule-2)}
-.uni{font-family:var(--f-mono);font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);
-  border:1px solid var(--rule-2);border-radius:999px;padding:.2rem .48rem}
-
-/* ---------- the Dubai plate, overtaken by what follows ---------- */
-:root{--dxb-h:235svh;--dxb-lift:100svh}
-.dxb{position:relative;height:var(--dxb-h)}
-.dxb::before{content:"";position:absolute;top:0;left:0;right:0;height:26svh;z-index:1;pointer-events:none;
-  background:linear-gradient(to bottom,var(--paper) 0%,rgba(246,241,233,.80) 22%,
-    rgba(246,241,233,.38) 52%,rgba(246,241,233,0) 100%)}
-.dxb-plate{position:sticky;top:0;height:100svh;overflow:hidden;z-index:0}
-.dxb-plate img{width:100%;height:100%;object-fit:cover;transform:none}
-.dxb-plate::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(to bottom,rgba(8,26,34,.28) 0%,rgba(8,26,34,0) 34%)}
-
-/* ---------- the student pathway rail ---------- */
-.path{position:relative;z-index:2;background:var(--paper);border-radius:26px 26px 0 0;
-  box-shadow:0 -34px 70px -32px rgba(9,26,34,.5);margin-top:calc(var(--dxb-lift) * -1)}
-.stage{flex:0 0 auto;width:clamp(290px,32vw,460px);background:var(--card);border:1px solid var(--rule-2);
-  border-radius:14px;padding:clamp(1.3rem,2.2vw,2rem);display:flex;flex-direction:column;gap:.75rem;
-  min-height:clamp(21rem,50vh,27rem);transition:border-color .45s ease,box-shadow .55s var(--ease)}
-.stage.near{border-color:var(--ocean);box-shadow:0 18px 44px -32px rgba(14,94,124,.8)}
-.stage .n{font-family:var(--f-display);font-variation-settings:"wdth" 88,"wght" 700;
-  font-size:clamp(2.6rem,4.6vw,3.9rem);line-height:.82;color:var(--rule);transition:color .45s ease;letter-spacing:-.03em}
-.stage.near .n{color:var(--ocean)}
-.stage .when{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;color:var(--sun)}
-.stage h3{font-size:clamp(1.25rem,1.9vw,1.6rem)}
-.stage p{font-size:1.14rem;color:var(--ink-2);flex:1}
-.stage ul{list-style:none;margin:0;padding:.9rem 0 0;border-top:1px solid var(--rule-2);display:grid;gap:.38rem}
-.stage li{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);
-  display:flex;gap:.55rem}
-.stage li::before{content:"";flex:0 0 auto;width:5px;height:5px;margin-top:.4rem;background:var(--ocean);border-radius:50%}
-
-@media (min-width:901px) and (max-height:820px){
-  /* the pinned stage loses ~78px to the header; claw it back from the cards */
-  .rail-head{margin-bottom:clamp(.6rem,1.6vh,1.1rem)}
-  .city,.stage{min-height:0}
-  .stage{padding:clamp(1rem,1.8vw,1.5rem)}
-  .city-img{aspect-ratio:16/10}
-}
-@media (max-width:900px){
-  .rail-stage{position:relative;height:auto;padding-block:var(--stack)}
-  .rail-vp{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
-  .rail{transform:none!important;padding-bottom:1rem}
-  .city,.stage{scroll-snap-align:center}
-  .city{width:min(78vw,320px)} .stage{width:min(84vw,340px)}
-  .rail-foot{display:none}
-  :root{--dxb-h:215svh;--dxb-lift:105svh}
-  .path{border-radius:20px 20px 0 0}
-}
-
-/* ---------- founder ---------- */
-.founder{padding-block:var(--stack)}
-.founder-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(1.8rem,5vw,5rem);align-items:center}
-.portrait{position:relative;border-radius:12px;overflow:hidden;max-width:24rem;margin:0;border:1px solid var(--rule-2)}
-.portrait img{width:100%;height:auto}
-.portrait figcaption{position:absolute;left:0;right:0;bottom:0;padding:1.5rem 1.1rem .9rem;
-  background:linear-gradient(to top,rgba(246,241,233,.98) 0%,rgba(246,241,233,.93) 58%,rgba(246,241,233,0) 100%);
-  font-family:var(--f-mono);font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-2)}
-.who-name{font-family:var(--f-display);font-variation-settings:var(--vs-head);font-weight:700;
-  font-size:clamp(1.5rem,2.4vw,2rem);letter-spacing:-.02em;line-height:1.05;margin:.5rem 0 .2rem}
-.who-role{font-family:var(--f-mono);font-size:.80rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ocean);margin-bottom:1.15rem}
-.founder h3{font-size:clamp(1.24rem,2.3vw,1.8rem);max-width:none;margin-bottom:.4rem;text-wrap:pretty}
-.creds{margin-top:1.6rem}
-.cred{display:grid;grid-template-columns:9.4rem 1fr;gap:1rem;padding:.72rem 0;border-top:1px solid var(--rule-2);
-  font-size:1.13rem;color:var(--ink-2);font-weight:400}
-.cred dt{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin:0;padding-top:.22rem}
-.cred dd{margin:0}
-@media (max-width:860px){.founder-grid{grid-template-columns:1fr;gap:2.2rem}.portrait{max-width:17rem}.cred{grid-template-columns:1fr;gap:.1rem}}
-
 /* ---------- close ---------- */
 .close{position:relative;overflow:hidden;isolation:isolate;background:var(--deep);color:var(--on-deep);
   min-height:min(92svh,820px);display:flex;align-items:center;padding-block:var(--stack)}
@@ -524,16 +371,11 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
   .rev>*{transform:none;opacity:1}.fade{opacity:1;transform:none}
-  .rail-stage{position:relative;height:auto;padding-block:var(--stack)}
-  .rail{transform:none!important}.rail-vp{overflow-x:auto}.rail-foot{display:none}
-  .hero-bg,.bleed-bg{inset:0}
-  .dxb{height:auto}.dxb-plate{position:relative;height:62svh}.path{margin-top:0}
+  .hero-bg{inset:0}
 }
 </style>
 <noscript><style>.rev>*{transform:none;opacity:1}.fade{opacity:1;transform:none}
- .rail-stage{position:relative;height:auto;padding-block:var(--stack)}
- .rail{transform:none!important}.rail-vp{overflow-x:auto}.rail-foot{display:none}
- .dxb{height:auto}.dxb-plate{position:relative;height:62svh}.path{margin-top:0}</style></noscript>
+</style></noscript>
 <style>
 /* ============================================================
    INSTITUTIONS
@@ -631,19 +473,10 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
     box-shadow:0 0 0 1.5px rgba(35,26,8,.88),0 14px 28px -16px rgba(35,26,8,.55)}
 }
 
-/* ---------- who this is for: one statement, stacked ----------
-   Headline and standfirst read down the page rather than facing each other
-   across it. A big headline on the left with a small paragraph floating right
-   is the section-header pattern every generated page reaches for. */
-.who{padding-block:var(--stack)}
-.who h2{max-width:min(100%,46rem)}
-.who p{margin-top:clamp(1.2rem,3vh,1.8rem);max-width:58ch;
-  font-size:clamp(1.14rem,1.3vw,1.28rem);line-height:1.55;color:var(--ink-2)}
-
 /* ---------- the ledger: this page's signature ----------
    Sticky heading on the left, the scope of work running past it on the right.
-   The numbers are real: this is the order the work happens in, entry before
-   feasibility before partners before approvals. */
+   The numbers are real: this is the order the work happens in, partnerships
+   before market work before schools. */
 .ledger{padding-block:var(--stack);display:grid;
   grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);
   gap:clamp(2rem,5vw,5.5rem);align-items:start;
@@ -651,7 +484,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 .ledger-head{position:sticky;top:clamp(6.5rem,15vh,8.5rem)}
 .ledger-head h2{max-width:min(100%,24rem)}
 .ledger-head .lead{margin-top:1.05rem;max-width:30ch}
-/* the readout: how far through the four services you are */
+/* the readout: how far through the three services you are */
 /* narrow on purpose: at full column width it read as a rule under the
    standfirst rather than as a meter */
 .led-progress{margin-top:clamp(1.8rem,4vh,2.6rem);height:2px;max-width:13rem;
@@ -661,8 +494,8 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 .leds{display:grid}
 /* Each entry occupies a band taller than its own copy, and the group is taller
    than the viewport. That is load-bearing, not styling: at 807px inside a 900px
-   viewport all four entries entered at once and every scrubbed animation
-   finished in the same 60px of scroll. The band is what gives them an order. */
+   viewport every entry entered at once and each scrubbed animation finished in
+   the same 60px of scroll. The band is what gives them an order. */
 .led{position:relative;display:grid;
   grid-template-columns:3.6rem minmax(0,1fr);
   gap:.5rem clamp(.9rem,1.8vw,1.6rem);align-items:baseline;align-content:start;
@@ -696,37 +529,6 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 @media (max-width:520px){
   .led{grid-template-columns:2.9rem minmax(0,1fr)}
 }
-
-/* ---------- the government break ----------
-   Canberra at dusk is a far darker frame than the breaks on the other pages, so
-   the head dissolve is lengthened to carry the paper down into the sky. The foot
-   keeps the SHARED paper wash: swapping it to ink left a hard cut where the
-   break met the paper section below it. */
-.gov::after{background:
-  linear-gradient(to bottom,var(--paper) 0%,rgba(246,241,233,.80) 16%,
-    rgba(246,241,233,.52) 34%,rgba(246,241,233,.22) 56%,
-    rgba(246,241,233,.06) 80%,rgba(246,241,233,0) 100%) top/100% 34% no-repeat,
-  linear-gradient(to top,rgba(246,241,233,.95) 0%,rgba(246,241,233,.86) 16%,
-    rgba(246,241,233,.70) 32%,rgba(246,241,233,.44) 52%,
-    rgba(246,241,233,.20) 72%,rgba(246,241,233,.05) 88%,rgba(246,241,233,0) 96%)}
-
-/* ---------- why Ironbark ----------
-   Three vantage points, grouped on hairlines rather than boxed into cards, and
-   deliberately unequal in width so the row does not read as three identical
-   tiles. Elevation would be a lie here: none of the three outranks the others. */
-.why{padding-block:var(--stack)}
-.why-head{margin-bottom:clamp(2.2rem,5vh,3.4rem)}
-.why-head h2{max-width:min(100%,30rem)}
-.why-head .lead{margin-top:1.1rem}
-.claims{display:grid;grid-template-columns:minmax(0,1.24fr) minmax(0,1fr) minmax(0,1fr);
-  gap:clamp(1.4rem,3.2vw,3.2rem)}
-.claim{padding-top:1.15rem;border-top:1px solid var(--rule)}
-.claim h3{font-size:clamp(1.12rem,1.6vw,1.3rem);margin:.5rem 0 .55rem}
-.claim p{color:var(--ink-2);font-weight:400;font-size:1.08rem;max-width:40ch}
-/* three columns need real measure. Below the nav's own breakpoint they fall to
-   234px each, about thirteen characters a line, so they stack instead. */
-@media (max-width:1150px){.claims{grid-template-columns:1fr;gap:clamp(1.5rem,4vh,2.2rem)}
-  .claim p{max-width:56ch}}
 
 /* ---------- the close ---------- */
 .close h2{max-width:16ch}
@@ -802,10 +604,6 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 
   /* the three credentials stagger by offsetting their ranges, so the cascade is
      driven by scroll position rather than by a delay the user cannot control */
-  .claim{transition:none;animation:ib-rise linear both;animation-timeline:view()}
-  .claim:nth-child(1){animation-range:entry 8% entry 62%}
-  .claim:nth-child(2){animation-range:entry 14% entry 68%}
-  .claim:nth-child(3){animation-range:entry 20% entry 74%}
 }
 }
 
@@ -858,64 +656,23 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
     <div class="phero-copy">
       <p class="label">For institutions</p>
       <h1 class="h-head"><span class="rev"><span>Expanding into the UAE takes</span></span><span class="rev"><span style="--d:110ms">more than a market report.</span></span></h1>
-      <p class="lead fade" style="--d:300ms">It takes someone who already knows the room.</p>
+      <p class="lead fade" style="--d:300ms">It takes someone who understands the sector and has experience in the room where decisions are made.</p>
       <a class="cta fade" style="--d:420ms" href="https://calendar.app.google/Wr325oNEYvxfeW6F9" target="_blank" rel="noopener">Book a discovery call &rarr;</a>
     </div>
   </div>
-</section>
-
-<!-- ══ WHO THIS IS FOR · one statement ══ -->
-<section class="who wrap" id="who">
-  <h2 class="h-head sec"><span class="rev"><span>Universities, colleges and providers</span></span><span class="rev"><span style="--d:110ms">weighing up a UAE presence.</span></span></h2>
-  <p class="fade" style="--d:280ms">From any country. Twelve years across Australian higher education, government
-    relations, and this market specifically are what that&rsquo;s built on.</p>
 </section>
 
 <!-- ══ ADVISORY SERVICES · the ledger ══ -->
 <section class="ledger wrap" id="services">
   <div class="ledger-head">
     <h2 class="h-head sec"><span class="rev"><span>Practical,</span></span><span class="rev"><span style="--d:110ms">relationship-led support.</span></span></h2>
-    <p class="lead fade" style="--d:300ms">For institutions entering or growing in the UAE.</p>
+    <p class="lead fade" style="--d:300ms">For international universities entering the UAE, and for UAE institutions exploring opportunities.</p>
     <div class="led-progress" aria-hidden="true"><i></i></div>
   </div>
   <div class="leds">
-    <div class="led fade"><em>01</em><h3>UAE market entry advisory</h3><p>The regulatory landscape (KHDA, ADEK, free zone licensing), and an honest read on whether your institution actually fits this market.</p></div>
-    <div class="led fade"><em>02</em><h3>Transnational education and branch campus feasibility</h3><p>Real feasibility work on branch campuses and articulation agreements, weighed against what the capital risk and reputational exposure actually look like.</p></div>
-    <div class="led fade"><em>03</em><h3>Partnership brokering</h3><p>Introductions to the right local partners: universities, free zones, government bodies. Through relationships I actually have, not a cold list.</p></div>
-    <div class="led fade"><em>04</em><h3>Government and regulatory navigation</h3><p>I&rsquo;ve sat on the government side of these conversations myself. That&rsquo;s what I bring to getting approvals and stakeholder relationships right the first time.</p></div>
-  </div>
-</section>
-
-<!-- ══ BREAK · the government side ══ -->
-<section class="bleed gov" id="break-gov">
-  <div class="bleed-bg">
-    <img data-par="0.2" src="img/inst_gov.webp" alt="Anzac Parade at dusk, looking up the avenue to Parliament House in Canberra.">
-  </div>
-  <div class="wrap inner">
-    <p class="label">The other side of the table</p>
-    <p class="big h-head fade">I&rsquo;ve sat on the government side of these conversations.</p>
-  </div>
-</section>
-
-<!-- ══ WHY IRONBARK ══ -->
-<section class="why wrap" id="why-ironbark">
-  <div class="why-head">
-    <h2 class="h-head sec"><span class="rev"><span>Most consultants have read</span></span><span class="rev"><span style="--d:110ms">about this market.</span></span></h2>
-    <p class="lead fade" style="--d:280ms">I&rsquo;ve worked inside it, from both sides of the table.</p>
-  </div>
-  <div class="claims">
-    <article class="claim fade"><p class="label label--m">Higher education</p>
-      <h3 class="h-sub">Macquarie University and ANU</h3>
-      <p>I worked inside these institutions. That&rsquo;s a different vantage point than an
-         outside advisor summarising how universities operate.</p></article>
-    <article class="claim fade"><p class="label label--m">Government</p>
-      <h3 class="h-sub">Ministerial and diplomatic roles</h3>
-      <p>I sat inside the government relationships that shape education policy between
-         Australia and the Gulf.</p></article>
-    <article class="claim fade"><p class="label label--m">On the ground</p>
-      <h3 class="h-sub">Based in the UAE</h3>
-      <p>I&rsquo;m not flying in for this. I live here, and the relationships that come with
-         actually being here are the ones that matter.</p></article>
+    <div class="led fade"><em>01</em><h3>Transnational education and partnerships</h3><p>Real feasibility work on university to university partnerships, dual degree programs, articulations and research partnerships.</p></div>
+    <div class="led fade"><em>02</em><h3>Market research and advisory</h3><p>Advice on new operations and function set-up, refining existing functions, expanding the internationalisation agenda, and developing commercial and academic opportunities.</p></div>
+    <div class="led fade"><em>03</em><h3>School partnerships and engagement</h3><p>Immersion programs and study tours for students, school partnerships, and summer programs for the K12 sector in the UAE.</p></div>
   </div>
 </section>
 
@@ -1071,7 +828,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   addEventListener("scroll",()=>{ if(performance.now()-last<120) return; sy=target=scrollY; paint(); },{passive:true});
   addEventListener("visibilitychange",()=>{ if(document.visibilityState==="visible"){ sy=target=scrollY; paint(); sweep(); }});
 
-  const watched=[...document.querySelectorAll(".rev,.fade,.claim,.stage,.cred,.card,.city")];
+  const watched=[...document.querySelectorAll(".rev,.fade,.led,.cred,.card")];
   const io=new IntersectionObserver((es,o)=>es.forEach(e=>{
     if(e.isIntersecting){ e.target.classList.add("in"); o.unobserve(e.target); }}),
     {rootMargin:"0px 0px -8% 0px",threshold:.1});
