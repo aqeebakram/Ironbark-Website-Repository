@@ -1372,19 +1372,27 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
     }
     /* A picker nobody touches reads as a static image, so it advances on its
        own every two seconds. It stops for good the moment someone chooses a
-       year themselves, pauses while the pointer or keyboard focus is inside
-       it, and never starts for anyone who has asked for reduced motion. */
+       year themselves, and never starts for anyone who has asked for reduced
+       motion.
+
+       The pause belongs to the row of years and nothing else. It used to sit
+       on the whole block, panel included: scrolling the section into view
+       under a resting cursor fired pointerenter, and because a reader's mouse
+       then sits still, pointerleave never came and the timeline stopped for
+       good. On the thin track a pointer really does mean "I am about to pick
+       one", and focus releases again on the way out. */
     const slow=matchMedia("(prefers-reduced-motion: reduce)").matches;
     let tick=null, taken=false, held=false;
     const stop=()=>{ clearInterval(tick); tick=null; };
     const go=()=>{ if(!tick && !taken && !held && !slow) tick=setInterval(()=>pick((at+1)%INV.length),2000); };
     const hold=()=>{ held=true; stop(); };
+    const release=()=>{ held=false; go(); };
     const take=()=>{ taken=true; stop(); };
     if(!slow){
-      const tl=track.closest(".tl");
-      tl.addEventListener("pointerenter",hold);
-      tl.addEventListener("pointerleave",()=>{ held=false; go(); });
-      tl.addEventListener("focusin",hold);
+      track.addEventListener("pointerenter",hold);
+      track.addEventListener("pointerleave",release);
+      track.addEventListener("focusin",hold);
+      track.addEventListener("focusout",release);
       track.addEventListener("click",take);
       go();
     }
