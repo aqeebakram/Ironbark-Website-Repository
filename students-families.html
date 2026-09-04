@@ -387,8 +387,8 @@ h2.sec{font-size:clamp(1.55rem,3.1vw,2.6rem);margin-top:.55rem}
 .rail-stage{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;padding-top:clamp(6.1rem,11vh,7.5rem)}
 .rail-head{display:flex;align-items:baseline;justify-content:space-between;gap:1.4rem;flex-wrap:wrap;
   padding-inline:var(--gut);margin-bottom:clamp(1.1rem,3vh,2rem)}
-.rail-vp{overflow:hidden}
-.rail{display:flex;gap:clamp(.9rem,1.8vw,1.6rem);padding-inline:var(--gut);will-change:transform}
+.rail-vp{overflow:hidden;flex:1 1 auto;min-height:0}
+.rail{display:flex;align-items:stretch;gap:clamp(.9rem,1.8vw,1.6rem);padding-inline:var(--gut);will-change:transform}
 .rail-foot{padding-inline:var(--gut);margin-top:clamp(.9rem,2.5vh,1.6rem);display:flex;align-items:center;gap:1rem}
 .rail-bar{flex:1;height:2px;background:var(--rule-2);position:relative;max-width:16rem;border-radius:2px;overflow:hidden}
 .rail-bar i{position:absolute;inset:0 auto 0 0;background:var(--ocean);border-radius:2px}
@@ -433,8 +433,9 @@ h2.sec{font-size:clamp(1.55rem,3.1vw,2.6rem);margin-top:.55rem}
 /* ---------- the student pathway rail ---------- */
 .path{position:relative;z-index:2;background:var(--paper);border-radius:26px 26px 0 0;
   box-shadow:0 -34px 70px -32px rgba(9,26,34,.5);margin-top:calc(var(--dxb-lift) * -1)}
-.stage{flex:0 0 auto;width:clamp(290px,32vw,460px);background:var(--card);border:1px solid var(--rule-2);
-  border-radius:14px;padding:clamp(1.3rem,2.2vw,2rem);display:flex;flex-direction:column;gap:.75rem;
+.stage{flex:0 0 auto;width:clamp(290px,32vw,460px);max-height:100%;background:var(--card);
+  border:1px solid var(--rule-2);border-radius:14px;padding:clamp(1.3rem,2.2vw,2rem);
+  display:flex;flex-direction:column;gap:.75rem;
   min-height:clamp(21rem,50vh,27rem);transition:border-color .45s ease,box-shadow .55s var(--ease)}
 .stage.near{border-color:var(--ocean);box-shadow:0 18px 44px -32px rgba(14,94,124,.8)}
 .stage .n{font-family:var(--f-display);font-variation-settings:"wdth" 88,"wght" 700;
@@ -454,6 +455,24 @@ h2.sec{font-size:clamp(1.55rem,3.1vw,2.6rem);margin-top:.55rem}
   .city,.stage{min-height:0}
   .stage{padding:clamp(1rem,1.8vw,1.5rem)}
   .city-img{aspect-ratio:16/10}
+}
+@media (min-width:901px) and (max-height:780px){
+  .stage{gap:.5rem}
+  .stage .n{font-size:clamp(2rem,3vw,2.7rem)}
+  .stage p{font-size:1.06rem;line-height:1.55}
+  .stage ul{padding-top:.6rem;gap:.3rem}
+  .stage li{font-size:.74rem}
+}
+/* Under about 620px there is no honest way to fit a numeral, a paragraph and
+   four bullets into a pinned stage, so the rail stops pinning and scrolls
+   sideways as it does on a phone. The script is held to the same breakpoint,
+   or it keeps sizing the section for a pin that is no longer happening. */
+@media (min-width:901px) and (max-height:620px){
+  .rail-stage{position:relative;height:auto;padding-block:clamp(3rem,9vh,5rem)}
+  .rail-vp{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+  .rail{transform:none!important;padding-bottom:1rem}
+  .stage{scroll-snap-align:center;max-height:none}
+  .rail-foot{display:none}
 }
 @media (max-width:900px){
   .rail-stage{position:relative;height:auto;padding-block:var(--stack)}
@@ -1152,7 +1171,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 
   const par=[...document.querySelectorAll("[data-par]")];
   const darkZones=[...document.querySelectorAll("[data-dark]")];
-  const railMQ=matchMedia("(min-width: 901px)");
+  const railMQ=matchMedia("(min-width: 901px) and (min-height: 621px)");
   const pinned=()=>railMQ.matches && !reduce;
 
   // both rails share one implementation
