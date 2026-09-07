@@ -611,8 +611,13 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
    far too small to aim at. The pulse on the state says what will happen. */
 .atlas-map{cursor:pointer}
 .atlas-map:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-.atlas-map:not(.zoom) .st.here{animation:atlasPulse 2.6s ease-in-out infinite}
-@keyframes atlasPulse{0%,100%{stroke-width:2}50%{stroke-width:7}}
+/* The state's stroke is the same colour as its fill, so growing the stroke
+   alone was invisible. The ring has to change colour to read as a pulse, and
+   gold is the colour this site already uses for anything you can act on. */
+.atlas-map:not(.zoom) .st.here{animation:atlasPulse 2.2s ease-in-out infinite}
+@keyframes atlasPulse{
+  0%,100%{stroke:var(--ocean);stroke-width:2}
+  50%{stroke:var(--gold);stroke-width:7}}
 @media (hover:hover){.atlas-map:not(.zoom):hover .st.here{filter:brightness(1.14)}}
 .atlas-hint{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;
   color:var(--ink-2);margin:clamp(1.2rem,3vh,1.8rem) 0 0;display:flex;align-items:center;gap:.55rem}
