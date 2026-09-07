@@ -416,13 +416,6 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 @media (max-width:900px){.atlas-grid{grid-template-columns:1fr;gap:1.8rem}}
 .atlas-side h2{max-width:16ch;margin-top:.5rem}
 .atlas-note{color:var(--ink-2);max-width:38ch;margin:1rem 0 0}
-.view-toggle{display:flex;gap:.4rem;margin-top:clamp(1.2rem,3vh,1.8rem)}
-.view-toggle button{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;
-  background:none;color:var(--ink-2);border:1px solid var(--rule);border-radius:999px;
-  padding:.5rem .95rem;cursor:pointer;white-space:nowrap;
-  transition:border-color .3s ease,color .3s ease,background .3s ease}
-.view-toggle button:hover{border-color:var(--ocean);color:var(--ocean)}
-.view-toggle button[aria-pressed="true"]{border-color:var(--gold);background:rgba(232,163,23,.14);color:var(--ink)}
 .atlas-foot{display:flex;align-items:center;gap:clamp(1rem,2.4vw,1.8rem);flex-wrap:wrap;
   margin-top:clamp(1.2rem,3vh,1.8rem);padding-top:clamp(.9rem,2.2vh,1.3rem);border-top:1px solid var(--rule-2)}
 .key{display:flex;align-items:center;gap:.55rem;font-family:var(--f-mono);font-size:.72rem;
@@ -610,6 +603,26 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 
 </style>
 
+<style id="atlas-interactive">
+/* ---------- the map is the control ----------
+   The reader taps the map to move in on the highlighted state and taps again
+   to come back out. The frame takes the tap rather than the state path
+   itself: the ACT is about five pixels across on a phone, so the shape is
+   far too small to aim at. The pulse on the state says what will happen. */
+.atlas-map{cursor:pointer}
+.atlas-map:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.atlas-map:not(.zoom) .st.here{animation:atlasPulse 2.6s ease-in-out infinite}
+@keyframes atlasPulse{0%,100%{stroke-width:2}50%{stroke-width:7}}
+@media (hover:hover){.atlas-map:not(.zoom):hover .st.here{filter:brightness(1.14)}}
+.atlas-hint{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--ink-2);margin:clamp(1.2rem,3vh,1.8rem) 0 0;display:flex;align-items:center;gap:.55rem}
+.atlas-hint::before{content:"";flex:0 0 auto;width:8px;height:8px;border-radius:50%;
+  background:var(--gold);animation:atlasDot 2.6s ease-in-out infinite}
+@keyframes atlasDot{0%,100%{opacity:1}50%{opacity:.28}}
+@media (prefers-reduced-motion:reduce){
+  .atlas-map:not(.zoom) .st.here,.atlas-hint::before{animation:none}}
+</style>
+
 <style id="mobile-fit">
 /* ---------- phone: legible labels and reachable targets ----------
    Most visitors arrive on a phone. Two things were failing there: mono
@@ -620,7 +633,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   .live-src,.clk-d,.econ-list .det,.plate figcaption,.uni-list span,
   .ms li,.stage li,.free,.pack-flag,.packs-note,.readout,.place dt,
   .colophon,.colophon span,.sh-back,.glance-grid dt,.gl dd small,
-  .view-toggle button,.quickfig span,.tile .v small,
+  .quickfig span,.tile .v small,
   .rank-head span,.rank .c,.uni-shot figcaption{font-size:.75rem}
 
   /* The masthead is a flex row, so the button needs to refuse to shrink. */
@@ -632,7 +645,6 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   .foot ul a{display:inline-block;padding-block:.7rem}
   /* Only visible once the drawer is open, so the first sweep never saw it. */
   .mast-nav .ln{min-height:44px}
-  .view-toggle button{padding-block:.85rem}
   .other-row a{padding-block:.75rem}
   .tl-b{padding-block:.55rem}
 
@@ -709,18 +721,16 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
     <div class="atlas-side">
       <p class="label">Where it is</p>
       <h2 class="h-head sec">Northern Territory, and what is in it.</h2>
-      <p class="atlas-note">The map opens on Australia so you can place the state, then moves in to it.
-        The buttons switch between the two.</p>
-      <div class="view-toggle" role="group" aria-label="Map view">
-        <button type="button" data-view="nat" aria-pressed="true">Australia</button>
-        <button type="button" data-view="zoom" aria-pressed="false">NT</button>
-      </div>
+      <p class="atlas-note">The map opens on Australia so you can place the state before
+        moving in for a closer look.</p>
+      <p class="atlas-hint" data-hint></p>
       <div class="atlas-foot">
         <p class="key"><i></i>University cities</p>
         <p class="key gold"><i></i>Worth the trip</p>
       </div>
     </div>
-    <div class="atlas-map" data-map><svg viewBox="0 0 1000 880" role="img" aria-label="A map of Australia in the Indian, Southern and Pacific oceans. Northern Territory is picked out, and the view moves in to show its university cities and places worth the trip."><rect class="sea" x="0" y="0" width="1000" height="880"/><g class="cam" style="--zoom:translate(-490.5px,-52.5px) scale(1.941)"><path class="shelf far" d="M693.9,73.1 L681.6,118.8 L675.5,171.4 L661.2,226.3 L630.6,226.3 L602.0,205.0 L600.0,203.4 L579.6,107.4 L549.0,107.4 L518.4,89.1 L491.8,84.6 L465.3,114.3 L438.8,112.0 L418.4,168.0 L422.4,169.1 L385.7,148.6 L351.0,157.7 L316.3,198.8 L279.6,240.0 L255.1,276.5 L206.1,292.5 L153.1,299.4 L116.3,326.8 L100.0,377.1 L106.1,425.1 L130.6,500.5 L146.9,557.6 L134.7,614.8 L191.8,630.8 L234.7,603.3 L308.2,603.3 L357.1,566.8 L416.3,553.1 L418.4,552.6 L469.4,548.5 L514.3,562.2 L532.7,587.3 L561.2,626.2 L591.8,628.5 L614.3,642.2 L638.8,685.6 L663.3,698.4 L675.5,706.2 L714.3,717.6 L738.8,706.2 L773.5,722.2 L810.2,692.5 L846.3,685.6 L865.3,628.5 L873.5,601.1 L898.0,569.1 L919.4,472.4 L920.4,482.2 L916.3,406.8 L883.7,379.4 L863.3,363.4 L830.6,310.8 L785.7,269.7 L761.2,214.8 L751.0,169.1 L714.3,137.1 L693.9,73.1Z"/><path class="shelf near" d="M693.9,73.1 L681.6,118.8 L675.5,171.4 L661.2,226.3 L630.6,226.3 L602.0,205.0 L600.0,203.4 L579.6,107.4 L549.0,107.4 L518.4,89.1 L491.8,84.6 L465.3,114.3 L438.8,112.0 L418.4,168.0 L422.4,169.1 L385.7,148.6 L351.0,157.7 L316.3,198.8 L279.6,240.0 L255.1,276.5 L206.1,292.5 L153.1,299.4 L116.3,326.8 L100.0,377.1 L106.1,425.1 L130.6,500.5 L146.9,557.6 L134.7,614.8 L191.8,630.8 L234.7,603.3 L308.2,603.3 L357.1,566.8 L416.3,553.1 L418.4,552.6 L469.4,548.5 L514.3,562.2 L532.7,587.3 L561.2,626.2 L591.8,628.5 L614.3,642.2 L638.8,685.6 L663.3,698.4 L675.5,706.2 L714.3,717.6 L738.8,706.2 L773.5,722.2 L810.2,692.5 L846.3,685.6 L865.3,628.5 L873.5,601.1 L898.0,569.1 L919.4,472.4 L920.4,482.2 L916.3,406.8 L883.7,379.4 L863.3,363.4 L830.6,310.8 L785.7,269.7 L761.2,214.8 L751.0,169.1 L714.3,137.1 L693.9,73.1Z"/><path class="shelf far" d="M738.8,758.8 L751.0,759.9 L773.5,769.0 L793.9,761.0 L806.1,759.2 L812.2,764.5 L813.3,779.3 L811.8,791.9 L805.1,801.0 L806.5,813.6 L793.9,812.5 L796.9,823.9 L787.8,818.2 L782.7,825.0 L765.3,823.9 L755.1,809.0 L749.0,793.0 L739.8,779.3 L737.1,765.2 L738.8,758.8Z"/><path class="shelf near" d="M738.8,758.8 L751.0,759.9 L773.5,769.0 L793.9,761.0 L806.1,759.2 L812.2,764.5 L813.3,779.3 L811.8,791.9 L805.1,801.0 L806.5,813.6 L793.9,812.5 L796.9,823.9 L787.8,818.2 L782.7,825.0 L765.3,823.9 L755.1,809.0 L749.0,793.0 L739.8,779.3 L737.1,765.2 L738.8,758.8Z"/><path class="st away" d="M418.4,168.0 L422.4,169.1 L385.7,148.6 L351.0,157.7 L316.3,198.8 L279.6,240.0 L255.1,276.5 L206.1,292.5 L153.1,299.4 L116.3,326.8 L100.0,377.1 L106.1,425.1 L130.6,500.5 L146.9,557.6 L134.7,614.8 L191.8,630.8 L234.7,603.3 L308.2,603.3 L357.1,566.8 L416.3,553.1 L418.4,552.6 L418.4,422.8 L418.4,168.0Z"/><path class="st here" d="M418.4,168.0 L438.8,112.0 L465.3,114.3 L491.8,84.6 L518.4,89.1 L549.0,107.4 L579.6,107.4 L600.0,203.4 L602.0,205.0 L602.0,422.8 L418.4,422.8 L418.4,168.0Z"/><path class="st away" d="M418.4,552.6 L469.4,548.5 L514.3,562.2 L532.7,587.3 L561.2,626.2 L591.8,628.5 L614.3,642.2 L638.8,685.6 L663.3,698.4 L663.3,422.8 L418.4,422.8 L418.4,552.6Z"/><path class="st away" d="M602.0,205.0 L630.6,226.3 L661.2,226.3 L675.5,171.4 L681.6,118.8 L693.9,73.1 L714.3,137.1 L751.0,169.1 L761.2,214.8 L785.7,269.7 L830.6,310.8 L863.3,363.4 L883.7,379.4 L916.3,406.8 L920.4,482.2 L919.4,472.4 L898.0,473.1 L875.5,490.2 L855.1,483.4 L825.5,491.4 L663.3,491.4 L663.3,422.8 L602.0,422.8 L602.0,205.0Z"/><path class="st away" d="M919.4,472.4 L898.0,569.1 L873.5,601.1 L865.3,628.5 L846.3,685.6 L808.2,670.8 L789.8,652.5 L761.2,650.2 L734.7,645.6 L712.2,628.5 L691.8,609.1 L663.3,606.8 L663.3,491.4 L825.5,491.4 L855.1,483.4 L875.5,490.2 L898.0,473.1 L919.4,472.4Z"/><path class="st away" d="M846.3,685.6 L810.2,692.5 L773.5,722.2 L738.8,706.2 L714.3,717.6 L675.5,706.2 L663.3,698.4 L663.3,606.8 L691.8,609.1 L712.2,628.5 L734.7,645.6 L761.2,650.2 L789.8,652.5 L808.2,670.8 L846.3,685.6Z"/><path class="st away" d="M738.8,758.8 L751.0,759.9 L773.5,769.0 L793.9,761.0 L806.1,759.2 L812.2,764.5 L813.3,779.3 L811.8,791.9 L805.1,801.0 L806.5,813.6 L793.9,812.5 L796.9,823.9 L787.8,818.2 L782.7,825.0 L765.3,823.9 L755.1,809.0 L749.0,793.0 L739.8,779.3 L737.1,765.2 L738.8,758.8Z"/><path class="st away" d="M821.6,631.2 L834.7,631.2 L834.7,649.5 L824.5,649.5 L821.6,631.2Z"/></g><g class="marks"><text class="sea-nm hide-zoom mhide-zoom" style="--nat:translate(51px,446px) rotate(-90deg);--zoom:translate(51px,446px) rotate(-90deg);--nat-m:translate(51px,446px) rotate(-90deg);--zoom-m:translate(51px,446px) rotate(-90deg)">Indian Ocean</text><text class="sea-nm" style="--nat:translate(367px,71px);--zoom:translate(223px,85px);--nat-m:translate(367px,71px);--zoom-m:translate(223px,85px)">Timor Sea</text><text class="sea-nm" style="--nat:translate(531px,39px);--zoom:translate(540px,58px);--nat-m:translate(580px,39px);--zoom-m:translate(540px,58px)">Arafura Sea</text><text class="sea-nm hide-nat mhide-nat mhide-zoom" style="--nat:translate(809px,191px);--zoom:translate(809px,191px);--nat-m:translate(809px,191px);--zoom-m:translate(809px,191px)">Gulf of Carpentaria</text><text class="sea-nm hide-zoom mhide-zoom" style="--nat:translate(898px,194px);--zoom:translate(898px,194px);--nat-m:translate(882px,194px);--zoom-m:translate(898px,194px)">Coral Sea</text><text class="sea-nm hide-zoom mhide-zoom" style="--nat:translate(961px,548px) rotate(-90deg);--zoom:translate(961px,548px) rotate(-90deg);--nat-m:translate(961px,548px) rotate(-90deg);--zoom-m:translate(961px,548px) rotate(-90deg)">Tasman Sea</text><text class="sea-nm hide-zoom mhide-zoom" style="--nat:translate(469px,702px);--zoom:translate(469px,702px);--nat-m:translate(469px,738px);--zoom-m:translate(469px,702px)">Great Australian Bight</text><text class="sea-nm hide-zoom mhide-zoom" style="--nat:translate(582px,825px);--zoom:translate(582px,825px);--nat-m:translate(582px,825px);--zoom-m:translate(582px,825px)">Southern Ocean</text><text class="sea-nm hide-nat mhide-nat" style="--nat:translate(853px,41px);--zoom:translate(853px,41px);--nat-m:translate(853px,41px);--zoom-m:translate(853px,41px)">Torres Strait</text><text class="st-nm keep" style="--nat:translate(265px,411px);--zoom:translate(51px,743px)">WA</text><text class="st-nm here" style="--nat:translate(504px,274px);--zoom:translate(499px,465px)">NT</text><text class="st-nm" style="--nat:translate(537px,503px);--zoom:translate(596px,956px)">SA</text><text class="st-nm keep" style="--nat:translate(745px,331px);--zoom:translate(940px,618px)">QLD</text><text class="st-nm" style="--nat:translate(778px,560px);--zoom:translate(1037px,1045px)">NSW</text><text class="st-nm" style="--nat:translate(716px,665px);--zoom:translate(925px,1252px)">VIC</text><text class="st-nm" style="--nat:translate(778px,788px);--zoom:translate(1019px,1479px)">TAS</text><path class="tie" d="M829,640 L897,615"/><text class="st-nm" style="--nat:translate(927px,615px);--zoom:translate(1119px,1190px)">ACT</text><g class="pin capital" style="--i:0;--nat:translate(456px,113px);--zoom:translate(395px,168px);--p:translate(-30px,8px);--a:end;--pm:translate(-30px,8px);--am:end"><circle class="halo" r="24"/><circle class="ring" r="17"/><circle class="dot" r="10"/><text>Darwin</text></g><g class="pin city" style="--i:1;--nat:translate(518px,370px);--zoom:translate(515px,666px);--p:translate(0px,-38px);--a:middle;--pm:translate(0px,-70px);--am:middle"><circle class="halo" r="24"/><circle class="dot" r="10"/><path class="tie tie-m" d="M0,0 L0,-38"/><text>Alice Springs</text></g><g class="pin place" style="--i:2;--nat:translate(460px,408px);--zoom:translate(403px,739px);--p:translate(30px,8px);--a:start;--pm:translate(28px,-24px);--am:start"><circle class="halo" r="24"/><circle class="dot" r="8"/><text>Uluru</text></g><g class="pin place" style="--i:3;--nat:translate(488px,123px);--zoom:translate(456px,187px);--p:translate(30px,8px);--a:start;--pm:translate(30px,8px);--am:start"><circle class="halo" r="24"/><circle class="dot" r="8"/><text>Kakadu</text></g><g class="pin place" style="--i:4;--nat:translate(485px,159px);--zoom:translate(451px,257px);--p:translate(30px,8px);--a:start;--pm:translate(30px,8px);--am:start"><circle class="halo" r="24"/><circle class="dot" r="8"/><text>Katherine</text></g><g class="compass" transform="translate(930,64)"><circle class="ring" r="30"/><path class="needle" d="M0,-22 L8,10 L0,3 L-8,10 Z"/><text y="-34">N</text></g><g class="scale nat" transform="translate(56,828)"><path d="M0,0 L205,0"/><path d="M0,-7 L0,7"/><path d="M205,-7 L205,7"/><text x="103" y="-16">1,000 km</text></g><g class="scale zoom" transform="translate(56,828)"><path d="M0,0 L199,0"/><path d="M0,-7 L0,7"/><path d="M199,-7 L199,7"/><text x="100" y="-16">500 km</text></g></g></svg></div>
+    <div class="atlas-map" data-map data-abbr="NT" data-state="the Northern Territory"
+      role="button" tabindex="0" aria-expanded="false" aria-label="Zoom in on the Northern Territory"><svg viewBox="0 0 1000 880" role="img" aria-label="A map of Australia in the Indian, Southern and Pacific oceans. Northern Territory is picked out, and the view moves in to show its university cities and places worth the trip."><rect class="sea" x="0" y="0" width="1000" height="880"/><g class="cam" style="--zoom:translate(-490.5px,-52.5px) scale(1.941)"><path class="shelf far" d="M693.9,73.1 L681.6,118.8 L675.5,171.4 L661.2,226.3 L630.6,226.3 L602.0,205.0 L600.0,203.4 L579.6,107.4 L549.0,107.4 L518.4,89.1 L491.8,84.6 L465.3,114.3 L438.8,112.0 L418.4,168.0 L422.4,169.1 L385.7,148.6 L351.0,157.7 L316.3,198.8 L279.6,240.0 L255.1,276.5 L206.1,292.5 L153.1,299.4 L116.3,326.8 L100.0,377.1 L106.1,425.1 L130.6,500.5 L146.9,557.6 L134.7,614.8 L191.8,630.8 L234.7,603.3 L308.2,603.3 L357.1,566.8 L416.3,553.1 L418.4,552.6 L469.4,548.5 L514.3,562.2 L532.7,587.3 L561.2,626.2 L591.8,628.5 L614.3,642.2 L638.8,685.6 L663.3,698.4 L675.5,706.2 L714.3,717.6 L738.8,706.2 L773.5,722.2 L810.2,692.5 L846.3,685.6 L865.3,628.5 L873.5,601.1 L898.0,569.1 L919.4,472.4 L920.4,482.2 L916.3,406.8 L883.7,379.4 L863.3,363.4 L830.6,310.8 L785.7,269.7 L761.2,214.8 L751.0,169.1 L714.3,137.1 L693.9,73.1Z"/><path class="shelf near" d="M693.9,73.1 L681.6,118.8 L675.5,171.4 L661.2,226.3 L630.6,226.3 L602.0,205.0 L600.0,203.4 L579.6,107.4 L549.0,107.4 L518.4,89.1 L491.8,84.6 L465.3,114.3 L438.8,112.0 L418.4,168.0 L422.4,169.1 L385.7,148.6 L351.0,157.7 L316.3,198.8 L279.6,240.0 L255.1,276.5 L206.1,292.5 L153.1,299.4 L116.3,326.8 L100.0,377.1 L106.1,425.1 L130.6,500.5 L146.9,557.6 L134.7,614.8 L191.8,630.8 L234.7,603.3 L308.2,603.3 L357.1,566.8 L416.3,553.1 L418.4,552.6 L469.4,548.5 L514.3,562.2 L532.7,587.3 L561.2,626.2 L591.8,628.5 L614.3,642.2 L638.8,685.6 L663.3,698.4 L675.5,706.2 L714.3,717.6 L738.8,706.2 L773.5,722.2 L810.2,692.5 L846.3,685.6 L865.3,628.5 L873.5,601.1 L898.0,569.1 L919.4,472.4 L920.4,482.2 L916.3,406.8 L883.7,379.4 L863.3,363.4 L830.6,310.8 L785.7,269.7 L761.2,214.8 L751.0,169.1 L714.3,137.1 L693.9,73.1Z"/><path class="shelf far" d="M738.8,758.8 L751.0,759.9 L773.5,769.0 L793.9,761.0 L806.1,759.2 L812.2,764.5 L813.3,779.3 L811.8,791.9 L805.1,801.0 L806.5,813.6 L793.9,812.5 L796.9,823.9 L787.8,818.2 L782.7,825.0 L765.3,823.9 L755.1,809.0 L749.0,793.0 L739.8,779.3 L737.1,765.2 L738.8,758.8Z"/><path class="shelf near" d="M738.8,758.8 L751.0,759.9 L773.5,769.0 L793.9,761.0 L806.1,759.2 L812.2,764.5 L813.3,779.3 L811.8,791.9 L805.1,801.0 L806.5,813.6 L793.9,812.5 L796.9,823.9 L787.8,818.2 L782.7,825.0 L765.3,823.9 L755.1,809.0 L749.0,793.0 L739.8,779.3 L737.1,765.2 L738.8,758.8Z"/><path class="st away" d="M418.4,168.0 L422.4,169.1 L385.7,148.6 L351.0,157.7 L316.3,198.8 L279.6,240.0 L255.1,276.5 L206.1,292.5 L153.1,299.4 L116.3,326.8 L100.0,377.1 L106.1,425.1 L130.6,500.5 L146.9,557.6 L134.7,614.8 L191.8,630.8 L234.7,603.3 L308.2,603.3 L357.1,566.8 L416.3,553.1 L418.4,552.6 L418.4,422.8 L418.4,168.0Z"/><path class="st here" d="M418.4,168.0 L438.8,112.0 L465.3,114.3 L491.8,84.6 L518.4,89.1 L549.0,107.4 L579.6,107.4 L600.0,203.4 L602.0,205.0 L602.0,422.8 L418.4,422.8 L418.4,168.0Z"/><path class="st away" d="M418.4,552.6 L469.4,548.5 L514.3,562.2 L532.7,587.3 L561.2,626.2 L591.8,628.5 L614.3,642.2 L638.8,685.6 L663.3,698.4 L663.3,422.8 L418.4,422.8 L418.4,552.6Z"/><path class="st away" d="M602.0,205.0 L630.6,226.3 L661.2,226.3 L675.5,171.4 L681.6,118.8 L693.9,73.1 L714.3,137.1 L751.0,169.1 L761.2,214.8 L785.7,269.7 L830.6,310.8 L863.3,363.4 L883.7,379.4 L916.3,406.8 L920.4,482.2 L919.4,472.4 L898.0,473.1 L875.5,490.2 L855.1,483.4 L825.5,491.4 L663.3,491.4 L663.3,422.8 L602.0,422.8 L602.0,205.0Z"/><path class="st away" d="M919.4,472.4 L898.0,569.1 L873.5,601.1 L865.3,628.5 L846.3,685.6 L808.2,670.8 L789.8,652.5 L761.2,650.2 L734.7,645.6 L712.2,628.5 L691.8,609.1 L663.3,606.8 L663.3,491.4 L825.5,491.4 L855.1,483.4 L875.5,490.2 L898.0,473.1 L919.4,472.4Z"/><path class="st away" d="M846.3,685.6 L810.2,692.5 L773.5,722.2 L738.8,706.2 L714.3,717.6 L675.5,706.2 L663.3,698.4 L663.3,606.8 L691.8,609.1 L712.2,628.5 L734.7,645.6 L761.2,650.2 L789.8,652.5 L808.2,670.8 L846.3,685.6Z"/><path class="st away" d="M738.8,758.8 L751.0,759.9 L773.5,769.0 L793.9,761.0 L806.1,759.2 L812.2,764.5 L813.3,779.3 L811.8,791.9 L805.1,801.0 L806.5,813.6 L793.9,812.5 L796.9,823.9 L787.8,818.2 L782.7,825.0 L765.3,823.9 L755.1,809.0 L749.0,793.0 L739.8,779.3 L737.1,765.2 L738.8,758.8Z"/><path class="st away" d="M821.6,631.2 L834.7,631.2 L834.7,649.5 L824.5,649.5 L821.6,631.2Z"/></g><g class="marks"><text class="sea-nm hide-zoom mhide-zoom" style="--nat:translate(51px,446px) rotate(-90deg);--zoom:translate(51px,446px) rotate(-90deg);--nat-m:translate(51px,446px) rotate(-90deg);--zoom-m:translate(51px,446px) rotate(-90deg)">Indian Ocean</text><text class="sea-nm" style="--nat:translate(367px,71px);--zoom:translate(223px,85px);--nat-m:translate(367px,71px);--zoom-m:translate(223px,85px)">Timor Sea</text><text class="sea-nm" style="--nat:translate(531px,39px);--zoom:translate(540px,58px);--nat-m:translate(580px,39px);--zoom-m:translate(540px,58px)">Arafura Sea</text><text class="sea-nm hide-nat mhide-nat mhide-zoom" style="--nat:translate(809px,191px);--zoom:translate(809px,191px);--nat-m:translate(809px,191px);--zoom-m:translate(809px,191px)">Gulf of Carpentaria</text><text class="sea-nm hide-zoom mhide-zoom" style="--nat:translate(898px,194px);--zoom:translate(898px,194px);--nat-m:translate(882px,194px);--zoom-m:translate(898px,194px)">Coral Sea</text><text class="sea-nm hide-zoom mhide-zoom" style="--nat:translate(961px,548px) rotate(-90deg);--zoom:translate(961px,548px) rotate(-90deg);--nat-m:translate(961px,548px) rotate(-90deg);--zoom-m:translate(961px,548px) rotate(-90deg)">Tasman Sea</text><text class="sea-nm hide-zoom mhide-zoom" style="--nat:translate(469px,702px);--zoom:translate(469px,702px);--nat-m:translate(469px,738px);--zoom-m:translate(469px,702px)">Great Australian Bight</text><text class="sea-nm hide-zoom mhide-zoom" style="--nat:translate(582px,825px);--zoom:translate(582px,825px);--nat-m:translate(582px,825px);--zoom-m:translate(582px,825px)">Southern Ocean</text><text class="sea-nm hide-nat mhide-nat" style="--nat:translate(853px,41px);--zoom:translate(853px,41px);--nat-m:translate(853px,41px);--zoom-m:translate(853px,41px)">Torres Strait</text><text class="st-nm keep" style="--nat:translate(265px,411px);--zoom:translate(51px,743px)">WA</text><text class="st-nm here" style="--nat:translate(504px,274px);--zoom:translate(499px,465px)">NT</text><text class="st-nm" style="--nat:translate(537px,503px);--zoom:translate(596px,956px)">SA</text><text class="st-nm keep" style="--nat:translate(745px,331px);--zoom:translate(940px,618px)">QLD</text><text class="st-nm" style="--nat:translate(778px,560px);--zoom:translate(1037px,1045px)">NSW</text><text class="st-nm" style="--nat:translate(716px,665px);--zoom:translate(925px,1252px)">VIC</text><text class="st-nm" style="--nat:translate(778px,788px);--zoom:translate(1019px,1479px)">TAS</text><path class="tie" d="M829,640 L897,615"/><text class="st-nm" style="--nat:translate(927px,615px);--zoom:translate(1119px,1190px)">ACT</text><g class="pin capital" style="--i:0;--nat:translate(456px,113px);--zoom:translate(395px,168px);--p:translate(-30px,8px);--a:end;--pm:translate(-30px,8px);--am:end"><circle class="halo" r="24"/><circle class="ring" r="17"/><circle class="dot" r="10"/><text>Darwin</text></g><g class="pin city" style="--i:1;--nat:translate(518px,370px);--zoom:translate(515px,666px);--p:translate(0px,-38px);--a:middle;--pm:translate(0px,-70px);--am:middle"><circle class="halo" r="24"/><circle class="dot" r="10"/><path class="tie tie-m" d="M0,0 L0,-38"/><text>Alice Springs</text></g><g class="pin place" style="--i:2;--nat:translate(460px,408px);--zoom:translate(403px,739px);--p:translate(30px,8px);--a:start;--pm:translate(28px,-24px);--am:start"><circle class="halo" r="24"/><circle class="dot" r="8"/><text>Uluru</text></g><g class="pin place" style="--i:3;--nat:translate(488px,123px);--zoom:translate(456px,187px);--p:translate(30px,8px);--a:start;--pm:translate(30px,8px);--am:start"><circle class="halo" r="24"/><circle class="dot" r="8"/><text>Kakadu</text></g><g class="pin place" style="--i:4;--nat:translate(485px,159px);--zoom:translate(451px,257px);--p:translate(30px,8px);--a:start;--pm:translate(30px,8px);--am:start"><circle class="halo" r="24"/><circle class="dot" r="8"/><text>Katherine</text></g><g class="compass" transform="translate(930,64)"><circle class="ring" r="30"/><path class="needle" d="M0,-22 L8,10 L0,3 L-8,10 Z"/><text y="-34">N</text></g><g class="scale nat" transform="translate(56,828)"><path d="M0,0 L205,0"/><path d="M0,-7 L0,7"/><path d="M205,-7 L205,7"/><text x="103" y="-16">1,000 km</text></g><g class="scale zoom" transform="translate(56,828)"><path d="M0,0 L199,0"/><path d="M0,-7 L0,7"/><path d="M199,-7 L199,7"/><text x="100" y="-16">500 km</text></g></g></svg></div>
   </div>
 </section>
 
@@ -967,29 +977,30 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 
 <script>
 (() => {
-  /* The map opens on Australia so the state can be found, then pushes in to
-     it. Either view is a click away after that; the toggle is the only thing
-     the reader has to understand. */
-  const box=document.querySelector("[data-map]");
-  if(!box) return;
-  const btns=[...document.querySelectorAll(".view-toggle button")];
-  const slow=matchMedia("(prefers-reduced-motion: reduce)").matches;
-  let taken=false;
-  const set=v=>{ box.classList.toggle("zoom", v==="zoom");
-    btns.forEach(b=>b.setAttribute("aria-pressed", String(b.dataset.view===v))); };
-  btns.forEach(b=>b.addEventListener("click",()=>{ taken=true; set(b.dataset.view); }));
-  if(slow){ set("zoom"); return; }
-  const go=()=>{ if(!taken) set("zoom"); };
-  if("IntersectionObserver" in window){
-    const io=new IntersectionObserver((es,o)=>es.forEach(e=>{
-      if(e.isIntersecting){ setTimeout(go,700); o.unobserve(e.target); }}),{threshold:.35});
-    io.observe(box);
-  }
-  /* If the observer never reports, the reader still gets the state view rather
-     than a map that sits on Australia forever. Long enough that the observer
-     normally wins and the move is watched rather than missed. */
-  setTimeout(go,6000);
-  const h=document.getElementById("hero"); if(h) requestAnimationFrame(()=>h.classList.add("in"));
+  /* The map itself is the control. The whole frame takes the tap rather than
+     the highlighted path, because the ACT renders about five pixels across on
+     a phone and nobody is hitting that. The pulsing state carries the promise;
+     the hint line underneath spells it out. */
+  const box = document.querySelector("[data-map]");
+  if (!box) return;
+  const hint = document.querySelector("[data-hint]");
+  const abbr = box.dataset.abbr, state = box.dataset.state;
+  const set = z => {
+    box.classList.toggle("zoom", z);
+    box.setAttribute("aria-expanded", String(z));
+    box.setAttribute("aria-label", z ? "Zoom back out to all of Australia"
+                                     : "Zoom in on " + state);
+    if (hint) hint.textContent = z ? "Zoom out to all of Australia"
+                                   : "Zoom in on " + abbr;
+  };
+  set(false);
+  const flip = () => set(!box.classList.contains("zoom"));
+  box.addEventListener("click", flip);
+  box.addEventListener("keydown", e => {
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); flip(); }
+  });
+  const h = document.getElementById("hero");
+  if (h) requestAnimationFrame(() => h.classList.add("in"));
 })();
 </script>
 
