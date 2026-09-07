@@ -611,31 +611,37 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
    far too small to aim at. The pulse on the state says what will happen. */
 .atlas-map{cursor:pointer}
 .atlas-map:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-/* The ring is always on the state and only its colour animates. WebKit is
-   unreliable about animating stroke-width on a path carrying
-   vector-effect:non-scaling-stroke, which is the likely reason the pulse ran
-   on a desktop and sat dead on a phone. Colour is the one property every
-   engine animates properly here. Keeping the ring in the base rule also means
-   it survives as a static gold outline whenever the animation is off, so the
-   invitation never disappears entirely. */
-.atlas-map:not(.zoom) .st.here{stroke:var(--gold);stroke-width:5;
-  animation:atlasPulse 2.2s ease-in-out infinite;
-  transition:transform .38s var(--ease),filter .38s ease,stroke-width .25s ease}
-@keyframes atlasPulse{0%,100%{stroke:var(--ocean)}50%{stroke:var(--gold)}}
+/* The pulse rides on its own gold ring laid over the state, and what animates
+   is opacity. Opacity is the property every engine animates dependably on an
+   SVG node; animating the state's own stroke worked on a desktop and sat dead
+   on a phone. */
+.st-pulse{fill:none;stroke:var(--gold);stroke-width:5;vector-effect:non-scaling-stroke;
+  pointer-events:none;opacity:0;animation:atlasRing 2.2s ease-in-out infinite;
+  transition:transform .38s var(--ease),opacity .38s ease}
+@keyframes atlasRing{0%,100%{opacity:0}50%{opacity:1}}
+.zoom .st-pulse{opacity:0;animation:none}
+.atlas-map:not(.zoom) .st.here{transition:transform .38s var(--ease),filter .38s ease}
 
 /* With a pointer, hovering settles the pulse and lifts the state instead, so
-   the general invitation becomes a specific one. The offset is in SVG user
-   units, which comes out around six screen pixels on a desktop map. */
+   the general invitation becomes a specific one. The ring lifts with it. The
+   offset is in SVG user units, about ten screen pixels on a desktop map. */
 @media (hover:hover){
-  .atlas-map:not(.zoom):hover .st.here{animation:none;stroke:var(--gold);stroke-width:7;
-    transform:translateY(-14px);filter:drop-shadow(0 10px 14px rgba(14,94,124,.45))}}
+  .atlas-map:not(.zoom):hover .st.here,
+  .atlas-map:not(.zoom):hover .st-pulse{transform:translateY(-14px)}
+  .atlas-map:not(.zoom):hover .st.here{filter:drop-shadow(0 10px 14px rgba(14,94,124,.45))}
+  .atlas-map:not(.zoom):hover .st-pulse{opacity:1;animation:none}}
 .atlas-hint{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;
   color:var(--ink-2);margin:clamp(1.2rem,3vh,1.8rem) 0 0;display:flex;align-items:center;gap:.55rem}
 .atlas-hint::before{content:"";flex:0 0 auto;width:8px;height:8px;border-radius:50%;
   background:var(--gold);animation:atlasDot 2.6s ease-in-out infinite}
 @keyframes atlasDot{0%,100%{opacity:1}50%{opacity:.28}}
+/* The stylesheet above kills every animation on the page for a reader who has
+   asked for less motion. A cross-fade is what Apple recommends substituting
+   in that case rather than removing the cue, and nothing here moves, so the
+   ring keeps breathing, more slowly. The dot beside the hint does go still. */
 @media (prefers-reduced-motion:reduce){
-  .atlas-map:not(.zoom) .st.here{animation:none;stroke:var(--gold);stroke-width:5}
+  .st-pulse{animation:atlasRing 3.8s ease-in-out infinite!important;
+    animation-duration:3.8s!important}
   .atlas-hint::before{animation:none}}
 </style>
 
@@ -999,6 +1005,15 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
      the hint line underneath spells it out. */
   const box = document.querySelector("[data-map]");
   if (!box) return;
+  /* The pulse rides on a copy of the state's outline, appended last so it
+     paints over the other states. Cloning keeps the two shapes in step. */
+  const here = box.querySelector(".st.here");
+  if (here && !box.querySelector(".st-pulse")) {
+    const ring = here.cloneNode(false);
+    ring.setAttribute("class", "st-pulse");
+    ring.removeAttribute("id");
+    here.parentNode.appendChild(ring);
+  }
   const hint = document.querySelector("[data-hint]");
   const abbr = box.dataset.abbr, state = box.dataset.state;
   const set = z => {
