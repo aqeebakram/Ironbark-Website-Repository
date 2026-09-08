@@ -1,0 +1,6 @@
+# Ironbark Advisory
+User-agent: *
+Allow: /
+Disallow: /404.html
+
+Sitemap: https://ironbarkadvisory.ae/sitemap.xml

@@ -1,0 +1,45 @@
+name: Sitemap
+
+# Keeps sitemap.xml in step with the pages that actually exist, so adding a
+# page never means remembering to edit an XML file by hand.
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**.html'
+      - 'scripts/build-sitemap.py'
+      - '.github/workflows/sitemap.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sitemap-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # lastmod is read from each file's last commit, which needs history.
+          fetch-depth: 0
+
+      - name: Rebuild sitemap
+        run: python3 scripts/build-sitemap.py
+
+      - name: Commit if it changed
+        run: |
+          if git diff --quiet -- sitemap.xml; then
+            echo "No change."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sitemap.xml
+          # skip ci: the rebuilt sitemap is already correct, so re-running this
+          # workflow on its own commit would only ever be a no-op.
+          git commit -m "Rebuild sitemap.xml [skip ci]"
+          git push
