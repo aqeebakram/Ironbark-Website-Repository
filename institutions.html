@@ -713,7 +713,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 <!-- ══ HERO · open water ══ -->
 <section class="phero" id="hero">
   <div class="phero-bg">
-    <img src="img/inst_hero.webp" alt="Downtown Dubai at sunrise, the Burj Khalifa above Sheikh Zayed Road and its interchange.">
+    <img src="img/inst_hero.webp" alt="Downtown Dubai at sunrise, the Burj Khalifa above Sheikh Zayed Road and its interchange." fetchpriority="high">
   </div>
   <div class="wrap">
     <div class="phero-copy">
@@ -741,7 +741,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 
 <!-- ══ CLOSE ══ -->
 <section class="close" id="enquire" data-dark>
-  <img src="img/close.webp" alt="">
+  <img src="img/close.webp" alt="" loading="lazy" decoding="async">
   <div class="wrap">
     <h2 class="h-head"><span class="rev"><span>Considering the UAE as</span></span><span class="rev"><span style="--d:120ms">your next market?</span></span></h2>
     <p class="lead fade" style="--d:380ms">Let&rsquo;s have a direct conversation first, about whether this market genuinely
@@ -912,7 +912,9 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   }
   addEventListener("load",()=>{ layout(); measure(); });
 
-  requestAnimationFrame(()=>document.getElementById("hero").classList.add("in"));
+  // Not every page has a #hero. Without the guard this throws on about,
+  // contact and students-families, on every load.
+  requestAnimationFrame(()=>document.getElementById("hero")?.classList.add("in"));
   function sweep(){ watched.forEach(el=>{ if(el.classList.contains("in")) return;
     const b=el.getBoundingClientRect();
     if(b.bottom>0&&b.top<window.innerHeight) el.classList.add("in"); }); }

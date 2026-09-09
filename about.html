@@ -682,7 +682,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
         <p class="lead fade" style="--d:160ms">I know the sector, I know the people in it, and I went through this decision myself.</p>
       </div>
       <figure class="ab-plate fade" style="--d:260ms">
-        <img src="img/ab/portrait.webp" alt="Aqeeb Akram, founder of Ironbark Advisory.">
+        <img src="img/ab/portrait.webp" alt="Aqeeb Akram, founder of Ironbark Advisory." fetchpriority="high">
         <figcaption>Aqeeb Akram &mdash; founder &amp; CEO, Ironbark Advisory</figcaption>
       </figure>
     </div>
@@ -704,7 +704,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 
   <div class="legs">
     <article class="leg fade">
-      <figure class="leg-shot"><img src="img/ab/c1_blr.webp" alt="The Vidhana Soudha in Bengaluru, India."><figcaption>Bengaluru, India</figcaption></figure>
+      <figure class="leg-shot"><img src="img/ab/c1_blr.webp" alt="The Vidhana Soudha in Bengaluru, India." loading="lazy" decoding="async"><figcaption>Bengaluru, India</figcaption></figure>
       <div class="leg-copy">
         <p class="leg-when"><i></i>2014 &middot; Before Australia</p>
         <h3 class="h-sub">Two education agencies</h3>
@@ -714,7 +714,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
     </article>
 
     <article class="leg fade">
-      <figure class="leg-shot"><img src="img/ab/c2_sydney.webp" alt="Sydney Harbour, the Opera House and the Harbour Bridge, with jacaranda in flower."><figcaption>Sydney</figcaption></figure>
+      <figure class="leg-shot"><img src="img/ab/c2_sydney.webp" alt="Sydney Harbour, the Opera House and the Harbour Bridge, with jacaranda in flower." loading="lazy" decoding="async"><figcaption>Sydney</figcaption></figure>
       <div class="leg-copy">
         <p class="leg-when"><i></i>2016 &middot; Sydney</p>
         <h3 class="h-sub">Macquarie University</h3>
@@ -723,7 +723,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
     </article>
 
     <article class="leg fade">
-      <figure class="leg-shot"><img src="img/ab/c3_anu.webp" alt="The Australian National University sign on campus in Canberra."><figcaption>Canberra</figcaption></figure>
+      <figure class="leg-shot"><img src="img/ab/c3_anu.webp" alt="The Australian National University sign on campus in Canberra." loading="lazy" decoding="async"><figcaption>Canberra</figcaption></figure>
       <div class="leg-copy">
         <p class="leg-when"><i></i>2018&ndash;2021 &middot; Canberra</p>
         <h3 class="h-sub">Australian National University</h3>
@@ -733,7 +733,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
     </article>
 
     <article class="leg fade">
-      <figure class="leg-shot"><img src="img/ab/c4_gov.webp" alt="Aqeeb Akram speaking from a lectern at the Australian Embassy in Jakarta."><figcaption>Speaking at the Australian Embassy, Jakarta</figcaption></figure>
+      <figure class="leg-shot"><img src="img/ab/c4_gov.webp" alt="Aqeeb Akram speaking from a lectern at the Australian Embassy in Jakarta." loading="lazy" decoding="async"><figcaption>Speaking at the Australian Embassy, Jakarta</figcaption></figure>
       <div class="leg-copy">
         <p class="leg-when"><i></i>2021 &middot; NSW Government</p>
         <h3 class="h-sub">Study NSW</h3>
@@ -743,7 +743,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
     </article>
 
     <article class="leg fade">
-      <figure class="leg-shot"><img src="img/ab/c5_dubai.webp" alt="The Dubai skyline at sunrise, mirrored in still water."><figcaption>Dubai, today</figcaption></figure>
+      <figure class="leg-shot"><img src="img/ab/c5_dubai.webp" alt="The Dubai skyline at sunrise, mirrored in still water." loading="lazy" decoding="async"><figcaption>Dubai, today</figcaption></figure>
       <div class="leg-copy">
         <p class="leg-when"><i></i>Today &middot; Dubai</p>
         <h3 class="h-sub">Ironbark Advisory</h3>
@@ -755,7 +755,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 
 <!-- ══ CLOSE ══ -->
 <section class="close" id="connect" data-dark>
-  <img src="img/close.webp" alt="">
+  <img src="img/close.webp" alt="" loading="lazy" decoding="async">
   <div class="wrap">
     <p class="label">Let&rsquo;s connect</p>
     <h2 class="h-head">Always happy to talk education, government, or the UAE market.</h2>
@@ -926,7 +926,9 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   }
   addEventListener("load",()=>{ layout(); measure(); });
 
-  requestAnimationFrame(()=>document.getElementById("hero").classList.add("in"));
+  // Not every page has a #hero. Without the guard this throws on about,
+  // contact and students-families, on every load.
+  requestAnimationFrame(()=>document.getElementById("hero")?.classList.add("in"));
   function sweep(){ watched.forEach(el=>{ if(el.classList.contains("in")) return;
     const b=el.getBoundingClientRect();
     if(b.bottom>0&&b.top<window.innerHeight) el.classList.add("in"); }); }

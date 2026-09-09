@@ -1013,7 +1013,9 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   }
   addEventListener("load",()=>{ layout(); measure(); });
 
-  requestAnimationFrame(()=>document.getElementById("hero").classList.add("in"));
+  // Not every page has a #hero. Without the guard this throws on about,
+  // contact and students-families, on every load.
+  requestAnimationFrame(()=>document.getElementById("hero")?.classList.add("in"));
   function sweep(){ watched.forEach(el=>{ if(el.classList.contains("in")) return;
     const b=el.getBoundingClientRect();
     if(b.bottom>0&&b.top<window.innerHeight) el.classList.add("in"); }); }
