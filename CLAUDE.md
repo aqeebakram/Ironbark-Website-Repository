@@ -76,6 +76,14 @@ Settled once, so they do not get relitigated:
   Where the same figure recurs on a page, vary the sentence rather than
   repeat it identically.
 
+### Do not write about commissions
+
+Nothing on the site says how Ironbark is or is not paid. No "no provider
+commissions", no "none of them pay me", no claim that the advice is
+unshaped by who pays. The business model may change and the copy should
+not have to be retracted. Independence can be shown by what the advice
+actually does, not asserted as a payment arrangement.
+
 ### Standing accuracy rule
 
 Entry requirements vary by university and by state and change between
