@@ -92,7 +92,7 @@
   gtag('config', 'G-K8VQ31CZMP');
 </script>
 <title>Canberra, Australian Capital Territory - Ironbark Advisory</title>
-<meta name="description" content="Studying in Canberra: the universities in Australian Capital Territory, what it costs to live there, the climate, the flight from Dubai and what graduates do next.">
+<meta name="description" content="Studying in Canberra: the universities in the ACT, what it costs to live there, the climate, the flight from Dubai and what graduates do next.">
 <link rel="canonical" href="https://ironbarkadvisory.ae/why-australia-canberra.html">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -102,7 +102,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Ironbark Advisory">
 <meta property="og:title" content="Canberra, Australian Capital Territory - Ironbark Advisory">
-<meta property="og:description" content="Studying in Canberra: the universities in Australian Capital Territory, what it costs to live there, the climate, the flight from Dubai and what graduates do next.">
+<meta property="og:description" content="Studying in Canberra: the universities in the ACT, what it costs to live there, the climate, the flight from Dubai and what graduates do next.">
 <meta property="og:url" content="https://ironbarkadvisory.ae/why-australia-canberra.html">
 <meta property="og:image" content="https://ironbarkadvisory.ae/img/states/canberra-hero.webp">
 <meta property="og:image:width" content="1200">
@@ -135,7 +135,7 @@
 </script>
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Canberra, Australian Capital Territory - Ironbark Advisory">
-<meta name="twitter:description" content="Studying in Canberra: the universities in Australian Capital Territory, what it costs to live there, the climate, the flight from Dubai and what graduates do next.">
+<meta name="twitter:description" content="Studying in Canberra: the universities in the ACT, what it costs to live there, the climate, the flight from Dubai and what graduates do next.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300..700&display=swap">
@@ -1016,7 +1016,9 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   }
   addEventListener("load",()=>{ layout(); measure(); });
 
-  requestAnimationFrame(()=>document.getElementById("hero").classList.add("in"));
+  // Not every page has a #hero. Without the guard this throws on about,
+  // contact and students-families, on every load.
+  requestAnimationFrame(()=>document.getElementById("hero")?.classList.add("in"));
   function sweep(){ watched.forEach(el=>{ if(el.classList.contains("in")) return;
     const b=el.getBoundingClientRect();
     if(b.bottom>0&&b.top<window.innerHeight) el.classList.add("in"); }); }

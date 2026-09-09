@@ -624,11 +624,11 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 <!-- ══ HERO ══ -->
 <section class="hero" id="hero">
   <div class="hero-bg" aria-hidden="true">
-    <div class="slide on" data-wash="deep"><img src="img/hero_harbour.webp" alt=""></div>
-    <div class="slide" data-wash="medium"><img src="img/hero_surf.webp" alt=""></div>
-    <div class="slide" data-wash="medium"><img src="img/hero_sunset.webp" alt=""></div>
-    <div class="slide" data-wash="thin"><img src="img/hero_uluru.webp" alt=""></div>
-    <div class="slide" data-wash="deep" data-top="dark"><img src="img/hero_coast.webp" alt=""></div>
+    <div class="slide on" data-wash="deep"><img src="img/hero_harbour.webp" alt="" fetchpriority="high"></div>
+    <div class="slide" data-wash="medium"><img src="img/hero_surf.webp" alt="" fetchpriority="low"></div>
+    <div class="slide" data-wash="medium"><img src="img/hero_sunset.webp" alt="" fetchpriority="low"></div>
+    <div class="slide" data-wash="thin"><img src="img/hero_uluru.webp" alt="" fetchpriority="low"></div>
+    <div class="slide" data-wash="deep" data-top="dark"><img src="img/hero_coast.webp" alt="" fetchpriority="low"></div>
   </div>
   <p class="vh">Sydney Harbour with the Opera House, surf on an Australian beach from above, Circular Quay at sunset, Uluru at dawn, and the coast road above the Tasman Sea.</p>
   <div class="wrap hero-inner">
@@ -651,7 +651,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
     </div>
     <div class="cards">
       <a class="card fade" href="students-families.html">
-        <img src="img/students.webp" alt="The University of Sydney quadrangle, students crossing the lawn.">
+        <img src="img/students.webp" alt="The University of Sydney quadrangle, students crossing the lawn." loading="lazy" decoding="async">
         <p class="eyebrow">For students &amp; families</p>
         <h3 class="h-sub">Choosing Australia</h3>
         <p>Unbiased advice on programs, courses, cities and the real cost from someone who arrived as an international student and never left the sector.</p>
@@ -659,7 +659,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
         <span class="btn">Explore the pathway</span>
       </a>
       <a class="card fade" style="--d:110ms" href="institutions.html">
-        <img src="img/providers.webp" alt="The Dubai coastline from the air.">
+        <img src="img/providers.webp" alt="The Dubai coastline from the air." loading="lazy" decoding="async">
         <p class="eyebrow">For institutions &amp; providers</p>
         <h3 class="h-sub">Building in the UAE</h3>
         <p>Transnational Education, Research Partnerships, Market Entry solutions for universities keen on expanding in the UAE.</p>
@@ -667,7 +667,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
         <span class="btn">Explore partnerships</span>
       </a>
       <a class="card fade" style="--d:220ms" href="institutions.html">
-        <img src="img/learn.webp" alt="The Sydney Opera House and Harbour Bridge from the water.">
+        <img src="img/learn.webp" alt="The Sydney Opera House and Harbour Bridge from the water." loading="lazy" decoding="async">
         <p class="eyebrow">For UAE Schools</p>
         <h3 class="h-sub">Learn about Australia</h3>
         <p>Immersion programs, study tours, school partnerships, masterclasses for UAE schools that are invested in offering the best experience for their students.</p>
@@ -680,14 +680,14 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 
 <!-- ══ DUBAI PLATE — no text; the founder rides up over it ══ -->
 <section class="dxb" id="dxb" aria-hidden="true">
-  <div class="dxb-plate"><img src="img/dubai.webp" alt=""></div>
+  <div class="dxb-plate"><img src="img/dubai.webp" alt="" loading="lazy" decoding="async"></div>
 </section>
 
 <!-- ══ FOUNDER ══ -->
 <section class="founder riser wrap" id="founder">
   <div class="founder-grid">
     <figure class="portrait fade">
-      <img src="img/portrait_embassy.webp" alt="Aqeeb Akram speaking from a lectern bearing the Australian Embassy crest.">
+      <img src="img/portrait_embassy.webp" alt="Aqeeb Akram speaking from a lectern bearing the Australian Embassy crest." loading="lazy" decoding="async">
       <figcaption>Aqeeb Akram &mdash; speaking at the Australian Embassy</figcaption>
     </figure>
     <div>
@@ -707,7 +707,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 
 <!-- ══ CLOSE ══ -->
 <section class="close" id="close" data-dark>
-  <img src="img/close.webp" alt="Turquoise surf meeting red sand, seen from directly above.">
+  <img src="img/close.webp" alt="Turquoise surf meeting red sand, seen from directly above." loading="lazy" decoding="async">
   <div class="wrap">
     <p class="label">Book</p>
     <h2 class="h-head"><span class="rev"><span>The first conversation</span></span><span class="rev"><span style="--d:120ms">costs nothing.</span></span></h2>
@@ -830,7 +830,9 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
     if(e.isIntersecting){ e.target.classList.add("in"); o.unobserve(e.target); }}),
     {rootMargin:"0px 0px -8% 0px",threshold:.1});
   watched.forEach(el=>io.observe(el));
-  requestAnimationFrame(()=>document.getElementById("hero").classList.add("in"));
+  // Not every page has a #hero. Without the guard this throws on about,
+  // contact and students-families, on every load.
+  requestAnimationFrame(()=>document.getElementById("hero")?.classList.add("in"));
   function sweep(){ watched.forEach(el=>{ if(el.classList.contains("in")) return;
     const b=el.getBoundingClientRect();
     if(b.bottom>0&&b.top<window.innerHeight) el.classList.add("in"); }); }
