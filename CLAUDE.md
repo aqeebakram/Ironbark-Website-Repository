@@ -61,6 +61,21 @@ route. If a sentence is carrying rhythm rather than information, it goes.
 - Abstractions where the concrete noun was available.
 - A register more formal than he would use across a table from a parent.
 
+### House conventions
+
+Settled once, so they do not get relitigated:
+
+- **prerequisite**, never pre-requisite.
+- **Bengaluru**, not Bangalore. It is the official name.
+- **Consuls-General** is the plural, not Consul-Generals.
+- **alternative**, not alternate, when the meaning is "a different option".
+- **Founder**, not Founder & CEO. Ironbark is founder led and deliberately
+  small, and CEO of a practice of one reads against that.
+- **Sentence case** for labels, card titles and lists. Not Title Case.
+- Numbers under a hundred are **spelled out**: twelve years, not 12 years.
+  Where the same figure recurs on a page, vary the sentence rather than
+  repeat it identically.
+
 ### Standing accuracy rule
 
 Entry requirements vary by university and by state and change between
