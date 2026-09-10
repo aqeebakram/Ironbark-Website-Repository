@@ -506,12 +506,13 @@ h2.sec{font-size:clamp(1.55rem,3.1vw,2.6rem);margin-top:.55rem}
   font-size:clamp(1.5rem,2.4vw,2rem);letter-spacing:-.02em;line-height:1.05;margin:.5rem 0 .2rem}
 .who-role{font-family:var(--f-mono);font-size:.80rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ocean);margin-bottom:1.15rem}
 .founder h3{font-size:clamp(1.24rem,2.3vw,1.8rem);max-width:none;margin-bottom:.4rem;text-wrap:pretty}
-.creds{margin-top:1.6rem}
-.cred{display:grid;grid-template-columns:9.4rem 1fr;gap:1rem;padding:.72rem 0;border-top:1px solid var(--rule-2);
-  font-size:1.13rem;color:var(--ink-2);font-weight:400}
-.cred dt{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin:0;padding-top:.22rem}
-.cred dd{margin:0}
-@media (max-width:860px){.founder-grid{grid-template-columns:1fr;gap:2.2rem}.portrait{max-width:17rem}.cred{grid-template-columns:1fr;gap:.1rem}}
+.creds{margin:1.6rem 0 0;padding:0;border:0;list-style:none;display:block;
+  font-size:inherit;font-weight:400}
+/* One statement per row. The hairline that used to separate label from value
+   still separates the rows, so losing the labels does not flatten the block. */
+.cred{display:block;padding:.72rem 0;border-top:1px solid var(--rule-2);
+  font-size:1.13rem;color:var(--ink-2);font-weight:400;line-height:1.5}
+@media (max-width:860px){.founder-grid{grid-template-columns:1fr;gap:2.2rem}.portrait{max-width:17rem}}
 
 /* ---------- close ---------- */
 .close{position:relative;overflow:hidden;isolation:isolate;background:var(--deep);color:var(--on-deep);
@@ -522,6 +523,7 @@ h2.sec{font-size:clamp(1.55rem,3.1vw,2.6rem);margin-top:.55rem}
 .close .label{color:var(--gold)}
 .close h2{font-size:clamp(1.72rem,3.6vw,3rem);margin:.7rem 0 0;max-width:15ch;color:var(--on-deep)}
 .close p.lead{color:var(--on-deep-2);margin-top:1.1rem;max-width:48ch}
+.close p.qualify{color:var(--on-deep);max-width:58ch}
 .close-row{display:flex;flex-wrap:wrap;gap:.9rem 1.5rem;align-items:center;margin-top:clamp(1.6rem,4vh,2.4rem)}
 .cta{display:inline-flex;align-items:center;gap:.8rem;font-size:.84rem;letter-spacing:.16em;padding:1rem 1.6rem}
 .alt{font-family:var(--f-mono);font-size:.80rem;letter-spacing:.14em;text-transform:uppercase;color:var(--on-deep-2);
@@ -634,7 +636,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   <div class="wrap hero-inner">
     <p class="label">Independent Education Advisory &middot; Dubai, United Arab Emirates</p>
     <h1 class="h-head">Education advice from someone who has worked in agencies, universities and government.</h1>
-    <p class="lead">I help families find the right Australian pathway for their child, and I advise education providers across K12 and higher education.</p>
+    <p class="lead">I help families find the right Australian pathway for their child, and I provide strategic advice to education providers across K12 and higher education.</p>
     <div class="hero-foot">
       <p class="cue"><i></i>Scroll</p>
     </div>
@@ -647,7 +649,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
     <div class="help-head">
       <p class="label">Get started</p>
       <h2 class="h-head sec">How can I help?</h2>
-      <p class="lead">Whether you are thinking of studying abroad, exploring alternative revenue streams, or opening a door for your students. Our solution is built around you, your personal circumstances and objectives.</p>
+      <p class="lead">Whether you are thinking of studying abroad, exploring alternative revenue streams, or opening a door for your students, the solution is built around you, your personal circumstances, objectives and long term goals.</p>
     </div>
     <div class="cards">
       <a class="card fade" href="students-families.html">
@@ -695,12 +697,12 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
       <p class="who-name fade" style="--d:60ms">Aqeeb Akram</p>
       <p class="who-role fade" style="--d:110ms">Founder, Ironbark Advisory</p>
       <h3 class="h-sub fade" style="--d:160ms">Twelve years in international education, across government, universities and education agencies.</h3>
-      <dl class="creds">
-        <div class="cred fade" style="--d:220ms"><dt>Universities</dt><dd>Macquarie University and the Australian National University</dd></div>
-        <div class="cred fade" style="--d:280ms"><dt>Government</dt><dd>Senior roles in NSW Government, Premier&rsquo;s Department</dd></div>
-        <div class="cred fade" style="--d:340ms"><dt>Australia</dt><dd>Arrived as an international student in 2016</dd></div>
-        <div class="cred fade" style="--d:400ms"><dt>Based</dt><dd>Dubai, United Arab Emirates</dd></div>
-      </dl>
+      <ul class="creds">
+        <li class="cred fade" style="--d:220ms">Worked at Macquarie University and the Australian National University</li>
+        <li class="cred fade" style="--d:280ms">Held senior roles in NSW Government, Premier&rsquo;s Department</li>
+        <li class="cred fade" style="--d:340ms">Went to Sydney, Australia as an international student in 2016</li>
+        <li class="cred fade" style="--d:400ms">Based in Dubai, United Arab Emirates</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -711,8 +713,12 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   <div class="wrap">
     <p class="label">Book</p>
     <h2 class="h-head"><span class="rev"><span>The first conversation</span></span><span class="rev"><span style="--d:120ms">costs nothing.</span></span></h2>
-    <p class="lead fade" style="--d:380ms">Thirty minutes to work out whether Australia is the right answer for your family &mdash; or whether the UAE is the right next market for your institution.</p>
-    <div class="close-row fade" style="--d:500ms">
+    <p class="lead qualify fade" style="--d:320ms">If you appreciate thoughtful advice even when it
+      challenges your assumptions, if you value long term relationships over quick transactions, and
+      if you believe choosing the right advisor matters more than choosing the cheapest one, then you
+      are in the right place.</p>
+    <p class="lead fade" style="--d:440ms">Thirty minutes to work out whether Australia is the right answer for your family &mdash; or whether the UAE is the right next market for your institution.</p>
+    <div class="close-row fade" style="--d:560ms">
       <a class="cta" href="https://calendar.app.google/Wr325oNEYvxfeW6F9" target="_blank" rel="noopener">Book a discovery call &rarr;</a>
       <a class="alt" href="https://www.linkedin.com/in/aqeebakram" target="_blank" rel="noopener">Connect on LinkedIn</a>
     </div>
