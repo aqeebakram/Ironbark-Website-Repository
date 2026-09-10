@@ -627,10 +627,10 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 <section class="hero" id="hero">
   <div class="hero-bg" aria-hidden="true">
     <div class="slide on" data-wash="deep"><img src="img/hero_harbour.webp" alt="" fetchpriority="high"></div>
-    <div class="slide" data-wash="medium"><img src="img/hero_surf.webp" alt="" fetchpriority="low"></div>
-    <div class="slide" data-wash="medium"><img src="img/hero_sunset.webp" alt="" fetchpriority="low"></div>
-    <div class="slide" data-wash="thin"><img src="img/hero_uluru.webp" alt="" fetchpriority="low"></div>
-    <div class="slide" data-wash="deep" data-top="dark"><img src="img/hero_coast.webp" alt="" fetchpriority="low"></div>
+    <div class="slide" data-wash="medium"><img data-src="img/hero_surf.webp" alt=""></div>
+    <div class="slide" data-wash="medium"><img data-src="img/hero_sunset.webp" alt=""></div>
+    <div class="slide" data-wash="thin"><img data-src="img/hero_uluru.webp" alt=""></div>
+    <div class="slide" data-wash="deep" data-top="dark"><img data-src="img/hero_coast.webp" alt=""></div>
   </div>
   <p class="vh">Sydney Harbour with the Opera House, surf on an Australian beach from above, Circular Quay at sunset, Uluru at dawn, and the coast road above the Tasman Sea.</p>
   <div class="wrap hero-inner">
@@ -764,7 +764,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   // ---- hero frames: crossfade every 4s, paused off-screen and in background tabs ----
   const slides=[...document.querySelectorAll(".hero .slide")];
   if(slides.length>1){
-    let hi=0, timer=null, onScreen=true;
+    let hi=0, timer=null, onScreen=true, ready=false;
     const hero=document.querySelector(".hero");
     const mark=repaint=>{ hero.dataset.top=slides[hi].dataset.top||"light"; if(repaint) paint(); };
     const step=()=>{
@@ -775,9 +775,26 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
       hi=(hi+1)%slides.length; slides[hi].classList.add("on"); mark(true);
     };
     mark(false);
-    const run=()=>{ if(!timer && onScreen && !reduce && document.visibilityState==="visible") timer=setInterval(step,4000); };
+    const run=()=>{ if(ready && !timer && onScreen && !reduce && document.visibilityState==="visible") timer=setInterval(step,4000); };
     const halt=()=>{ clearInterval(timer); timer=null; };
-    run();
+    // The four frames behind the first are never on screen at load, and the
+    // rotation that reveals them is itself JavaScript, so a frame with no
+    // picture can never be shown. They carry data-src and are fetched once the
+    // page is done, which keeps 1.1 MB out of the initial load. Under Reduce
+    // Motion the rotation never runs, so they are not fetched at all.
+    const hydrate=()=>{
+      if(reduce) return;
+      const imgs=slides.slice(1).map(sl=>sl.querySelector("img[data-src]")).filter(Boolean);
+      if(!imgs.length){ ready=true; run(); return; }
+      const first=imgs[0];
+      const go=()=>{ ready=true; run(); };
+      // attach before assigning src, or a cached image can settle first
+      first.addEventListener("load",go,{once:true});
+      imgs.forEach(img=>{ img.src=img.dataset.src; img.removeAttribute("data-src"); });
+      if(first.complete && first.naturalWidth) go();
+    };
+    if(document.readyState==="complete") hydrate();
+    else addEventListener("load",hydrate,{once:true});
     addEventListener("visibilitychange",()=>document.visibilityState==="visible"?run():halt());
     if("IntersectionObserver" in window){
       new IntersectionObserver(es=>{ onScreen=es[0].isIntersecting; onScreen?run():halt(); },{threshold:0})
