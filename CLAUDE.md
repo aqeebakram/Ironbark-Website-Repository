@@ -73,6 +73,8 @@ Settled once, so they do not get relitigated:
 - **Founder**, not Founder & CEO. Ironbark is founder led and deliberately
   small, and CEO of a practice of one reads against that.
 - **Sentence case** for labels, card titles and lists. Not Title Case.
+- Currency is **AUD 2,500**, not AUD $2,500. The code already names the
+  currency, so the dollar sign repeats it.
 - Numbers under a hundred are **spelled out**: twelve years, not 12 years.
   Where the same figure recurs on a page, vary the sentence rather than
   repeat it identically.
@@ -94,6 +96,42 @@ instruction to check the current handbook for the specific course and intake.
 
 Case studies are composites drawn from several families. The words
 "composite, illustrative" stay on them.
+
+### Figures that expire
+
+The student visa application charge in `insights-cost-to-graduation.html`
+is set by the Department of Home Affairs and reviewed annually. It is the
+only hard government figure on the site and it goes stale on a schedule.
+`immi.homeaffairs.gov.au` and `studyaustralia.gov.au` are both blocked by
+the network policy in Claude sessions, so the figure cannot be verified
+from here. Aqeeb supplies it.
+
+### Search indexing is settled
+
+The site is fully indexed. Sixteen of eighteen pages were in within about
+three weeks of the sitemap going live, including all eight city pages.
+Slow indexing on this domain has been a queue every single time, never a
+fault. Do not diagnose it as a content or linking problem again.
+
+The constraint now is inbound links, of which there are none, and content
+that targets queries families actually type. Technical SEO work has no
+remaining return.
+
+## Images
+
+Photographs arrive as full size JPEGs uploaded through the GitHub web
+interface. Convert them with Pillow, never ship the originals:
+
+- Inline article images: 3:2, 1200 wide, WebP quality 80, into `img/dest/`
+- News index feature card: 4:5, 900x1124. Where a piece covers several
+  countries, build a two by two quad from the four so no single image
+  implies one country
+- Social card: 1200x630, JPEG rather than WebP, because scraper support
+  for WebP is inconsistent
+
+Every image carries explicit width and height plus `loading="lazy"`, so
+nothing shifts while the page loads. Delete the source JPEGs from the
+working tree once converted.
 
 ## Adding a page
 
