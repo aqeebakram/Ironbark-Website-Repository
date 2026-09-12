@@ -117,6 +117,53 @@ The constraint now is inbound links, of which there are none, and content
 that targets queries families actually type. Technical SEO work has no
 remaining return.
 
+## Off-site channels
+
+Decisions, not tactics. The platforms change their menus constantly, so
+nothing here describes where to click.
+
+### LinkedIn
+
+The site links out to `linkedin.com/in/aqeebakram` from the masthead,
+the footer and the `sameAs` in the structured data on every page.
+
+**Links from LinkedIn are `nofollow`.** They pass no authority and will
+not move a search ranking. What they do is send referral traffic and help
+Google resolve Aqeeb Akram and ironbarkadvisory.ae as one entity. Never
+pitch LinkedIn as an SEO fix.
+
+Where it stands, decided September 2026:
+
+- The website address is in **Contact info** on the personal profile, and
+  nothing else. Aqeeb weighed the more visible placements and chose this.
+- **No company page** until there are three or four published pieces to
+  seed it with. An empty page with no followers reads worse than no page.
+- **No posting schedule** yet.
+- A free **Services page** on the personal profile was recommended and is
+  open. It puts a "Providing services" line under the name and a Request
+  services button on the profile, with no Premium subscription.
+- The **"Visit my website" custom button is a Premium feature.** It has a
+  monthly cost. Not taken.
+
+Aqeeb raises LinkedIn when he wants to work on it. Do not bring it up
+unprompted; that was agreed.
+
+### Pricing stays off public profiles
+
+LinkedIn's Services page offers an optional starting hourly rate. Leave
+it blank, and do not put a rate on any public profile or on the site.
+Ironbark takes a limited number of families each cycle on a considered
+engagement, and an hourly figure reframes that as a commodity. This sits
+alongside the rule about not writing about commissions: what the advice
+costs and how it is paid for both stay off the page.
+
+### Google Business Profile
+
+Parked until the free zone trade licence is issued. A profile without a
+licence, run from a flexi-desk address, carries a suspension risk. When
+it is taken up it must be registered as a service area business with the
+address hidden.
+
 ## Images
 
 Photographs arrive as full size JPEGs uploaded through the GitHub web
