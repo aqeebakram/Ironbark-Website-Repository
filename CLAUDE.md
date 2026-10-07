@@ -106,6 +106,30 @@ only hard government figure on the site and it goes stale on a schedule.
 the network policy in Claude sessions, so the figure cannot be verified
 from here. Aqeeb supplies it.
 
+### University counts
+
+Every count of universities on the site comes from the Study Australia
+list, which Aqeeb named as the source on 7 October 2026:
+`studyaustralia.gov.au/en/plan-your-studies/list-of-australian-universities`.
+It gives 42 universities, 36 public and 6 private, and lists each one's
+campuses by state.
+
+Each university is counted **once, in its home state**. Branch campuses
+do not count: CQUniversity is a Queensland university even though it has
+campuses in five states. Aqeeb corrected this on 7 October 2026 after a
+first pass counted every campus. The eight counts add up to 42:
+NSW 13, VIC 9, QLD 8, WA 5, SA 3, ACT 2, NT 1, TAS 1.
+
+Australian Catholic University has campuses in four states and is counted
+in NSW, where its head office is. Torrens is counted in SA and Notre Dame
+in WA. A city page lists only the universities based in that state, with
+their campuses inside that state.
+
+The same numbers appear in four places and must agree: the map card on
+`why-australia.html`, the eight city cards on `students-families.html`,
+and the at-a-glance figure and the university list on each
+`why-australia-<city>.html`.
+
 ### Search indexing is settled
 
 The site is fully indexed. Sixteen of eighteen pages were in within about

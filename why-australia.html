@@ -748,10 +748,16 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 .tl-b:hover{color:var(--on-night)}
 .tl-b[aria-selected="true"]{color:var(--gold)}
 .tl-b[aria-selected="true"] i{background:var(--gold);box-shadow:inset 0 0 0 1.5px var(--gold),0 0 0 5px rgba(232,163,23,.18);transform:scale(1.1)}
-.tl-panel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(1.2rem,4vw,3rem);
-  align-items:start;margin-top:clamp(1.6rem,4vh,2.6rem);padding-top:clamp(1.4rem,3.5vh,2.2rem);
+/* Every entry sits in the same grid cell and only one is shown, so the panel
+   is always as tall as its longest entry. When the panel held one entry at a
+   time its height changed with each year, and because the years advance on
+   their own, everything below it on the page moved every two seconds. */
+.tl-panel{display:grid;margin-top:clamp(1.6rem,4vh,2.6rem);padding-top:clamp(1.4rem,3.5vh,2.2rem);
   border-top:1px solid rgba(237,231,220,.16)}
-@media (max-width:820px){.tl-panel{grid-template-columns:1fr;gap:1rem}}
+.tl-item{grid-area:1/1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(1.2rem,4vw,3rem);
+  align-items:start;align-content:start;visibility:hidden;opacity:0}
+.tl-item.on{visibility:visible;opacity:1;animation:swap .5s var(--ease)}
+@media (max-width:820px){.tl-item{grid-template-columns:1fr;gap:1rem}}
 .tl-panel h3{font-family:var(--f-display);font-variation-settings:var(--vs-head);font-weight:700;
   font-size:clamp(1.9rem,4.4vw,3.2rem);line-height:1.02;letter-spacing:-.025em;margin:0;color:var(--on-night)}
 .tl-panel .who{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
@@ -761,6 +767,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   font-family:var(--f-mono);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--on-night)}
 .swap{animation:swap .5s var(--ease)}
 @keyframes swap{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes tl-fade{from{opacity:0}to{opacity:1}}
 
 /* ---------- universities ---------- */
 .uni-sec{padding-block:var(--stack)}
@@ -839,7 +846,11 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 .bark-rule::after{content:"";position:absolute;inset:0;
   background:linear-gradient(to bottom,var(--paper),rgba(246,241,233,.25) 45%,var(--paper-2))}
 
-@media (prefers-reduced-motion:reduce){.marquee ul{animation:none}.swap{animation:none}.map-cue i{animation:none}}
+@media (prefers-reduced-motion:reduce){.marquee ul{animation:none}.swap{animation:none}.map-cue i{animation:none}
+  /* The years still advance for readers who have asked for reduced motion,
+     which is the default on a lot of phones. They get a cross-fade with no
+     movement, and it has to out-rank the blanket rule that zeroes durations. */
+  .tl-item.on{animation:tl-fade .5s ease!important}}
 </style>
 
 
@@ -912,7 +923,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
       <p class="lead fade" style="--d:200ms">The sixth largest country on earth, and one of the smallest by population. A big, rich, twelfth largest economy in the world with fewer than thirty million people. Home to nine of the world&rsquo;s hundred best universities, and the third most popular destination for international students.</p>
       <div class="quickfig fade" style="--d:320ms">
         <div><b>6 + 2</b><span>States &amp; territories</span></div>
-        <div><b>42</b><span>Universities</span></div>
+        <div><b>42</b><span>Public and private universities</span></div>
         <div><b>9</b><span>Universities in the world top 100</span></div>
         <div><b>3rd</b><span>Most popular study destination</span></div>
       </div>
@@ -922,7 +933,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
     <img data-par="0.16" src="img/wa/strip.webp" alt="The Sea Cliff Bridge on the coast road south of Sydney." fetchpriority="high">
     <div class="wrap inner">
       <p class="label">Scale</p>
-      <p class="big fade">Three time zones, one legal system, and no land border with anyone.</p>
+      <p class="big fade">A continent, a country and an island, with three different time zones.</p>
     </div>
   </div>
 </section>
@@ -978,7 +989,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
           <h3 class="h-sub" id="pl-city">Sydney</h3>
           <p id="pl-txt">The biggest city and the biggest graduate job market, wrapped around a harbour and thirty-odd beaches. Also the most expensive place in the country to rent.</p>
           <dl>
-            <div><dt>Universities</dt><dd id="pl-uni">6</dd></div>
+            <div><dt id="pl-unil">Universities in NSW</dt><dd id="pl-uni">13</dd></div>
           </dl>
           <a class="cta more" id="pl-link" href="why-australia-sydney.html">Learn more about Sydney <span aria-hidden="true">&rarr;</span></a>
         </div>
@@ -993,17 +1004,19 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   <div class="wrap">
     <p class="label">Australian inventions and discoveries</p>
     <h2 class="h-head sec">Four per cent of the world&rsquo;s research output, by 0.3 per cent of its people.</h2>
-    <p class="lead" style="margin-top:.9rem">Wi&#8209;Fi came out of a failed hunt for exploding black holes. Pick a year, or let it run.</p>
+    <p class="lead" style="margin-top:.9rem">Wi&#8209;Fi came out of a failed hunt for exploding black holes.</p>
     <div class="tl">
       <div class="tl-track" role="tablist" aria-label="Australian inventions by year" id="tl-track"></div>
-      <div class="tl-panel">
-        <div>
-          <p class="who" id="in-who">CSIRO &middot; Radiophysics</p>
-          <h3 id="in-name">Wi&#8209;Fi</h3>
-        </div>
-        <div>
-          <p class="txt" id="in-txt">Radio astronomers chasing signals from space wrote the maths for untangling a reflected signal bouncing around a room. That patent became the fast wireless LAN standard.</p>
-          <p class="now" id="in-now">Now in billions of devices</p>
+      <div class="tl-panel" id="tl-panel">
+        <div class="tl-item on">
+          <div>
+            <p class="who">CSIRO &middot; Radiophysics</p>
+            <h3>Wi&#8209;Fi</h3>
+          </div>
+          <div>
+            <p class="txt">Radio astronomers chasing signals from space wrote the maths for untangling a signal bouncing around a room. That patent became the fast wireless LAN standard.</p>
+            <p class="now">In billions of devices</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1060,10 +1073,10 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
       <div class="shot fade" style="--d:280ms"><img src="img/wa/l_mall.webp" alt="The Mall's Balls sculpture in Rundle Mall, Adelaide." loading="lazy" decoding="async"><span>Rundle Mall &middot; Adelaide</span></div>
     </div>
     <div class="chips-row">
-      <div class="chip-f fade"><span>Work rights</span><b>48 hrs</b><p>Per fortnight during session, and unrestricted work rights during the breaks &mdash; at one of the world&rsquo;s highest minimum wages.</p></div>
+      <div class="chip-f fade"><span>Work rights</span><b>48 hrs</b><p>Per fortnight during session, and unrestricted work rights during the breaks. Australia offers one of the world&rsquo;s highest minimum wages.</p></div>
       <div class="chip-f fade" style="--d:80ms"><span>Health cover</span><b>OSHC</b><p>Health insurance is mandatory, so a student is covered from the day they land to the day the visa ends.</p></div>
       <div class="chip-f fade" style="--d:160ms"><span>Safety</span><b>Top 15</b><p>On the Global Peace Index, with low violent crime and strict firearms law.</p></div>
-      <div class="chip-f fade" style="--d:240ms"><span>After graduation</span><b>2&ndash;3 yrs</b><p>The Temporary Graduate visa &mdash; the post-study work visa for international students &mdash; for most degrees, and longer for qualifications in demand.</p></div>
+      <div class="chip-f fade" style="--d:240ms"><span>After graduation</span><b>2&ndash;3 yrs</b><p>The Temporary Graduate visa or the post-study work visa for international students is offered to students who graduate from Australian universities.</p></div>
     </div>
   </div>
 </section>
@@ -1315,28 +1328,28 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 
   /* ---- the atlas: eight capitals, one panel ---- */
   const PLACES=[
-    {id:"perth",x:91,y:601,nm:"Perth",st:"Western Australia",u:"5",
+    {id:"perth",x:91,y:601,nm:"Perth",st:"Western Australia",ab:"WA",u:"5",
      lx:26,ly:-16,img:"c_perth",alt:"Perth and the Swan River at dusk.",
      t:"The closest Australian capital to the Gulf, on the Indian Ocean and only a few hours off Dubai time."},
-    {id:"darwin",x:443,y:91,nm:"Darwin",st:"Northern Territory",u:"1",
+    {id:"darwin",x:443,y:91,nm:"Darwin",st:"Northern Territory",ab:"NT",u:"1",
      lx:26,ly:6,img:"n_years",alt:"Uluru at dusk in the Northern Territory.",
      t:"The tropical north, closer to Jakarta than to Sydney, and the base for Indigenous and tropical health research."},
-    {id:"adelaide",x:626,y:679,nm:"Adelaide",st:"South Australia",u:"3",
+    {id:"adelaide",x:626,y:679,nm:"Adelaide",st:"South Australia",ab:"SA",u:"3",
      lx:-26,ly:22,anchor:"end",img:"c_adelaide",alt:"Adelaide across the Torrens.",
      t:"Compact, walkable and noticeably cheaper to live in than the eastern capitals."},
-    {id:"brisbane",x:965,y:484,nm:"Brisbane",st:"Queensland",u:"3",
+    {id:"brisbane",x:965,y:484,nm:"Brisbane",st:"Queensland",ab:"QLD",u:"8",
      lx:-26,ly:0,anchor:"end",img:"c_brisbane",alt:"The Brisbane River and the city at dusk.",
      t:"Subtropical and warm almost year round, and building fast ahead of the 2032 Games."},
-    {id:"sydney",x:923,y:651,nm:"Sydney",st:"New South Wales",u:"6",
+    {id:"sydney",x:923,y:651,nm:"Sydney",st:"New South Wales",ab:"NSW",u:"13",
      lx:26,ly:2,img:"c_sydney",alt:"Sydney Harbour, the Opera House and the city.",
      t:"The biggest city and the biggest graduate job market &mdash; and the most expensive place in the country to rent."},
-    {id:"canberra",x:874,y:688,nm:"Canberra",st:"Aust. Capital Territory",u:"2",
+    {id:"canberra",x:874,y:688,nm:"Canberra",st:"Aust. Capital Territory",ab:"ACT",u:"2",
      lx:-26,ly:-6,anchor:"end",img:"c_canberra",alt:"Parliament House, Canberra, at dusk.",
      t:"Small, quiet and built on purpose around government. The people who make the policy live in the same suburbs."},
-    {id:"melbourne",x:776,y:754,nm:"Melbourne",st:"Victoria",u:"8",
+    {id:"melbourne",x:776,y:754,nm:"Melbourne",st:"Victoria",ab:"VIC",u:"9",
      lx:-26,ly:18,anchor:"end",img:"c_melbourne",alt:"The Yarra and the Melbourne skyline.",
      t:"The country's cultural engine, and the densest concentration of research universities in Australia."},
-    {id:"hobart",x:831,y:887,nm:"Hobart",st:"Tasmania",u:"1",
+    {id:"hobart",x:831,y:887,nm:"Hobart",st:"Tasmania",ab:"TAS",u:"1",
      lx:26,ly:16,img:"c_hobart",alt:"Yachts on the Derwent below kunanyi / Mount Wellington.",
      t:"The smallest capital, on a deep-water harbour under a mountain, and the cheapest of the eight to live in."}
   ];
@@ -1346,7 +1359,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
     const el=document.getElementById("place");
     const F={img:document.getElementById("pl-img"),st:document.getElementById("pl-state"),
       city:document.getElementById("pl-city"),txt:document.getElementById("pl-txt"),
-      uni:document.getElementById("pl-uni"),link:document.getElementById("pl-link")};
+      uni:document.getElementById("pl-uni"),unil:document.getElementById("pl-unil"),link:document.getElementById("pl-link")};
     let cur="sydney";
     PLACES.forEach(p=>{
       const g=document.createElementNS(NS,"g");
@@ -1374,6 +1387,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
       F.st.textContent=p.st.replace("&amp;","&");
       F.city.textContent=p.nm; F.txt.innerHTML=p.t;
       F.uni.textContent=p.u;
+      if(F.unil) F.unil.textContent="Universities in "+p.ab;
       if(F.link){ F.link.href="why-australia-"+p.id+".html";
         F.link.innerHTML="Learn more about "+p.nm+' <span aria-hidden="true">&rarr;</span>'; }
       el.classList.remove("swap"); void el.offsetWidth; el.classList.add("swap");
@@ -1412,10 +1426,12 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   ];
   const track=document.getElementById("tl-track");
   if(track){
-    const P={who:document.getElementById("in-who"),nm:document.getElementById("in-name"),
-      txt:document.getElementById("in-txt"),now:document.getElementById("in-now")};
-    const panel=document.querySelector(".tl-panel");
+    const panel=document.getElementById("tl-panel");
     let at=4;
+    panel.innerHTML=INV.map((v,i)=>`<div class="tl-item${i===at?" on":""}"${i===at?"":' aria-hidden="true"'}>`+
+      `<div><p class="who">${v.who}</p><h3>${v.nm}</h3></div>`+
+      `<div><p class="txt">${v.t}</p><p class="now">${v.now}</p></div></div>`).join("");
+    const items=[...panel.children];
     INV.forEach((v,i)=>{
       const b=document.createElement("button");
       b.type="button"; b.className="tl-b"; b.setAttribute("role","tab");
@@ -1425,17 +1441,25 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
       track.appendChild(b);
     });
     const btns=[...track.children];
+    const slow=matchMedia("(prefers-reduced-motion: reduce)").matches;
     function pick(i){
       if(i===at) return;
-      at=i; const v=INV[i];
+      at=i;
       btns.forEach((b,k)=>b.setAttribute("aria-selected",String(k===i)));
-      P.who.innerHTML=v.who; P.nm.innerHTML=v.nm; P.txt.innerHTML=v.t; P.now.innerHTML=v.now;
-      panel.classList.remove("swap"); void panel.offsetWidth; panel.classList.add("swap");
+      items.forEach((el,k)=>{ el.classList.toggle("on",k===i);
+        k===i ? el.removeAttribute("aria-hidden") : el.setAttribute("aria-hidden","true"); });
+      // On a phone the row of years is wider than the screen. Scroll the row
+      // itself to keep the current year in view; never scrollIntoView, which
+      // would drag the whole page to the timeline every two seconds.
+      const max=track.scrollWidth-track.clientWidth;
+      if(max>0){ const b=btns[i];
+        const left=Math.min(max,Math.max(0,b.offsetLeft-(track.clientWidth-b.offsetWidth)/2));
+        track.scrollTo({left,behavior:slow?"auto":"smooth"}); }
     }
     /* A picker nobody touches reads as a static image, so it advances on its
        own every two seconds. It stops for good the moment someone chooses a
-       year themselves, and never starts for anyone who has asked for reduced
-       motion.
+       year themselves. It runs under reduced motion too, where the entries
+       cross-fade in place instead of sliding.
 
        The pause belongs to the row of years and nothing else. It used to sit
        on the whole block, panel included: scrolling the section into view
@@ -1443,21 +1467,20 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
        then sits still, pointerleave never came and the timeline stopped for
        good. On the thin track a pointer really does mean "I am about to pick
        one", and focus releases again on the way out. */
-    const slow=matchMedia("(prefers-reduced-motion: reduce)").matches;
     let tick=null, taken=false, held=false;
     const stop=()=>{ clearInterval(tick); tick=null; };
-    const go=()=>{ if(!tick && !taken && !held && !slow) tick=setInterval(()=>pick((at+1)%INV.length),2000); };
+    const go=()=>{ if(!tick && !taken && !held) tick=setInterval(()=>pick((at+1)%INV.length),2000); };
     const hold=()=>{ held=true; stop(); };
     const release=()=>{ held=false; go(); };
     const take=()=>{ taken=true; stop(); };
-    if(!slow){
-      track.addEventListener("pointerenter",hold);
-      track.addEventListener("pointerleave",release);
-      track.addEventListener("focusin",hold);
-      track.addEventListener("focusout",release);
-      track.addEventListener("click",take);
-      go();
-    }
+    // A finger has no hover, so touch holds only while it is on the row.
+    track.addEventListener("pointerenter",hold);
+    track.addEventListener("pointerleave",release);
+    track.addEventListener("pointercancel",release);
+    track.addEventListener("focusin",hold);
+    track.addEventListener("focusout",release);
+    track.addEventListener("click",take);
+    go();
     track.addEventListener("keydown",e=>{
       const d=e.key==="ArrowRight"?1:e.key==="ArrowLeft"?-1:0; if(!d) return;
       e.preventDefault(); take(); const n=(at+d+INV.length)%INV.length; pick(n); btns[n].focus();
