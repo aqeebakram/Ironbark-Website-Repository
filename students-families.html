@@ -528,12 +528,25 @@ h2.sec{font-size:clamp(1.55rem,3.1vw,2.6rem);margin-top:.55rem}
   .rail-foot{display:none}
 }
 @media (max-width:900px){
-  .rail-stage{position:relative;height:auto;padding-block:var(--stack)}
-  .rail-vp{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
-  .rail{transform:none!important;padding-bottom:1rem}
-  .city,.stage{scroll-snap-align:center}
+  /* A phone gets the same pinned rail as a desktop whenever the cards fit in
+     the screen. The script tries the pin, measures, and sets .pin only if no
+     card is cut off; without .pin the rail is the swipeable row it always was. */
+  .rail-sec:not(.pin) .rail-stage{position:relative;height:auto;padding-block:var(--stack)}
+  .rail-sec:not(.pin) .rail-vp{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+  .rail-sec:not(.pin) .rail{transform:none!important;padding-bottom:1rem}
+  .rail-sec:not(.pin) .city,.rail-sec:not(.pin) .stage{scroll-snap-align:center}
   .city{width:min(78vw,320px)} .stage{width:min(84vw,340px)}
-  .rail-foot{display:none}
+  .rail-sec:not(.pin) .rail-foot{display:none}
+  /* Centred in what is left under the masthead, and the cards grow to use a
+     taller screen, so the pinned screen is not half empty. */
+  .rail-sec.pin .rail-stage{justify-content:center;padding-top:5.6rem;padding-bottom:1.1rem}
+  .rail-sec.pin .rail-head{margin-bottom:.9rem}
+  .rail-sec.pin .rail-vp{flex:0 1 auto}
+  .rail-sec.pin .stage{min-height:min(27rem,calc(100svh - 19rem));padding:1.15rem 1.2rem;gap:.5rem}
+  .rail-sec.pin .stage .n{font-size:2rem}
+  .rail-sec.pin .stage p{font-size:1rem;line-height:1.5}
+  .rail-sec.pin .stage ul{padding-top:.6rem;gap:.3rem}
+  .rail-sec.pin .rail-foot{margin-top:.9rem}
   :root{--dxb-h:215svh;--dxb-lift:105svh}
   .path{border-radius:20px 20px 0 0}
 }
@@ -715,12 +728,29 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   color:var(--ink-2);display:flex;gap:.6rem}
 .ms li::before{content:"";flex:0 0 auto;width:5px;height:5px;margin-top:.42rem;border-radius:50%;background:var(--gold)}
 @media (max-width:900px){
-  .arc-track{height:auto!important}
-  .arc-stage{position:relative;height:auto;padding-block:var(--stack)}
+  /* A phone scrubs the plot the same way a desktop does when the plot and one
+     milestone fit the screen together. The script sets .scrub only after
+     checking that; without it the plot is drawn in full and the four
+     milestones are listed underneath, as before. */
+  .arc-track:not(.scrub){height:auto!important}
+  .arc-track:not(.scrub) .arc-stage{position:relative;height:auto;padding-block:var(--stack)}
   .arc-body{grid-template-columns:1fr}
-  .ms-wrap{min-height:0;display:grid;gap:2rem}
-  .ms{position:relative;opacity:1;transform:none;pointer-events:auto}
-  .readout{display:none}
+  .arc-track:not(.scrub) .ms-wrap{min-height:0;display:grid;gap:2rem}
+  .arc-track:not(.scrub) .ms{position:relative;opacity:1;transform:none;pointer-events:auto}
+  .arc-track:not(.scrub) .readout{display:none}
+  .arc-track.scrub .arc-stage{justify-content:center;padding-top:5.6rem;padding-bottom:1rem}
+  .arc-track.scrub .arc-top{margin-bottom:1.2rem}
+  .arc-track.scrub .arc-top>.label--m{display:none}
+  .arc-track.scrub .arc-body{gap:1.1rem}
+  /* the four milestones share one cell, so the block is as tall as the longest */
+  .arc-track.scrub .ms-wrap{min-height:0;display:grid}
+  .arc-track.scrub .ms{position:relative;inset:auto;grid-area:1/1}
+  .arc-track.scrub .ms p{margin-bottom:.75rem;max-width:none}
+  .arc-track.scrub .ms h3{margin:.4rem 0 .5rem}
+  .arc-track.scrub .ms ul{padding-top:.7rem;display:flex;flex-wrap:wrap;gap:.3rem 1.1rem}
+  .arc-track.scrub .plot{width:88%}
+  /* the plot is drawn 1000 units wide, so 13-unit lettering is 4px on a phone */
+  .yearlab{font-size:34px} .axis-cap{font-size:28px}
 }
 
 /* ---------- 03 the process: the shared rail, plus packages as its coda ---------- */
@@ -865,6 +895,12 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 }
 </style>
 
+<style id="mobile-rhythm">
+/* On a phone 11vh of padding above and below every section left about 165px
+   of empty page between one section's last line and the next one's first. */
+@media (max-width:760px){:root{--stack:clamp(2.75rem,7vh,4rem)}}
+</style>
+
 <header class="masthead" id="masthead">
   <a class="brand" href="/"><svg class="lockup" viewBox="0 0 613.57 102.58" role="img" aria-label="Ironbark Advisory"><g transform="scale(3.225912) translate(-8.1 -8.1)"><g stroke="currentColor" stroke-width="3.8" stroke-linecap="round" fill="none"><path d="M10 17.9V38"/><path d="M17 12.9V38"/><path d="M31 14.4V38"/><path d="M38 19.3V38"/></g><path d="M24 10V38" stroke="#E8A317" stroke-width="3.8" stroke-linecap="round" fill="none"/></g><path fill="currentColor" d="M145.7 72.4V3.7H160.9V72.4Z M177.3 72.4V19.7H188.4L189.4 29H190.2Q191.3 26.2 193.4 23.8Q195.5 21.4 198.6 19.9Q201.8 18.5 205.8 18.5Q207.6 18.5 209.3 18.7Q211.1 19 212.5 19.5V31.6H205.6Q201.6 31.6 198.8 32.9Q196.1 34.3 194.4 36.6Q192.7 38.9 191.9 41.6Q191.1 44.4 191.1 47.3V72.4Z M249.4 73.6Q239.3 73.6 232 70.5Q224.8 67.4 220.9 61.2Q217.1 55.1 217.1 46Q217.1 36.8 220.9 30.7Q224.8 24.6 232 21.5Q239.3 18.5 249.4 18.5Q259.5 18.5 266.7 21.5Q274 24.6 277.8 30.7Q281.7 36.8 281.7 46Q281.7 55.1 277.8 61.2Q274 67.4 266.7 70.5Q259.5 73.6 249.4 73.6ZM249.4 62.9Q255 62.9 259 61Q263.1 59.2 265.2 55.6Q267.4 52.1 267.4 47V45Q267.4 39.8 265.2 36.3Q263.1 32.8 259 31Q255 29.2 249.4 29.2Q243.8 29.2 239.7 31Q235.7 32.8 233.5 36.3Q231.4 39.8 231.4 45V47Q231.4 52.1 233.5 55.6Q235.7 59.2 239.7 61Q243.8 62.9 249.4 62.9Z M293.4 72.4V19.7H304.5L305.5 28.7H306.4Q309.3 24.8 313 22.6Q316.7 20.4 320.8 19.4Q325 18.5 328.9 18.5Q336.3 18.5 341.2 20.8Q346.2 23.1 348.7 27.8Q351.2 32.5 351.2 39.8V72.4H337.4V42.2Q337.4 38.8 336.4 36.4Q335.5 34.1 333.7 32.7Q332 31.3 329.5 30.7Q327.1 30.1 324.1 30.1Q319.7 30.1 315.8 31.9Q312 33.7 309.6 36.9Q307.2 40.1 307.2 44.4V72.4Z M398.4 73.6Q392 73.6 386.7 71.4Q381.4 69.3 377.7 64.1H376.9L375.7 72.4H364.6V-1.4e-14H378.4V26.4H379.1Q381.3 23.8 384.4 22Q387.5 20.3 391.3 19.4Q395.1 18.5 399.3 18.5Q407.1 18.5 412.9 21.5Q418.8 24.5 422.1 30.6Q425.4 36.7 425.4 46.1Q425.4 55.3 422 61.4Q418.7 67.6 412.6 70.6Q406.6 73.6 398.4 73.6ZM394.9 62Q400 62 403.7 60.2Q407.4 58.5 409.3 55.1Q411.3 51.7 411.3 46.8V45.3Q411.3 40.4 409.3 37Q407.4 33.7 403.8 31.9Q400.2 30.1 395.1 30.1Q391.2 30.1 388.1 31.1Q385 32.2 382.8 34.1Q380.6 36.1 379.4 39Q378.3 41.9 378.3 45.7V46.5Q378.3 51.5 380.3 54.9Q382.3 58.4 386 60.2Q389.8 62 394.9 62Z M457 73.6Q452.3 73.6 448.2 72.8Q444.2 72.1 441.1 70.3Q438.1 68.6 436.4 65.6Q434.7 62.6 434.7 58.1Q434.7 51.7 438.2 48.1Q441.7 44.5 448.1 42.9Q454.5 41.3 463 40.9Q471.6 40.5 481.6 40.5V38.3Q481.6 34.9 479.9 32.9Q478.3 30.9 474.8 30Q471.4 29.2 465.8 29.2Q461.3 29.2 457.9 29.8Q454.5 30.4 452.6 31.6Q450.7 32.8 450.7 34.6V35.8H436.9Q436.8 35.4 436.7 35Q436.7 34.6 436.7 34.1Q436.7 29.4 440.1 25.9Q443.5 22.4 450.2 20.4Q456.9 18.5 466.9 18.5Q476.2 18.5 482.5 20.2Q488.9 21.9 492.1 25.8Q495.4 29.7 495.4 36.3V59Q495.4 60.9 496.1 61.9Q496.9 62.9 498.8 62.9H503.9V71.9Q502.9 72.3 500.2 72.9Q497.6 73.6 494.4 73.6Q490 73.6 487.5 72.5Q485.1 71.4 484 69.5Q483 67.6 482.6 65.3H481.8Q479 67.9 475.1 69.8Q471.2 71.7 466.6 72.6Q462 73.6 457 73.6ZM460.4 62.9Q463.6 62.9 467.2 62.2Q470.9 61.5 474.2 60.1Q477.5 58.8 479.5 56.7Q481.6 54.7 481.6 52V49.3Q470.4 49.3 463 50Q455.7 50.8 452.1 52.6Q448.5 54.4 448.5 57.7Q448.5 59.9 450.2 61Q452 62.1 454.7 62.5Q457.5 62.9 460.4 62.9Z M510.6 72.4V19.7H521.7L522.7 29H523.5Q524.6 26.2 526.7 23.8Q528.8 21.4 531.9 19.9Q535.1 18.5 539.1 18.5Q540.9 18.5 542.6 18.7Q544.4 19 545.8 19.5V31.6H538.9Q534.9 31.6 532.1 32.9Q529.4 34.3 527.7 36.6Q526 38.9 525.2 41.6Q524.4 44.4 524.4 47.3V72.4Z M554 72.4V-1.4e-14H567.8V43.6L595.6 19.7H612.8L590.2 40.6L613.6 72.4H597.2L579.8 48.9L567.8 57.8V72.4Z"/><path class="sub" fill="#3B5666" d="M145.7 102.6 154.8 84.7H157.5L166.7 102.6H164.1L161.8 98H150.4L148.1 102.6ZM151.4 96.1H160.8L157.9 90.4Q157.8 90 157.5 89.6Q157.3 89.1 157 88.5Q156.8 88 156.6 87.5Q156.4 87.1 156.2 86.8H156Q155.7 87.4 155.4 88.1Q155 88.8 154.7 89.4Q154.4 90 154.3 90.4Z M213.5 102.6V84.7H222.4Q225.7 84.7 228 85.7Q230.3 86.8 231.5 88.7Q232.8 90.7 232.8 93.7Q232.8 96.6 231.5 98.6Q230.3 100.6 228 101.6Q225.7 102.6 222.4 102.6ZM215.8 100.6H222.4Q224.1 100.6 225.5 100.2Q227 99.9 228.1 99.1Q229.2 98.3 229.8 97Q230.4 95.7 230.4 94V93.4Q230.4 91.6 229.8 90.3Q229.2 89.1 228.1 88.3Q227 87.5 225.5 87.1Q224.1 86.7 222.4 86.7H215.8Z M286 102.6 277.4 84.7H280L285.7 96.7Q285.9 97.1 286.2 97.8Q286.5 98.5 286.9 99.2Q287.2 99.9 287.5 100.4H287.7Q287.9 99.9 288.3 99.2Q288.6 98.5 288.9 97.9Q289.2 97.2 289.5 96.7L295.2 84.7H297.6L289 102.6Z M344.1 102.6V84.7H346.4V102.6Z M403.5 102.9Q401.7 102.9 400 102.7Q398.3 102.5 397 101.9Q395.7 101.3 394.9 100.2Q394.1 99.2 394.1 97.5Q394.1 97.3 394.2 97.2Q394.2 97.1 394.2 97H396.5Q396.4 97.2 396.4 97.4Q396.4 97.5 396.4 97.8Q396.4 98.8 397.3 99.5Q398.1 100.2 399.7 100.6Q401.3 100.9 403.5 100.9Q404.5 100.9 405.5 100.8Q406.5 100.7 407.3 100.5Q408.2 100.3 408.8 99.9Q409.5 99.6 409.8 99Q410.2 98.5 410.2 97.8Q410.2 96.8 409.6 96.2Q408.9 95.6 407.8 95.3Q406.7 94.9 405.3 94.7Q403.9 94.4 402.5 94.2Q401 94 399.6 93.7Q398.3 93.3 397.1 92.8Q396 92.3 395.4 91.4Q394.7 90.5 394.7 89.2Q394.7 88.2 395.2 87.4Q395.7 86.5 396.7 85.8Q397.8 85.2 399.4 84.8Q401.1 84.4 403.5 84.4Q406 84.4 407.6 84.9Q409.2 85.3 410.1 86Q411 86.7 411.4 87.5Q411.8 88.4 411.8 89.2V89.7H409.5V89.2Q409.5 88.4 408.9 87.8Q408.2 87.2 406.9 86.8Q405.6 86.4 403.7 86.4Q401.5 86.4 400.1 86.7Q398.6 87 397.9 87.6Q397.1 88.2 397.1 89.1Q397.1 90 397.7 90.5Q398.4 91 399.5 91.3Q400.6 91.7 402 91.9Q403.4 92.1 404.8 92.4Q406.3 92.6 407.7 92.9Q409.1 93.3 410.2 93.8Q411.3 94.4 411.9 95.3Q412.6 96.2 412.6 97.5Q412.6 99.5 411.4 100.7Q410.3 101.9 408.2 102.4Q406.2 102.9 403.5 102.9Z M470.7 102.9Q467.2 102.9 464.7 101.8Q462.2 100.8 460.8 98.7Q459.5 96.7 459.5 93.7Q459.5 90.6 460.8 88.6Q462.2 86.5 464.7 85.5Q467.2 84.4 470.7 84.4Q474.1 84.4 476.7 85.5Q479.2 86.5 480.5 88.6Q481.9 90.6 481.9 93.7Q481.9 96.7 480.5 98.7Q479.2 100.8 476.7 101.8Q474.1 102.9 470.7 102.9ZM470.7 100.9Q472.6 100.9 474.1 100.5Q475.7 100.1 476.9 99.3Q478.2 98.5 478.8 97.1Q479.5 95.8 479.5 93.9V93.4Q479.5 91.5 478.8 90.2Q478.2 88.9 476.9 88Q475.7 87.2 474.1 86.8Q472.6 86.4 470.7 86.4Q468.8 86.4 467.2 86.8Q465.6 87.2 464.4 88Q463.2 88.9 462.5 90.2Q461.8 91.5 461.8 93.4V93.9Q461.8 95.8 462.5 97.1Q463.2 98.5 464.4 99.3Q465.6 100.1 467.2 100.5Q468.8 100.9 470.7 100.9Z M530 102.6V84.7H543Q544.8 84.7 545.9 85.4Q547.1 86.1 547.7 87.3Q548.4 88.5 548.4 90Q548.4 91.7 547.5 93Q546.6 94.4 544.9 95L548.8 102.6H546.2L542.6 95.3H532.3V102.6ZM532.3 93.4H542.6Q544.2 93.4 545.1 92.4Q546 91.5 546 90Q546 89 545.6 88.3Q545.2 87.5 544.4 87.1Q543.7 86.7 542.6 86.7H532.3Z M602.3 102.6V95.1L593.4 84.7H596.2L603.4 93.2H603.7L610.9 84.7H613.6L604.6 95.1V102.6Z"/></svg><svg class="mark-only" viewBox="8.1 8.1 31.8 31.8" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="3.8" stroke-linecap="round"><path d="M10 17.9V38"/><path d="M17 12.9V38"/><path d="M31 14.4V38"/><path d="M38 19.3V38"/></g><path d="M24 10V38" stroke="#E8A317" stroke-width="3.8" stroke-linecap="round"/></svg></a>
   <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mast-nav">
@@ -997,7 +1033,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
           <p class="st">SA &middot; 3 universities</p>
           <h3 class="h-sub">Adelaide</h3>
           <p>Compact, walkable and noticeably cheaper to live in than the eastern capitals.</p>
-          <span class="go">Read the Adelaide page &rarr;</span>
+          <span class="go">Read more about Adelaide &rarr;</span>
         </div>
       </a>
       <a class="dcard fade" style="--d:60ms" href="why-australia-brisbane.html">
@@ -1006,7 +1042,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
           <p class="st">QLD &middot; 8 universities</p>
           <h3 class="h-sub">Brisbane</h3>
           <p>Subtropical and warm almost year round, and building fast ahead of the 2032 Games.</p>
-          <span class="go">Read the Brisbane page &rarr;</span>
+          <span class="go">Read more about Brisbane &rarr;</span>
         </div>
       </a>
       <a class="dcard fade" style="--d:120ms" href="why-australia-canberra.html">
@@ -1015,7 +1051,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
           <p class="st">ACT &middot; 2 universities</p>
           <h3 class="h-sub">Canberra</h3>
           <p>Small and quiet, built on purpose around government and the national institutions.</p>
-          <span class="go">Read the Canberra page &rarr;</span>
+          <span class="go">Read more about Canberra &rarr;</span>
         </div>
       </a>
       <a class="dcard fade" style="--d:180ms" href="why-australia-darwin.html">
@@ -1024,7 +1060,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
           <p class="st">NT &middot; 1 university</p>
           <h3 class="h-sub">Darwin</h3>
           <p>The tropical north, closer to Jakarta than to Sydney, and the smallest of the eight.</p>
-          <span class="go">Read the Darwin page &rarr;</span>
+          <span class="go">Read more about Darwin &rarr;</span>
         </div>
       </a>
       <a class="dcard fade" style="--d:240ms" href="why-australia-hobart.html">
@@ -1033,7 +1069,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
           <p class="st">TAS &middot; 1 university</p>
           <h3 class="h-sub">Hobart</h3>
           <p>A deep-water harbour under a mountain, and the cheapest of the eight to live in.</p>
-          <span class="go">Read the Hobart page &rarr;</span>
+          <span class="go">Read more about Hobart &rarr;</span>
         </div>
       </a>
       <a class="dcard fade" style="--d:300ms" href="why-australia-melbourne.html">
@@ -1042,7 +1078,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
           <p class="st">VIC &middot; 9 universities</p>
           <h3 class="h-sub">Melbourne</h3>
           <p>The densest concentration of research universities in the country, and cold in July.</p>
-          <span class="go">Read the Melbourne page &rarr;</span>
+          <span class="go">Read more about Melbourne &rarr;</span>
         </div>
       </a>
       <a class="dcard fade" style="--d:360ms" href="why-australia-perth.html">
@@ -1051,7 +1087,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
           <p class="st">WA &middot; 5 universities</p>
           <h3 class="h-sub">Perth</h3>
           <p>The closest Australian capital to the Gulf, and only a few hours off Dubai time.</p>
-          <span class="go">Read the Perth page &rarr;</span>
+          <span class="go">Read more about Perth &rarr;</span>
         </div>
       </a>
       <a class="dcard fade" style="--d:420ms" href="why-australia-sydney.html">
@@ -1060,7 +1096,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
           <p class="st">NSW &middot; 13 universities</p>
           <h3 class="h-sub">Sydney</h3>
           <p>The biggest graduate job market, and the most expensive place in the country to rent.</p>
-          <span class="go">Read the Sydney page &rarr;</span>
+          <span class="go">Read more about Sydney &rarr;</span>
         </div>
       </a>
     </div>
@@ -1217,14 +1253,30 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   const LABELS=["Year 10 · Subjects","Year 11 · Evidence","Year 12 · Shortlist","Year 13 · Offers"];
   const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
   const wide=matchMedia("(min-width: 901px)");
-  const scrub=()=>wide.matches&&!reduce;
+  const stage=track.querySelector(".arc-stage");
+  let scrubOn=false, lastW=0;
+  const scrub=()=>scrubOn;
+  // A desktop always scrubs. A phone scrubs if the pinned layout fits the screen.
+  function decide(){
+    if(reduce){ track.classList.remove("scrub"); return false; }
+    if(wide.matches){ track.classList.add("scrub"); return true; }
+    track.classList.add("scrub");
+    // measured, not read off scrollHeight: centred content overflows both ways
+    const cs=getComputedStyle(stage);
+    const ok=stage.firstElementChild.offsetHeight+parseFloat(cs.paddingTop)+parseFloat(cs.paddingBottom)<=stage.clientHeight+1;
+    if(!ok) track.classList.remove("scrub");
+    return ok;
+  }
   let len=0;
 
   function init(){
     len=trace.getTotalLength();
     trace.style.strokeDasharray=len;
+    track.style.height="";
+    scrubOn=decide(); lastW=innerWidth;
     if(scrub()){
-      track.style.height=(innerHeight*3.2)+"px";
+      // svh on a phone, so the section does not grow when the browser's bars hide
+      track.style.height=wide.matches ? (innerHeight*3.2)+"px" : "300svh";
       trace.style.strokeDashoffset=len;
       nodes.forEach(n=>n.classList.remove("on")); years.forEach(y=>y.classList.remove("on"));
       stages.forEach((s,i)=>s.classList.toggle("on",i===0));
@@ -1239,14 +1291,19 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   function paint(){
     if(!scrub()) return;
     const b=track.getBoundingClientRect();
-    const span=Math.max(1,b.height-innerHeight);
+    const span=Math.max(1,b.height-stage.offsetHeight);
     const p=Math.max(0,Math.min(1,-b.top/span));
     trace.style.strokeDashoffset=len*(1-p);
     if(p>0.001&&p<0.999){
       const pt=trace.getPointAtLength(len*p);
       dot.setAttribute("cx",pt.x); dot.setAttribute("cy",pt.y); dot.setAttribute("opacity","1");
-      const k=trace.ownerSVGElement.getBoundingClientRect().width/1000;
-      readout.style.transform="translate("+(pt.x*k)+"px,"+(pt.y*k)+"px) translate(-50%,-190%)";
+      const plotW=trace.ownerSVGElement.getBoundingClientRect().width, k=plotW/1000;
+      // keep the whole label inside the plot; on a phone it is wider than the
+      // gap between the first milestone and the edge of the screen
+      const half=readout.offsetWidth/2;
+      const x=Math.max(half,Math.min(plotW-half,pt.x*k));
+      // sit closer to the point on a phone, or the label rides up into the heading
+      readout.style.transform="translate("+x+"px,"+(pt.y*k)+"px) translate(-50%,"+(wide.matches?"-190%":"-150%")+")";
       readout.classList.add("on");
     }else{ dot.setAttribute("opacity","0"); readout.classList.remove("on"); }
     let active=0;
@@ -1276,7 +1333,11 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   let ticking=false;
   addEventListener("scroll",()=>{ if(ticking) return; ticking=true;
     requestAnimationFrame(()=>{ paint(); ticking=false; }); },{passive:true});
-  let rt; addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(()=>{init();fitAdv();paint();},150);});
+  // A phone fires resize every time its bars slide in or out. Only a change of
+  // width is a real change of layout there; restarting the plot on every one
+  // of those would reset it under the reader's thumb.
+  let rt; addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(()=>{
+    if(wide.matches||innerWidth!==lastW) init(); fitAdv(); paint(); },150);});
   const start=()=>{ init(); fitAdv(); paint(); };
   if(document.readyState==="complete") setTimeout(start,60);
   else addEventListener("load",()=>setTimeout(start,60));
@@ -1336,7 +1397,24 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   const par=[...document.querySelectorAll("[data-par]")];
   const darkZones=[...document.querySelectorAll("[data-dark]")];
   const railMQ=matchMedia("(min-width: 901px) and (min-height: 621px)");
+  const phoneMQ=matchMedia("(max-width: 900px)");
   const pinned=()=>railMQ.matches && !reduce;
+  // On a phone the rail pins only if every card fits the screen uncut. Try the
+  // pinned layout, look, and fall back to the swipeable row if anything clips.
+  function fitsPhone(r){
+    if(reduce || !phoneMQ.matches) return false;
+    r.sec.classList.add("pin"); r.sec.style.height="";
+    const vp=r.rail.parentElement, stage=r.sec.querySelector(".rail-stage");
+    // measured, not read off scrollHeight: centred content overflows both ways
+    const cs=getComputedStyle(stage);
+    let need=parseFloat(cs.paddingTop)+parseFloat(cs.paddingBottom);
+    [...stage.children].forEach(el=>{ const m=getComputedStyle(el);
+      need+=(el===vp?r.rail.offsetHeight:el.offsetHeight)+parseFloat(m.marginTop)+parseFloat(m.marginBottom); });
+    const ok=need<=stage.clientHeight+1 &&
+      r.cards.every(c=>c.scrollHeight<=c.clientHeight+1);
+    if(!ok) r.sec.classList.remove("pin");
+    return ok;
+  }
 
   // both rails share one implementation
   const RAILS=[...document.querySelectorAll("[data-rail]")].map(rail=>{
@@ -1347,14 +1425,17 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
       name:document.querySelector(`[data-name="${key}"]`),
       cards:[...rail.children],
       names:[...rail.children].map(c=>(c.querySelector("h3")||{}).textContent||""),
-      top:0, span:1, over:0};
+      top:0, span:1, over:0, pin:false};
   });
 
   let sy=scrollY, target=sy, last=0, running=false, lastW=window.innerWidth;
 
   function layout(){
     RAILS.forEach(r=>{
-      if(!pinned()){ r.sec.style.height="auto"; r.rail.style.transform=""; r.cards.forEach(c=>c.classList.remove("near")); return; }
+      const phone=!pinned() && fitsPhone(r);
+      r.pin=pinned() || phone;
+      r.sec.classList.toggle("pin",r.pin);
+      if(!r.pin){ r.sec.style.height="auto"; r.rail.style.transform=""; r.cards.forEach(c=>c.classList.remove("near")); return; }
       r.rail.style.transform="translate3d(0,0,0)";
       // scrollWidth omits a flex container's TRAILING padding, so the rail was
       // short by one gutter and the last card came to rest 24px from the edge
@@ -1365,13 +1446,19 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
       // the fill is translated by (n-1)x its own width, so it has to BE 1/n wide.
       // Without a width it is zero, and the progress bar never moves at all.
       if(r.bar) r.bar.style.width=(100/Math.max(1,r.cards.length))+"%";
-      r.sec.style.height=(window.innerHeight + Math.max(r.over,320)*1.45)+"px";
+      // svh on a phone: innerHeight changes every time the browser's bars slide
+      // away, and a section sized from it would grow under the reader's thumb.
+      r.sec.style.height=phone ? `calc(100svh + ${Math.round(Math.max(r.over,320)*1.45)}px)`
+        : (window.innerHeight + Math.max(r.over,320)*1.45)+"px";
     });
   }
   function measure(){
     RAILS.forEach(r=>{
       const b=r.sec.getBoundingClientRect();
-      r.top=b.top+scrollY; r.span=Math.max(1,b.height-window.innerHeight);
+      // the pin lasts for the section's height less the pinned stage's own, which
+      // on a phone is not innerHeight once the browser's bars have slid away
+      const st=r.sec.querySelector(".rail-stage");
+      r.top=b.top+scrollY; r.span=Math.max(1,b.height-(r.pin&&st?st.offsetHeight:window.innerHeight));
     });
   }
   function paint(){
@@ -1390,8 +1477,8 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
       const mid=(b.top+b.height/2-window.innerHeight/2)/window.innerHeight;
       img.style.transform=`translate3d(0,${(-mid*parseFloat(img.dataset.par)*100).toFixed(2)}px,0)`;
     });
-    if(!pinned()) return;
     RAILS.forEach(r=>{
+      if(!r.pin) return;
       // scrollY, NOT the damped sy. Damping is right for the masthead and the
       // parallax, where a little lag reads as weight, and wrong here: a pinned
       // rail is the user dragging the cards sideways with their scroll, so any

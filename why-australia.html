@@ -739,11 +739,14 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 .tl{margin-top:clamp(1.6rem,4.5vh,2.8rem)}
 .tl-track{position:relative;display:flex;gap:0;padding-bottom:.2rem;overflow-x:auto;scrollbar-width:none}
 .tl-track::-webkit-scrollbar{display:none}
-.tl-track::before{content:"";position:absolute;left:0;right:0;top:11px;height:1px;background:rgba(237,231,220,.22)}
+/* The line is drawn by each year, not once across the row. A single line on
+   the row is only as wide as the screen, so on a phone, where the row scrolls
+   sideways, it stopped after the first few years. */
+.tl-b::before{content:"";position:absolute;left:0;right:0;top:11px;height:1px;background:rgba(237,231,220,.22)}
 .tl-b{position:relative;flex:1 0 auto;min-width:6.4rem;background:none;border:0;padding:0 .4rem 0 0;cursor:pointer;
   text-align:left;color:var(--on-night-2);font-family:var(--f-mono);font-size:.8rem;letter-spacing:.1em;
   display:grid;gap:.75rem;justify-items:start;transition:color .35s ease}
-.tl-b i{display:block;width:11px;height:11px;margin-top:6px;border-radius:50%;background:#0A1620;
+.tl-b i{position:relative;z-index:1;display:block;width:11px;height:11px;margin-top:6px;border-radius:50%;background:#0A1620;
   box-shadow:inset 0 0 0 1.5px rgba(237,231,220,.5);transition:background .35s ease,box-shadow .35s ease,transform .35s var(--ease)}
 .tl-b:hover{color:var(--on-night)}
 .tl-b[aria-selected="true"]{color:var(--gold)}
@@ -878,6 +881,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   .mast-nav .ln{min-height:44px}
   .other-row a{padding-block:.75rem}
   .tl-b{padding-block:.55rem}
+  .tl-b::before{top:calc(11px + .55rem)}
 
   /* Underlined text links carry their rule on the border, so padding would
      drag the underline away from the word. Grow the hit area instead. */
@@ -885,6 +889,12 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   .brand::before,.sh-back::before,.alt::before{content:"";position:absolute;
     left:0;right:0;top:50%;transform:translateY(-50%);height:44px}
 }
+</style>
+
+<style id="mobile-rhythm">
+/* On a phone 11vh of padding above and below every section left about 165px
+   of empty page between one section's last line and the next one's first. */
+@media (max-width:760px){:root{--stack:clamp(2.75rem,7vh,4rem)}}
 </style>
 
 <header class="masthead" id="masthead">
@@ -991,7 +1001,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
           <dl>
             <div><dt id="pl-unil">Universities in NSW</dt><dd id="pl-uni">13</dd></div>
           </dl>
-          <a class="cta more" id="pl-link" href="why-australia-sydney.html">Learn more about Sydney <span aria-hidden="true">&rarr;</span></a>
+          <a class="cta more" id="pl-link" href="why-australia-sydney.html">Read more about Sydney <span aria-hidden="true">&rarr;</span></a>
         </div>
       </article>
     </div>
@@ -1004,7 +1014,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   <div class="wrap">
     <p class="label">Australian inventions and discoveries</p>
     <h2 class="h-head sec">Four per cent of the world&rsquo;s research output, by 0.3 per cent of its people.</h2>
-    <p class="lead" style="margin-top:.9rem">Wi&#8209;Fi came out of a failed hunt for exploding black holes.</p>
+    <p class="lead" style="margin-top:.9rem">Wi&#8209;Fi was an accidental discovery, thanks to Australian astronomers chasing black holes.</p>
     <div class="tl">
       <div class="tl-track" role="tablist" aria-label="Australian inventions by year" id="tl-track"></div>
       <div class="tl-panel" id="tl-panel">
@@ -1389,7 +1399,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
       F.uni.textContent=p.u;
       if(F.unil) F.unil.textContent="Universities in "+p.ab;
       if(F.link){ F.link.href="why-australia-"+p.id+".html";
-        F.link.innerHTML="Learn more about "+p.nm+' <span aria-hidden="true">&rarr;</span>'; }
+        F.link.innerHTML="Read more about "+p.nm+' <span aria-hidden="true">&rarr;</span>'; }
       el.classList.remove("swap"); void el.offsetWidth; el.classList.add("swap");
     }
   }
