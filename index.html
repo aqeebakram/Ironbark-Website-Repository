@@ -531,6 +531,10 @@ h2.sec{font-size:clamp(1.55rem,3.1vw,2.6rem);margin-top:.55rem}
 .alt{font-family:var(--f-mono);font-size:.80rem;letter-spacing:.14em;text-transform:uppercase;color:var(--on-deep-2);
   text-decoration:none;border-bottom:1px solid rgba(240,234,224,.35);padding-bottom:.18rem;transition:color .35s ease,border-color .35s ease}
 .alt:hover{color:var(--gold);border-color:var(--gold)}
+/* On the light founder ground. Gold fails contrast on paper, so hover goes to ocean. */
+.story{margin-top:1.4rem}
+.founder .alt{color:var(--ink-2);border-color:rgba(22,48,61,.35)}
+.founder .alt:hover{color:var(--ocean);border-color:var(--ocean)}
 
 footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,6vh,3.5rem);border-top:1px solid rgba(240,234,224,.12)}
 .foot{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(2rem,6vw,5rem);align-items:start}
@@ -643,8 +647,8 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   <p class="vh">Sydney Harbour with the Opera House, surf on an Australian beach from above, Circular Quay at sunset, Uluru at dawn, and the coast road above the Tasman Sea.</p>
   <div class="wrap hero-inner">
     <p class="label">Independent Education Advisory &middot; Dubai, United Arab Emirates</p>
-    <h1 class="h-head">Education advice from someone who has worked in agencies, universities and government.</h1>
-    <p class="lead">I help families find the right Australian pathway for their child, and I provide strategic advice to education providers across K12 and higher education.</p>
+    <h1 class="h-head">International education advice from someone who has worked inside Australian government, universities and agencies.</h1>
+    <p class="lead">I help students find the right education pathway in Australia and I provide strategic advice to education providers across K12 and higher education.</p>
     <div class="hero-foot">
       <p class="cue"><i></i>Scroll</p>
     </div>
@@ -656,15 +660,15 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   <div class="wrap">
     <div class="help-head">
       <p class="label">Get started</p>
-      <h2 class="h-head sec">How can I help?</h2>
-      <p class="lead">Whether you are thinking of studying abroad, exploring alternative revenue streams, or opening a door for your students, the solution is built around you, your personal circumstances, objectives and long term goals.</p>
+      <h2 class="h-head sec">Who I work with</h2>
+      <p class="lead">I work with students and families. I also work with universities that want to grow in the UAE, and with local schools here that want their students to see Australian education for themselves.</p>
     </div>
     <div class="cards">
       <a class="card fade" href="students-families.html">
         <img src="img/students.webp" alt="The University of Sydney quadrangle, students crossing the lawn." loading="lazy" decoding="async">
         <p class="eyebrow">For students &amp; families</p>
         <h3 class="h-sub">Choosing Australia</h3>
-        <p>Unbiased advice on programs, courses, cities and the real cost from someone who arrived as an international student and never left the sector.</p>
+        <p>Unbiased advice on programs, courses, cities and the real cost from someone who arrived as an international student and continued working in the sector.</p>
         <div class="chips"><span class="chip">Independent advice</span><span class="chip">Five stages</span></div>
         <span class="btn">Explore the pathway</span>
       </a>
@@ -672,7 +676,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
         <img src="img/providers.webp" alt="The Dubai coastline from the air." loading="lazy" decoding="async">
         <p class="eyebrow">For institutions &amp; providers</p>
         <h3 class="h-sub">Building in the UAE</h3>
-        <p>Transnational education, research partnerships and market entry solutions for universities keen to expand into the UAE.</p>
+        <p>Transnational education, research partnerships and market entry for universities expanding into the UAE.</p>
         <div class="chips"><span class="chip">TNE &amp; partnerships</span><span class="chip">Market entry</span></div>
         <span class="btn">Explore partnerships</span>
       </a>
@@ -680,7 +684,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
         <img src="img/learn.webp" alt="The Sydney Opera House and Harbour Bridge from the water." loading="lazy" decoding="async">
         <p class="eyebrow">For UAE schools</p>
         <h3 class="h-sub">Learn about Australia</h3>
-        <p>Immersion programs, study tours, school partnerships, masterclasses for UAE schools that are invested in offering the best experience for their students.</p>
+        <p>Immersion programs, study tours, school partnerships and masterclasses for UAE schools that want their students to see Australian education first-hand.</p>
         <div class="chips"><span class="chip">Immersion</span><span class="chip">Study tours</span></div>
         <span class="btn">Explore programs</span>
       </a>
@@ -706,11 +710,13 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
       <p class="who-role fade" style="--d:110ms">Founder, Ironbark Advisory</p>
       <h3 class="h-sub fade" style="--d:160ms">Twelve years in international education, across government, universities and education agencies.</h3>
       <ul class="creds">
-        <li class="cred fade" style="--d:220ms">Went to Sydney, Australia as an international student in 2016</li>
-        <li class="cred fade" style="--d:280ms">Worked at Macquarie University and The Australian National University in admissions and student recruitment</li>
-        <li class="cred fade" style="--d:340ms">Held senior roles in New South Wales Government (Australia), with a focus on international education and partnerships</li>
-        <li class="cred fade" style="--d:400ms">Based in Dubai, United Arab Emirates</li>
+        <li class="cred fade" style="--d:220ms">Advised students on studying abroad at two education agencies in India before going abroad myself</li>
+        <li class="cred fade" style="--d:280ms">Went to Sydney as an international student in 2016</li>
+        <li class="cred fade" style="--d:340ms">Worked with Macquarie University in their future students team, then built a faculty&rsquo;s international marketing at the Australian National University and established ANU&rsquo;s first office in India</li>
+        <li class="cred fade" style="--d:400ms">Led international education partnerships for the New South Wales Government at Study NSW</li>
+        <li class="cred fade" style="--d:460ms">Now based in Dubai with my family</li>
       </ul>
+      <p class="story fade" style="--d:520ms"><a class="alt" href="about.html">Read my story &rarr;</a></p>
     </div>
   </div>
 </section>
@@ -721,13 +727,11 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   <div class="wrap">
     <p class="label">Book</p>
     <h2 class="h-head"><span class="rev"><span>The first conversation</span></span><span class="rev"><span style="--d:120ms">costs nothing.</span></span></h2>
-    <p class="lead qualify fade" style="--d:320ms">If you appreciate thoughtful advice even when it
-      challenges your assumptions, if you value long term relationships over quick transactions, and
-      if you believe choosing the right advisor matters more than choosing the cheapest one, then you
-      are in the right place.</p>
-    <p class="lead fade" style="--d:440ms">Thirty minutes to work out whether Australia is the right answer for your family &mdash; or whether the UAE is the right next market for your institution.</p>
+    <p class="lead fade" style="--d:320ms">Thirty minutes with me. Bring your year group, the subjects you&rsquo;ve chosen and what you hope your degree leads to. You&rsquo;ll leave knowing whether Australia makes sense, and what to decide next. If it doesn&rsquo;t make sense, I&rsquo;ll tell you.</p>
+    <p class="lead fade" style="--d:440ms">I&rsquo;m based in Dubai and happy to speak with students and parents anywhere in the Gulf, including Bahrain, Qatar, Oman, Kuwait and Saudi Arabia.</p>
     <div class="close-row fade" style="--d:560ms">
       <a class="cta" href="https://calendar.app.google/3Y3mibwNrrSun34i9" target="_blank" rel="noopener">Book a discovery call &rarr;</a>
+      <a class="alt" href="https://calendar.app.google/DUJJcpbsJAZyn3Nq9" target="_blank" rel="noopener">Book an institution call</a>
       <a class="alt" href="https://www.linkedin.com/in/aqeebakram" target="_blank" rel="noopener">Connect on LinkedIn</a>
     </div>
   </div>
