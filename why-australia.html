@@ -774,6 +774,13 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 
 /* ---------- universities ---------- */
 .uni-sec{padding-block:var(--stack)}
+.teach{padding-block:0 var(--stack)}
+.teach .h-head{margin-top:.7rem}
+.teach .lead{margin-top:1rem;max-width:60ch}
+.teach .guards{margin-top:clamp(1.6rem,4vh,2.4rem)}
+/* four cards: two by two until there is room for a single row, never three and one */
+@media (min-width:640px){.teach .guards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1200px){.teach .guards{grid-template-columns:repeat(4,minmax(0,1fr))}}
 .uni-grid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:clamp(1.6rem,4.5vw,4rem);align-items:stretch}
 @media (max-width:940px){.uni-grid{grid-template-columns:1fr}
   .uni-shot{min-height:clamp(18rem,64vw,26rem)}}
@@ -1060,10 +1067,23 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
     </div>
   </div>
   <div class="guards">
-    <div class="guard fade"><h3>The law</h3><p><b>ESOS Act.</b> By an act of parliament, every provider that teaches an international student must be registered on CRICOS and is regulated by TEQSA.</p></div>
+    <div class="guard fade"><h3>The law</h3><p><b>ESOS Act.</b> By an act of parliament, every provider that teaches an international student must be registered on CRICOS. Universities are regulated by TEQSA and vocational colleges by ASQA, and both check courses against national standards.</p></div>
     <div class="guard fade" style="--d:80ms"><h3>The money</h3><p><b>Tuition Protection Service.</b> If a provider fails to deliver, the government-backed scheme places the student at a different university or refunds the fees.</p></div>
     <div class="guard fade" style="--d:160ms"><h3>The qualification</h3><p><b>Australian Qualifications Framework.</b> One national framework, and qualifications recognised globally.</p></div>
     <div class="guard fade" style="--d:240ms"><h3>The record</h3><p><b>16 Nobel laureates.</b> Among them the man who made penicillin usable, and the team that found the universe is accelerating.</p></div>
+  </div>
+</section>
+
+<!-- ══ TEACHING & SUPPORT ══ -->
+<section class="teach wrap" id="teaching">
+  <p class="label fade">Teaching &amp; support</p>
+  <h2 class="h-head sec"><span class="rev"><span>Degrees built around the job</span></span><span class="rev"><span style="--d:110ms">you want afterwards.</span></span></h2>
+  <p class="lead fade" style="--d:200ms">Many Australian degrees build work into the course itself: placements, internships, industry projects and group work with real clients. You graduate with experience and contacts as well as a qualification.</p>
+  <div class="guards">
+    <div class="guard fade"><h3>Work experience</h3><p>Placements and internships are part of many courses, and some require them before you can graduate.</p></div>
+    <div class="guard fade" style="--d:80ms"><h3>Support on campus</h3><p>Every university has staff whose job is supporting international students, from orientation through to graduation, alongside careers, health and counselling services.</p></div>
+    <div class="guard fade" style="--d:160ms"><h3>If something goes wrong</h3><p>If you can&rsquo;t resolve a complaint with your university or college, an independent ombudsman will look at it, free of charge.</p></div>
+    <div class="guard fade" style="--d:240ms"><h3>At work</h3><p>If you work part-time while you study, you have the same workplace rights as any Australian worker, including the minimum wage. The Fair Work Ombudsman enforces them.</p></div>
   </div>
 </section>
 
