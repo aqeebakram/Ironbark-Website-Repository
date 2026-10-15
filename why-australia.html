@@ -99,10 +99,10 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:locale" content="en">
 <meta property="og:type" content="article">
-<meta name="description" content="Australia in numbers: states and territories, land area, universities and research, the inventions, culture, and the companies that went global.">
+<meta name="description" content="Why students choose Australia: its universities and research, the protections for international students, culture and lifestyle, and the eight capital cities.">
 <meta property="og:site_name" content="Ironbark Advisory">
 <meta property="og:title" content="Why Australia &mdash; Ironbark Advisory">
-<meta property="og:description" content="Australia in numbers: states and territories, land area, universities and research, the inventions, culture, and the companies that went global.">
+<meta property="og:description" content="Why students choose Australia: its universities and research, the protections for international students, culture and lifestyle, and the eight capital cities.">
 <meta property="og:url" content="https://ironbarkadvisory.ae/why-australia.html">
 <meta property="og:image" content="https://ironbarkadvisory.ae/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -129,7 +129,7 @@
 </script>
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Why Australia &mdash; Ironbark Advisory">
-<meta name="twitter:description" content="Australia in numbers: states and territories, land area, universities and research, the inventions, culture, and the companies that went global.">
+<meta name="twitter:description" content="Why students choose Australia: its universities and research, the protections for international students, culture and lifestyle, and the eight capital cities.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300..700&display=swap">
@@ -708,9 +708,9 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 .map .ring{fill:none;stroke:var(--ocean);stroke-width:2;opacity:0;transition:opacity .4s ease,r .5s var(--ease)}
 .map .nm{font-family:var(--f-mono);font-size:22px;letter-spacing:.1em;text-transform:uppercase;
   fill:var(--kick);transition:fill .35s ease}
-.map .hit:hover .dot,.map .hit[aria-selected="true"] .dot{fill:var(--gold);r:11}
-.map .hit:hover .nm,.map .hit[aria-selected="true"] .nm{fill:var(--ink)}
-.map .hit[aria-selected="true"] .ring{opacity:.7}
+.map .hit:hover .dot,.map .hit[data-on="true"] .dot{fill:var(--gold);r:11}
+.map .hit:hover .nm,.map .hit[data-on="true"] .nm{fill:var(--ink)}
+.map .hit[data-on="true"] .ring{opacity:.7}
 .map .hit:focus-visible{outline:none}
 .map .hit:focus-visible .ring{opacity:1;stroke:var(--sun)}
 .place{background:var(--card);border:1px solid var(--rule-2);border-radius:16px;overflow:hidden}
@@ -951,7 +951,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 <!-- ══ THE COUNTRY, IN PHOTOGRAPHS AND FIGURES ══ -->
 <section class="bento-sec wrap" id="glance">
   <div class="bento-head">
-    <div><p class="label">The country</p><h2 class="h-head sec">Almost the size of Europe. Fewer people than Texas.</h2></div>
+    <div><p class="label">The country</p><h2 class="h-head sec">Almost the size of Europe, but fewer people than Texas.</h2></div>
     <p class="label label--m">Interesting statistics worth knowing</p>
   </div>
   <div class="bento">
@@ -1043,7 +1043,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
     <div>
       <p class="label">Universities &amp; research</p>
       <h2 class="h-head sec">Forty-two universities. Nine in the global top hundred.</h2>
-      <p class="lead" style="margin-top:.9rem">Thirty-six public and six private universities. No country of this size comes close on that ratio.</p>
+      <p class="lead" style="margin-top:.9rem">Thirty-six public and six private universities.</p>
       <div class="rank-head"><span>QS ranking</span><span>University</span><span>State</span></div>
       <ol class="rank">
         <li><span class="r">19</span><span class="u">UNSW Sydney</span><span class="c">NSW</span></li>
@@ -1056,12 +1056,12 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
         <li><span class="r">79</span><span class="u">Adelaide University</span><span class="c">SA</span></li>
         <li><span class="r">89</span><span class="u">University of Technology Sydney</span><span class="c">NSW</span></li>
       </ol>
-      <p class="label label--m" style="margin-top:.9rem">QS World University Rankings 2026</p>
+      <p class="label label--m" style="margin-top:.9rem">QS World University Rankings 2027</p>
     </div>
   </div>
   <div class="guards">
     <div class="guard fade"><h3>The law</h3><p><b>ESOS Act.</b> By an act of parliament, every provider that teaches an international student must be registered on CRICOS and is regulated by TEQSA.</p></div>
-    <div class="guard fade" style="--d:80ms"><h3>The money</h3><p><b>Tuition Protection Service.</b> If a provider fails to deliver, the government-backed scheme places the student at a different university or refunds the fees. Your investment is safe, and most other countries have no equivalent.</p></div>
+    <div class="guard fade" style="--d:80ms"><h3>The money</h3><p><b>Tuition Protection Service.</b> If a provider fails to deliver, the government-backed scheme places the student at a different university or refunds the fees.</p></div>
     <div class="guard fade" style="--d:160ms"><h3>The qualification</h3><p><b>Australian Qualifications Framework.</b> One national framework, and qualifications recognised globally.</p></div>
     <div class="guard fade" style="--d:240ms"><h3>The record</h3><p><b>16 Nobel laureates.</b> Among them the man who made penicillin usable, and the team that found the universe is accelerating.</p></div>
   </div>
@@ -1074,7 +1074,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
       <div><p class="label">Culture &amp; lifestyle</p><h2 class="h-head sec">One in three people were born outside Australia.</h2></div>
       <p class="label label--m">300+ languages spoken at home</p>
     </div>
-    <p class="lead">Arabic, Hindi, Urdu, Mandarin and Punjabi are among the largest. A student arriving from the Gulf is not an exception there &mdash; halal food in every suburb, prayer rooms on every campus, mosques in every capital, and a public culture that treats all of it as ordinary.</p>
+    <p class="lead">After English, Mandarin, Arabic, Vietnamese and Cantonese are among the most common languages spoken at home. People living in Australia were born in more than 190 countries, so wherever you come from, you will find your community. For students from the Gulf, halal food is easy to find, most campuses have prayer rooms, and every capital city has mosques.</p>
     <div class="mosaic">
       <div class="shot s-tall fade"><img src="img/wa/l_pool.webp" alt="An ocean rock pool cut into the cliffs on the New South Wales coast." loading="lazy" decoding="async"><span>Ocean pools &middot; NSW</span></div>
       <div class="shot s-wide fade" style="--d:70ms"><img src="img/wa/l_boxes.webp" alt="Painted bathing boxes on Brighton Beach, Melbourne." loading="lazy" decoding="async"><span>Brighton Beach &middot; Melbourne</span></div>
@@ -1084,9 +1084,9 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
     </div>
     <div class="chips-row">
       <div class="chip-f fade"><span>Work rights</span><b>48 hrs</b><p>Per fortnight during session, and unrestricted work rights during the breaks. Australia offers one of the world&rsquo;s highest minimum wages.</p></div>
-      <div class="chip-f fade" style="--d:80ms"><span>Health cover</span><b>OSHC</b><p>Health insurance is mandatory, so a student is covered from the day they land to the day the visa ends.</p></div>
+      <div class="chip-f fade" style="--d:80ms"><span>Health cover</span><b>OSHC</b><p>Health insurance is mandatory, so you are covered from the day you land to the day your visa ends.</p></div>
       <div class="chip-f fade" style="--d:160ms"><span>Safety</span><b>Top 15</b><p>On the Global Peace Index, with low violent crime and strict firearms law.</p></div>
-      <div class="chip-f fade" style="--d:240ms"><span>After graduation</span><b>2&ndash;3 yrs</b><p>The Temporary Graduate visa or the post-study work visa for international students is offered to students who graduate from Australian universities.</p></div>
+      <div class="chip-f fade" style="--d:240ms"><span>Graduate outcomes</span><b>Varies</b><p>Post-study options vary by course and visa. We go through yours on the call.</p></div>
     </div>
   </div>
 </section>
@@ -1094,7 +1094,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 <!-- ══ COMPANIES ══ -->
 <section class="biz" id="business">
   <div class="wrap biz-head">
-    <div><p class="label">Economy &amp; industry</p><h2 class="h-head sec">The twelfth largest economy, and the fourth largest pension pool on earth.</h2></div>
+    <div><p class="label">Economy &amp; industry</p><h2 class="h-head sec">The twelfth largest economy, and international education is its largest services export.</h2></div>
     <p class="label label--m">Australian companies that went global</p>
   </div>
   <div class="marquee" aria-hidden="true"><ul id="mq">
@@ -1117,8 +1117,8 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   <img src="img/wa/close.webp" alt="Sunset over a beach on the New South Wales coast." loading="lazy" decoding="async">
   <div class="wrap">
     <p class="label">Next</p>
-    <h2 class="h-head"><span class="rev"><span>Australia is the answer</span></span><span class="rev"><span style="--d:120ms">for some families.</span></span></h2>
-    <p class="lead fade" style="--d:380ms">Not all of them. The first conversation is thirty minutes and costs nothing, and it is as likely to end with me saying no as yes.</p>
+    <h2 class="h-head"><span class="rev"><span>Australia is the right answer</span></span><span class="rev"><span style="--d:120ms">for some students.</span></span></h2>
+    <p class="lead fade" style="--d:380ms">Not for all of them. The first conversation is thirty minutes and costs nothing, and if Australia isn&rsquo;t right for you, I&rsquo;ll tell you.</p>
     <div class="close-row fade" style="--d:500ms">
       <a class="cta" href="https://calendar.app.google/3Y3mibwNrrSun34i9" target="_blank" rel="noopener">Book a discovery call &rarr;</a>
       <a class="alt" href="students-families.html">See the student pathway</a>
@@ -1349,7 +1349,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
      t:"Compact, walkable and easy to get around."},
     {id:"brisbane",x:965,y:484,nm:"Brisbane",st:"Queensland",ab:"QLD",u:"8",
      lx:-26,ly:0,anchor:"end",img:"c_brisbane",alt:"The Brisbane River and the city at dusk.",
-     t:"Subtropical and warm almost year round, and building fast ahead of the 2032 Games."},
+     t:"Subtropical and warm almost year round, and building fast ahead of the 2032 Olympic Games."},
     {id:"sydney",x:923,y:651,nm:"Sydney",st:"New South Wales",ab:"NSW",u:"13",
      lx:26,ly:2,img:"c_sydney",alt:"Sydney Harbour, the Opera House and the city.",
      t:"The biggest city and the biggest graduate job market in the country."},
@@ -1372,10 +1372,11 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
       uni:document.getElementById("pl-uni"),unil:document.getElementById("pl-unil"),link:document.getElementById("pl-link")};
     let cur="sydney";
     PLACES.forEach(p=>{
-      const g=document.createElementNS(NS,"g");
-      g.setAttribute("class","hit"); g.setAttribute("role","tab"); g.setAttribute("tabindex","0");
-      g.setAttribute("aria-label",p.nm+", "+p.st.replace("Aust.","Australian"));
-      g.setAttribute("aria-selected",String(p.id===cur)); g.dataset.id=p.id;
+      // each city is a real link to its own page; hover and focus preview it in the panel
+      const g=document.createElementNS(NS,"a");
+      g.setAttribute("class","hit"); g.setAttribute("href","why-australia-"+p.id+".html");
+      g.setAttribute("aria-label","Read more about "+p.nm+", "+p.st.replace("Aust.","Australian"));
+      g.dataset.on=String(p.id===cur); g.dataset.id=p.id;
       // an 8px dot in a 1155-unit viewBox is about five real pixels on screen;
       // the transparent disc is what the pointer actually meets
       g.innerHTML=`<circle class="pad" cx="${p.x}" cy="${p.y}" r="42"></circle>`+
@@ -1383,16 +1384,15 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
         `<circle class="dot" cx="${p.x}" cy="${p.y}" r="8"></circle>`+
         `<text class="nm" x="${p.x+p.lx}" y="${p.y+p.ly}" text-anchor="${p.anchor||"start"}">${p.nm}</text>`;
       const pick=()=>show(p.id);
-      g.addEventListener("click",pick);
       g.addEventListener("mouseenter",pick);
-      g.addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); pick(); }});
+      g.addEventListener("focus",pick);
       pins.appendChild(g);
     });
     function show(id){
       if(id===cur) return;
       const p=PLACES.find(q=>q.id===id); if(!p) return;
       cur=id;
-      [...pins.children].forEach(g=>g.setAttribute("aria-selected",String(g.dataset.id===id)));
+      [...pins.children].forEach(g=>{ g.dataset.on=String(g.dataset.id===id); });
       F.img.src="img/wa/"+p.img+".webp"; F.img.alt=p.alt;
       F.st.textContent=p.st.replace("&amp;","&");
       F.city.textContent=p.nm; F.txt.innerHTML=p.t;
