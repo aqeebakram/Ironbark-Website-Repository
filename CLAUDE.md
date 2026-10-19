@@ -130,16 +130,36 @@ The same numbers appear in four places and must agree: the map card on
 and the at-a-glance figure and the university list on each
 `why-australia-<city>.html`.
 
-### Search indexing is settled
+### Search indexing
 
-The site is fully indexed. Sixteen of eighteen pages were in within about
-three weeks of the sitemap going live, including all eight city pages.
-Slow indexing on this domain has been a queue every single time, never a
-fault. Do not diagnose it as a content or linking problem again.
+Fifteen of eighteen pages are indexed, including all eight city pages.
+Technical SEO is done: canonicals point at their own URL on every page,
+nothing carries noindex, robots.txt allows everything, the sitemap is
+valid and lists all eighteen, and there are no orphan pages.
 
-The constraint now is inbound links, of which there are none, and content
-that targets queries families actually type. Technical SEO work has no
-remaining return.
+**Read the Search Console status before diagnosing anything.** The two
+look alike and mean opposite things:
+
+- **Discovered, currently not indexed** means Google has the URL and has
+  never fetched the page. The Last crawled column is empty. Nothing about
+  the page content can be the cause, because nothing has been read. It is
+  crawl scheduling, which on a domain with no inbound links means Google
+  is choosing not to spend budget. The lever is Request Indexing on each
+  URL, then wait a week at minimum.
+- **Crawled, currently not indexed** means Google fetched the page and
+  decided against it. Only then is the content worth looking at.
+
+As at 19 October 2026, `contact.html`, `institutions.html` and
+`why-australia.html` had sat in Discovered since 14 September. Indexing
+was requested for all three on 19 October. Contact pages routinely never
+get indexed and that costs nothing.
+
+The constraint is inbound links, of which there are none, and content
+that targets queries families actually type.
+
+Do not submit an ordinary page as a sitemap. `insights.html` was
+submitted as one in Search Console and errored with "Sitemap is HTML"
+until it was removed. The only sitemap is `/sitemap.xml`.
 
 ## Off-site channels
 
