@@ -622,7 +622,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   font-family:var(--f-mono);font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:#EDF5F8;
   background:linear-gradient(to top,rgba(5,16,22,.8),rgba(5,16,22,0))}
 @media (max-width:760px){.why-photo figcaption{font-size:.75rem}}
-.why-copy{display:grid;gap:1.1rem;max-width:64ch}
+.why-copy{display:grid;gap:1.1rem;max-width:64ch;will-change:transform}
 .why-copy p{margin:0;font-size:clamp(1.06rem,1.2vw,1.18rem);line-height:1.65;color:var(--ink-2)}
 /* fine print: .why-copy p would otherwise set the source line at body size */
 .why-copy p.live-src{margin-top:.5rem;font-family:var(--f-body);font-size:.75rem;line-height:1.5;
@@ -849,6 +849,40 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   </div>
   <div class="plates"><figure class="plate fade"><img src="img/states/perth-a.webp" alt="A road beside a pink salt lake in Western Australia, seen from above." loading="lazy"><figcaption>Western Australia</figcaption></figure><figure class="plate fade"><img src="img/states/perth-b.webp" alt="Perth and the Swan River from the air at dusk, with the Narrows Bridge." loading="lazy"><figcaption>Western Australia</figcaption></figure></div>
 </section>
+<script>
+/* Living here. When the photograph is taller than the text beside it, the
+   photograph holds still and the text slides down it until the two bottoms
+   meet, then both carry on up the page together. The section is lengthened
+   by exactly that distance, so the slide is paid for in scroll and nothing
+   below it jumps. Wide screens only; a phone stacks the photo above the text,
+   and reduced motion leaves both where they are. */
+(() => {
+  const grid=document.querySelector(".why-grid.has-photo"); if(!grid) return;
+  const photo=grid.querySelector(".why-photo"), copy=grid.querySelector(".why-copy");
+  const wide=matchMedia("(min-width: 821px)"), reduce=matchMedia("(prefers-reduced-motion: reduce)");
+  let travel=0, ticking=false;
+  function paint(){
+    ticking=false; if(!travel) return;
+    const top=parseFloat(getComputedStyle(photo).top)||0;
+    const s=Math.max(0,Math.min(travel,top-grid.getBoundingClientRect().top));
+    // the text scrolls up with the page by s; moving it down by 2s leaves it
+    // travelling down the photograph by s while the photograph holds
+    copy.style.transform="translate3d(0,"+(2*s)+"px,0)";
+  }
+  function layout(){
+    grid.style.minHeight=""; copy.style.transform=""; travel=0;
+    if(!wide.matches||reduce.matches) return;
+    const t=photo.offsetHeight-copy.offsetHeight;
+    if(t<8) return;
+    travel=t; grid.style.minHeight=(photo.offsetHeight+travel)+"px"; paint();
+  }
+  addEventListener("scroll",()=>{ if(!ticking){ ticking=true; requestAnimationFrame(paint); } },{passive:true});
+  let rt; addEventListener("resize",()=>{ clearTimeout(rt); rt=setTimeout(layout,120); });
+  wide.addEventListener("change",layout);
+  if(document.readyState==="complete") layout(); else addEventListener("load",layout);
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(layout);
+})();
+</script>
 
 <!-- ══ THE OTHER SEVEN ══ -->
 <section class="others wrap">
