@@ -616,7 +616,12 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 @media (max-width:820px){.why-grid.has-photo{grid-template-columns:minmax(0,1fr)}}
 .why-photo{margin:0;position:sticky;top:6.5rem;border-radius:12px;overflow:hidden;background:#0d1a20}
 .why-photo img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
-@media (max-width:820px){.why-photo{position:static}.why-photo img{aspect-ratio:3/2}}
+@media (max-width:820px){.why-photo{position:relative;top:auto}.why-photo img{aspect-ratio:3/2}}
+/* the place, set the same way as the captions on the photographs below */
+.why-photo figcaption{position:absolute;left:0;right:0;bottom:0;padding:1.9rem .85rem .7rem;
+  font-family:var(--f-mono);font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:#EDF5F8;
+  background:linear-gradient(to top,rgba(5,16,22,.8),rgba(5,16,22,0))}
+@media (max-width:760px){.why-photo figcaption{font-size:.75rem}}
 .why-copy{display:grid;gap:1.1rem;max-width:64ch}
 .why-copy p{margin:0;font-size:clamp(1.06rem,1.2vw,1.18rem);line-height:1.65;color:var(--ink-2)}
 /* fine print: .why-copy p would otherwise set the source line at body size */
@@ -830,7 +835,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   <p class="label">Living here</p>
   <h2 class="h-head sec">Why students choose Tasmania.</h2>
   <div class="why-grid has-photo">
-    <figure class="why-photo fade"><img src="img/states/hobart-living.webp" alt="People eating at an outdoor café under white umbrellas on Salamanca Place, Hobart." width="900" height="1125" loading="lazy" decoding="async"></figure>
+    <figure class="why-photo fade"><img src="img/states/hobart-living.webp" alt="People eating at an outdoor café under white umbrellas on Salamanca Place, Hobart." width="900" height="1125" loading="lazy" decoding="async"><figcaption>Salamanca Place &middot; Hobart</figcaption></figure>
     <div class="why-copy">
       <p>Tasmania is an island state of about 571,000 people, and more than 15,000 international students study here. Most live in Hobart in the south or Launceston in the north.</p>
       <p>Tasmania was the first Australian state to reach net zero emissions. It has some of the cleanest air and water in the world, more than 1,000 mountain peaks, and beaches and ancient rainforest within easy reach of both cities.</p>
