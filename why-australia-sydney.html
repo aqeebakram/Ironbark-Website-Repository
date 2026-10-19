@@ -606,9 +606,20 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   max-width:74ch;margin:clamp(1rem,2.4vh,1.5rem) 0 0}
 
 /* ---------- why students choose the state: prose from the state's study agency ---------- */
-.why-copy{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,24rem),1fr));
-  gap:1.1rem clamp(1.6rem,4vw,3.4rem);margin-top:clamp(1rem,2.4vh,1.5rem)}
-.why-copy p{margin:0;font-size:clamp(1.06rem,1.2vw,1.18rem);line-height:1.6;color:var(--ink-2);max-width:62ch}
+/* One column of text, read top to bottom. The two-column grid it replaces
+   ran the paragraphs left, right, left, right, so the reader zigzagged. A
+   photograph, when the page has one, sits beside the text on a wide screen
+   and above it on a phone. */
+.why-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(1.4rem,3vw,2.2rem);
+  margin-top:clamp(1rem,2.4vh,1.5rem);align-items:start}
+.why-grid.has-photo{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(1.6rem,4vw,3.6rem)}
+@media (max-width:820px){.why-grid.has-photo{grid-template-columns:minmax(0,1fr)}}
+.why-photo{margin:0;position:sticky;top:6.5rem;border-radius:12px;overflow:hidden;background:#0d1a20}
+.why-photo img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+@media (max-width:820px){.why-photo{position:static}.why-photo img{aspect-ratio:3/2}}
+.why-copy{display:grid;gap:1.1rem;max-width:64ch}
+.why-copy p{margin:0;font-size:clamp(1.06rem,1.2vw,1.18rem);line-height:1.65;color:var(--ink-2)}
+.why-copy .live-src{margin-top:.4rem}
 .live-grid.solo{grid-template-columns:minmax(0,26rem);margin-top:clamp(1.6rem,3.5vh,2.4rem)}
 
 /* ---------- the photographs ---------- */
@@ -816,13 +827,16 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 <section class="living wrap" id="living">
   <p class="label">Living here</p>
   <h2 class="h-head sec">Why students choose New South Wales.</h2>
-  <div class="why-copy">
-    <p>In 2024, more than 300,000 international students from over 190 countries studied in New South Wales. Most study in Sydney. The state has five other study regions: Western Sydney, Newcastle and the Hunter, Wollongong and the South Coast, the North Coast, and regional New South Wales.</p>
-    <p>New South Wales produces almost a third of Australia&rsquo;s economy, and Sydney is the country&rsquo;s financial centre. Many international companies run their Australian business from here. For you, that means more employers to apply to than anywhere else in the country.</p>
-    <p>People in New South Wales speak 275 languages and practise 148 religions. The state has some of the largest migrant communities in Australia, so it is usually easy to find your own food, a place of worship and people from home.</p>
-    <p>Sydney ranks fourth on the Economist Intelligence Unit&rsquo;s 2026 Global Liveability Index, and it is among the world&rsquo;s top ten cities for students. It is also one of the safest large cities in the world. Newcastle, Wollongong and the regional cities are a short flight or train ride away, so you can see the state while you study.</p>
+  <div class="why-grid has-photo">
+    <figure class="why-photo fade"><img src="img/states/sydney-living.webp" alt="The Quadrangle at the University of Sydney, with students walking across the lawn." width="900" height="1125" loading="lazy" decoding="async"></figure>
+    <div class="why-copy">
+      <p>In 2024, more than 300,000 international students from over 190 countries studied in New South Wales. Most study in Sydney. The state has five other study regions: Western Sydney, Newcastle and the Hunter, Wollongong and the South Coast, the North Coast, and regional New South Wales.</p>
+      <p>New South Wales produces almost a third of Australia&rsquo;s economy, and Sydney is the country&rsquo;s financial centre. Many international companies run their Australian business from here. For you, that means more employers to apply to than anywhere else in the country.</p>
+      <p>People in New South Wales speak 275 languages and practise 148 religions. The state has some of the largest migrant communities in Australia, so it is usually easy to find your own food, a place of worship and people from home.</p>
+      <p>Sydney ranks fourth on the Economist Intelligence Unit&rsquo;s 2026 Global Liveability Index, and it is among the world&rsquo;s top ten cities for students. It is also one of the safest large cities in the world. Newcastle, Wollongong and the regional cities are a short flight or train ride away, so you can see the state while you study.</p>
+      <p class="live-src">Source: Study NSW, the New South Wales Government&rsquo;s international education agency.</p>
+    </div>
   </div>
-  <p class="live-src">Source: Study NSW, the New South Wales Government&rsquo;s international education agency.</p>
   <div class="live-grid solo">
     <div class="live fade"><h3>Summer &middot; winter</h3><p class="v">26&deg; / 17&deg;</p>
       <p>Warm humid summers, mild winters. It rarely freezes and it rarely gets past the mid thirties. Both numbers are typical daytime highs.</p></div>

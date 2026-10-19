@@ -606,9 +606,20 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   max-width:74ch;margin:clamp(1rem,2.4vh,1.5rem) 0 0}
 
 /* ---------- why students choose the state: prose from the state's study agency ---------- */
-.why-copy{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,24rem),1fr));
-  gap:1.1rem clamp(1.6rem,4vw,3.4rem);margin-top:clamp(1rem,2.4vh,1.5rem)}
-.why-copy p{margin:0;font-size:clamp(1.06rem,1.2vw,1.18rem);line-height:1.6;color:var(--ink-2);max-width:62ch}
+/* One column of text, read top to bottom. The two-column grid it replaces
+   ran the paragraphs left, right, left, right, so the reader zigzagged. A
+   photograph, when the page has one, sits beside the text on a wide screen
+   and above it on a phone. */
+.why-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(1.4rem,3vw,2.2rem);
+  margin-top:clamp(1rem,2.4vh,1.5rem);align-items:start}
+.why-grid.has-photo{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(1.6rem,4vw,3.6rem)}
+@media (max-width:820px){.why-grid.has-photo{grid-template-columns:minmax(0,1fr)}}
+.why-photo{margin:0;position:sticky;top:6.5rem;border-radius:12px;overflow:hidden;background:#0d1a20}
+.why-photo img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+@media (max-width:820px){.why-photo{position:static}.why-photo img{aspect-ratio:3/2}}
+.why-copy{display:grid;gap:1.1rem;max-width:64ch}
+.why-copy p{margin:0;font-size:clamp(1.06rem,1.2vw,1.18rem);line-height:1.65;color:var(--ink-2)}
+.why-copy .live-src{margin-top:.4rem}
 .live-grid.solo{grid-template-columns:minmax(0,26rem);margin-top:clamp(1.6rem,3.5vh,2.4rem)}
 
 /* ---------- the photographs ---------- */
@@ -819,12 +830,14 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 <section class="living wrap" id="living">
   <p class="label">Living here</p>
   <h2 class="h-head sec">Why students choose Canberra.</h2>
-  <div class="why-copy">
-    <p>More than 20,000 international students from over 100 countries study in Canberra. A quarter of the city&rsquo;s people were born overseas, and more than 100 embassies and diplomatic missions are based here.</p>
-    <p>Canberra&rsquo;s average income is consistently the highest in Australia, and its unemployment rate is the lowest. More than half of its people hold a bachelor&rsquo;s degree or higher. Students can find internships and work experience in government and in private organisations, and eligible graduates get an extra year of post-study work rights.</p>
-    <p>Canberra appears regularly in the QS Best Student Cities rankings. The city is compact and easy to get around, with student discounts on buses and light rail and more than 400 kilometres of cycle paths. The major universities guarantee accommodation to new undergraduate students. Sydney, the snowfields and the south coast are each an easy trip away.</p>
+  <div class="why-grid">
+    <div class="why-copy">
+      <p>More than 20,000 international students from over 100 countries study in Canberra. A quarter of the city&rsquo;s people were born overseas, and more than 100 embassies and diplomatic missions are based here.</p>
+      <p>Canberra&rsquo;s average income is consistently the highest in Australia, and its unemployment rate is the lowest. More than half of its people hold a bachelor&rsquo;s degree or higher. Students can find internships and work experience in government and in private organisations, and eligible graduates get an extra year of post-study work rights.</p>
+      <p>Canberra appears regularly in the QS Best Student Cities rankings. The city is compact and easy to get around, with student discounts on buses and light rail and more than 400 kilometres of cycle paths. The major universities guarantee accommodation to new undergraduate students. Sydney, the snowfields and the south coast are each an easy trip away.</p>
+      <p class="live-src">Source: Study Canberra, the ACT Government&rsquo;s study website.</p>
+    </div>
   </div>
-  <p class="live-src">Source: Study Canberra, the ACT Government&rsquo;s study website.</p>
   <div class="live-grid solo">
     <div class="live fade"><h3>Summer &middot; winter</h3><p class="v">28&deg; / 12&deg;</p>
       <p>Inland and 600 metres up, so the widest range of the eight. Hot dry summers and genuinely cold winters, with frost most mornings in July. Both numbers are typical daytime highs.</p></div>

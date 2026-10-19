@@ -606,9 +606,20 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   max-width:74ch;margin:clamp(1rem,2.4vh,1.5rem) 0 0}
 
 /* ---------- why students choose the state: prose from the state's study agency ---------- */
-.why-copy{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,24rem),1fr));
-  gap:1.1rem clamp(1.6rem,4vw,3.4rem);margin-top:clamp(1rem,2.4vh,1.5rem)}
-.why-copy p{margin:0;font-size:clamp(1.06rem,1.2vw,1.18rem);line-height:1.6;color:var(--ink-2);max-width:62ch}
+/* One column of text, read top to bottom. The two-column grid it replaces
+   ran the paragraphs left, right, left, right, so the reader zigzagged. A
+   photograph, when the page has one, sits beside the text on a wide screen
+   and above it on a phone. */
+.why-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(1.4rem,3vw,2.2rem);
+  margin-top:clamp(1rem,2.4vh,1.5rem);align-items:start}
+.why-grid.has-photo{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(1.6rem,4vw,3.6rem)}
+@media (max-width:820px){.why-grid.has-photo{grid-template-columns:minmax(0,1fr)}}
+.why-photo{margin:0;position:sticky;top:6.5rem;border-radius:12px;overflow:hidden;background:#0d1a20}
+.why-photo img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+@media (max-width:820px){.why-photo{position:static}.why-photo img{aspect-ratio:3/2}}
+.why-copy{display:grid;gap:1.1rem;max-width:64ch}
+.why-copy p{margin:0;font-size:clamp(1.06rem,1.2vw,1.18rem);line-height:1.65;color:var(--ink-2)}
+.why-copy .live-src{margin-top:.4rem}
 .live-grid.solo{grid-template-columns:minmax(0,26rem);margin-top:clamp(1.6rem,3.5vh,2.4rem)}
 
 /* ---------- the photographs ---------- */
@@ -816,12 +827,14 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 <section class="living wrap" id="living">
   <p class="label">Living here</p>
   <h2 class="h-head sec">Why students choose Western Australia.</h2>
-  <div class="why-copy">
-    <p>Perth is one of Australia&rsquo;s most multicultural cities. People from more than 200 countries live here, and 32 per cent of the population was born overseas. Between them, they speak 240 languages and dialects, including Aboriginal languages, and follow more than 100 religions.</p>
-    <p>StudyPerth says Perth has a lower cost of living than the other major Australian cities, and a wide range of jobs for students. The Western Australian Government also offers scholarships and other financial support to help international students settle in.</p>
-    <p>Perth regularly ranks among the world&rsquo;s twenty most liveable cities. It has sunshine most of the year, beaches close to the city, and the rest of the state to explore, from the South West&rsquo;s forests and wineries to Ningaloo Reef and the Kimberley.</p>
+  <div class="why-grid">
+    <div class="why-copy">
+      <p>Perth is one of Australia&rsquo;s most multicultural cities. People from more than 200 countries live here, and 32 per cent of the population was born overseas. Between them, they speak 240 languages and dialects, including Aboriginal languages, and follow more than 100 religions.</p>
+      <p>StudyPerth says Perth has a lower cost of living than the other major Australian cities, and a wide range of jobs for students. The Western Australian Government also offers scholarships and other financial support to help international students settle in.</p>
+      <p>Perth regularly ranks among the world&rsquo;s twenty most liveable cities. It has sunshine most of the year, beaches close to the city, and the rest of the state to explore, from the South West&rsquo;s forests and wineries to Ningaloo Reef and the Kimberley.</p>
+      <p class="live-src">Source: StudyPerth.</p>
+    </div>
   </div>
-  <p class="live-src">Source: StudyPerth.</p>
   <div class="live-grid solo">
     <div class="live fade"><h3>Summer &middot; winter</h3><p class="v">31&deg; / 18&deg;</p>
       <p>Dry hot summers cooled by a sea breeze the locals call the Fremantle Doctor. Mild wet winters. Both numbers are typical daytime highs.</p></div>

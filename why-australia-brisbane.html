@@ -606,9 +606,20 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   max-width:74ch;margin:clamp(1rem,2.4vh,1.5rem) 0 0}
 
 /* ---------- why students choose the state: prose from the state's study agency ---------- */
-.why-copy{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,24rem),1fr));
-  gap:1.1rem clamp(1.6rem,4vw,3.4rem);margin-top:clamp(1rem,2.4vh,1.5rem)}
-.why-copy p{margin:0;font-size:clamp(1.06rem,1.2vw,1.18rem);line-height:1.6;color:var(--ink-2);max-width:62ch}
+/* One column of text, read top to bottom. The two-column grid it replaces
+   ran the paragraphs left, right, left, right, so the reader zigzagged. A
+   photograph, when the page has one, sits beside the text on a wide screen
+   and above it on a phone. */
+.why-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(1.4rem,3vw,2.2rem);
+  margin-top:clamp(1rem,2.4vh,1.5rem);align-items:start}
+.why-grid.has-photo{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(1.6rem,4vw,3.6rem)}
+@media (max-width:820px){.why-grid.has-photo{grid-template-columns:minmax(0,1fr)}}
+.why-photo{margin:0;position:sticky;top:6.5rem;border-radius:12px;overflow:hidden;background:#0d1a20}
+.why-photo img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+@media (max-width:820px){.why-photo{position:static}.why-photo img{aspect-ratio:3/2}}
+.why-copy{display:grid;gap:1.1rem;max-width:64ch}
+.why-copy p{margin:0;font-size:clamp(1.06rem,1.2vw,1.18rem);line-height:1.65;color:var(--ink-2)}
+.why-copy .live-src{margin-top:.4rem}
 .live-grid.solo{grid-template-columns:minmax(0,26rem);margin-top:clamp(1.6rem,3.5vh,2.4rem)}
 
 /* ---------- the photographs ---------- */
@@ -816,13 +827,15 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 <section class="living wrap" id="living">
   <p class="label">Living here</p>
   <h2 class="h-head sec">Why students choose Queensland.</h2>
-  <div class="why-copy">
-    <p>More than 100,000 international students from over 160 countries study in Queensland.</p>
-    <p>Most students in Brisbane choose one of three universities: the University of Queensland, Queensland University of Technology or Griffith University. Australian Catholic University, James Cook University, Torrens University, Victoria University and the University of Southern Queensland also have campuses in and around the city.</p>
-    <p>Brisbane sits between the Gold Coast and the Sunshine Coast, and it is the gateway to Moreton Bay, the Great Barrier Reef and the Whitsunday Islands. The airport is twenty minutes from the city centre. Buses, trains and river ferries make getting around easy, and students pay concession fares.</p>
-    <p>The city is known for its sunny climate, large parks and multicultural community.</p>
+  <div class="why-grid">
+    <div class="why-copy">
+      <p>More than 100,000 international students from over 160 countries study in Queensland.</p>
+      <p>Most students in Brisbane choose one of three universities: the University of Queensland, Queensland University of Technology or Griffith University. Australian Catholic University, James Cook University, Torrens University, Victoria University and the University of Southern Queensland also have campuses in and around the city.</p>
+      <p>Brisbane sits between the Gold Coast and the Sunshine Coast, and it is the gateway to Moreton Bay, the Great Barrier Reef and the Whitsunday Islands. The airport is twenty minutes from the city centre. Buses, trains and river ferries make getting around easy, and students pay concession fares.</p>
+      <p>The city is known for its sunny climate, large parks and multicultural community.</p>
+      <p class="live-src">Source: Study Queensland, part of the Queensland Government&rsquo;s Trade and Investment Queensland.</p>
+    </div>
   </div>
-  <p class="live-src">Source: Study Queensland, part of the Queensland Government&rsquo;s Trade and Investment Queensland.</p>
   <div class="live-grid solo">
     <div class="live fade"><h3>Summer &middot; winter</h3><p class="v">30&deg; / 21&deg;</p>
       <p>Warm to hot and humid in summer, dry mild winters. Storm season runs from November to February. Both numbers are typical daytime highs.</p></div>

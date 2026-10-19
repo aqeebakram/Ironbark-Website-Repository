@@ -606,9 +606,20 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   max-width:74ch;margin:clamp(1rem,2.4vh,1.5rem) 0 0}
 
 /* ---------- why students choose the state: prose from the state's study agency ---------- */
-.why-copy{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,24rem),1fr));
-  gap:1.1rem clamp(1.6rem,4vw,3.4rem);margin-top:clamp(1rem,2.4vh,1.5rem)}
-.why-copy p{margin:0;font-size:clamp(1.06rem,1.2vw,1.18rem);line-height:1.6;color:var(--ink-2);max-width:62ch}
+/* One column of text, read top to bottom. The two-column grid it replaces
+   ran the paragraphs left, right, left, right, so the reader zigzagged. A
+   photograph, when the page has one, sits beside the text on a wide screen
+   and above it on a phone. */
+.why-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(1.4rem,3vw,2.2rem);
+  margin-top:clamp(1rem,2.4vh,1.5rem);align-items:start}
+.why-grid.has-photo{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(1.6rem,4vw,3.6rem)}
+@media (max-width:820px){.why-grid.has-photo{grid-template-columns:minmax(0,1fr)}}
+.why-photo{margin:0;position:sticky;top:6.5rem;border-radius:12px;overflow:hidden;background:#0d1a20}
+.why-photo img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+@media (max-width:820px){.why-photo{position:static}.why-photo img{aspect-ratio:3/2}}
+.why-copy{display:grid;gap:1.1rem;max-width:64ch}
+.why-copy p{margin:0;font-size:clamp(1.06rem,1.2vw,1.18rem);line-height:1.65;color:var(--ink-2)}
+.why-copy .live-src{margin-top:.4rem}
 .live-grid.solo{grid-template-columns:minmax(0,26rem);margin-top:clamp(1.6rem,3.5vh,2.4rem)}
 
 /* ---------- the photographs ---------- */
@@ -816,13 +827,16 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 <section class="living wrap" id="living">
   <p class="label">Living here</p>
   <h2 class="h-head sec">Why students choose Victoria.</h2>
-  <div class="why-copy">
-    <p>More than 259,000 international students study in Victoria, from around 170 countries. Melbourne ranks first in the world for student diversity in the QS Best Student Cities 2027.</p>
-    <p>Melbourne is Australia&rsquo;s highest-ranked student city, fourth in the world in the same QS ranking. It is also third on the Economist Intelligence Unit&rsquo;s 2026 Global Liveability Index.</p>
-    <p>Victoria has Australia&rsquo;s top-ranked university, the University of Melbourne, and two universities in the world&rsquo;s top 50. Melbourne is the country&rsquo;s second-largest city, known for its arts, sport, food and coffee.</p>
-    <p>If you would rather live somewhere smaller, Geelong, Ballarat, Bendigo, Warrnambool and other regional cities have university campuses too. Study Melbourne notes that graduates of regional campuses get more generous post-study work rights.</p>
+  <div class="why-grid has-photo">
+    <figure class="why-photo fade"><img src="img/states/melbourne-living.webp" alt="The Melbourne skyline across the Yarra River, with river boats moored on the bank." width="900" height="1125" loading="lazy" decoding="async"></figure>
+    <div class="why-copy">
+      <p>More than 259,000 international students study in Victoria, from around 170 countries. Melbourne ranks first in the world for student diversity in the QS Best Student Cities 2027.</p>
+      <p>Melbourne is Australia&rsquo;s highest-ranked student city, fourth in the world in the same QS ranking. It is also third on the Economist Intelligence Unit&rsquo;s 2026 Global Liveability Index.</p>
+      <p>Victoria has Australia&rsquo;s top-ranked university, the University of Melbourne, and two universities in the world&rsquo;s top 50. Melbourne is the country&rsquo;s second-largest city, known for its arts, sport, food and coffee.</p>
+      <p>If you would rather live somewhere smaller, Geelong, Ballarat, Bendigo, Warrnambool and other regional cities have university campuses too. Study Melbourne notes that graduates of regional campuses get more generous post-study work rights.</p>
+      <p class="live-src">Source: Study Melbourne, the Victorian Government&rsquo;s international education agency.</p>
+    </div>
   </div>
-  <p class="live-src">Source: Study Melbourne, the Victorian Government&rsquo;s international education agency.</p>
   <div class="live-grid solo">
     <div class="live fade"><h3>Summer &middot; winter</h3><p class="v">26&deg; / 14&deg;</p>
       <p>Four seasons in a day is a local joke that is also true. Cold grey winters that some students love and others really do not. Both numbers are typical daytime highs.</p></div>

@@ -606,9 +606,20 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   max-width:74ch;margin:clamp(1rem,2.4vh,1.5rem) 0 0}
 
 /* ---------- why students choose the state: prose from the state's study agency ---------- */
-.why-copy{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,24rem),1fr));
-  gap:1.1rem clamp(1.6rem,4vw,3.4rem);margin-top:clamp(1rem,2.4vh,1.5rem)}
-.why-copy p{margin:0;font-size:clamp(1.06rem,1.2vw,1.18rem);line-height:1.6;color:var(--ink-2);max-width:62ch}
+/* One column of text, read top to bottom. The two-column grid it replaces
+   ran the paragraphs left, right, left, right, so the reader zigzagged. A
+   photograph, when the page has one, sits beside the text on a wide screen
+   and above it on a phone. */
+.why-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(1.4rem,3vw,2.2rem);
+  margin-top:clamp(1rem,2.4vh,1.5rem);align-items:start}
+.why-grid.has-photo{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(1.6rem,4vw,3.6rem)}
+@media (max-width:820px){.why-grid.has-photo{grid-template-columns:minmax(0,1fr)}}
+.why-photo{margin:0;position:sticky;top:6.5rem;border-radius:12px;overflow:hidden;background:#0d1a20}
+.why-photo img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+@media (max-width:820px){.why-photo{position:static}.why-photo img{aspect-ratio:3/2}}
+.why-copy{display:grid;gap:1.1rem;max-width:64ch}
+.why-copy p{margin:0;font-size:clamp(1.06rem,1.2vw,1.18rem);line-height:1.65;color:var(--ink-2)}
+.why-copy .live-src{margin-top:.4rem}
 .live-grid.solo{grid-template-columns:minmax(0,26rem);margin-top:clamp(1.6rem,3.5vh,2.4rem)}
 
 /* ---------- the photographs ---------- */
@@ -816,12 +827,14 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 <section class="living wrap" id="living">
   <p class="label">Living here</p>
   <h2 class="h-head sec">Why students choose the Northern Territory.</h2>
-  <div class="why-copy">
-    <p>People from more than 100 nationalities live in the Northern Territory, with about 140 social, cultural and religious groups. Darwin has mosques, Buddhist and Chinese temples and churches, and its food shows its closeness to Asia, with Thai, Malaysian and Indonesian influences.</p>
-    <p>The Territory is home to Aboriginal cultures that are among the oldest continuing cultures in the world. In 2026, Lonely Planet named Central Australia in its top 25 experiences for 2027, and The New York Times named the Top End one of the world&rsquo;s places to visit.</p>
-    <p>Graduates of a Northern Territory provider who stay and work in the Territory after their studies can get extra time on their graduate visa.</p>
+  <div class="why-grid">
+    <div class="why-copy">
+      <p>People from more than 100 nationalities live in the Northern Territory, with about 140 social, cultural and religious groups. Darwin has mosques, Buddhist and Chinese temples and churches, and its food shows its closeness to Asia, with Thai, Malaysian and Indonesian influences.</p>
+      <p>The Territory is home to Aboriginal cultures that are among the oldest continuing cultures in the world. In 2026, Lonely Planet named Central Australia in its top 25 experiences for 2027, and The New York Times named the Top End one of the world&rsquo;s places to visit.</p>
+      <p>Graduates of a Northern Territory provider who stay and work in the Territory after their studies can get extra time on their graduate visa.</p>
+      <p class="live-src">Source: Study NT, the Northern Territory Government&rsquo;s international education agency.</p>
+    </div>
   </div>
-  <p class="live-src">Source: Study NT, the Northern Territory Government&rsquo;s international education agency.</p>
   <div class="live-grid solo">
     <div class="live fade"><h3>Summer &middot; winter</h3><p class="v">32&deg; / 30&deg;</p>
       <p>Two seasons rather than four. The wet runs November to April with monsoon storms, the dry is warm, clear and the reason people visit. Both numbers are typical daytime highs.</p></div>
