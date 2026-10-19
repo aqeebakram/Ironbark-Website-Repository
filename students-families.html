@@ -596,6 +596,10 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 @media (max-width:760px){.foot{grid-template-columns:1fr;gap:2.2rem}}
 .foot h2{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:#8CA3AD;margin:0 0 .75rem;font-weight:400}
 .foot ul{list-style:none;margin:0;padding:0;display:grid;gap:.45rem;font-size:1.1rem;font-weight:400}
+.inlink{color:var(--ocean);text-decoration:none;
+  border-bottom:1px solid color-mix(in srgb,var(--ocean) 35%,transparent);
+  transition:border-color .25s ease}
+@media (hover:hover){.inlink:hover{border-bottom-color:var(--ocean)}}
 .foot a{color:var(--on-deep-2);text-decoration:none;transition:color .3s ease}
 .foot a:hover{color:var(--gold)}
 .foot-site ul{grid-template-columns:none;grid-template-rows:repeat(3,auto);grid-auto-flow:column;grid-auto-columns:max-content;column-gap:clamp(2rem,5vw,4rem)}
@@ -989,7 +993,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
         <article class="ms on" data-ms="0">
           <p class="label label--m">Year 10 &middot; Foundations</p>
           <h3 class="h-sub">Choose subjects early on</h3>
-          <p>Subject choices at school decide eligibility for certain Australian degrees later on. It is cheaper to get this right early.</p>
+          <p><a class="inlink" href="insights-subject-choice.html">Subject choices at school</a> decide eligibility for certain Australian degrees later on. It is cheaper to get this right early.</p>
           <ul><li>Subject combination mapping</li><li>Degree prerequisites</li><li>Early risk review</li></ul>
         </article>
         <article class="ms" data-ms="1">
@@ -1001,7 +1005,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
         <article class="ms" data-ms="2">
           <p class="label label--m">Year 12 &middot; Direction</p>
           <h3 class="h-sub">Shortlist, costs, scholarships</h3>
-          <p>A shortlist built from the student in front of me rather than a ranking table, set against the total cost to graduation and what the degree is worth afterwards.</p>
+          <p>A shortlist built from the student in front of me rather than a ranking table, set against the <a class="inlink" href="insights-cost-to-graduation.html">total cost to graduation</a> and what the degree is worth afterwards.</p>
           <ul><li>Shortlist with reasons</li><li>Total cost modelling</li><li>Scholarship search</li></ul>
         </article>
         <article class="ms" data-ms="3">

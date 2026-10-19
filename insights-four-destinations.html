@@ -678,6 +678,24 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   text-transform:uppercase;color:var(--muted);margin-bottom:.35rem}
 .case dd{margin:0;color:var(--ink);font-size:.98rem;line-height:1.45}
 
+.abio{display:flex;gap:1.15rem;align-items:flex-start;
+  margin-top:clamp(2.4rem,5.5vh,3.4rem);padding-top:1.7rem;border-top:1px solid var(--rule)}
+.abio img{flex:0 0 auto;width:72px;height:72px;border-radius:50%;object-fit:cover;
+  background:var(--paper-2)}
+.abio p{margin:0;color:var(--ink-2);font-size:1rem;line-height:1.62;max-width:58ch}
+.abio b{display:block;color:var(--ink);font-weight:600;margin-bottom:.35rem}
+.abio a{color:var(--ocean)}
+.rel{margin-top:clamp(2.2rem,5vh,3rem);padding-top:1.6rem;border-top:1px solid var(--rule)}
+/* .prose ul li is (0,1,2) and draws a gold dash, so these have to outrank it */
+.prose .rel ul{margin:.45rem 0 0;padding:0;display:block;gap:0;list-style:none}
+.prose .rel ul li{position:static;padding-left:0;line-height:1.45;
+  border-top:1px solid var(--rule-2)}
+.prose .rel ul li::before{content:none}
+.prose .rel ul li:first-child{border-top:0}
+.prose .rel ul a{display:block;padding:.8rem 0;color:var(--ink);text-decoration:none;
+  border-bottom:0;max-width:54ch}
+@media (hover:hover){.prose .rel ul a:hover{color:var(--ocean)}}
+@media (max-width:520px){.abio{gap:.9rem}.abio img{width:58px;height:58px}}
 .endnote{margin-top:clamp(2.6rem,6vh,4rem);padding-top:1.6rem;border-top:1px solid var(--rule);
   color:var(--muted);font-size:.99rem;line-height:1.6;max-width:64ch}
 .backlink{display:inline-flex;align-items:center;gap:.6rem;margin-top:2.4rem;
@@ -965,6 +983,23 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
         three is the better answer for a family. The comparison above is the one I would make
         sitting across a table from you, and it is worth making while the shortlist is being
         built.</p>
+
+      <div class="abio">
+        <img src="img/ab/portrait.webp" alt="Aqeeb Akram" width="72" height="72" loading="lazy" decoding="async">
+        <p><b>Aqeeb Akram</b>Founder of Ironbark Advisory. He has worked in international education
+          since 2014, at Macquarie University, the Australian National University and Study NSW in
+          the New South Wales Government, and went to Sydney as an international student himself in
+          2016. He now advises families in the UAE on studying in Australia, and education providers
+          on the region. <a href="about.html">More about Aqeeb</a></p>
+      </div>
+
+      <div class="rel">
+        <p class="label">Also on this site</p>
+        <ul>
+          <li><a href="insights-subject-choice.html">The subject choices in Year 10 decide which Australian degrees you can apply for.</a></li>
+          <li><a href="insights-cost-to-graduation.html">How do you calculate the cost to study in Australia?</a></li>
+        </ul>
+      </div>
 
       <a class="backlink" href="insights.html">All news <span aria-hidden="true">&larr;</span></a>
     </div>
