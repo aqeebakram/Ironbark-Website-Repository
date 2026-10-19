@@ -619,7 +619,9 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 @media (max-width:820px){.why-photo{position:static}.why-photo img{aspect-ratio:3/2}}
 .why-copy{display:grid;gap:1.1rem;max-width:64ch}
 .why-copy p{margin:0;font-size:clamp(1.06rem,1.2vw,1.18rem);line-height:1.65;color:var(--ink-2)}
-.why-copy .live-src{margin-top:.4rem}
+/* fine print: .why-copy p would otherwise set the source line at body size */
+.why-copy p.live-src{margin-top:.5rem;font-family:var(--f-body);font-size:.75rem;line-height:1.5;
+  letter-spacing:0;color:var(--muted)}
 .live-grid.solo{grid-template-columns:minmax(0,26rem);margin-top:clamp(1.6rem,3.5vh,2.4rem)}
 
 /* ---------- the photographs ---------- */
@@ -762,7 +764,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 
 <!-- ══ HERO ══ -->
 <section class="sh" id="hero" data-dark>
-  <img src="img/states/brisbane-hero.webp" alt="Brisbane, Queensland.">
+  <img src="img/states/brisbane-hero.webp" alt="The Brisbane skyline and the Story Bridge at sunset.">
   <div class="wrap">
     <p class="label rev"><span>Study destination &middot; QLD</span></p>
     <h1 class="h-head">Brisbane</h1>
@@ -840,7 +842,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
     <div class="live fade"><h3>Summer &middot; winter</h3><p class="v">30&deg; / 21&deg;</p>
       <p>Warm to hot and humid in summer, dry mild winters. Storm season runs from November to February. Both numbers are typical daytime highs.</p></div>
   </div>
-  <div class="plates"><figure class="plate fade"><img src="img/states/brisbane-a.webp" alt="Queensland." loading="lazy"><figcaption>Queensland</figcaption></figure><figure class="plate fade"><img src="img/states/brisbane-b.webp" alt="Queensland." loading="lazy"><figcaption>Queensland</figcaption></figure></div>
+  <div class="plates"><figure class="plate fade"><img src="img/states/brisbane-a.webp" alt="The Brisbane River winding past high-rise apartments towards the Story Bridge." loading="lazy"><figcaption>Queensland</figcaption></figure><figure class="plate fade"><img src="img/states/brisbane-b.webp" alt="The Gold Coast skyline seen along the beach on a hazy evening." loading="lazy"><figcaption>Queensland</figcaption></figure></div>
 </section>
 
 <!-- ══ THE OTHER SEVEN ══ -->

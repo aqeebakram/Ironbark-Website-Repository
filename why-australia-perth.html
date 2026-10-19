@@ -619,7 +619,9 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 @media (max-width:820px){.why-photo{position:static}.why-photo img{aspect-ratio:3/2}}
 .why-copy{display:grid;gap:1.1rem;max-width:64ch}
 .why-copy p{margin:0;font-size:clamp(1.06rem,1.2vw,1.18rem);line-height:1.65;color:var(--ink-2)}
-.why-copy .live-src{margin-top:.4rem}
+/* fine print: .why-copy p would otherwise set the source line at body size */
+.why-copy p.live-src{margin-top:.5rem;font-family:var(--f-body);font-size:.75rem;line-height:1.5;
+  letter-spacing:0;color:var(--muted)}
 .live-grid.solo{grid-template-columns:minmax(0,26rem);margin-top:clamp(1.6rem,3.5vh,2.4rem)}
 
 /* ---------- the photographs ---------- */
@@ -839,7 +841,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
     <div class="live fade"><h3>Summer &middot; winter</h3><p class="v">31&deg; / 18&deg;</p>
       <p>Dry hot summers cooled by a sea breeze the locals call the Fremantle Doctor. Mild wet winters. Both numbers are typical daytime highs.</p></div>
   </div>
-  <div class="plates"><figure class="plate fade"><img src="img/states/perth-a.webp" alt="Western Australia." loading="lazy"><figcaption>Western Australia</figcaption></figure><figure class="plate fade"><img src="img/states/perth-b.webp" alt="Western Australia." loading="lazy"><figcaption>Western Australia</figcaption></figure></div>
+  <div class="plates"><figure class="plate fade"><img src="img/states/perth-a.webp" alt="A road beside a pink salt lake in Western Australia, seen from above." loading="lazy"><figcaption>Western Australia</figcaption></figure><figure class="plate fade"><img src="img/states/perth-b.webp" alt="Perth and the Swan River from the air at dusk, with the Narrows Bridge." loading="lazy"><figcaption>Western Australia</figcaption></figure></div>
 </section>
 
 <!-- ══ THE OTHER SEVEN ══ -->
