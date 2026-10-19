@@ -786,7 +786,9 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
    the label opposite it instead */
 .adv-list{list-style:none;margin:0;padding:0;display:grid;gap:0}
 .adv-list li:first-child{border-top:0;padding-top:0}
-.adv-list li{display:grid;grid-template-columns:2.6rem minmax(0,1fr);gap:1rem;
+/* the labels are words now (Direct, Experience, Honest about fit), not the
+   numerals the 2.6rem column was cut for, so the column fits the longest word */
+.adv-list li{display:grid;grid-template-columns:6.8rem minmax(0,1fr);gap:1.1rem;
   padding-block:1rem;border-top:1px solid var(--rule-2);color:var(--ink-2);font-weight:400}
 .adv-list b{font-family:var(--f-mono);font-size:.66rem;font-weight:500;letter-spacing:.13em;
   text-transform:uppercase;color:var(--ocean);padding-top:.28rem}
@@ -862,6 +864,8 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 .adv-list li span{display:block;max-width:44ch;font-size:clamp(1.05rem,1.2vw,1.16rem);line-height:1.6}
 .adv-list li b{font-size:.7rem}
 @media (max-width:860px){.adv-head{position:static}.adv-col{height:auto!important}}
+/* on a phone the label sits above its line rather than squeezing it */
+@media (max-width:520px){.adv-list li{grid-template-columns:1fr;gap:.45rem}.adv-list li b{padding-top:0}}
 </style>
 
 <style id="mobile-fit">
