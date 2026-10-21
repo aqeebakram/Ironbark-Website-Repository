@@ -2,6 +2,9 @@
 <html lang="en">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Reveal gate. Content only starts hidden once this has run, and is shown
+     again if the engine never marks itself started (a blocked or failed script). -->
+<script>(function(d){d.classList.add("js");setTimeout(function(){if(!d.classList.contains("rv"))d.classList.remove("js")},3000)})(document.documentElement)</script>
 <!-- Consent, EEA and UK. Must run before gtag.js so defaults are set first. -->
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -212,12 +215,13 @@ h2.sec{font-size:clamp(1.55rem,3.1vw,2.6rem);margin-top:.55rem}
 .lead{font-size:clamp(1.2rem,1.38vw,1.35rem);font-weight:400;color:var(--ink-2);line-height:1.55;max-width:52ch;margin:0}
 
 .rev{display:block;overflow:hidden}
-.rev>*{display:block;transform:translateY(108%);opacity:0;
+.js .rev>*{display:block;transform:translateY(108%);opacity:0;
   transition:transform 1.05s var(--ease) var(--d,0ms),opacity .8s ease var(--d,0ms)}
 .in .rev>*,.rev.in>*{transform:none;opacity:1}
-.fade{opacity:0;transform:translateY(18px);
+.js .fade{opacity:0;transform:translateY(18px);
   transition:opacity .9s ease var(--d,0ms),transform 1s var(--ease) var(--d,0ms)}
 .in .fade,.fade.in{opacity:1;transform:none}
+.no-anim *,.no-anim *::before,.no-anim *::after{transition:none!important}
 
 /* ---------- masthead ---------- */
 .masthead{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;
@@ -589,14 +593,14 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
-  .rev>*{transform:none;opacity:1}.fade{opacity:1;transform:none}
+  .js .rev>*{transform:none;opacity:1}.js .fade{opacity:1;transform:none}
   .rail-stage{position:relative;height:auto;padding-block:var(--stack)}
   .rail{transform:none!important}.rail-vp{overflow-x:auto}.rail-foot{display:none}
   .hero-bg,.bleed-bg{inset:0}
   .dxb{height:auto}.dxb-plate{position:relative;height:62svh}.path{margin-top:0}
 }
 </style>
-<noscript><style>.rev>*{transform:none;opacity:1}.fade{opacity:1;transform:none}</style></noscript>
+<noscript><style>.js .rev>*{transform:none;opacity:1}.js .fade{opacity:1;transform:none}</style></noscript>
 <style>
 /* ---------- news: shared between the index and the posts ----------
    The base sheet styles h2 and .alt for dark sections, so anything that
@@ -1050,7 +1054,16 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   const io=new IntersectionObserver((es,o)=>es.forEach(e=>{
     if(e.isIntersecting){ e.target.classList.add("in"); o.unobserve(e.target); }}),
     {rootMargin:"0px 0px -8% 0px",threshold:.1});
-  watched.forEach(el=>io.observe(el));
+  // Whatever is on screen at load is shown at once, without the reveal.
+  // Holding back text already in view made the headline the last thing to
+  // paint (2.8 s on Contact with no throttling). Reveals below the fold stay.
+  const root=document.documentElement, vh=window.innerHeight;
+  root.classList.add("no-anim");
+  watched.forEach(el=>{ const b=el.getBoundingClientRect();
+    if(b.top<vh&&b.bottom>0) el.classList.add("in"); else io.observe(el); });
+  void root.offsetHeight;
+  requestAnimationFrame(()=>requestAnimationFrame(()=>root.classList.remove("no-anim")));
+  root.classList.add("rv");
   // Anything that sizes itself in JS moves everything below it AFTER measure()
   // has already cached the rails' positions. The Students arc sets #arc to
   // innerHeight*3.2 late, which pushed the process rail down by ~1980px: on
