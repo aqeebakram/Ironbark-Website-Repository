@@ -609,6 +609,94 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 /* On a phone 11vh of padding above and below every section left about 165px
    of empty page between one section's last line and the next one's first. */
 @media (max-width:760px){:root{--stack:clamp(2.75rem,7vh,4rem)}}
+/* ═════════ HERO · the word behind the landmark ═════════ */
+.dh{position:relative;height:100svh;min-height:620px;overflow:hidden;isolation:isolate;background:#0E2029;color:#fff}
+.dh-stage{position:absolute;inset:0;overflow:hidden}
+.dh-slide{position:absolute;inset:0;opacity:0;visibility:hidden;z-index:0}
+.dh-slide.on{opacity:1;visibility:visible;z-index:1}
+.dh-slide.leave{opacity:1;visibility:visible;z-index:1}
+.dh-slide.enter{z-index:2}
+.dh-pan{position:absolute;inset:0;z-index:0}
+.dh-slide .dh-bg,.dh-slide .dh-fg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--pos,50% 50%)}
+.dh-slide .dh-fg{z-index:2}
+.dh-word{position:absolute;z-index:1;left:50%;top:0;width:max-content;white-space:nowrap;translate:-50% 0;
+  font-family:var(--f-display);font-weight:900;font-variation-settings:"wdth" 112;letter-spacing:-.035em;line-height:.8;
+  --wfill:linear-gradient(180deg,#FFFFFF 0%,#E8F3F7 100%);filter:drop-shadow(0 6px 22px rgba(4,30,44,.45))}
+/* each letter carries the fill itself, so letters can move one at a time */
+.dh-word .l{display:inline-block;color:transparent;-webkit-background-clip:text;background-clip:text;background-image:var(--wfill)}
+.dh-slide.ink .dh-word{--wfill:linear-gradient(180deg,rgba(14,32,41,.96) 0%,rgba(14,94,124,.82) 100%);filter:none}
+.dh-slide.warm .dh-word{--wfill:linear-gradient(180deg,#FFF1CF 0%,#F2C566 100%)}
+.dh-study{position:absolute;z-index:3;font-family:var(--f-display);font-weight:600;font-variation-settings:"wdth" 100;
+  font-size:clamp(1rem,2.1vw,2rem);letter-spacing:-.01em;color:#fff;text-shadow:0 2px 14px rgba(4,30,44,.45)}
+.dh-slide.ink .dh-study{color:var(--deep);text-shadow:none}
+.dh-slide.warm .dh-study{color:#FFF1CF}
+.dh-fade{position:absolute;z-index:3;inset:auto 0 0 0;height:48%;pointer-events:none;
+  background:linear-gradient(to top,rgba(6,16,22,.74) 0%,rgba(6,16,22,.42) 45%,rgba(6,16,22,0) 100%)}
+.dh-base{position:absolute;z-index:6;left:var(--gut);right:var(--gut);bottom:clamp(1.2rem,4.5vh,2.6rem);
+  display:flex;justify-content:space-between;align-items:flex-end;gap:1.5rem}
+.dh-card{max-width:32rem}
+.dh-card .label{color:var(--gold);margin:0 0 .65rem;text-shadow:0 1px 10px rgba(0,0,0,.5)}
+.dh-sub{margin:0 0 1.3rem;font-size:clamp(1rem,1.2vw,1.15rem);line-height:1.5;color:#fff;max-width:40ch;text-shadow:0 1px 2px rgba(0,0,0,.45),0 2px 18px rgba(0,0,0,.5)}
+.dh-cta{display:flex;align-items:center;gap:.4rem}
+.dh-pill{font-family:var(--f-body);font-weight:500;font-size:.95rem;padding:.85rem 1.35rem;border-radius:999px}
+.dh-arrow{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-size:1.05rem}
+/* the same press and sweep as every other button on the site, from white to gold, one button at a time */
+.dh-pill,.dh-arrow{position:relative;isolation:isolate;overflow:hidden;text-decoration:none;background:#fff;color:var(--ink);
+  transition:transform 200ms var(--ease),box-shadow 200ms var(--ease),color 160ms ease}
+.dh-pill::after,.dh-arrow::after{content:"";position:absolute;inset:0;z-index:-1;background:var(--gold);
+  transform:scaleX(0);transform-origin:left center;transition:transform 260ms var(--ease)}
+.dh-pill:hover,.dh-pill:focus-visible,.dh-arrow:hover,.dh-arrow:focus-visible{color:#20160A;transform:translateY(-2px);
+  box-shadow:0 14px 28px -16px rgba(0,0,0,.6)}
+.dh-pill:hover::after,.dh-pill:focus-visible::after,.dh-arrow:hover::after,.dh-arrow:focus-visible::after{transform:scaleX(1)}
+.dh-pill:active,.dh-arrow:active{transform:scale(.97);transition-duration:120ms}
+@media (hover:none){.dh-pill:hover,.dh-arrow:hover{transform:none;box-shadow:none}}
+/* where the photograph was taken, small, bottom right */
+.dh-loc{margin:0;font-family:var(--f-body);font-size:.82rem;letter-spacing:.01em;color:rgba(255,255,255,.88);text-shadow:0 1px 8px rgba(0,0,0,.55);
+  display:flex;align-items:center;gap:.5rem;white-space:nowrap}
+.dh-loc::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.dh-loc-t{transition:opacity .4s ease}
+.dh-loc.swap .dh-loc-t{opacity:0}
+@media (max-width:860px){
+  .dh-base{flex-direction:column;align-items:stretch;gap:1rem}
+  .dh-loc{align-self:flex-end;font-size:.74rem}
+  .dh-fade{height:66%}
+}
+
+/* ── the five transitions. The entering frame sits on top; the one leaving stays put underneath ── */
+/* 1 · fade: a slow dissolve */
+.dh[data-tx="fade"] .dh-slide.enter{animation:tx-in 1.4s ease both}
+.dh[data-tx="fade"] .dh-slide.leave{animation:tx-out 1.4s ease both}
+@keyframes tx-in{from{opacity:0}to{opacity:1}}
+@keyframes tx-out{from{opacity:1}to{opacity:0}}
+/* 2 · rise: the letters drop away, the photograph dissolves, the new word rises letter by letter */
+.dh[data-tx="rise"] .dh-slide.leave .l{animation:l-out .45s var(--ease) both;animation-delay:calc(var(--i)*25ms)}
+.dh[data-tx="rise"] .dh-slide.leave{animation:tx-out 1s ease .25s both}
+.dh[data-tx="rise"] .dh-slide.enter{animation:tx-in 1s ease both}
+.dh[data-tx="rise"] .dh-slide.enter .l{animation:l-in .8s var(--ease) both;animation-delay:calc(.45s + var(--i)*55ms)}
+.dh[data-tx="rise"] .dh-slide.enter .dh-study{animation:s-in .7s var(--ease) .4s both}
+@keyframes l-out{to{opacity:0;transform:translateY(26%)}}
+@keyframes l-in{from{opacity:0;transform:translateY(38%)}to{opacity:1;transform:none}}
+@keyframes s-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+/* 3 · wipe: the new photograph sweeps in from the right behind a soft edge */
+.dh[data-tx="wipe"] .dh-slide.enter{animation:tx-wipe 1.25s cubic-bezier(.77,0,.18,1) both}
+.dh[data-tx="wipe"] .dh-slide.leave{animation:tx-hold 1.25s linear both}
+@keyframes tx-wipe{from{clip-path:inset(0 0 0 100%)}to{clip-path:inset(0 0 0 0)}}
+@keyframes tx-hold{from{opacity:1}to{opacity:1}}
+/* 4 · zoom: the new photograph settles in from slightly close, the old one eases back */
+.dh[data-tx="zoom"] .dh-slide.enter{animation:tx-zin 1.5s var(--ease) both}
+.dh[data-tx="zoom"] .dh-slide.leave{animation:tx-zout 1.5s ease both}
+@keyframes tx-zin{from{opacity:0;transform:scale(1.12)}to{opacity:1;transform:none}}
+@keyframes tx-zout{from{opacity:1;transform:none}to{opacity:0;transform:scale(.96)}}
+/* 5 · parallax: the frame slides in, its background travels slower than the landmark and the word */
+.dh[data-tx="slide"] .dh-slide.enter{animation:tx-sin 1.4s cubic-bezier(.7,0,.2,1) both}
+.dh[data-tx="slide"] .dh-slide.enter .dh-pan{animation:tx-pan 1.4s cubic-bezier(.7,0,.2,1) both}
+.dh[data-tx="slide"] .dh-slide.leave{animation:tx-sout 1.4s cubic-bezier(.7,0,.2,1) both}
+@keyframes tx-sin{from{transform:translateX(100%)}to{transform:none}}
+@keyframes tx-pan{from{transform:translateX(-45%)}to{transform:none}}
+@keyframes tx-sout{from{transform:none;opacity:1}to{transform:translateX(-30%);opacity:.5}}
+@media (prefers-reduced-motion:reduce){.dh .dh-slide.enter,.dh .dh-slide.leave,.dh .dh-slide *{animation:none!important}}
+
+
 </style>
 
 <header class="masthead" id="masthead">
@@ -638,23 +726,58 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 
 <main id="top">
 
-<!-- ══ HERO ══ -->
-<section class="hero" id="hero">
-  <div class="hero-bg" aria-hidden="true">
-    <div class="slide on" data-wash="deep"><picture><source media="(max-width:860px) and (orientation:portrait)" srcset="img/hero_harbour-p800.webp 800w, img/hero_harbour-p1250.webp 1250w" sizes="112vw"><img src="img/hero_harbour-1600.webp" srcset="img/hero_harbour-1600.webp 1600w, img/hero_harbour-2400.webp 2400w, img/hero_harbour-3200.webp 3200w" sizes="(max-aspect-ratio:16/9) 198vh, 112vw" width="1600" height="900" alt="The Sydney Opera House and ferries on Sydney Harbour." fetchpriority="high"></picture></div>
-    <div class="slide" data-wash="medium"><picture><source media="(max-width:860px) and (orientation:portrait)" data-srcset="img/hero_surf-p800.webp 800w, img/hero_surf-p1250.webp 1250w" sizes="112vw"><img data-src="img/hero_surf-1600.webp" data-srcset="img/hero_surf-1600.webp 1600w, img/hero_surf-2030.webp 2030w" sizes="(max-aspect-ratio:16/9) 198vh, 112vw" width="1600" height="900" alt="Surf breaking on a red-sand beach, seen from above."></picture></div>
-    <div class="slide" data-wash="medium"><picture><source media="(max-width:860px) and (orientation:portrait)" data-srcset="img/hero_sunset-p800.webp 800w, img/hero_sunset-p1250.webp 1250w" sizes="112vw"><img data-src="img/hero_sunset-1600.webp" data-srcset="img/hero_sunset-1600.webp 1600w, img/hero_sunset-2400.webp 2400w, img/hero_sunset-3200.webp 3200w" sizes="(max-aspect-ratio:16/9) 198vh, 112vw" width="1600" height="900" alt="Sydney Harbour at sunset, with the Harbour Bridge, the Opera House and jacaranda in flower."></picture></div>
-    <div class="slide" data-wash="thin"><picture><source media="(max-width:860px) and (orientation:portrait)" data-srcset="img/hero_uluru-p800.webp 800w, img/hero_uluru-p1250.webp 1250w" sizes="112vw"><img data-src="img/hero_uluru-1600.webp" data-srcset="img/hero_uluru-1600.webp 1600w, img/hero_uluru-2400.webp 2400w, img/hero_uluru-3200.webp 3200w" sizes="(max-aspect-ratio:16/9) 198vh, 112vw" width="1600" height="900" alt="Uluru in Central Australia, with spinifex grass in the foreground."></picture></div>
-    <div class="slide" data-wash="deep" data-top="dark"><picture><source media="(max-width:860px) and (orientation:portrait)" data-srcset="img/hero_coast-p800.webp 800w, img/hero_coast-p1250.webp 1250w" sizes="112vw"><img data-src="img/hero_coast-1600.webp" data-srcset="img/hero_coast-1600.webp 1600w, img/hero_coast-2400.webp 2400w, img/hero_coast-2758.webp 2758w" sizes="(max-aspect-ratio:16/9) 198vh, 112vw" width="1600" height="900" alt="A coast road running along the cliffs above the sea, seen from above."></picture></div>
-  </div>
-  <p class="vh">Sydney Harbour with the Opera House, surf on an Australian beach from above, Circular Quay at sunset, Uluru at dawn, and the coast road above the Tasman Sea.</p>
-  <div class="wrap hero-inner">
-    <p class="label">Independent Education Advisory</p>
-    <h1 class="h-head">International education advice from someone who has worked inside Australian government, universities and education agencies.</h1>
-    <p class="lead">I help students find the right education pathway in Australia, and I advise education providers across K12 and higher education on strategy.</p>
-    <div class="hero-foot">
-      <p class="cue"><i></i>Scroll</p>
+<!-- ══ HERO · the word behind the landmark ══
+     Each frame is two layers of one photograph: the full picture, and a cut-out
+     with the sky made transparent. "AUSTRALIA" sits between them, so the landmark
+     stands in front of the letters. Built by Design source/hero-concepts/depth.py. -->
+<section class="dh" id="hero" data-dark data-tx="rise" aria-label="Study in Australia">
+  <div class="dh-stage">
+    <div class="dh-slide on" data-ar="1.5003" data-y="0.355" data-ym="0.33" data-w="0.92" data-place="Sydney Opera House · NSW" style="--pos:50% 40%">
+      <div class="dh-pan"><img class="dh-bg" src="img/depth/cloudy-bg-1400.webp" srcset="img/depth/cloudy-bg-1400.webp 1400w, img/depth/cloudy-bg-2000.webp 2000w" sizes="100vw" alt="The Sydney Opera House and the city skyline across the harbour under a cloudy sky." fetchpriority="high"></div>
+      <span class="dh-word" aria-hidden="true">AUSTRALIA</span>
+      <img class="dh-fg" src="img/depth/cloudy-fg-1400.webp" srcset="img/depth/cloudy-fg-1400.webp 1400w, img/depth/cloudy-fg-2000.webp 2000w" sizes="100vw" alt="">
+      <span class="dh-study" aria-hidden="true">Study in</span>
     </div>
+    <div class="dh-slide" data-ar="1.5" data-y="0.305" data-ym="0.16" data-w="0.9" data-place="St Kilda, Melbourne · VIC" style="--pos:50% 0%">
+      <div class="dh-pan"><img class="dh-bg" data-src="img/depth/lunapark-bg-1400.webp" data-srcset="img/depth/lunapark-bg-1400.webp 1400w, img/depth/lunapark-bg-2400.webp 2400w, img/depth/lunapark-bg-3200.webp 3200w" sizes="100vw" alt="A number 96 tram outside Luna Park in St Kilda, Melbourne."></div>
+      <span class="dh-word" aria-hidden="true">AUSTRALIA</span>
+      <img class="dh-fg" data-src="img/depth/lunapark-fg-1400.webp" data-srcset="img/depth/lunapark-fg-1400.webp 1400w, img/depth/lunapark-fg-2400.webp 2400w, img/depth/lunapark-fg-3200.webp 3200w" sizes="100vw" alt="">
+      <span class="dh-study" aria-hidden="true">Study in</span>
+    </div>
+    <div class="dh-slide" data-ar="1.3353" data-y="0.4" data-ym="0.38" data-w="0.9" data-place="Brisbane · QLD" style="--pos:50% 45%">
+      <div class="dh-pan"><img class="dh-bg" data-src="img/depth/brisbane-bg-1400.webp" data-srcset="img/depth/brisbane-bg-1400.webp 1400w, img/depth/brisbane-bg-2400.webp 2400w, img/depth/brisbane-bg-3200.webp 3200w" sizes="100vw" alt="Brisbane's towers and the Story Bridge at dusk."></div>
+      <span class="dh-word" aria-hidden="true">AUSTRALIA</span>
+      <img class="dh-fg" data-src="img/depth/brisbane-fg-1400.webp" data-srcset="img/depth/brisbane-fg-1400.webp 1400w, img/depth/brisbane-fg-2400.webp 2400w, img/depth/brisbane-fg-3200.webp 3200w" sizes="100vw" alt="">
+      <span class="dh-study" aria-hidden="true">Study in</span>
+    </div>
+    <div class="dh-slide ink" data-ar="1.5011" data-y="0.345" data-ym="0.3" data-w="0.9" data-place="Perth · WA" style="--pos:50% 40%">
+      <div class="dh-pan"><img class="dh-bg" data-src="img/depth/perth-bg-1400.webp" data-srcset="img/depth/perth-bg-1400.webp 1400w, img/depth/perth-bg-2400.webp 2400w, img/depth/perth-bg-3200.webp 3200w" sizes="100vw" alt="Perth's city skyline above the Swan River at sunset."></div>
+      <span class="dh-word" aria-hidden="true">AUSTRALIA</span>
+      <img class="dh-fg" data-src="img/depth/perth-fg-1400.webp" data-srcset="img/depth/perth-fg-1400.webp 1400w, img/depth/perth-fg-2400.webp 2400w, img/depth/perth-fg-3200.webp 3200w" sizes="100vw" alt="">
+      <span class="dh-study" aria-hidden="true">Study in</span>
+    </div>
+    <div class="dh-slide ink" data-ar="1.5011" data-y="0.43" data-ym="0.42" data-w="0.9" data-place="Telstra Tower, Canberra · ACT" style="--pos:50% 50%">
+      <div class="dh-pan"><img class="dh-bg" data-src="img/depth/canberra-bg-1400.webp" data-srcset="img/depth/canberra-bg-1400.webp 1400w, img/depth/canberra-bg-2400.webp 2400w, img/depth/canberra-bg-3200.webp 3200w" sizes="100vw" alt="Telstra Tower on Black Mountain at sunset, Canberra."></div>
+      <span class="dh-word" aria-hidden="true">AUSTRALIA</span>
+      <img class="dh-fg" data-src="img/depth/canberra-fg-1400.webp" data-srcset="img/depth/canberra-fg-1400.webp 1400w, img/depth/canberra-fg-2400.webp 2400w, img/depth/canberra-fg-3200.webp 3200w" sizes="100vw" alt="">
+      <span class="dh-study" aria-hidden="true">Study in</span>
+    </div>
+    <div class="dh-slide warm" data-ar="1.7783" data-y="0.385" data-ym="0.33" data-w="0.9" data-place="Uluru · NT" style="--pos:50% 50%">
+      <div class="dh-pan"><img class="dh-bg" data-src="img/depth/uluru-bg-1400.webp" data-srcset="img/depth/uluru-bg-1400.webp 1400w, img/depth/uluru-bg-2400.webp 2400w, img/depth/uluru-bg-3048.webp 3048w" sizes="100vw" alt="Uluru at dusk."></div>
+      <span class="dh-word" aria-hidden="true">AUSTRALIA</span>
+      <img class="dh-fg" data-src="img/depth/uluru-fg-1400.webp" data-srcset="img/depth/uluru-fg-1400.webp 1400w, img/depth/uluru-fg-2400.webp 2400w, img/depth/uluru-fg-3048.webp 3048w" sizes="100vw" alt="">
+      <span class="dh-study" aria-hidden="true">Study in</span>
+    </div>
+  </div>
+  <div class="dh-fade" aria-hidden="true"></div>
+  <div class="dh-base">
+    <div class="dh-card">
+      <p class="label">Independent Education Advisory</p>
+      <h1 class="vh">Study in Australia</h1>
+      <p class="dh-sub">International education advice from someone who has worked inside Australian government, universities and education agencies.</p>
+      <div class="dh-cta"><a class="dh-pill" href="https://calendar.app.google/3Y3mibwNrrSun34i9" target="_blank" rel="noopener">Book a discovery call</a><a class="dh-arrow" href="https://calendar.app.google/3Y3mibwNrrSun34i9" target="_blank" rel="noopener" aria-label="Book a discovery call">&#8599;</a></div>
+    </div>
+    <p class="dh-loc" aria-live="polite"><span class="dh-loc-t">Sydney Opera House · NSW</span></p>
   </div>
 </section>
 
@@ -881,6 +1004,45 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   addEventListener("load",()=>setTimeout(boot,40));
   if(document.readyState==="complete") setTimeout(boot,40);
   else document.addEventListener("DOMContentLoaded",()=>setTimeout(boot,20));
+})();
+
+/* ---- hero: the word behind the landmark ----
+   Each frame says where the word's centre sits as a fraction of the PHOTO's height.
+   The photo is drawn with object-fit:cover, so work out where it lands on screen first;
+   the cut-out uses the same crop, so the landmark always meets the same letters. */
+(() => {
+  const hero=document.querySelector(".dh"); if(!hero) return;
+  const slides=[...hero.querySelectorAll(".dh-slide")], loc=hero.querySelector(".dh-loc"), locT=hero.querySelector(".dh-loc-t");
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches, DUR=6500, TX=1700;
+  // split the word into letters, so the rise transition can move them one at a time
+  slides.forEach(s=>{ const w=s.querySelector(".dh-word"); w.innerHTML=[...w.textContent].map((c,k)=>`<span class="l" style="--i:${k}">${c}</span>`).join(""); });
+  const place=s=>{
+    const W=hero.clientWidth, H=hero.clientHeight, ar=+s.dataset.ar, word=s.querySelector(".dh-word"), study=s.querySelector(".dh-study");
+    let ih=W/ar; if(ih<H) ih=H;
+    const py=(parseFloat((s.style.getPropertyValue("--pos")||"50% 50%").split(" ")[1])||50)/100;
+    const oy=(H-ih)*py, yf=(W<861?+s.dataset.ym:+s.dataset.y);
+    word.style.fontSize="100px"; const fs=100*(W*+s.dataset.w)/word.offsetWidth; word.style.fontSize=fs+"px";
+    const wh=word.offsetHeight, top=oy+ih*yf-wh/2;
+    word.style.top=top+"px";
+    study.style.left=((W-word.offsetWidth)/2+fs*.06)+"px";
+    study.style.top=(top-study.offsetHeight*1.02)+"px";
+  };
+  const placeAll=()=>slides.forEach(place);
+  const hydrate=()=>slides.slice(1).forEach(s=>s.querySelectorAll("img[data-src]").forEach(i=>{ i.srcset=i.dataset.srcset; i.src=i.dataset.src; i.removeAttribute("data-src"); i.removeAttribute("data-srcset"); }));
+  let i=0, timer=null, busy=false;
+  const go=n=>{ if(busy) return; busy=true;
+    const prev=slides[i]; i=(n+slides.length)%slides.length; const nx=slides[i];
+    prev.classList.remove("on"); prev.classList.add("leave"); nx.classList.add("on","enter");
+    loc.classList.add("swap"); setTimeout(()=>{ locT.textContent=nx.dataset.place; loc.classList.remove("swap"); },400);
+    setTimeout(()=>{ prev.classList.remove("leave"); nx.classList.remove("enter"); busy=false; }, reduce?0:TX);
+  };
+  const run=()=>{ if(reduce||timer) return; timer=setInterval(()=>go(i+1),DUR); };
+  const halt=()=>{ clearInterval(timer); timer=null; };
+  document.fonts.ready.then(placeAll); addEventListener("resize",placeAll); placeAll();
+  const start=()=>{ hydrate(); run(); };
+  if(document.readyState==="complete") start(); else addEventListener("load",start,{once:true});
+  addEventListener("visibilitychange",()=>document.visibilityState==="visible"?run():halt());
+  new IntersectionObserver(es=>es[0].isIntersecting?run():halt(),{threshold:0}).observe(hero);
 })();
 </script>
 </html>
