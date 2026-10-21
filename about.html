@@ -556,6 +556,20 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   .hero-bg,.bleed-bg{inset:0}
   .dxb{height:auto}.dxb-plate{position:relative;height:62svh}.path{margin-top:0}
 }
+
+/* ---------- the Ironbark symbol ---------- */
+.sym{padding-block:var(--stack)}
+.sym-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(2rem,6vw,6rem);align-items:center}
+.sym-fig{position:relative;margin:0;border-radius:24px;overflow:hidden;aspect-ratio:4/5;background:var(--deep)}
+.sym-fig img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+/* the mark sits on the bark it is drawn from */
+.sym-fig figcaption{position:absolute;left:1rem;right:1rem;bottom:1rem;display:flex;align-items:center;gap:.9rem;
+  padding:.8rem 1rem;border-radius:14px;background:rgba(14,32,41,.86);color:var(--on-deep)}
+.sym-mark{flex:0 0 auto;width:40px;height:40px}
+.sym-fig figcaption span{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--on-deep-2);line-height:1.55}
+.sym .h-head{margin:.8rem 0 1.2rem}
+.sym-p{margin:0 0 1rem;font-size:clamp(1.05rem,1.2vw,1.2rem);line-height:1.65;color:var(--ink-2);max-width:56ch}
+@media (max-width:860px){.sym-grid{grid-template-columns:1fr}.sym-fig{aspect-ratio:4/3}}
 </style>
 <noscript><style>.rev>*{transform:none;opacity:1}.fade{opacity:1;transform:none}
  .rail-stage{position:relative;height:auto;padding-block:var(--stack)}
@@ -571,7 +585,8 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 .phero .lead{margin-top:1.2rem;max-width:42ch}
 .ab-plate{position:relative;margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--rule-2);
   align-self:stretch;min-height:clamp(20rem,44vw,32rem)}
-.ab-plate img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+/* anchored to the top, so a frame wider than the photo trims the jacket, never the hair */
+.ab-plate img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0%}
 .ab-plate figcaption{position:absolute;left:0;right:0;bottom:0;padding:2.2rem 1.1rem .9rem;
   background:linear-gradient(to top,rgba(6,18,24,.82),rgba(6,18,24,0));
   font-family:var(--f-mono);font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;color:#E4EFF3}
@@ -676,11 +691,11 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
     <div class="phero-grid">
       <div>
         <p class="label rev"><span>About me</span></p>
-        <h1 class="h-head">On every side of international education since 2014.</h1>
+        <h1 class="h-head">Over a decade in international education.</h1>
         <p class="lead fade" style="--d:160ms">I know the sector, I know the people in it, and I went through this decision myself.</p>
       </div>
       <figure class="ab-plate fade" style="--d:260ms">
-        <img src="img/ab/portrait-900.webp" srcset="img/ab/portrait-900.webp 900w, img/ab/portrait-1200.webp 1200w, img/ab/portrait-1536.webp 1536w" sizes="(max-width:900px) 100vw, 40vw" width="900" height="1200" alt="Aqeeb Akram, founder of Ironbark Advisory." fetchpriority="high">
+        <img src="img/ab/portrait-head-900.webp" srcset="img/ab/portrait-head-900.webp 900w, img/ab/portrait-head-1200.webp 1200w, img/ab/portrait-head-1536.webp 1536w" sizes="(max-width:900px) 100vw, 40vw" width="900" height="818" alt="Aqeeb Akram, founder of Ironbark Advisory." fetchpriority="high">
         <figcaption>Aqeeb Akram &mdash; founder, Ironbark Advisory</figcaption>
       </figure>
     </div>
@@ -743,6 +758,22 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
         <p>After more than a decade in the sector, I moved to Dubai with my family to build something of my own. The relationships I built across Australian universities and government came with me. Now I put them to work for students deciding where to study, and for institutions trying to get it right in this region.</p>
       </div>
     </article>
+  </div>
+</section>
+
+<!-- ══ THE NAME · the Ironbark symbol ══ -->
+<section class="sym wrap" id="symbol">
+  <div class="sym-grid">
+    <figure class="sym-fig fade">
+      <img src="img/ab/ironbark-1400.webp" srcset="img/ab/ironbark-900.webp 900w, img/ab/ironbark-1400.webp 1400w, img/ab/ironbark-2000.webp 2000w" sizes="(max-width:860px) 100vw, 40vw" width="1400" height="1750" alt="Close up of ironbark bark, its deep furrows in grey and rust." loading="lazy" decoding="async">
+      <figcaption><svg class="sym-mark" viewBox="8.1 8.1 31.8 31.8" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="3.8" stroke-linecap="round"><path d="M10 17.9V38"/><path d="M17 12.9V38"/><path d="M31 14.4V38"/><path d="M38 19.3V38"/></g><path d="M24 10V38" stroke="#E8A317" stroke-width="3.8" stroke-linecap="round"/></svg><span>The five strokes of the mark are the deep furrows of ironbark bark.</span></figcaption></figure>
+    <div>
+      <p class="label fade">The name</p>
+      <h2 class="h-head sec fade" style="--d:60ms">The Ironbark symbol</h2>
+      <p class="sym-p fade" style="--d:120ms">Ironbark Advisory is an independent education consultancy based in Dubai. I help students plan their pathway to study in Australia, and I work with Australian universities and UAE schools on transnational education, market entry and immersion programs.</p>
+      <p class="sym-p fade" style="--d:180ms">The name comes from the ironbark, a native Australian tree known for its dense timber, its deep, rough bark and its strength. I grew up around these trees in southern India, and I found them again when I moved to Australia.</p>
+      <p class="sym-p fade" style="--d:240ms">To me it stands for advice that lasts, stays grounded and keeps its integrity. My father always taught me to be that way.</p>
+    </div>
   </div>
 </section>
 

@@ -609,6 +609,16 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 /* On a phone 11vh of padding above and below every section left about 165px
    of empty page between one section's last line and the next one's first. */
 @media (max-width:760px){:root{--stack:clamp(2.75rem,7vh,4rem)}}
+/* ---------- principles: three short promises under the hero ---------- */
+.pr{padding-block:var(--stack)}
+.pr .h-head{margin-top:.8rem;max-width:22ch}
+.pr-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1.2rem,3vw,3rem);margin-top:clamp(1.8rem,5vh,3rem)}
+.pr-item{border-top:1px solid var(--rule);padding-top:1.3rem}
+.pr-n{display:block;font-family:var(--f-mono);font-size:.76rem;letter-spacing:.16em;color:var(--sun);margin-bottom:.9rem}
+.pr-item h3{margin:0 0 .6rem}
+.pr-item p{margin:0;color:var(--ink-2);line-height:1.6;max-width:36ch}
+@media (max-width:860px){.pr-grid{grid-template-columns:1fr;gap:1.6rem}}
+
 /* ═════════ HERO · the word behind the landmark ═════════ */
 .dh{position:relative;height:100svh;min-height:620px;overflow:hidden;isolation:isolate;background:#0E2029;color:#fff}
 .dh-stage{position:absolute;inset:0;overflow:hidden}
@@ -783,6 +793,20 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   </div>
 </section>
 
+<!-- ══ PRINCIPLES · how I work ══ -->
+<section class="pr wrap" id="principles">
+  <p class="label fade">How I work</p>
+  <h2 class="h-head sec fade" style="--d:60ms">What you can expect from me.</h2>
+  <div class="pr-grid">
+    <article class="pr-item fade" style="--d:120ms"><span class="pr-n">01</span><h3 class="h-sub">Independent advice</h3>
+      <p>Unbiased advice for students thinking of studying in Australia. Every recommendation I make puts the student first.</p></article>
+    <article class="pr-item fade" style="--d:200ms"><span class="pr-n">02</span><h3 class="h-sub">Transparency</h3>
+      <p>The full cost of studying, realistic course options and a clear pathway, with no hidden costs or inflated claims.</p></article>
+    <article class="pr-item fade" style="--d:280ms"><span class="pr-n">03</span><h3 class="h-sub">Inside expertise</h3>
+      <p>First-hand knowledge from working inside Australian universities and state government education policy.</p></article>
+  </div>
+</section>
+
 <!-- ══ GET STARTED · three cards ══ -->
 <section class="help" id="help">
   <div class="wrap">
@@ -836,7 +860,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
       <p class="label fade">Who you are speaking to</p>
       <p class="who-name fade" style="--d:60ms">Aqeeb Akram</p>
       <p class="who-role fade" style="--d:110ms">Founder, Ironbark Advisory</p>
-      <h3 class="h-sub fade" style="--d:160ms">In international education since 2014, across government, universities and education agencies.</h3>
+      <h3 class="h-sub fade" style="--d:160ms">Over a decade in international education, with professional experience working across government, universities and education agencies.</h3>
       <ul class="creds">
         <li class="cred fade" style="--d:220ms">Advised students on studying abroad at two education agencies before going abroad myself</li>
         <li class="cred fade" style="--d:280ms">Went to Sydney as an international student in 2016</li>
