@@ -764,7 +764,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
       <img class="dh-fg" data-src="img/depth/canberra-fg-1400.webp" data-srcset="img/depth/canberra-fg-1400.webp 1400w, img/depth/canberra-fg-2400.webp 2400w, img/depth/canberra-fg-3200.webp 3200w" sizes="(max-aspect-ratio: 3/2) 150vh, 100vw" alt="">
       <span class="dh-study" aria-hidden="true">Study in</span>
     </div>
-    <div class="dh-slide warm" data-ar="1.7778" data-y="0.39" data-ym=".418" data-w="0.9" data-place="Uluru · NT" style="--pos:55% 50%">
+    <div class="dh-slide warm" data-ar="1.778" data-y=".36" data-ym=".395" data-w="0.9" data-place="Uluru · NT" style="--pos:55% 50%">
       <div class="dh-pan"><img class="dh-bg" data-src="img/depth/uluru-bg-1400.webp" data-srcset="img/depth/uluru-bg-1400.webp 1400w, img/depth/uluru-bg-2400.webp 2400w, img/depth/uluru-bg-3200.webp 3200w" sizes="(max-aspect-ratio: 16/9) 178vh, 100vw" alt="Uluru at dusk."></div>
       <span class="dh-word" aria-hidden="true">AUSTRALIA</span>
       <img class="dh-fg" data-src="img/depth/uluru-fg-1400.webp" data-srcset="img/depth/uluru-fg-1400.webp 1400w, img/depth/uluru-fg-2400.webp 2400w, img/depth/uluru-fg-3200.webp 3200w" sizes="(max-aspect-ratio: 16/9) 178vh, 100vw" alt="">
@@ -1024,10 +1024,13 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
     const py=(parseFloat((s.style.getPropertyValue("--pos")||"50% 50%").split(" ")[1])||50)/100;
     const oy=(H-ih)*py, yf=(W<861?+s.dataset.ym:+s.dataset.y);
     word.style.fontSize="100px"; const fs=100*(W*+s.dataset.w)/word.offsetWidth; word.style.fontSize=fs+"px";
-    const wh=word.offsetHeight, top=oy+ih*yf-wh/2;
+    const wh=word.offsetHeight, sh=study.offsetHeight;
+    // the label above the word must clear the masthead on any screen; the word gives way downwards
+    const floor=(document.querySelector(".masthead")?.offsetHeight||72)+12+sh*1.02;
+    const top=Math.max(oy+ih*yf-wh/2, floor);
     word.style.top=top+"px";
     study.style.left=((W-word.offsetWidth)/2+fs*.06)+"px";
-    study.style.top=(top-study.offsetHeight*1.02)+"px";
+    study.style.top=(top-sh*1.02)+"px";
   };
   const placeAll=()=>slides.forEach(place);
   const hydrate=()=>slides.slice(1).forEach(s=>s.querySelectorAll("img[data-src]").forEach(i=>{ i.srcset=i.dataset.srcset; i.src=i.dataset.src; i.removeAttribute("data-src"); i.removeAttribute("data-srcset"); }));
