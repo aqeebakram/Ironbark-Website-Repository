@@ -383,6 +383,7 @@ h2.sec{font-size:clamp(1.55rem,3.1vw,2.6rem);margin-top:.55rem}
    the picture instead of being one compromise stretched across all four. */
 .slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease}
 .slide.on{opacity:1}
+.slide picture{display:contents}
 .slide img{width:100%;height:100%;object-fit:cover;transform:scale(1.045);will-change:transform}
 .slide.on img,.slide.out img{transform:scale(1.11) translate3d(-1.2%,0,0);transition:transform 11s linear}
 /* The wash exists to carry the type, so it now stops where the type stops:
@@ -636,11 +637,11 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 <!-- ══ HERO ══ -->
 <section class="hero" id="hero">
   <div class="hero-bg" aria-hidden="true">
-    <div class="slide on" data-wash="deep"><img src="img/hero_harbour.webp" alt="The Sydney Opera House and ferries on Sydney Harbour." fetchpriority="high"></div>
-    <div class="slide" data-wash="medium"><img data-src="img/hero_surf.webp" alt="Surf breaking on a red-sand beach, seen from above."></div>
-    <div class="slide" data-wash="medium"><img data-src="img/hero_sunset.webp" alt="Sydney Harbour at sunset, with the Harbour Bridge, the Opera House and jacaranda in flower."></div>
-    <div class="slide" data-wash="thin"><img data-src="img/hero_uluru.webp" alt="Uluru in Central Australia, with spinifex grass in the foreground."></div>
-    <div class="slide" data-wash="deep" data-top="dark"><img data-src="img/hero_coast.webp" alt="A coast road running along the cliffs above the sea, seen from above."></div>
+    <div class="slide on" data-wash="deep"><picture><source media="(max-width:860px) and (orientation:portrait)" srcset="img/hero_harbour-p800.webp 800w, img/hero_harbour-p1250.webp 1250w" sizes="56vh"><img src="img/hero_harbour-1600.webp" srcset="img/hero_harbour-1600.webp 1600w, img/hero_harbour-2400.webp 2400w, img/hero_harbour-3200.webp 3200w" sizes="(max-aspect-ratio:16/9) 198vh, 112vw" width="1600" height="900" alt="The Sydney Opera House and ferries on Sydney Harbour." fetchpriority="high"></picture></div>
+    <div class="slide" data-wash="medium"><picture><source media="(max-width:860px) and (orientation:portrait)" data-srcset="img/hero_surf-p800.webp 800w, img/hero_surf-p1250.webp 1250w" sizes="56vh"><img data-src="img/hero_surf-1600.webp" data-srcset="img/hero_surf-1600.webp 1600w, img/hero_surf-2030.webp 2030w" sizes="(max-aspect-ratio:16/9) 198vh, 112vw" width="1600" height="900" alt="Surf breaking on a red-sand beach, seen from above."></picture></div>
+    <div class="slide" data-wash="medium"><picture><source media="(max-width:860px) and (orientation:portrait)" data-srcset="img/hero_sunset-p800.webp 800w, img/hero_sunset-p1250.webp 1250w" sizes="56vh"><img data-src="img/hero_sunset-1600.webp" data-srcset="img/hero_sunset-1600.webp 1600w, img/hero_sunset-2400.webp 2400w, img/hero_sunset-3200.webp 3200w" sizes="(max-aspect-ratio:16/9) 198vh, 112vw" width="1600" height="900" alt="Sydney Harbour at sunset, with the Harbour Bridge, the Opera House and jacaranda in flower."></picture></div>
+    <div class="slide" data-wash="thin"><picture><source media="(max-width:860px) and (orientation:portrait)" data-srcset="img/hero_uluru-p800.webp 800w, img/hero_uluru-p1250.webp 1250w" sizes="56vh"><img data-src="img/hero_uluru-1600.webp" data-srcset="img/hero_uluru-1600.webp 1600w, img/hero_uluru-2400.webp 2400w, img/hero_uluru-3200.webp 3200w" sizes="(max-aspect-ratio:16/9) 198vh, 112vw" width="1600" height="900" alt="Uluru in Central Australia, with spinifex grass in the foreground."></picture></div>
+    <div class="slide" data-wash="deep" data-top="dark"><picture><source media="(max-width:860px) and (orientation:portrait)" data-srcset="img/hero_coast-p800.webp 800w, img/hero_coast-p1250.webp 1250w" sizes="56vh"><img data-src="img/hero_coast-1600.webp" data-srcset="img/hero_coast-1600.webp 1600w, img/hero_coast-2400.webp 2400w, img/hero_coast-2758.webp 2758w" sizes="(max-aspect-ratio:16/9) 198vh, 112vw" width="1600" height="900" alt="A coast road running along the cliffs above the sea, seen from above."></picture></div>
   </div>
   <p class="vh">Sydney Harbour with the Opera House, surf on an Australian beach from above, Circular Quay at sunset, Uluru at dawn, and the coast road above the Tasman Sea.</p>
   <div class="wrap hero-inner">
@@ -795,7 +796,11 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
       const go=()=>{ ready=true; run(); };
       // attach before assigning src, or a cached image can settle first
       first.addEventListener("load",go,{once:true});
-      imgs.forEach(img=>{ img.src=img.dataset.src; img.removeAttribute("data-src"); });
+      // srcset before src, on the <source> as well, so the browser picks its size once
+      imgs.forEach(img=>{
+        img.parentNode.querySelectorAll("[data-srcset]").forEach(e=>{ e.srcset=e.dataset.srcset; e.removeAttribute("data-srcset"); });
+        img.src=img.dataset.src; img.removeAttribute("data-src");
+      });
       if(first.complete && first.naturalWidth) go();
     };
     if(document.readyState==="complete") hydrate();
