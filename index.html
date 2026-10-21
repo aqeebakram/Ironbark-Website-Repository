@@ -636,7 +636,8 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   display:flex;justify-content:space-between;align-items:flex-end;gap:1.5rem}
 .dh-card{max-width:32rem}
 .dh-card .label{color:var(--gold);margin:0 0 .65rem;text-shadow:0 1px 10px rgba(0,0,0,.5)}
-.dh-sub{margin:0 0 1.3rem;font-size:clamp(1rem,1.2vw,1.15rem);line-height:1.5;color:#fff;max-width:40ch;text-shadow:0 1px 2px rgba(0,0,0,.45),0 2px 18px rgba(0,0,0,.5)}
+/* the site's own .lead type (Inter, 1.2-1.35rem, 1.55 leading), in white for the photograph */
+.dh-sub{margin:0 0 1.3rem;color:#fff;max-width:40ch;text-shadow:0 1px 2px rgba(0,0,0,.45),0 2px 18px rgba(0,0,0,.5)}
 .dh-cta{display:flex;align-items:center;gap:.4rem}
 /* the same type as every other button on the site: IBM Plex Mono, small capitals, wide tracking */
 .dh-pill{font-family:var(--f-mono);text-transform:uppercase;font-size:.84rem;letter-spacing:.16em;padding:1rem 1.6rem;border-radius:999px;white-space:nowrap}
@@ -733,40 +734,40 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
      stands in front of the letters. Built by Design source/hero-concepts/depth.py. -->
 <section class="dh" id="hero" data-dark data-tx="rise" aria-label="Study in Australia">
   <div class="dh-stage">
-    <div class="dh-slide on" data-ar="1.5003" data-y="0.355" data-ym="0.33" data-w="0.92" data-place="Sydney Opera House · NSW" style="--pos:50% 40%">
-      <div class="dh-pan"><img class="dh-bg" src="img/depth/cloudy-bg-1400.webp" srcset="img/depth/cloudy-bg-1400.webp 1400w, img/depth/cloudy-bg-2400.webp 2400w, img/depth/cloudy-bg-3200.webp 3200w" sizes="100vw" alt="The Sydney Opera House and the city skyline across the harbour under a cloudy sky." fetchpriority="high"></div>
+    <div class="dh-slide on" data-ar="1.5003" data-y="0.355" data-ym=".40" data-w="0.92" data-place="Sydney Opera House · NSW" style="--pos:50% 40%">
+      <div class="dh-pan"><img class="dh-bg" src="img/depth/cloudy-bg-1400.webp" srcset="img/depth/cloudy-bg-1400.webp 1400w, img/depth/cloudy-bg-2400.webp 2400w, img/depth/cloudy-bg-3200.webp 3200w" sizes="(max-aspect-ratio: 3/2) 150vh, 100vw" alt="The Sydney Opera House and the city skyline across the harbour under a cloudy sky." fetchpriority="high"></div>
       <span class="dh-word" aria-hidden="true">AUSTRALIA</span>
-      <img class="dh-fg" src="img/depth/cloudy-fg-1400.webp" srcset="img/depth/cloudy-fg-1400.webp 1400w, img/depth/cloudy-fg-2400.webp 2400w, img/depth/cloudy-fg-3200.webp 3200w" sizes="100vw" alt="">
+      <img class="dh-fg" src="img/depth/cloudy-fg-1400.webp" srcset="img/depth/cloudy-fg-1400.webp 1400w, img/depth/cloudy-fg-2400.webp 2400w, img/depth/cloudy-fg-3200.webp 3200w" sizes="(max-aspect-ratio: 3/2) 150vh, 100vw" alt="">
       <span class="dh-study" aria-hidden="true">Study in</span>
     </div>
-    <div class="dh-slide" data-ar="1.5" data-y="0.305" data-ym="0.16" data-w="0.9" data-place="St Kilda, Melbourne · VIC" style="--pos:50% 0%">
-      <div class="dh-pan"><img class="dh-bg" data-src="img/depth/lunapark-bg-1400.webp" data-srcset="img/depth/lunapark-bg-1400.webp 1400w, img/depth/lunapark-bg-2400.webp 2400w, img/depth/lunapark-bg-3200.webp 3200w" sizes="100vw" alt="A number 96 tram outside Luna Park in St Kilda, Melbourne."></div>
+    <div class="dh-slide" data-ar="1.5" data-y="0.305" data-ym=".30" data-w="0.9" data-place="St Kilda, Melbourne · VIC" style="--pos:50% 0%">
+      <div class="dh-pan"><img class="dh-bg" data-src="img/depth/lunapark-bg-1400.webp" data-srcset="img/depth/lunapark-bg-1400.webp 1400w, img/depth/lunapark-bg-2400.webp 2400w, img/depth/lunapark-bg-3200.webp 3200w" sizes="(max-aspect-ratio: 3/2) 150vh, 100vw" alt="A number 96 tram outside Luna Park in St Kilda, Melbourne."></div>
       <span class="dh-word" aria-hidden="true">AUSTRALIA</span>
-      <img class="dh-fg" data-src="img/depth/lunapark-fg-1400.webp" data-srcset="img/depth/lunapark-fg-1400.webp 1400w, img/depth/lunapark-fg-2400.webp 2400w, img/depth/lunapark-fg-3200.webp 3200w" sizes="100vw" alt="">
+      <img class="dh-fg" data-src="img/depth/lunapark-fg-1400.webp" data-srcset="img/depth/lunapark-fg-1400.webp 1400w, img/depth/lunapark-fg-2400.webp 2400w, img/depth/lunapark-fg-3200.webp 3200w" sizes="(max-aspect-ratio: 3/2) 150vh, 100vw" alt="">
       <span class="dh-study" aria-hidden="true">Study in</span>
     </div>
-    <div class="dh-slide" data-ar="1.3353" data-y="0.4" data-ym="0.38" data-w="0.9" data-place="Brisbane · QLD" style="--pos:50% 45%">
-      <div class="dh-pan"><img class="dh-bg" data-src="img/depth/brisbane-bg-1400.webp" data-srcset="img/depth/brisbane-bg-1400.webp 1400w, img/depth/brisbane-bg-2400.webp 2400w, img/depth/brisbane-bg-3200.webp 3200w" sizes="100vw" alt="Brisbane's towers and the Story Bridge at dusk."></div>
+    <div class="dh-slide" data-ar="1.3353" data-y="0.4" data-ym=".492" data-w="0.9" data-place="Brisbane · QLD" style="--pos:50% 45%">
+      <div class="dh-pan"><img class="dh-bg" data-src="img/depth/brisbane-bg-1400.webp" data-srcset="img/depth/brisbane-bg-1400.webp 1400w, img/depth/brisbane-bg-2400.webp 2400w, img/depth/brisbane-bg-3200.webp 3200w" sizes="(max-aspect-ratio: 4/3) 134vh, 100vw" alt="Brisbane's towers and the Story Bridge at dusk."></div>
       <span class="dh-word" aria-hidden="true">AUSTRALIA</span>
-      <img class="dh-fg" data-src="img/depth/brisbane-fg-1400.webp" data-srcset="img/depth/brisbane-fg-1400.webp 1400w, img/depth/brisbane-fg-2400.webp 2400w, img/depth/brisbane-fg-3200.webp 3200w" sizes="100vw" alt="">
+      <img class="dh-fg" data-src="img/depth/brisbane-fg-1400.webp" data-srcset="img/depth/brisbane-fg-1400.webp 1400w, img/depth/brisbane-fg-2400.webp 2400w, img/depth/brisbane-fg-3200.webp 3200w" sizes="(max-aspect-ratio: 4/3) 134vh, 100vw" alt="">
       <span class="dh-study" aria-hidden="true">Study in</span>
     </div>
-    <div class="dh-slide ink" data-ar="1.5011" data-y="0.345" data-ym="0.3" data-w="0.9" data-place="Perth · WA" style="--pos:50% 40%">
-      <div class="dh-pan"><img class="dh-bg" data-src="img/depth/perth-bg-1400.webp" data-srcset="img/depth/perth-bg-1400.webp 1400w, img/depth/perth-bg-2400.webp 2400w, img/depth/perth-bg-3200.webp 3200w" sizes="100vw" alt="Perth's city skyline above the Swan River at sunset."></div>
+    <div class="dh-slide ink" data-ar="1.5011" data-y="0.345" data-ym=".27" data-w="0.9" data-place="Perth · WA" style="--pos:50% 40%">
+      <div class="dh-pan"><img class="dh-bg" data-src="img/depth/perth-bg-1400.webp" data-srcset="img/depth/perth-bg-1400.webp 1400w, img/depth/perth-bg-2400.webp 2400w, img/depth/perth-bg-3200.webp 3200w" sizes="(max-aspect-ratio: 3/2) 150vh, 100vw" alt="Perth's city skyline above the Swan River at sunset."></div>
       <span class="dh-word" aria-hidden="true">AUSTRALIA</span>
-      <img class="dh-fg" data-src="img/depth/perth-fg-1400.webp" data-srcset="img/depth/perth-fg-1400.webp 1400w, img/depth/perth-fg-2400.webp 2400w, img/depth/perth-fg-3200.webp 3200w" sizes="100vw" alt="">
+      <img class="dh-fg" data-src="img/depth/perth-fg-1400.webp" data-srcset="img/depth/perth-fg-1400.webp 1400w, img/depth/perth-fg-2400.webp 2400w, img/depth/perth-fg-3200.webp 3200w" sizes="(max-aspect-ratio: 3/2) 150vh, 100vw" alt="">
       <span class="dh-study" aria-hidden="true">Study in</span>
     </div>
-    <div class="dh-slide ink" data-ar="1.5011" data-y="0.43" data-ym="0.42" data-w="0.9" data-place="Telstra Tower, Canberra · ACT" style="--pos:50% 50%">
-      <div class="dh-pan"><img class="dh-bg" data-src="img/depth/canberra-bg-1400.webp" data-srcset="img/depth/canberra-bg-1400.webp 1400w, img/depth/canberra-bg-2400.webp 2400w, img/depth/canberra-bg-3200.webp 3200w" sizes="100vw" alt="Telstra Tower on Black Mountain at sunset, Canberra."></div>
+    <div class="dh-slide ink" data-ar="1.5011" data-y="0.43" data-ym=".34" data-w="0.9" data-place="Telstra Tower, Canberra · ACT" style="--pos:50% 50%">
+      <div class="dh-pan"><img class="dh-bg" data-src="img/depth/canberra-bg-1400.webp" data-srcset="img/depth/canberra-bg-1400.webp 1400w, img/depth/canberra-bg-2400.webp 2400w, img/depth/canberra-bg-3200.webp 3200w" sizes="(max-aspect-ratio: 3/2) 150vh, 100vw" alt="Telstra Tower on Black Mountain at sunset, Canberra."></div>
       <span class="dh-word" aria-hidden="true">AUSTRALIA</span>
-      <img class="dh-fg" data-src="img/depth/canberra-fg-1400.webp" data-srcset="img/depth/canberra-fg-1400.webp 1400w, img/depth/canberra-fg-2400.webp 2400w, img/depth/canberra-fg-3200.webp 3200w" sizes="100vw" alt="">
+      <img class="dh-fg" data-src="img/depth/canberra-fg-1400.webp" data-srcset="img/depth/canberra-fg-1400.webp 1400w, img/depth/canberra-fg-2400.webp 2400w, img/depth/canberra-fg-3200.webp 3200w" sizes="(max-aspect-ratio: 3/2) 150vh, 100vw" alt="">
       <span class="dh-study" aria-hidden="true">Study in</span>
     </div>
-    <div class="dh-slide warm" data-ar="1.7783" data-y="0.385" data-ym="0.33" data-w="0.9" data-place="Uluru · NT" style="--pos:50% 50%">
-      <div class="dh-pan"><img class="dh-bg" data-src="img/depth/uluru-bg-1400.webp" data-srcset="img/depth/uluru-bg-1400.webp 1400w, img/depth/uluru-bg-2400.webp 2400w, img/depth/uluru-bg-3048.webp 3048w" sizes="100vw" alt="Uluru at dusk."></div>
+    <div class="dh-slide warm" data-ar="1.7778" data-y="0.39" data-ym=".418" data-w="0.9" data-place="Uluru · NT" style="--pos:55% 50%">
+      <div class="dh-pan"><img class="dh-bg" data-src="img/depth/uluru-bg-1400.webp" data-srcset="img/depth/uluru-bg-1400.webp 1400w, img/depth/uluru-bg-2400.webp 2400w, img/depth/uluru-bg-3200.webp 3200w" sizes="(max-aspect-ratio: 16/9) 178vh, 100vw" alt="Uluru at dusk."></div>
       <span class="dh-word" aria-hidden="true">AUSTRALIA</span>
-      <img class="dh-fg" data-src="img/depth/uluru-fg-1400.webp" data-srcset="img/depth/uluru-fg-1400.webp 1400w, img/depth/uluru-fg-2400.webp 2400w, img/depth/uluru-fg-3048.webp 3048w" sizes="100vw" alt="">
+      <img class="dh-fg" data-src="img/depth/uluru-fg-1400.webp" data-srcset="img/depth/uluru-fg-1400.webp 1400w, img/depth/uluru-fg-2400.webp 2400w, img/depth/uluru-fg-3200.webp 3200w" sizes="(max-aspect-ratio: 16/9) 178vh, 100vw" alt="">
       <span class="dh-study" aria-hidden="true">Study in</span>
     </div>
   </div>
@@ -775,7 +776,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
     <div class="dh-card">
       <p class="label">Independent Education Advisory</p>
       <h1 class="vh">Study in Australia</h1>
-      <p class="dh-sub">International education advice from someone who has worked inside Australian government, universities and education agencies.</p>
+      <p class="lead dh-sub">International education advice from someone who has worked inside Australian government, universities and education agencies.</p>
       <div class="dh-cta"><a class="dh-pill" href="https://calendar.app.google/3Y3mibwNrrSun34i9" target="_blank" rel="noopener">Book a discovery call</a><a class="dh-arrow" href="https://calendar.app.google/3Y3mibwNrrSun34i9" target="_blank" rel="noopener" aria-label="Book a discovery call">&#8599;</a></div>
     </div>
     <p class="dh-loc" aria-live="polite"><span class="dh-loc-t">Sydney Opera House · NSW</span></p>
