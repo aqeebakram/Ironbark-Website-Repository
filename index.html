@@ -1096,7 +1096,10 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   const run=()=>{ if(reduce||timer) return; timer=setInterval(()=>go(i+1),DUR); };
   const halt=()=>{ clearInterval(timer); timer=null; };
   document.fonts.ready.then(placeAll); addEventListener("resize",placeAll); placeAll();
-  const start=()=>{ hydrate(slides[1]); run(); };
+  // Slide 2 starts 2.5 s after load, so it does not compete with the first
+  // frame on a slow phone. It still has about 4 s to arrive before it is due,
+  // and if it is late, go() holds Sydney for another tick.
+  const start=()=>{ setTimeout(()=>hydrate(slides[1]),2500); run(); };
   if(document.readyState==="complete") start(); else addEventListener("load",start,{once:true});
   addEventListener("visibilitychange",()=>document.visibilityState==="visible"?run():halt());
   new IntersectionObserver(es=>es[0].isIntersecting?run():halt(),{threshold:0}).observe(hero);
