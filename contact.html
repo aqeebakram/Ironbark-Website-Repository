@@ -157,6 +157,10 @@
   .pbar .pb-wa{flex:.7;color:#F0EAE0;border:1px solid rgba(240,234,224,.35)}
 }
 @media (prefers-reduced-motion:reduce){.pbar{transition:none}}
+
+/* With six menu items the full "Book a discovery call" label does not fit beside
+   the menu on 13-14 inch laptops; use the short label there, and never let it shrink. */
+@media (min-width:1151px) and (max-width:1400px){.masthead .book .book-long{display:none}.masthead .book .book-short{display:inline}.masthead .book{flex:0 0 auto}}
 </style>
 <style>
 /* ============================================================
@@ -714,7 +718,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 <section class="chero" id="contact">
   <div class="wrap">
     <p class="label">Contact</p>
-    <h1 class="h-head"><span class="rev"><span>Email me</span></span><span class="rev"><span style="--d:60ms">or book a call.</span></span></h1>
+    <h1 class="h-head"><span class="rev"><span>Email, WhatsApp</span></span><span class="rev"><span style="--d:60ms">or book a call.</span></span></h1>
     <p class="lead fade" style="--d:140ms">Calls book straight into my calendar. I won&rsquo;t chase you afterwards.</p>
 
     <div class="line fade" style="--d:200ms">
@@ -735,13 +739,13 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
     <div class="where fade" style="--d:320ms">
       <dl>
         <dt>Based in</dt>
-        <dd><b>Dubai, United Arab Emirates.</b> I work with students and parents wherever they are. Meeting location is confirmed when you book.</dd>
+        <dd><b>Dubai, United Arab Emirates.</b> I work with students, parents and institutions wherever they are.</dd>
         <dt>The first call</dt>
-        <dd>Thirty minutes, no charge, no obligation.</dd>
-        <dt>What to bring</dt>
-        <dd>Your year group, the subjects you&rsquo;ve chosen, and what you hope your degree leads to.</dd>
+        <dd>Thirty minutes, always online on Google Meet. Free, with no obligation.</dd>
         <dt>Before we speak</dt>
-        <dd>When you book as a student, I&rsquo;ll email you a short form so I understand your situation before the call.</dd>
+        <dd>When you book a student call, you get a confirmation email with a short form. It helps me get to know the student before we talk.</dd>
+        <dt>On a student call</dt>
+        <dd>We look at the student&rsquo;s background and whether Australia is the right choice. You come away with a clear idea of the likely costs, what the degree can lead to, and the key facts about studying in Australia.</dd>
       </dl>
     </div>
   </div>

@@ -218,6 +218,10 @@
   .pbar .pb-wa{flex:.7;color:#F0EAE0;border:1px solid rgba(240,234,224,.35)}
 }
 @media (prefers-reduced-motion:reduce){.pbar{transition:none}}
+
+/* With six menu items the full "Book a discovery call" label does not fit beside
+   the menu on 13-14 inch laptops; use the short label there, and never let it shrink. */
+@media (min-width:1151px) and (max-width:1400px){.masthead .book .book-long{display:none}.masthead .book .book-short{display:inline}.masthead .book{flex:0 0 auto}}
 </style>
 <style>
 /* ============================================================
