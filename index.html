@@ -7,6 +7,7 @@
 <script>(function(d){d.classList.add("js");setTimeout(function(){if(!d.classList.contains("rv"))d.classList.remove("js")},3000)})(document.documentElement)</script>
 <link rel="preload" href="/fonts/archivo-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="img/depth/cloudy-bg-1400.webp" imagesrcset="img/depth/cloudy-bg-1400.webp 1400w, img/depth/cloudy-bg-2400.webp 2400w, img/depth/cloudy-bg-3200.webp 3200w" imagesizes="(max-aspect-ratio: 3/2) 150vh, 100vw" fetchpriority="high">
 <!-- Consent, EEA and UK. Must run before gtag.js so defaults are set first. -->
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -1077,10 +1078,17 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
     study.style.top=(top-sh*1.02)+"px";
   };
   const placeAll=()=>slides.forEach(place);
-  const hydrate=()=>slides.slice(1).forEach(s=>s.querySelectorAll("img[data-src]").forEach(i=>{ i.srcset=i.dataset.srcset; i.src=i.dataset.src; i.removeAttribute("data-src"); i.removeAttribute("data-srcset"); }));
+  // Later frames load one at a time: each starts loading while the frame before
+  // it is on screen, which gives it a full DUR to arrive. Loading all five at
+  // once put about 2 MB on a phone straight after the first frame.
+  const hydrate=s=>s&&s.querySelectorAll("img[data-src]").forEach(i=>{ i.srcset=i.dataset.srcset; i.src=i.dataset.src; i.removeAttribute("data-src"); i.removeAttribute("data-srcset"); });
+  const ready=s=>[...s.querySelectorAll("img")].every(i=>!i.dataset.src&&i.complete&&i.naturalWidth>0);
   let i=0, timer=null, busy=false;
-  const go=n=>{ if(busy) return; busy=true;
-    const prev=slides[i]; i=(n+slides.length)%slides.length; const nx=slides[i];
+  const go=n=>{ if(busy) return;
+    // a frame whose photos have not arrived waits for the next tick
+    const k=(n+slides.length)%slides.length; hydrate(slides[k]); if(!ready(slides[k])) return;
+    busy=true; hydrate(slides[(k+1)%slides.length]);
+    const prev=slides[i]; i=k; const nx=slides[i];
     prev.classList.remove("on"); prev.classList.add("leave"); nx.classList.add("on","enter");
     loc.classList.add("swap"); setTimeout(()=>{ locT.textContent=nx.dataset.place; loc.classList.remove("swap"); },400);
     setTimeout(()=>{ prev.classList.remove("leave"); nx.classList.remove("enter"); busy=false; }, reduce?0:TX);
@@ -1088,7 +1096,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   const run=()=>{ if(reduce||timer) return; timer=setInterval(()=>go(i+1),DUR); };
   const halt=()=>{ clearInterval(timer); timer=null; };
   document.fonts.ready.then(placeAll); addEventListener("resize",placeAll); placeAll();
-  const start=()=>{ hydrate(); run(); };
+  const start=()=>{ hydrate(slides[1]); run(); };
   if(document.readyState==="complete") start(); else addEventListener("load",start,{once:true});
   addEventListener("visibilitychange",()=>document.visibilityState==="visible"?run():halt());
   new IntersectionObserver(es=>es[0].isIntersecting?run():halt(),{threshold:0}).observe(hero);

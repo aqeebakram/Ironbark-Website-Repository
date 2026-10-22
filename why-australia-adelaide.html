@@ -7,6 +7,8 @@
 <script>(function(d){d.classList.add("js");setTimeout(function(){if(!d.classList.contains("rv"))d.classList.remove("js")},3000)})(document.documentElement)</script>
 <link rel="preload" href="/fonts/archivo-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" media="(max-width:700px) and (orientation:portrait)" imagesrcset="img/states/adelaide-hero-p750.webp 750w, img/states/adelaide-hero-p1125.webp 1125w" imagesizes="106vw" fetchpriority="high">
+<link rel="preload" as="image" media="not all and (max-width:700px) and (orientation:portrait)" href="img/states/adelaide-hero-1800.webp" imagesrcset="img/states/adelaide-hero-1200.webp 1200w, img/states/adelaide-hero-1800.webp 1800w, img/states/adelaide-hero-2700.webp 2700w, img/states/adelaide-hero-3600.webp 3600w" imagesizes="(max-aspect-ratio:9/4) 196vh, 106vw" fetchpriority="high">
 <!-- Consent, EEA and UK. Must run before gtag.js so defaults are set first. -->
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -903,7 +905,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 
 <!-- ══ CLOSE ══ -->
 <section class="close" id="enquire" data-dark>
-  <img src="img/close.webp" alt="">
+  <img src="img/close.webp" alt="" loading="lazy" decoding="async">
   <div class="wrap">
     <p class="label">Next</p>
     <h2 class="h-head">Is Adelaide the right choice for you?</h2>
