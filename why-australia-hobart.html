@@ -176,6 +176,22 @@
 @font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/ibm-plex-mono-400-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/ibm-plex-mono-500-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.others .others-next{margin-top:clamp(1.8rem,5vh,2.6rem)}
+
+/* ---------- phone booking bar (phones only; hidden over the last section and footer) ---------- */
+.pbar{display:none}
+@media (max-width:768px){
+  .pbar{display:flex;gap:.6rem;position:fixed;left:0;right:0;bottom:0;z-index:55;
+    padding:.7rem max(16px,env(safe-area-inset-right,0px)) calc(.7rem + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));
+    background:rgba(14,32,41,.96);border-top:1px solid rgba(240,234,224,.14);
+    transform:translateY(110%);transition:transform .35s var(--ease)}
+  .pbar.on{transform:none}
+  .pbar a{flex:1;display:flex;align-items:center;justify-content:center;min-height:46px;border-radius:999px;
+    font-family:var(--f-mono);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none}
+  .pbar .pb-book{background:var(--gold);color:#20160A}
+  .pbar .pb-wa{flex:.7;color:#F0EAE0;border:1px solid rgba(240,234,224,.35)}
+}
+@media (prefers-reduced-motion:reduce){.pbar{transition:none}}
 </style>
 <style>
 /* ============================================================
@@ -786,11 +802,12 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   </button>
   <div class="mast-nav" id="mast-nav">
     <nav class="nav" aria-label="Primary">
-      <a href="about.html">About</a>
-      <a href="why-australia.html" aria-current="page">Why Australia</a>
       <a href="students-families.html">Students &amp; families</a>
-      <a href="institutions.html" aria-current="page">Institutions</a>
-      <a href="insights.html">News</a>
+      <a href="why-australia.html" aria-current="page">Why Australia</a>
+      <a href="insights.html">Blog</a>
+      <a href="institutions.html">Institutions</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
     </nav>
     <div class="mast-act">
       <a class="ln" href="https://www.linkedin.com/in/aqeebakram" target="_blank" rel="noopener" aria-label="LinkedIn">
@@ -928,6 +945,8 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 <section class="others wrap">
   <p class="label">The other seven</p>
   <div class="other-row"><a href="why-australia-sydney.html">Sydney &middot; NSW</a><a href="why-australia-melbourne.html">Melbourne &middot; VIC</a><a href="why-australia-brisbane.html">Brisbane &middot; QLD</a><a href="why-australia-perth.html">Perth &middot; WA</a><a href="why-australia-adelaide.html">Adelaide &middot; SA</a><a href="why-australia-canberra.html">Canberra &middot; ACT</a><a href="why-australia-darwin.html">Darwin &middot; NT</a></div>
+  <p class="label others-next">Before you decide</p>
+  <div class="other-row"><a href="insights-cost-to-graduation.html">The full cost of a degree</a><a href="insights-subject-choice.html">Year 10 subjects and entry</a><a href="students-families.html">How I work with students</a></div>
 </section>
 
 <!-- ══ CLOSE ══ -->
@@ -950,15 +969,16 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
     <div class="foot">
       <div class="foot-cols">
         <div class="foot-site"><p class="foot-h">Site</p><ul>
-          <li><a href="about.html">About</a></li>
-          <li><a href="why-australia.html">Why Australia</a></li>
           <li><a href="students-families.html">Students &amp; families</a></li>
+          <li><a href="why-australia.html">Why Australia</a></li>
+          <li><a href="insights.html">Blog</a></li>
           <li><a href="institutions.html" aria-current="page">Institutions</a></li>
-          <li><a href="insights.html">News</a></li>
+          <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul></div>
         <div><p class="foot-h">Contact</p><ul>
           <li><a href="mailto:hello@ironbarkadvisory.ae">hello@ironbarkadvisory.ae</a></li>
+          <li><a href="https://wa.me/971503402846?text=Hi%20Aqeeb%2C%20I%20found%20Ironbark%20through%20the%20website.%20I%27d%20like%20to%20ask%20about%20studying%20in%20Australia." target="_blank" rel="noopener">WhatsApp +971 50 340 2846</a></li>
           <li><a href="https://calendar.app.google/3Y3mibwNrrSun34i9" target="_blank" rel="noopener">Book a discovery call</a></li>
           <li><a href="https://www.linkedin.com/in/aqeebakram" target="_blank" rel="noopener">Connect on LinkedIn</a></li>
         </ul></div>
@@ -969,6 +989,26 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
     </div>
   </div>
 </footer>
+<nav class="pbar" aria-label="Get in touch"><a class="pb-book" href="https://calendar.app.google/3Y3mibwNrrSun34i9" target="_blank" rel="noopener">Book a call</a><a class="pb-wa" href="https://wa.me/971503402846?text=Hi%20Aqeeb%2C%20I%20found%20Ironbark%20through%20the%20website.%20I%27d%20like%20to%20ask%20about%20studying%20in%20Australia." target="_blank" rel="noopener">WhatsApp</a></nav>
+<script>
+/* Phone booking bar, and a GA4 event for every way of getting in touch. */
+(() => {
+  addEventListener("click", e => {
+    const a = e.target.closest && e.target.closest("a[href]"); if (!a || typeof gtag !== "function") return;
+    const h = a.getAttribute("href");
+    const method = h.includes("wa.me") ? "whatsapp" : h.includes("calendar.app.google") ? "calendar" : h.startsWith("mailto:") ? "email" : "";
+    if (method) gtag("event", "contact_click", { method, page_location: location.pathname });
+  });
+  const bar = document.querySelector(".pbar"); if (!bar) return;
+  const ends = [document.querySelector("main > section:last-of-type"), document.querySelector("footer")].filter(Boolean);
+  let atEnd = false;
+  const io = new IntersectionObserver(es => { es.forEach(x => x.target._in = x.isIntersecting); atEnd = ends.some(x => x._in); upd(); });
+  ends.forEach(x => io.observe(x));
+  // stay out of the way of the hero, the closing section and the EEA consent banner
+  const upd = () => bar.classList.toggle("on", scrollY > innerHeight * .6 && !atEnd && !document.querySelector(".ibc"));
+  addEventListener("scroll", upd, { passive: true }); upd();
+})();
+</script>
 <script>
 (() => {
   "use strict";
