@@ -1222,7 +1222,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
     const a = e.target.closest && e.target.closest("a[href]"); if (!a || typeof gtag !== "function") return;
     const h = a.getAttribute("href");
     const method = h.includes("wa.me") ? "whatsapp" : h.includes("calendar.app.google") ? "calendar" : h.startsWith("mailto:") ? "email" : "";
-    if (method) gtag("event", "contact_click", { method, page_location: location.pathname });
+    if (method) gtag("event", "contact_click", { method });
   });
   const bar = document.querySelector(".pbar"); if (!bar) return;
   const ends = [document.querySelector("main > section:last-of-type"), document.querySelector("footer")].filter(Boolean);
