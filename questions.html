@@ -173,7 +173,7 @@
       "name": "Which subjects are needed for medicine, engineering, nursing or business?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Requirements differ by university, but some patterns are common. Engineering. Mathematics at an advanced level is commonly a prerequisite, a mandatory requirement, and physics or chemistry is often assumed knowledge.  Medicine. Undergraduate medicine is limited to a few universities. It commonly requires a solid grounding in the sciences, especially chemistry, biology and physics, a very high academic result, the UCAT ANZ or ISAT admissions test, and an interview. Many other universities teach medicine as a graduate degree, entered after a bachelor's.  Nursing. Fewer subject prerequisites, though a higher level of English is commonly required.  Business and commerce. Mathematics is often assumed knowledge rather than a prerequisite. A prerequisite is mandatory, and without it the application does not proceed. Assumed knowledge means the student can enrol but will need to catch up. In the UAE these subject decisions are made as early as the end of Year 9, so it is important to check the university requirements before choosing subjects. I explain this in The subject choices in Year 10 . Always check with the university rather than assuming."
+        "text": "Requirements differ by university, but some patterns are common. Engineering. Mathematics at an advanced level is commonly a prerequisite, a mandatory requirement, and physics or chemistry is often assumed knowledge. Medicine. Undergraduate medicine is limited to a few universities. It commonly requires a solid grounding in the sciences, especially chemistry, biology and physics, a very high academic result, the UCAT ANZ or ISAT admissions test, and an interview. Many other universities teach medicine as a graduate degree, entered after a bachelor's. Nursing. Fewer subject prerequisites, though a higher level of English is commonly required. Business and commerce. Mathematics is often assumed knowledge rather than a prerequisite. A prerequisite is mandatory, and without it the application does not proceed. Assumed knowledge means the student can enrol but will need to catch up. In the UAE these subject decisions are made as early as the end of Year 9, so it is important to check the university requirements before choosing subjects. I explain this in The subject choices in Year 10 . Always check with the university rather than assuming."
       }
     },
     {
@@ -222,6 +222,22 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Most UAE students can choose between the July and February intakes. CBSE results commonly arrive in May, IB results in early July and A level results in mid August, and many universities make offers on predicted IB and A level grades. For a February start, I advise applying by August or September of the year before, to allow enough time for scholarship assessments and the student visa application. Decide early which intake you are aiming for, because test planning, applications and deadlines all depend on it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What visa does a student need to study in Australia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "International students need a Student visa (subclass 500). The application is made online, usually from outside Australia, after the university has issued a Confirmation of Enrolment (CoE). Applicants commonly need to hold Overseas Student Health Cover for their stay, meet the Genuine Student requirement, and provide evidence of English, finances, health and character. The Student visa currently allows students to work up to 48 hours a fortnight while their course is in session. The requirements, conditions and costs are set by the Department of Home Affairs and change from time to time, so check the official Student visa (subclass 500) page before applying."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can international students stay and work in Australia after graduating?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Many international graduates can apply for a Temporary Graduate visa (subclass 485), which allows them to live, work and study in Australia temporarily after finishing their studies. Graduates with a degree from an Australian institution apply under the Post-Higher Education Work stream, and graduates with a diploma or trade qualification apply under the Post-Vocational Education Work stream. Eligibility depends on the applicant’s age, the qualification, the time spent studying in Australia and other criteria. How long a graduate can stay depends mainly on the qualification, and graduates from institutions in regional areas may be able to apply for a second visa. These rules change from time to time, so check the official Temporary Graduate visa (subclass 485) page, and consider this visa when choosing the program, its length and where to study."
       }
     },
     {
@@ -767,7 +783,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 
 /* ---------- FAQ: topic tiles and accordions ---------- */
 .ftiles{margin:clamp(2.6rem,6vh,4rem) 0 clamp(1rem,3vh,2rem)}
-.ftiles ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(.7rem,1.6vw,1.2rem)}
+.ftiles ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(.7rem,1.6vw,1.2rem)}
 .ftile{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:clamp(150px,18vw,210px);padding:1.1rem 1.2rem;border-radius:14px;overflow:hidden;isolation:isolate;text-decoration:none;color:#F6F1E9;background:var(--deep)}
 .ftile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .6s var(--ease)}
 .ftile::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(14,32,41,.88) 15%,rgba(14,32,41,.35) 70%,rgba(14,32,41,.15))}
@@ -797,6 +813,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 .qa[open] .qa-i{border-color:var(--gold);background:rgba(232,163,23,.12)}
 .prose .qa-a{padding:0 0 1.4rem}
 .prose .qa-a > :first-child{margin-top:0}
+@media (max-width:1000px){.ftiles ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:760px){.ftiles ul{grid-template-columns:repeat(2,minmax(0,1fr))}.ftile{min-height:132px;padding:.9rem 1rem}}
 @media (prefers-reduced-motion:reduce){.ftile img,.qa-i::before,.qa-i::after{transition:none}}
 </style>
@@ -947,12 +964,12 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
       <p class="eyeline fade"><span>Blog</span><i></i><span>FAQs</span></p>
       <h1 class="h-head" style="font-size:clamp(2.1rem,5vw,3.9rem)">Frequently asked questions about studying in Australia</h1>
       <p class="stand fade" style="--d:120ms">Answers to the questions students and parents in the
-        UAE ask most, from entry requirements and English tests to intakes, master&rsquo;s degrees
+        UAE ask most, from entry requirements and English tests to intakes, visas, master&rsquo;s degrees
         and scholarships.</p>
       <div class="byline fade" style="--d:200ms">
         <span><b>Aqeeb Akram</b></span>
         <span><time datetime="2026-10-25">25 October 2026</time></span>
-        <span>Eighteen questions</span>
+        <span>Twenty questions</span>
       </div>
     </div>
 
@@ -962,8 +979,10 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
         <li><a class="ftile" href="#t-entry"><img width="800" height="534" src="img/faq/entry.webp" alt="" loading="lazy" decoding="async"><span class="ftile-n">02</span><span class="ftile-t">Entry from UAE schools</span><span class="ftile-c">Five questions</span></a></li>
         <li><a class="ftile" href="#t-english"><img width="800" height="534" src="img/faq/english.webp" alt="" loading="lazy" decoding="async"><span class="ftile-n">03</span><span class="ftile-t">English language</span><span class="ftile-c">Two questions</span></a></li>
         <li><a class="ftile" href="#t-intakes"><img width="800" height="534" src="img/faq/intakes.webp" alt="" loading="lazy" decoding="async"><span class="ftile-n">04</span><span class="ftile-t">Intakes and timing</span><span class="ftile-c">Two questions</span></a></li>
-        <li><a class="ftile" href="#t-postgraduate"><img width="800" height="534" src="img/faq/postgraduate.webp" alt="" loading="lazy" decoding="async"><span class="ftile-n">05</span><span class="ftile-t">Postgraduate study</span><span class="ftile-c">Two questions</span></a></li>
-        <li><a class="ftile" href="#t-costs"><img width="800" height="534" src="img/faq/costs.webp" alt="" loading="lazy" decoding="async"><span class="ftile-n">06</span><span class="ftile-t">Costs and scholarships</span><span class="ftile-c">Two questions</span></a></li>
+        <li><a class="ftile" href="#t-visas"><img width="800" height="534" src="img/faq/visas.webp" alt="" loading="lazy" decoding="async"><span class="ftile-n">05</span><span class="ftile-t">Visas and working after graduation</span><span class="ftile-c">Two questions</span></a></li>
+        <li><a class="ftile" href="#t-postgraduate"><img width="800" height="534" src="img/faq/postgraduate.webp" alt="" loading="lazy" decoding="async"><span class="ftile-n">06</span><span class="ftile-t">Postgraduate study</span><span class="ftile-c">Two questions</span></a></li>
+        <li><a class="ftile" href="#t-costs"><img width="800" height="534" src="img/faq/costs.webp" alt="" loading="lazy" decoding="async"><span class="ftile-n">07</span><span class="ftile-t">Costs and scholarships</span><span class="ftile-c">Two questions</span></a></li>
+        <li><a class="ftile" href="#t-working"><img width="800" height="534" src="img/faq/working.webp" alt="" loading="lazy" decoding="async"><span class="ftile-n">08</span><span class="ftile-t">Working with me</span><span class="ftile-c">Two questions</span></a></li>
       </ul>
     </nav>
 
@@ -1078,8 +1097,27 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
         </details>
       </section>
 
-      <section class="ftopic" id="t-postgraduate" aria-labelledby="t-postgraduate-h">
+      <section class="ftopic" id="t-visas" aria-labelledby="t-visas-h">
         <p class="ftopic-n">05</p>
+        <h2 id="t-visas-h">Visas and working after graduation</h2>
+        <details class="qa" id="student-visa">
+          <summary><h3>What visa does a student need to study in Australia?</h3><span class="qa-i" aria-hidden="true"></span></summary>
+          <div class="qa-a">
+          <p>International students need a Student visa (subclass 500). The application is made online, usually from outside Australia, after the university has issued a Confirmation of Enrolment (CoE). Applicants commonly need to hold Overseas Student Health Cover for their stay, meet the Genuine Student requirement, and provide evidence of English, finances, health and character. The Student visa currently allows students to work up to 48 hours a fortnight while their course is in session. The requirements, conditions and costs are set by the Department of Home Affairs and change from time to time, so check the official <a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500" target="_blank" rel="noopener">Student visa (subclass 500)</a> page before applying.</p>
+          <p class="faq-src">Sources: Department of Home Affairs, <a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500" target="_blank" rel="noopener">Student visa (subclass 500)</a>.</p>
+          </div>
+        </details>
+        <details class="qa" id="post-study-work">
+          <summary><h3>Can international students stay and work in Australia after graduating?</h3><span class="qa-i" aria-hidden="true"></span></summary>
+          <div class="qa-a">
+          <p>Many international graduates can apply for a Temporary Graduate visa (subclass 485), which allows them to live, work and study in Australia temporarily after finishing their studies. Graduates with a degree from an Australian institution apply under the Post-Higher Education Work stream, and graduates with a diploma or trade qualification apply under the Post-Vocational Education Work stream. Eligibility depends on the applicant&rsquo;s age, the qualification, the time spent studying in Australia and other criteria. How long a graduate can stay depends mainly on the qualification, and graduates from institutions in regional areas may be able to apply for a second visa. These rules change from time to time, so check the official <a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-graduate-485" target="_blank" rel="noopener">Temporary Graduate visa (subclass 485)</a> page, and consider this visa when choosing the program, its length and where to study.</p>
+          <p class="faq-src">Sources: Department of Home Affairs, <a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-graduate-485" target="_blank" rel="noopener">Temporary Graduate visa (subclass 485)</a>.</p>
+          </div>
+        </details>
+      </section>
+
+      <section class="ftopic" id="t-postgraduate" aria-labelledby="t-postgraduate-h">
+        <p class="ftopic-n">06</p>
         <h2 id="t-postgraduate-h">Postgraduate study</h2>
         <details class="qa" id="masters-after-bachelors">
           <summary><h3>Can I study a master's in Australia straight after my bachelor's?</h3><span class="qa-i" aria-hidden="true"></span></summary>
@@ -1098,7 +1136,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
       </section>
 
       <section class="ftopic" id="t-costs" aria-labelledby="t-costs-h">
-        <p class="ftopic-n">06</p>
+        <p class="ftopic-n">07</p>
         <h2 id="t-costs-h">Costs and scholarships</h2>
         <details class="qa" id="cost">
           <summary><h3>What does it cost to study in Australia?</h3><span class="qa-i" aria-hidden="true"></span></summary>
@@ -1117,7 +1155,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
       </section>
 
       <section class="ftopic" id="t-working" aria-labelledby="t-working-h">
-        <p class="ftopic-n">07</p>
+        <p class="ftopic-n">08</p>
         <h2 id="t-working-h">Working with me</h2>
         <details class="qa" id="australia-only">
           <summary><h3>Do you only advise on Australia?</h3><span class="qa-i" aria-hidden="true"></span></summary>
