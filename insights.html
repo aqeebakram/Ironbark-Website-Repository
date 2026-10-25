@@ -624,6 +624,27 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   .hero-bg,.bleed-bg{inset:0}
   .dxb{height:auto}.dxb-plate{position:relative;height:62svh}.path{margin-top:0}
 }
+
+/* ---------- blog index: FAQ panel and photo rows ---------- */
+.faqp{margin-top:clamp(2.6rem,6vh,4rem);background:var(--deep);color:var(--on-deep);border-radius:20px;padding:clamp(1.8rem,4vw,3rem)}
+.faqp-grid{display:grid;grid-template-columns:minmax(0,11fr) minmax(0,7fr);gap:clamp(1.6rem,4vw,3.4rem);align-items:center}
+.faqp-tag{display:flex;gap:.7rem;align-items:center;flex-wrap:wrap;margin:0;font-family:var(--f-mono);font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--on-deep-2)}
+.faqp-tag b{color:var(--gold);font-weight:500}
+.faqp h2{margin:.9rem 0 0;max-width:20ch;font-family:var(--f-display);font-variation-settings:var(--vs-head);font-weight:700;font-size:clamp(1.7rem,3.4vw,2.7rem);line-height:1.06;letter-spacing:-.02em;color:var(--on-deep)}
+.faqp h2 a{color:inherit;text-decoration:none}
+.faqp h2 a:hover{color:var(--gold)}
+.faqp h2 a:focus-visible,.faqp-topics a:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.faqp-sum{margin-top:1.1rem;color:var(--on-deep-2);max-width:48ch;line-height:1.62}
+.faqp .more{display:inline-flex;align-items:center;gap:.6rem;margin-top:1.5rem;font-family:var(--f-mono);font-size:.79rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);text-decoration:none}
+.faqp .more:hover{color:var(--on-deep)}
+.faqp-topics{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.55rem}
+.faqp-topics a{display:inline-block;font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--on-deep);border:1px solid rgba(240,234,224,.28);border-radius:999px;padding:.7rem 1rem}
+.faqp-topics a:hover{border-color:var(--gold);color:var(--gold)}
+.notes .note-row{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,11fr);gap:clamp(1.6rem,4vw,4rem);align-items:center}
+.note-fig{display:block;overflow:hidden;border-radius:2px;background:var(--paper-2)}
+.note-fig img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;transition:transform .6s var(--ease)}
+.note-fig:hover img{transform:scale(1.03)}
+@media (max-width:860px){.faqp-grid,.notes .note-row{grid-template-columns:1fr}}
 </style>
 <noscript><style>.js .rev>*{transform:none;opacity:1}.js .fade{opacity:1;transform:none}</style></noscript>
 <style>
@@ -754,6 +775,26 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
         It is written for people who are still deciding.</p>
     </div>
 
+    <aside class="faqp fade" style="--d:180ms" aria-labelledby="faqp-h">
+      <div class="faqp-grid">
+        <div>
+          <p class="faqp-tag"><b>FAQs</b><span>&middot;</span><span>Eighteen questions</span><span>&middot;</span><time datetime="2026-10-25">25 October 2026</time></p>
+          <h2 id="faqp-h"><a href="questions.html">Frequently asked questions about studying in Australia</a></h2>
+          <p class="faqp-sum">Short, sourced answers to the questions students and parents ask the
+            most. Start with the topic you need.</p>
+          <a class="more" href="questions.html">Read the answers <span aria-hidden="true">&rarr;</span></a>
+        </div>
+        <ul class="faqp-topics" aria-label="FAQ topics">
+          <li><a href="questions.html#t-choosing">Choosing Australia</a></li>
+          <li><a href="questions.html#t-entry">Entry from UAE schools</a></li>
+          <li><a href="questions.html#t-english">English language</a></li>
+          <li><a href="questions.html#t-intakes">Intakes and timing</a></li>
+          <li><a href="questions.html#t-postgraduate">Postgraduate study</a></li>
+          <li><a href="questions.html#t-costs">Costs and scholarships</a></li>
+        </ul>
+      </div>
+    </aside>
+
     <div class="feat fade" style="--d:200ms">
       <div class="feat-grid">
         <figure class="feat-fig">
@@ -771,21 +812,27 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
     </div>
 
     <ol class="notes fade" style="--d:240ms">
-      <li>
+      <li class="note-row">
+        <a class="note-fig" href="insights-cost-to-graduation.html" tabindex="-1" aria-hidden="true"><img src="img/dest/blog-cost.webp" alt="A tram on a wet city street in central Sydney." width="900" height="600" loading="lazy" decoding="async"></a>
+        <div>
         <p class="note-tag"><b>Cost</b><span>&middot;</span><time datetime="2026-09-09">9 September 2026</time><span>&middot;</span><span>6 min read</span></p>
         <h3><a href="insights-cost-to-graduation.html">How do you calculate the cost to study in Australia?</a></h3>
         <p class="note-sum">A university website shows the fee for one year of tuition. A family
           pays for three or four, out of a currency that moves against the Australian dollar, along
           with costs the offer letter does not mention.</p>
         <a class="more" href="insights-cost-to-graduation.html">Read the piece <span aria-hidden="true">&rarr;</span></a>
+        </div>
       </li>
-      <li>
+      <li class="note-row">
+        <a class="note-fig" href="insights-subject-choice.html" tabindex="-1" aria-hidden="true"><img src="img/dest/blog-subject-choice.webp" alt="Students studying together at a table with books and a phone." width="900" height="600" loading="lazy" decoding="async"></a>
+        <div>
         <p class="note-tag"><b>Admissions</b><span>&middot;</span><time datetime="2026-09-09">9 September 2026</time><span>&middot;</span><span>7 min read</span></p>
         <h3><a href="insights-subject-choice.html">The subject choices in Year 10 decide which Australian degrees you can apply for.</a></h3>
         <p class="note-sum">Where that decision falls in each of the four curricula common in the
           UAE, the difference between a prerequisite and assumed knowledge, and what the options
           are if the choice has already been made.</p>
         <a class="more" href="insights-subject-choice.html">Read the piece <span aria-hidden="true">&rarr;</span></a>
+        </div>
       </li>
     </ol>
 
@@ -820,6 +867,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
           <li><a href="students-families.html">Students &amp; families</a></li>
           <li><a href="why-australia.html">Why Australia</a></li>
           <li><a href="insights.html" aria-current="page">Blog</a></li>
+          <li><a href="questions.html">FAQs</a></li>
           <li><a href="institutions.html">Institutions</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
