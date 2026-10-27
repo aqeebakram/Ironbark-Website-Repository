@@ -637,6 +637,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 .faqp-sum{margin-top:1.1rem;color:var(--on-deep-2);max-width:48ch;line-height:1.62}
 .faqp .more{display:inline-flex;align-items:center;gap:.6rem;margin-top:1.5rem;font-family:var(--f-mono);font-size:.79rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);text-decoration:none}
 .faqp .more:hover{color:var(--on-deep)}
+.faqp-pick{margin:0 0 1rem;font-family:var(--f-mono);font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold)}
 .faqp-topics{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.55rem}
 .faqp-topics a{display:inline-block;font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--on-deep);border:1px solid rgba(240,234,224,.28);border-radius:999px;padding:.7rem 1rem}
 .faqp-topics a:hover{border-color:var(--gold);color:var(--gold)}
@@ -645,6 +646,8 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 .note-fig img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;transition:transform .6s var(--ease)}
 .note-fig:hover img{transform:scale(1.03)}
 @media (max-width:860px){.faqp-grid,.notes .note-row{grid-template-columns:1fr}}
+/* the lead photo takes the height of the text beside it */
+@media (min-width:821px){.feat .feat-grid{align-items:stretch}.feat .feat-fig img{height:100%;aspect-ratio:auto}}
 </style>
 <noscript><style>.js .rev>*{transform:none;opacity:1}.js .fade{opacity:1;transform:none}</style></noscript>
 <style>
@@ -781,10 +784,12 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
           <p class="faqp-tag"><b>FAQs</b><span>&middot;</span><span>Twenty questions</span><span>&middot;</span><time datetime="2026-10-25">25 October 2026</time></p>
           <h2 id="faqp-h"><a href="questions.html">Frequently asked questions about studying in Australia</a></h2>
           <p class="faqp-sum">Short, sourced answers to the questions students and parents ask the
-            most. Start with the topic you need.</p>
-          <a class="more" href="questions.html">Read the answers <span aria-hidden="true">&rarr;</span></a>
+            most.</p>
+          <a class="more" href="questions.html">View all FAQs <span aria-hidden="true">&rarr;</span></a>
         </div>
-        <ul class="faqp-topics" aria-label="FAQ topics">
+        <div>
+        <p class="faqp-pick" id="faqp-pick">Choose a FAQ topic</p>
+        <ul class="faqp-topics" aria-labelledby="faqp-pick">
           <li><a href="questions.html#t-choosing">Choosing Australia</a></li>
           <li><a href="questions.html#t-entry">Entry from UAE schools</a></li>
           <li><a href="questions.html#t-english">English language</a></li>
@@ -793,13 +798,14 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
           <li><a href="questions.html#t-postgraduate">Postgraduate study</a></li>
           <li><a href="questions.html#t-costs">Costs and scholarships</a></li>
         </ul>
+        </div>
       </div>
     </aside>
 
     <div class="feat fade" style="--d:200ms">
       <div class="feat-grid">
         <figure class="feat-fig">
-          <img src="img/dest/quad.webp" alt="Westminster in London, the Golden Gate Bridge, the Toronto skyline and Sydney Harbour" width="900" height="1124" loading="lazy" decoding="async">
+          <img src="img/dest/blog-four-destinations.webp" alt="The sails of the Sydney Opera House reflected in the harbour." width="1200" height="800" loading="lazy" decoding="async">
         </figure>
         <div>
           <p class="feat-tag"><b>Choosing a country</b><span>&middot;</span><time datetime="2026-09-12">12 September 2026</time><span>&middot;</span><span>9 min read</span></p>
