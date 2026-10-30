@@ -94,8 +94,10 @@ intakes. Never state a requirement for a named university as settled fact.
 Frame with "commonly", "frequently", "at many universities", and keep the
 instruction to check the current handbook for the specific course and intake.
 
-Case studies are composites drawn from several families. The words
-"composite, illustrative" stay on them.
+Case studies are composites drawn from several families. Aqeeb decided on
+30 October 2026 that the label "composite, illustrative" comes off the
+Students & families case note; it is now headed "Case note". Do not re-add the
+label, and do not present a composite as a named or real client.
 
 ### Figures that expire
 
