@@ -155,7 +155,7 @@
     transform:translateY(110%);transition:transform .35s var(--ease)}
   .pbar.on{transform:none}
   .pbar a{flex:1;display:flex;align-items:center;justify-content:center;min-height:46px;border-radius:999px;
-    font-family:var(--f-mono);font-size:0.9rem;text-decoration:none}
+    font-family:var(--f-mono);font-size:1rem;font-weight:500;text-decoration:none}
   .pbar .pb-book{background:var(--gold);color:#20160A}
   .pbar .pb-wa{flex:.7;color:#F0EAE0;border:1px solid rgba(240,234,224,.35)}
 }
@@ -276,9 +276,9 @@ h2.sec{font-size:clamp(1.55rem,3.1vw,2.6rem);margin-top:.55rem}
   box-shadow:0 14px 28px -16px rgba(35,26,8,.55)}
 .book:hover::after,.book:focus-visible::after,.card .btn:hover::after,.cta:hover::after,
 .cta:focus-visible::after,.card:hover .btn::after,.card .btn:focus-visible::after{transform:scaleX(1)}
-.book{font-size:.80rem;letter-spacing:.14em;padding:.58rem 1rem}
+.book{font-size:.9rem;font-weight:500;padding:.58rem 1rem}
 .book-short{display:none}
-@media (max-width:700px){.book{font-size:.76rem;padding:.52rem .82rem;letter-spacing:.09em}
+@media (max-width:700px){.book{font-size:.86rem;padding:.52rem .82rem}
   /* the full label will not fit beside the menu button on a phone */
   .book-long{display:none}.book-short{display:inline}}
 
@@ -474,7 +474,7 @@ h2.sec{font-size:clamp(1.55rem,3.1vw,2.6rem);margin-top:.55rem}
 .chip{font-family:var(--f-mono);font-size:0.9rem;
   background:rgba(238,247,250,.16);border:1px solid rgba(238,247,250,.2);color:#E4EFF3;
   padding:.32rem .62rem;border-radius:999px;backdrop-filter:blur(6px)}
-.card .btn{display:block;width:100%;text-align:center;font-size:.80rem;letter-spacing:.14em;padding:.92rem 1rem}
+.card .btn{display:block;width:100%;text-align:center;font-size:1rem;font-weight:500;white-space:normal;line-height:1.3;padding:.85rem 1rem}
 @media (max-width:1000px){.cards{grid-template-columns:1fr 1fr}}
 @media (max-width:700px){.cards{grid-template-columns:1fr}/* 23rem left 368px for 296px of copy - the card stopped being a photograph
      with words on it and became a panel, and the scrim (which fades out by 78%
@@ -599,7 +599,7 @@ h2.sec{font-size:clamp(1.55rem,3.1vw,2.6rem);margin-top:.55rem}
 .close h2{font-size:clamp(1.72rem,3.6vw,3rem);margin:.7rem 0 0;max-width:15ch;color:var(--on-deep)}
 .close p.lead{color:var(--on-deep-2);margin-top:1.1rem;max-width:48ch}
 .close-row{display:flex;flex-wrap:wrap;gap:.9rem 1.5rem;align-items:center;margin-top:clamp(1.6rem,4vh,2.4rem)}
-.cta{display:inline-flex;align-items:center;gap:.8rem;font-size:.84rem;letter-spacing:.16em;padding:1rem 1.6rem}
+.cta{display:inline-flex;align-items:center;gap:.8rem;font-size:1rem;font-weight:500;padding:1rem 1.6rem}
 .alt{font-family:var(--f-mono);font-size:0.92rem;color:var(--on-deep-2);
   text-decoration:none;border-bottom:1px solid rgba(240,234,224,.35);padding-bottom:.18rem;transition:color .35s ease,border-color .35s ease}
 .alt:hover{color:var(--gold);border-color:var(--gold)}
@@ -729,7 +729,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   box-shadow:0 0 0 0 rgba(14,94,124,.5);animation:ping 2.4s var(--ease) infinite}
 @keyframes ping{0%{box-shadow:0 0 0 0 rgba(14,94,124,.45)}
   70%{box-shadow:0 0 0 10px rgba(14,94,124,0)}100%{box-shadow:0 0 0 0 rgba(14,94,124,0)}}
-@media (max-width:520px){.map-cue{font-size:.74rem;letter-spacing:.1em;padding:.55rem .9rem}}
+@media (max-width:520px){.map-cue{font-size:.9rem;padding:.55rem .9rem}}
 .map .land{fill:#E3DACA;stroke:var(--rule);stroke-width:2;transition:fill .5s ease}
 .map .border{fill:none;stroke:var(--rule);stroke-width:2;stroke-dasharray:7 7;opacity:.85}
 .map .leader{fill:none;stroke:var(--rule);stroke-width:2}
@@ -756,7 +756,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 .place dl{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem;margin:.65rem 0 0;padding-top:.85rem;border-top:1px solid var(--rule-2)}
 .place dt{font-family:var(--f-mono);font-size:0.83rem;color:var(--muted);margin:0}
 .place .more{display:inline-flex;align-items:center;justify-self:start;gap:.6rem;margin-top:1.1rem;
-  font-size:.78rem;letter-spacing:.13em;padding:.8rem 1.25rem}
+  font-size:1rem;font-weight:500;padding:.8rem 1.25rem}
 .place dl{grid-template-columns:1fr}
 .place dd{margin:.15rem 0 0;font-family:var(--f-display);font-variation-settings:var(--vs-sub);font-weight:600;font-size:1.15rem}
 
