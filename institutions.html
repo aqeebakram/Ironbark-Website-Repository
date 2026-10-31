@@ -143,6 +143,38 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Which curricula do you work with?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "All of them. The point at which a student makes the subject choices that matter differs from one curriculum to another. I offer free sessions for schools on studying in Australia."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which year groups are the programs for?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Year 10 and above. Immersion programs are for Year 11 and Year 12."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who do you speak to at a school?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "School leaders, careers counsellors, students and parents."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
     {
@@ -616,6 +648,17 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   .led{grid-template-columns:2.9rem minmax(0,1fr)}
 }
 /* ---------- background: credentials, one per row ---------- */
+.aud{padding-block:0 var(--stack)}
+.aud .lead{margin-top:1rem;max-width:62ch}
+.aud-src{margin:.8rem 0 0;font-size:.92rem;color:var(--muted)}
+.aud-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 clamp(2rem,5vw,4.5rem);margin-top:clamp(1.6rem,4vh,2.6rem);max-width:74rem}
+.aud-item{padding:1.25rem 0 1.5rem;border-top:1px solid var(--rule-2)}
+.aud-item h3,.aud-item h4{margin:0 0 .5rem;font-size:clamp(1.12rem,1.5vw,1.3rem);color:var(--ink)}
+.aud-item h4{font-family:var(--f-body);font-weight:600;font-size:1.08rem;line-height:1.35}
+.aud-item p{margin:0;color:var(--ink-2);line-height:1.6;max-width:50ch}
+.aud-faq-head{margin-top:clamp(2.4rem,6vh,3.6rem);font-size:clamp(1.3rem,2vw,1.6rem)}
+.aud-faq{margin-top:1rem}
+@media (max-width:760px){.aud-grid{grid-template-columns:1fr}}
 .bg{padding-block:0 var(--stack)}
 .bg .h-head{margin-top:.7rem}
 .bg-list{list-style:none;margin:clamp(1.4rem,3vh,2rem) 0 0;padding:0;max-width:62rem}
@@ -809,6 +852,48 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
   <div class="leds">
     <div class="led fade"><em>01</em><h3>Australian institutions</h3><p>Transnational education (TNE), dual degree programs, articulation agreements and research partnerships with UAE institutions, starting with an honest feasibility check. I also research the UAE market and support you in setting up an office or team here, or improving one you already have.</p></div>
     <div class="led fade"><em>02</em><h3>UAE schools</h3><p>Immersion programs, study tours, summer programs and masterclasses for your students, and partnerships with Australian institutions.</p></div>
+  </div>
+</section>
+
+<!-- ══ FOR UNIVERSITIES ══ -->
+<section class="aud wrap" id="universities">
+  <h2 class="h-head sec">For Australian universities and providers</h2>
+  <p class="lead">Dubai alone has 387,441 students in 227 private schools, teaching 17 curricula. The largest are the UK curriculum (37 per cent of students), the Indian curriculum (26 per cent), the US curriculum (14 per cent) and the IB (7 per cent). Students from each curriculum meet university entry requirements by a different path, so a university&rsquo;s entry requirements, marketing and partnerships must cater to all of them.</p>
+  <p class="aud-src">School figures: Knowledge and Human Development Authority (KHDA), 2024-25.</p>
+  <div class="aud-grid">
+    <div class="aud-item"><h3 class="h-sub">Market assessment</h3>
+      <p>Which curricula, cities and programs fit your institution, and what the competition from UK, US and Canadian universities looks like in this market.</p></div>
+    <div class="aud-item"><h3 class="h-sub">Partnership models</h3>
+      <p>Transnational education (TNE), dual degree programs, articulation agreements and research partnerships with UAE institutions, starting with an honest feasibility check. Several UAE universities rank highly in the QS Arab Region University Rankings, which gives Australian universities strong partners to build on.</p></div>
+    <div class="aud-item"><h3 class="h-sub">Setting up in the UAE</h3>
+      <p>I research the UAE market and support you in setting up operations or a team here, or improving one you already have.</p></div>
+    <div class="aud-item"><h3 class="h-sub">Reaching UAE schools and counsellors</h3>
+      <p>For universities a long way from the region, I make the connection with UAE schools and careers counsellors on your behalf.</p></div>
+  </div>
+</section>
+
+<!-- ══ FOR SCHOOLS ══ -->
+<section class="aud wrap" id="schools">
+  <h2 class="h-head sec">For UAE schools</h2>
+  <p class="lead">I work with British, IB, CBSE and American curriculum schools whose students are considering Australia. For those students, the subject choices made early on decide which Australian degrees they can apply for. The earlier a school builds Australia into its counselling and guidance, the more options its students keep when they decide where to study.</p>
+  <div class="aud-grid">
+    <div class="aud-item"><h3 class="h-sub">Immersion programs</h3>
+      <p>A week-long program for Year 11 and Year 12 students, visiting several Australian universities before they apply. Students see what each campus and student life feel like, and what each university offers.</p></div>
+    <div class="aud-item"><h3 class="h-sub">Study tours</h3>
+      <p>Short tours run with Australian universities, where students learn on campus through workshops, lab work, lectures or masterclasses. The tours are hands-on, so students find out what learning at an Australian university is like.</p></div>
+    <div class="aud-item"><h3 class="h-sub">Summer programs</h3>
+      <p>Short programs at Australian universities during the UAE summer break. The UAE summer falls in the Australian winter, between the first and second semesters, which is when most of these programs run. Each university sets its own dates and programs.</p></div>
+    <div class="aud-item"><h3 class="h-sub">Masterclasses</h3>
+      <p>Subject-based sessions delivered by academics from Australian universities, in person at the school or online. Students learn about a topic from an academic in that field and can ask about studying it in Australia.</p></div>
+  </div>
+  <h3 class="h-sub aud-faq-head">Questions schools ask</h3>
+  <div class="aud-grid aud-faq">
+    <div class="aud-item"><h4>Which curricula do you work with?</h4>
+      <p>All of them. The point at which a student makes the subject choices that matter differs from one curriculum to another. I offer free sessions for schools on studying in Australia.</p></div>
+    <div class="aud-item"><h4>Which year groups are the programs for?</h4>
+      <p>Year 10 and above. Immersion programs are for Year 11 and Year 12.</p></div>
+    <div class="aud-item"><h4>Who do you speak to at a school?</h4>
+      <p>School leaders, careers counsellors, students and parents.</p></div>
   </div>
 </section>
 
