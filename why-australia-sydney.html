@@ -346,6 +346,7 @@
 @font-face{font-family:"Poppins";font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/poppins-500-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:"Poppins";font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/poppins-600-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.others-h{margin:0;font-family:var(--f-body);font-size:1.05rem;font-weight:600;color:var(--ink-2)}
 .others .others-next{margin-top:clamp(1.8rem,5vh,2.6rem)}
 
 /* ---------- phone booking bar (phones only; hidden over the last section and footer) ---------- */
@@ -1021,10 +1022,9 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 <section class="sh" id="hero" data-dark>
   <picture><source media="(max-width:700px) and (orientation:portrait)" srcset="img/states/sydney-hero-p750.webp 750w, img/states/sydney-hero-p1125.webp 1125w" sizes="106vw"><img src="img/states/sydney-hero-1800.webp" srcset="img/states/sydney-hero-1200.webp 1200w, img/states/sydney-hero-1800.webp 1800w, img/states/sydney-hero-2700.webp 2700w, img/states/sydney-hero-3600.webp 3600w" sizes="(max-aspect-ratio:9/4) 196vh, 106vw" width="1800" height="800" alt="Sydney Harbour with the Harbour Bridge and the Opera House, and jacaranda in flower." fetchpriority="high"></picture>
   <div class="wrap">
-    <p class="label rev"><span>Study destination &middot; NSW</span></p>
     <h1 class="h-head"><span class="vh">Study in </span>Sydney</h1>
     <p class="state-of">New South Wales</p>
-    <p class="lead fade" style="--d:220ms">The biggest city and the biggest graduate job market, wrapped around a harbour and thirty-odd beaches.</p>
+    <p class="lead fade" style="--d:220ms">The biggest city in Australia, in the state with the most universities.</p>
     <a class="sh-back fade" style="--d:340ms" href="why-australia.html">All eight destinations</a>
     <div class="clk" data-tz="Australia/Sydney" data-lat="-33.8688" data-lon="151.2093" data-city="Sydney">
       <span class="clk-lb"><i class="clk-dot"></i>Local time in Sydney</span>
@@ -1055,7 +1055,6 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 <section class="atlas wrap" id="map">
   <div class="atlas-grid">
     <div class="atlas-side">
-      <p class="label">Where it is</p>
       <h2 class="h-head sec">New South Wales, and what is in it.</h2>
       <p class="atlas-note">The map opens on Australia so you can place the state before
         moving in for a closer look.</p>
@@ -1075,9 +1074,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 <section class="unis-sec" id="universities">
   <div class="wrap">
     <div class="unis-head">
-      <div><p class="label">The universities</p>
-        <h2 class="h-head sec">14 universities in New South Wales.</h2></div>
-      <p class="label label--m">Campuses in New South Wales on the right</p>
+      <div><h2 class="h-head sec">14 universities in New South Wales.</h2></div>
     </div>
     <ul class="uni-list"><li><b>UNSW Sydney</b><span>Sydney</span></li><li><b>University of Sydney</b><span>Sydney</span></li><li><b>University of Technology Sydney</b><span>Sydney</span></li><li><b>Macquarie University</b><span>Sydney</span></li><li><b>Western Sydney University</b><span>Hawkesbury, Penrith and Sydney</span></li><li><b>University of Newcastle</b><span>Central Coast, Newcastle and Port Macquarie</span></li><li><b>University of Wollongong</b><span>Liverpool, Sydney and Wollongong</span></li><li><b>University of New England</b><span>Armidale, Sydney, Tamworth and Taree</span></li><li><b>Charles Sturt University</b><span>Albury, Bathurst, Dubbo, Goulburn, Orange, Port Macquarie, Sydney and Wagga Wagga</span></li><li><b>Southern Cross University</b><span>Coffs Harbour and Lismore</span></li><li><b>Australian Catholic University</b><span>Sydney</span></li><li><b>Australian University of Theology</b><span>Sydney</span></li><li><b>Avondale University</b><span>Lake Macquarie and Sydney</span></li><li><b>Torrens University Australia</b><span>Sydney</span></li></ul>
   </div>
@@ -1085,7 +1082,6 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 
 <!-- ══ LIVING ══ -->
 <section class="living wrap" id="living">
-  <p class="label">Living here</p>
   <h2 class="h-head sec">Why students choose New South Wales.</h2>
   <div class="why-grid has-photo">
     <figure class="why-photo fade"><img src="img/states/sydney-living.webp" alt="The Quadrangle at the University of Sydney, with students walking across the lawn." width="900" height="1125" loading="lazy" decoding="async"><figcaption>University of Sydney &middot; Sydney</figcaption></figure>
@@ -1139,9 +1135,9 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 
 <!-- ══ THE OTHER SEVEN ══ -->
 <section class="others wrap">
-  <p class="label">The other seven</p>
+  <h2 class="others-h">The other seven</h2>
   <div class="other-row"><a href="why-australia-melbourne.html">Melbourne &middot; VIC</a><a href="why-australia-brisbane.html">Brisbane &middot; QLD</a><a href="why-australia-perth.html">Perth &middot; WA</a><a href="why-australia-adelaide.html">Adelaide &middot; SA</a><a href="why-australia-canberra.html">Canberra &middot; ACT</a><a href="why-australia-hobart.html">Hobart &middot; TAS</a><a href="why-australia-darwin.html">Darwin &middot; NT</a></div>
-  <p class="label others-next">Before you decide</p>
+  <h2 class="others-h others-next">Before you decide</h2>
   <div class="other-row"><a href="insights-cost-to-graduation.html">The full cost of a degree</a><a href="insights-subject-choice.html">Year 10 subjects and entry</a><a href="students-families.html">How I work with students</a></div>
 </section>
 
@@ -1149,7 +1145,6 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 <section class="close" id="enquire" data-dark>
   <img src="img/close.webp" alt="Surf breaking over rocks on the Australian coast, seen from above." loading="lazy" decoding="async">
   <div class="wrap">
-    <p class="label">Next</p>
     <h2 class="h-head">Is Sydney the right choice for you?</h2>
     <p class="lead">That depends on your course, your budget and what you want afterwards, which is what the first conversation is for. Thirty minutes, no charge, and if Sydney isn&rsquo;t right for you, I&rsquo;ll tell you.</p>
     <div class="close-row">

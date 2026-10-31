@@ -177,6 +177,7 @@
 @font-face{font-family:"Poppins";font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/poppins-500-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:"Poppins";font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/poppins-600-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.others-h{margin:0;font-family:var(--f-body);font-size:1.05rem;font-weight:600;color:var(--ink-2)}
 .others .others-next{margin-top:clamp(1.8rem,5vh,2.6rem)}
 
 /* ---------- phone booking bar (phones only; hidden over the last section and footer) ---------- */
@@ -852,7 +853,6 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 <section class="sh" id="hero" data-dark>
   <picture><source media="(max-width:700px) and (orientation:portrait)" srcset="img/states/darwin-hero-p750.webp 750w, img/states/darwin-hero-p1125.webp 1125w" sizes="106vw"><img src="img/states/darwin-hero-1800.webp" srcset="img/states/darwin-hero-1200.webp 1200w, img/states/darwin-hero-1800.webp 1800w, img/states/darwin-hero-2700.webp 2700w, img/states/darwin-hero-3600.webp 3600w" sizes="(max-aspect-ratio:9/4) 196vh, 106vw" width="1800" height="800" alt="Northern Territory." fetchpriority="high"></picture>
   <div class="wrap">
-    <p class="label rev"><span>Study destination &middot; NT</span></p>
     <h1 class="h-head"><span class="vh">Study in </span>Darwin</h1>
     <p class="state-of">Northern Territory</p>
     <p class="lead fade" style="--d:220ms">The tropical north, closer to Jakarta than to Sydney, and the base for Indigenous and tropical health research.</p>
@@ -886,7 +886,6 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 <section class="atlas wrap" id="map">
   <div class="atlas-grid">
     <div class="atlas-side">
-      <p class="label">Where it is</p>
       <h2 class="h-head sec">Northern Territory, and what is in it.</h2>
       <p class="atlas-note">The map opens on Australia so you can place the state before
         moving in for a closer look.</p>
@@ -906,9 +905,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 <section class="unis-sec" id="universities">
   <div class="wrap">
     <div class="unis-head">
-      <div><p class="label">The universities</p>
-        <h2 class="h-head sec">1 university in the Northern Territory.</h2></div>
-      <p class="label label--m">Campuses in the Northern Territory on the right</p>
+      <div><h2 class="h-head sec">1 university in the Northern Territory.</h2></div>
     </div>
     <ul class="uni-list"><li><b>Charles Darwin University</b><span>Alice Springs, Darwin, Katherine and Palmerston</span></li></ul>
   </div>
@@ -916,7 +913,6 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 
 <!-- ══ LIVING ══ -->
 <section class="living wrap" id="living">
-  <p class="label">Living here</p>
   <h2 class="h-head sec">Why students choose the Northern Territory.</h2>
   <div class="why-grid">
     <div class="why-copy">
@@ -968,9 +964,9 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 
 <!-- ══ THE OTHER SEVEN ══ -->
 <section class="others wrap">
-  <p class="label">The other seven</p>
+  <h2 class="others-h">The other seven</h2>
   <div class="other-row"><a href="why-australia-sydney.html">Sydney &middot; NSW</a><a href="why-australia-melbourne.html">Melbourne &middot; VIC</a><a href="why-australia-brisbane.html">Brisbane &middot; QLD</a><a href="why-australia-perth.html">Perth &middot; WA</a><a href="why-australia-adelaide.html">Adelaide &middot; SA</a><a href="why-australia-canberra.html">Canberra &middot; ACT</a><a href="why-australia-hobart.html">Hobart &middot; TAS</a></div>
-  <p class="label others-next">Before you decide</p>
+  <h2 class="others-h others-next">Before you decide</h2>
   <div class="other-row"><a href="insights-cost-to-graduation.html">The full cost of a degree</a><a href="insights-subject-choice.html">Year 10 subjects and entry</a><a href="students-families.html">How I work with students</a></div>
 </section>
 
@@ -978,7 +974,6 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 <section class="close" id="enquire" data-dark>
   <img src="img/close.webp" alt="Surf breaking over rocks on the Australian coast, seen from above." loading="lazy" decoding="async">
   <div class="wrap">
-    <p class="label">Next</p>
     <h2 class="h-head">Is Darwin the right choice for you?</h2>
     <p class="lead">That depends on your course, your budget and what you want afterwards, which is what the first conversation is for. Thirty minutes, no charge, and if Darwin isn&rsquo;t right for you, I&rsquo;ll tell you.</p>
     <div class="close-row">

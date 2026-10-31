@@ -268,6 +268,7 @@
 @font-face{font-family:"Poppins";font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/poppins-500-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:"Poppins";font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/poppins-600-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.others-h{margin:0;font-family:var(--f-body);font-size:1.05rem;font-weight:600;color:var(--ink-2)}
 .others .others-next{margin-top:clamp(1.8rem,5vh,2.6rem)}
 
 /* ---------- phone booking bar (phones only; hidden over the last section and footer) ---------- */
@@ -943,7 +944,6 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 <section class="sh" id="hero" data-dark>
   <picture><source media="(max-width:700px) and (orientation:portrait)" srcset="img/states/brisbane-hero-p750.webp 750w, img/states/brisbane-hero-p1125.webp 1125w" sizes="106vw"><img src="img/states/brisbane-hero-1800.webp" srcset="img/states/brisbane-hero-1200.webp 1200w, img/states/brisbane-hero-1800.webp 1800w, img/states/brisbane-hero-2700.webp 2700w, img/states/brisbane-hero-3600.webp 3600w" sizes="(max-aspect-ratio:9/4) 196vh, 106vw" width="1800" height="800" alt="The Brisbane skyline and the Story Bridge at sunset." fetchpriority="high"></picture>
   <div class="wrap">
-    <p class="label rev"><span>Study destination &middot; QLD</span></p>
     <h1 class="h-head"><span class="vh">Study in </span>Brisbane</h1>
     <p class="state-of">Queensland</p>
     <p class="lead fade" style="--d:220ms">Subtropical and warm almost year round, and building fast ahead of the 2032 Olympic Games.</p>
@@ -977,7 +977,6 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 <section class="atlas wrap" id="map">
   <div class="atlas-grid">
     <div class="atlas-side">
-      <p class="label">Where it is</p>
       <h2 class="h-head sec">Queensland, and what is in it.</h2>
       <p class="atlas-note">The map opens on Australia so you can place the state before
         moving in for a closer look.</p>
@@ -997,9 +996,7 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 <section class="unis-sec" id="universities">
   <div class="wrap">
     <div class="unis-head">
-      <div><p class="label">The universities</p>
-        <h2 class="h-head sec">8 universities in Queensland.</h2></div>
-      <p class="label label--m">Campuses in Queensland on the right</p>
+      <div><h2 class="h-head sec">8 universities in Queensland.</h2></div>
     </div>
     <ul class="uni-list"><li><b>University of Queensland</b><span>Brisbane and Gatton</span></li><li><b>Queensland University of Technology</b><span>Brisbane</span></li><li><b>Griffith University</b><span>Brisbane and Gold Coast</span></li><li><b>Bond University</b><span>Brisbane and Gold Coast</span></li><li><b>University of the Sunshine Coast</b><span>Fraser Coast, Moreton Bay and Sunshine Coast</span></li><li><b>James Cook University</b><span>Brisbane, Cairns, Mackay, Mount Isa, Rockhampton, Thursday Island and Townsville</span></li><li><b>CQUniversity</b><span>Brisbane, Bundaberg, Cairns, Emerald, Gladstone, Mackay, Rockhampton and Townsville</span></li><li><b>University of Southern Queensland</b><span>Springfield, Stanthorpe and Toowoomba</span></li></ul>
   </div>
@@ -1007,7 +1004,6 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 
 <!-- ══ LIVING ══ -->
 <section class="living wrap" id="living">
-  <p class="label">Living here</p>
   <h2 class="h-head sec">Why students choose Queensland.</h2>
   <div class="why-grid has-photo">
     <figure class="why-photo fade"><img src="img/states/brisbane-living.webp" alt="The Forgan Smith Building at the University of Queensland in Brisbane, with students on the path in front." width="900" height="1125" loading="lazy" decoding="async"><figcaption>University of Queensland &middot; Brisbane</figcaption></figure>
@@ -1061,9 +1057,9 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 
 <!-- ══ THE OTHER SEVEN ══ -->
 <section class="others wrap">
-  <p class="label">The other seven</p>
+  <h2 class="others-h">The other seven</h2>
   <div class="other-row"><a href="why-australia-sydney.html">Sydney &middot; NSW</a><a href="why-australia-melbourne.html">Melbourne &middot; VIC</a><a href="why-australia-perth.html">Perth &middot; WA</a><a href="why-australia-adelaide.html">Adelaide &middot; SA</a><a href="why-australia-canberra.html">Canberra &middot; ACT</a><a href="why-australia-hobart.html">Hobart &middot; TAS</a><a href="why-australia-darwin.html">Darwin &middot; NT</a></div>
-  <p class="label others-next">Before you decide</p>
+  <h2 class="others-h others-next">Before you decide</h2>
   <div class="other-row"><a href="insights-cost-to-graduation.html">The full cost of a degree</a><a href="insights-subject-choice.html">Year 10 subjects and entry</a><a href="students-families.html">How I work with students</a></div>
 </section>
 
@@ -1071,7 +1067,6 @@ footer{background:var(--deep);color:var(--on-deep-2);padding-block:clamp(2.2rem,
 <section class="close" id="enquire" data-dark>
   <img src="img/close.webp" alt="Surf breaking over rocks on the Australian coast, seen from above." loading="lazy" decoding="async">
   <div class="wrap">
-    <p class="label">Next</p>
     <h2 class="h-head">Is Brisbane the right choice for you?</h2>
     <p class="lead">That depends on your course, your budget and what you want afterwards, which is what the first conversation is for. Thirty minutes, no charge, and if Brisbane isn&rsquo;t right for you, I&rsquo;ll tell you.</p>
     <div class="close-row">
